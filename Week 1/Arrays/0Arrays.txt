@@ -1,0 +1,28 @@
+void arr[100]; // This is a compilation error as we cannot have arrays of void & function type
+void *arr[100]; // This is fine, array of void pointer & function pointer.
+
+https://www.geeksforgeeks.org/compare-two-arrays-java/
+
+
+swap(a, b)
+Parameters: The function accepts two mandatory parameters a and b which are to be swapped. The parameters can be of any data type.
+Return Value: The function does not return anything, it swaps the values of the two variables.
+
+reverse() is a predefined function in header file algorithm. It is defined as a template in the above mentioned header file.
+It reverses the order of the elements in the range [first, last) of any container. The time complexity is O(n). 
+Note: The range used is [first, last), which contains all the elements between first and last, 
+including the element pointed by first but not the element pointed by last.
+
+Examples: 
+Input : 10 11 12 13 14 15 16 17
+Output :10 11 12 13 14 17 16 15
+Explanation:
+reverse(v.begin() + 5, v.begin() + 8);
+In the above function, input we have applied reverse() on the vector
+from index 5 to index 7.
+Therefore when we display the vector we get reverse order
+from index 5 to index 7.
+
+
+INT_MIN & INT_MAX are inbuilt functions in C++
+These are macros that are defined to set the minimum and maximum value for a variable/element. Else a garbage value gets stored.

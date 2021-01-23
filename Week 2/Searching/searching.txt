@@ -1,0 +1,26 @@
+C++ has inbuilt function sort()
+
+Knapsack & Fractional Knapsack
+In Fractional Knapsack, we can break items for maximizing the total value of knapsack. 
+https://www.geeksforgeeks.org/fractional-knapsack-problem/
+
+Binary Search :- The idea of binary search is to use the information that 
+the array is sorted and reduce the time complexity to O(Log n). 
+We use while loop in binary search.
+
+Hashing
+In c++ inbuilt :- unordered map :- key & value 2 things
+Number -> Index -> 0 or 1 , multiple values in same index goes in form of list at that index.
+Time complexity is O(1) for inserting, deleting & searching. Worst case of searching can be O(k), k
+is number of elements in the list.
+Hashing searching is O(1)
+Uses extra space O(n)
+
+Finding any repeating elements
+
+Checking if 2 arrays are equal or not
+M1 Sorting then comparing
+M2 Using Hashing
+
+
+
