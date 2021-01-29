@@ -4,13 +4,6 @@ Knapsack & Fractional Knapsack
 In Fractional Knapsack, we can break items for maximizing the total value of knapsack. 
 https://www.geeksforgeeks.org/fractional-knapsack-problem/
 
-Binary Search :- The idea of binary search is to use the information that 
-the array is sorted and reduce the time complexity to O(Log n). 
-We use while loop in binary search. while(l<=r)
-
-Ternary Search same as binary search, we divide into 3
-Time complexity = O(log base 3 n)
-
 Hashing
 In c++ inbuilt :- unordered map :- key & value 2 things
 Number -> Index -> 0 or 1 , multiple values in same index goes in form of list at that index.
@@ -25,7 +18,9 @@ Checking if 2 arrays are equal or not
 M1 Sorting then comparing
 M2 Using Hashing
 
-So that was about 
-
-
+In built functions in C++ STL 
+These all three functions accepts the start iterator, end iterator and the element to be checked as parameters and returns 
+binary_search()  True if the element is present otherwise False. Does not give any information about the location of the element if it exists.
+upper_bound()   returns the iterator pointing to the element just > the element passed(whether the element is present or not). If all the element in the range compare less than val, the function returns last. 
+lower_bound()   returns the iterator pointing to the element >= the element passed(whether the element is present or not).
 
