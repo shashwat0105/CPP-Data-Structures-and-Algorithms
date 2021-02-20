@@ -11,6 +11,14 @@ Time complexity is O(1) for inserting, deleting & searching. Worst case of searc
 is number of elements in the list.
 Hashing searching is O(1)
 Uses extra space O(n)
+In Hashing we don't search by comparing to the value stored(linear/binary search) but by array index/key.
+Index = Hash_Function(Key), In case key is not equal to the array index. So, we fetch the index by passing key in a Hash Function which does the
+required calculation.
+Hash function is used 2 times, 1st while inserting/deleting the data 2nd while searching the key.
+Parameters of a good hash function:- 1) Easy to compute 2) Even Distribution 3) Minimise Collisions
+We generally do modulo to shorten the size of keys into size of index(size of hash table)
+
+
 
 Finding any repeating elements
 
