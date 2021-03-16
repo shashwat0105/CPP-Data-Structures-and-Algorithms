@@ -1,0 +1,6 @@
+In-Place Sorting: An in-place sorting algorithm uses constant extra space for producing the output (modifies the given array only). It sorts the list only by modifying the order of the elements within the list.
+These are of 3 types:-
+1) Insertion Sort
+2) Bubble Sort
+3) Selection Sort
+
