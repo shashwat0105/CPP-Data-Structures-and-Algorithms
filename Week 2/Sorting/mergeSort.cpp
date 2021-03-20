@@ -5,8 +5,7 @@
 // Divide & Conquer Algo
 // We keep on dividing the list/array(using recursion) until we get the sublist/subarray of 1 element.
 // Then we keep on merging the sublist until we get complete sorted list
-// A separate merge function(has 4 arguments for fixed & 5 for dynamic size of array coz the size input from user is to be used in merge function)
-// is used to merge the sorted sub-arrays
+// A separate merge function of 6 steps(has 4 arguments for fixed & 5 for dynamic size of array coz the size input from user is to be used in merge function) is used to merge the sorted sub-arrays
 
 // https://simplesnippets.tech/merge-sort-algorithm-with-example-with-c-code-sorting-algorithms-data-structures/
 // contains code for both fixed and dynamic size of array
