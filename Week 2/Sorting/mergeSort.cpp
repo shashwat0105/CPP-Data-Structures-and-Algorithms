@@ -69,12 +69,16 @@ void mergeSort(int arr[], int l, int r, int size)  // l points to the leftmost i
 {
     if(l<r){
 
+        // Step 1
         int mid = l + ((r-l)/2); // finding mid to divide array in 2 halfs
 
         // Recursion
+        // Step 2
         mergeSort(arr, l, mid, size);  // Calling for first half (Every first half will be called recursively(can watch video))
+        // Step 3
         mergeSort(arr, mid+1, r, size); // Calling for second half 
 
+        // Step 4
         merge(arr, l, mid, r, size);  
 
     }
