@@ -4,3 +4,4 @@ These are of 3 types:-
 2) Bubble Sort
 3) Selection Sort
 
+4) Quick sort is also known as in Place sorting algo
