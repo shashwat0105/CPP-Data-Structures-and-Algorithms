@@ -10,6 +10,7 @@
 // https://simplesnippets.tech/merge-sort-algorithm-with-example-with-c-code-sorting-algorithms-data-structures/
 // contains code for both fixed and dynamic size of array
 
+
 #include <iostream>
 using namespace std;
 
