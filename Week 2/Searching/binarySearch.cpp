@@ -5,4 +5,4 @@
 // Ternary Search same as binary search, we divide into 3
 // Time complexity = O(log base 3 n)
 
-
+// i & j are made mid + 1 & mid -1 not just mid because then i<j will never fail & it will get into an infinite loop for searching max element or value greater than max element
