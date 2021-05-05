@@ -1,4 +1,4 @@
-// Time Complexity  O(n log n) in best and average case, in worst case it is o(n^2)
+// Time Complexity  O(n log n) in best and average case, in worst case(when the array is already sorted) it is o(n^2)
 // Space Complexity O(log n) // more efficient than merge sort.
 // Divide & Conquer algo
 // In Place algo ie without using any temporary space instead by in place swaps. 

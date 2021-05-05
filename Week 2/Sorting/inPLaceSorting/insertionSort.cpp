@@ -1,5 +1,7 @@
 // Time complexity O(n^2) :- we have n steps(comparison) and every step can take n (swap) time to execute
-// Space complexityO(1)
+// Best case time complexity is O(n) coz O(n) comparisons & O(1) swaps (Already sorted in ascending order is best, sorted in descending is worst)
+// Space complexity O(1)
+// Insertion sort is also known as online algo(coz as soon as we get this algo starts sorting)
 // Insertion sort in Python :- 0.2 n^2 micro seconds
 // Insertion sort in C :- 0.01 n^2 micro seconds (20 times faster)
 
