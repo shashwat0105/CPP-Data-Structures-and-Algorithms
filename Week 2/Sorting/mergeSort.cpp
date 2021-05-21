@@ -1,6 +1,8 @@
 // Time Complexity O(nlogn)
 // Space Complexity O(n)
 // Merge sort in Python :- 2.2nlog(n) micro seconds
+// The recursion consists of O(logn) levels, and processing each level takes O(n) time. 
+// Merging the subarrays array[a...k] and array[k Å1...b] is possible in linear time, because they are already sorted.
 
 // Divide & Conquer Algo
 // We keep on dividing the list/array(using recursion) until we get the sublist/subarray of 1 element.
