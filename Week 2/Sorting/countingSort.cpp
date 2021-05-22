@@ -1,11 +1,13 @@
+// The algorithm creates a bookkeeping array, whose indices are elements of the original array. 
+// The algorithm iterates through the original array and calculates how many times each element appears in the array.
 // counts the number of occurences of each unique element
-// not a comparison sort.
+// not a comparison sort. 
 // Time  O(n+k)
 // Space O(n+k)
 // part of Radix sort
 // n is number of element k is the range of input
 // 5 for loops are used
-
+ 
 #include<iostream>
 using namespace std;
 
@@ -13,7 +15,7 @@ void countingSort(int input_arr[], int s, int r)
 {
     // Step 1. Create output array of the same size(say 5 elements)
     int output_arr[s];
-    // Step 2. Create output array of size range(10 coz 0-9)
+    // Step 2. Create count/bookkeeping array of size range(10 coz 0-9)
     int count_arr[r];
 
     // Step 3. Initiallise all elements of count array to zero
