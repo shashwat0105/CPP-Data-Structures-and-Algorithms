@@ -13,4 +13,5 @@ int main(){
     cout<<best;
     return 0;
 }
- 
+
+// another implementation is using if else can check
