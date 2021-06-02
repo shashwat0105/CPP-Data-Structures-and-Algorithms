@@ -1,6 +1,6 @@
 // High package companies ask this topic
 // Nutanix asked a derivative of MCM(matrix chain multiplication) ques
-// DP = Enhanced recursion
+// DP = Enhanced recursion(recursion + storage)
 // How to identify a dynamic programming problem?
 1. Choice - whether to select an object or not -> recursion hai, 
             Then if the recursion is calling one function it is not DP, if it is calling 2 function then yes, it can be DP
@@ -10,3 +10,10 @@
 Steps to solve:-
 Recursive -> Memoize -> Top down if u want
 Just write the recursive function first.
+
+
+Knapsack Problem are of 3 types
+1. Fractional Knapsack - Ques of Greedy(No use of DP)
+2. 0-1 Knapsack (Use of DP)
+3. Unbounded Knapsack (In this u can put any item any number of times too ie unbounded supply of items) In other u can put only once
+
