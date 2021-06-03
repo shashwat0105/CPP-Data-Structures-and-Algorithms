@@ -1,5 +1,10 @@
 // https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
 
+// Method 1 is :- Only recursion    (T.C. = 2^n)
+// Method 2 is :- Recursion plus table (Memoization or TopDown) (T.C. = n*W)
+// Method 3 is :- Only table (Tabulation or Bottom Up) (T.C. = n*W)
+ 
+
 // Method 1 Brute Force Recursion
 // https://www.youtube.com/watch?v=kvyShbFVaY8&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=3
 // Time Complexity 2^n
@@ -82,6 +87,43 @@ int knapsack(int wt[], int val[], int W, int n){
 
 
 // Method 3 Tabulation or BottomUp approach
+// In only one place(Scrambled string problem leetcode based on MCM Matrix Chain Multiplication) this method is better where the stack can get filled(stack overflow error) due to recursive calls. Else method 2 is completely safe to use.
+// Formation of table:-
+// Step 1:- Initialisation (Base condition of above recursive fn changes to initilisation in tabulation)
+// Step 2:- Changing recursive calls to iterative.
+// n, W -> i, j
+
+int t[n+1][j+1]
+for(int i = 0; i < n+1; i++){
+    for(int j = 0; j < W+1; j++){
+        if(i == 0 || j == 0){
+            t[i][j] == 0;   // initilisating the first row and column to 0(base condition)
+        }
+    }
+}
+
+for ( i = 1; i < n+1; i++){
+    for ( j = 1; j< W+1; j++){
+        if(wt[i-1]<=j){
+            t[i][j] = max(val[i-1]+ t[i-1][j-wt[i-1]], t[i-1][j]);  
+        }
+        else{
+            t[i][j] = t[i-1][j];
+        }
+    }
+}
+
+return t[n][W];
+
+// if(wt[n-1]<=W){
+//     t[n][W] = max(val[n-1]+ t[n-1][W-wt[n-1]], t[n-1][W]);  // basically with the help of smaller sub problems(already solved before) solving the bigger problem
+// }
+// else{
+//     t[n][W] = t[n-1][W];
+// }
+// the code is above after replacing n with i and W with j
+
+
 
 
 
