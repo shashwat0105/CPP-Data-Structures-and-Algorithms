@@ -93,7 +93,7 @@ int knapsack(int wt[], int val[], int W, int n){
 // Step 2:- Changing recursive calls to iterative.
 // n, W -> i, j
 
-int t[n+1][j+1]
+int t[n+1][W+1]
 for(int i = 0; i < n+1; i++){
     for(int j = 0; j < W+1; j++){
         if(i == 0 || j == 0){
