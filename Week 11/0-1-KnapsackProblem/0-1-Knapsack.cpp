@@ -121,11 +121,11 @@ return t[n][W];
 // else{
 //     t[n][W] = t[n-1][W];
 // }
-// the code is above after replacing n with i and W with j
+// the code above is after replacing n with i and W with j.
 
 
 
-
-
-
+// Identification of knapsack problem?
+// Above ques can also be said as single item array which has 2 properties weight & value.
+// Some items having choice & W which we have to optimise
 
