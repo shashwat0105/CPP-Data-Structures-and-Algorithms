@@ -27,7 +27,7 @@ int countOfSubsetSum(int arr[], int Sum, int n){
                 t[i][j] = 0;
             }
             if(j==0){
-                t[i][j]== 1; // this will overwrite the [0][0] position to finally true
+                t[i][j]== 1; // this will overwrite the [0][0] position to finally 1
             }
         }
     }

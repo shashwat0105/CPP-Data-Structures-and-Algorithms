@@ -14,6 +14,7 @@
 // 3 T
 // 4 T
 // 5 T
+// i(n)
 
 // Choice diagram
 // Analogy with 0/1 knapsack wt[] -> arr[] -> i, val[] is ignored & W -> Sum -> j, max is changed to || or (coz no sense of max(true, false))
