@@ -34,7 +34,7 @@ boolean subsetSum(int arr[], int Sum, int n){
     }
     // Choice Diagram
     if(arr[i-1] <= j){
-        t[i][j] = t[i-1][j-arr[i-1]] || t[i-1][j]; // true || false // in place of weight we are subtracting the weight which was included here we are subtracting the number from Sum which is included.
+        t[i][j] = t[i-1][j-arr[i-1]] || t[i-1][j]; // Either we include or not include // true || false // In knapsack in place of weight we were subtracting the weight which was included, here we are subtracting the number which is included from Sum.
     }
     else{
     t[i][j] = t[i-1][j];

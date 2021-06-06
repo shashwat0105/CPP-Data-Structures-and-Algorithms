@@ -1,3 +1,4 @@
+// https://www.geeksforgeeks.org/partition-problem-dp-18/
 // problem statement
 // arr[] : {1, 5, 11, 5} :- Is it possible to split the array in two (equal or unequal) parts such that the sum of the two subsets is equal. 
 // O/P = T/F :- True if such partition is possible else false
