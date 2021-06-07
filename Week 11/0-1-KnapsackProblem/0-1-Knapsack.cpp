@@ -65,6 +65,7 @@ int t[102][1002];
 memset(t, -1, sizeof(t));
 
 int knapsack(int wt[], int val[], int W, int n){
+    // base condition
     if(n == 0 || W == 0){
         return 0;
     }
@@ -72,6 +73,7 @@ int knapsack(int wt[], int val[], int W, int n){
         return t[n][W];
     }
     
+    // choice diagram
     if(wt[n-1]<=W){
         return t[n][W] = max(val[n-1]+ knapsack(wt, val, W-wt[n-1], n-1), knapsack(wt, val, W, n-1)); 
     }
@@ -124,8 +126,13 @@ return t[n][W];
 // the code above is after replacing n with i and W with j.
 
 
-
 // Identification of knapsack problem?
 // Above ques can also be said as single item array which has 2 properties weight & value.
 // Some items having choice & W which we have to optimise
 
+
+// Some points:-
+// For ex You want to find fibonnaci of 5
+// Memoisation or top down : Will find by fib 4, fib 3, then fib 2, then fib 1, then fib 0 ( Only finds those values which are required )
+// Tabulation or bottom approach will find :- fib 0 then fib 1 then fib 2 then fib 3 then fib 4 then fib 5 (Fills complete table by finding each and every value)
+// 
