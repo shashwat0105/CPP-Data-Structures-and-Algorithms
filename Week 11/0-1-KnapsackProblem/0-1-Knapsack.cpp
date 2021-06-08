@@ -8,13 +8,15 @@
 // Method 1 Brute Force Recursion
 // https://www.youtube.com/watch?v=kvyShbFVaY8&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=3
 // Time Complexity 2^n
-// We can apply recursion coz choices are there & Output is max profit(hence return type of the knapsack fn will be int)
+// We can apply recursion coz choices are there & Output is max profit(2 conditions to identify recursion)(hence return type of the knapsack fn will be int)
 // 1) Base condtion:- Think of the smallest valid input(smallest & valid)
 // 2) Choice Diagram:- W1 -> i) W1 <= W -> Include or Not Include ii) W1 > W -> Not Include(ie item is heavier than bag capacity)
 // We will write if else for these "three" include, not include conditions 
 // We check for the last array element ie n-1 whether to include it or not first and move to the front
 
 // Whenever recursive function is called it is called with smaller input:- n-> n-1> n-2 otherwise it will never end
+#include <bits/stdc++.h>
+using namespace std;
 
 int knapsack(int wt[], int val[], int W, int n){
     // 1) Base condition (first thing to write in a recursive function)
@@ -32,6 +34,16 @@ int knapsack(int wt[], int val[], int W, int n){
     }
 }
 
+int main()
+{
+    int val[] = { 60, 100, 120 };
+    int wt[] = { 10, 20, 30 };
+    int W = 50;
+    int n = sizeof(val) / sizeof(val[0]);
+    cout << knapSack(wt, val, W, n);
+
+    return 0;
+}
 
 // Method 2 Memoisation with recursion = Topdown approach
 // After writing code of method 1, we write 2-4 lines extra and code will be memoised.
@@ -61,8 +73,11 @@ int knapsack(int wt[], int val[], int W, int n){
 
 // how can one determine overlapping subproblems when solving recursion is: https://qr.ae/pNkmIE
 
+#include <bits/stdc++.h>
+using namespace std;
+
 int t[102][1002];
-memset(t, -1, sizeof(t));
+// memset(t, -1, sizeof(t));  // memset should be inside a function hence we put it inside the main function
 
 int knapsack(int wt[], int val[], int W, int n){
     // base condition
@@ -82,10 +97,17 @@ int knapsack(int wt[], int val[], int W, int n){
     }
 }
 
-// In case you are getting an error related to memset 
-// Call 
-//  memset(t, -1, sizeof(t)) ;
-// Inside the main() function
+int main()
+{
+    memset(t, -1, sizeof(t));
+    int val[] = { 60, 100, 120 };
+    int wt[] = { 10, 20, 30 };
+    int W = 50;
+    int n = sizeof(val) / sizeof(val[0]);
+    cout << knapSack(wt, val, W, n);
+
+    return 0;
+}
 
 
 // Method 3 Tabulation or BottomUp approach
@@ -95,27 +117,45 @@ int knapsack(int wt[], int val[], int W, int n){
 // Step 2:- Changing recursive calls to iterative.
 // n, W -> i, j
 
-int t[n+1][W+1]
-for(int i = 0; i < n+1; i++){
-    for(int j = 0; j < W+1; j++){
-        if(i == 0 || j == 0){
-            t[i][j] == 0;   // initilisating the first row and column to 0(base condition)
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int knapSack(int wt[], int val[], int W, int n)
+{
+
+    int t[n + 1][W + 1];
+ 
+    // Build table K[][] in bottom up manner
+    for(int i = 0; i <= n; i++)
+    {
+        for(int j = 0; j <= W; j++)
+        {
+            // base condition
+            if (i == 0 || j == 0)
+                t[i][j] = 0;
+            // choice diagram
+            else if (wt[i - 1] <= j)
+                t[i][j] = max(val[i - 1] +
+                                t[i - 1][j - wt[i - 1]],
+                                t[i - 1][j]);
+            else
+                t[i][j] = t[i - 1][j];
         }
     }
+    return t[n][W];
 }
-
-for ( i = 1; i < n+1; i++){
-    for ( j = 1; j< W+1; j++){
-        if(wt[i-1]<=j){
-            return t[i][j] = max(val[i-1]+ t[i-1][j-wt[i-1]], t[i-1][j]);  
-        }
-        else{
-            return t[i][j] = t[i-1][j];
-        }
-    }
+ 
+int main()
+{
+    int val[] = { 60, 100, 120 };
+    int wt[] = { 10, 20, 30 };
+    int W = 50;
+    int n = sizeof(val) / sizeof(val[0]);
+     
+    cout << knapSack(wt, val, W, n);
+     
+    return 0;
 }
-
-return t[n][W];
 
 // if(wt[n-1]<=W){
 //     t[n][W] = max(val[n-1]+ t[n-1][W-wt[n-1]], t[n-1][W]);  // basically with the help of smaller sub problems(already solved before) solving the bigger problem
