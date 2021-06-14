@@ -14,6 +14,7 @@
 // We will write if else for these "three" include, not include conditions 
 // We check for the last array element ie n-1 whether to include it or not first and move to the front
 
+// Knapsack problems has only 1 array, just that it has 2 properties. 
 // Whenever recursive function is called it is called with smaller input:- n-> n-1> n-2 otherwise it will never end
 #include <bits/stdc++.h>
 using namespace std;
