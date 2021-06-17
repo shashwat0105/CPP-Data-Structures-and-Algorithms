@@ -88,14 +88,12 @@ int LCS(string x, string y, int m, int n){
 
             // choice diagram
             if(x[i-1] == y[j-1]){   // ie last element is common
-                t[i][j] = 1 + t[i-1][j-1];  // Instead of value when the elements matches we add 1 (qki yahi toh chahiye hai for count of LCS)
+                t[i][j] = 1 + t[i-1][j-1];  // (qki yahi toh chahiye hai for count of LCS) & size of both strings are reduced by 1
             }
             else
-                t[i][j] = max(t[i][j-1], t[i-1][j]);
+                t[i][j] = max(t[i][j-1], t[i-1][j]);  // reducing size of strings one at a time
             }
     }
 
     return t[m][n];
 }
-
-
