@@ -38,13 +38,13 @@ int j = n;
 string s = "";
 
 while(i>0 && j>0){
-    if(x[i-1]==y[j-1]){
+    if(x[i-1]==y[j-1]){      // if the string elements are equal
         s.push_back(a[i-1]); // we push the element in string which matches
         i--;
         j--;
     }
-    else{
-        if(t[i][j-1] > t[i-1][j]){  // comparing the two elements and moving in the direction of maximum
+    else{                           // if the string elements are not equal
+        if(t[i][j-1] > t[i-1][j]){  // then we compare the two values of subproblem(diagnal) and move in the direction of maximum
             j--;  // move to the left
         }
         else

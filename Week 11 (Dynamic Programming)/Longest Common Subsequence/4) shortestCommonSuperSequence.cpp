@@ -2,6 +2,7 @@
 // Given Input:   str1 = "geek",  str2 = "eke" -> merge & we should get a string that has both st1 & str2 as a substring.
 // Output: length of "geeke" ie 5
 
+// We merge 2 strings and make a supersequence.
 // For example:- "geekeke" is a supersequence containing both geek and eke but it's not the shortest
 // "geeke" contains both geek & eke as well as is shortest too. 
 
