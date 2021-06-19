@@ -23,6 +23,7 @@ LPS(x) = LCS(x, reverse(x));
 
 string y = reverse(x.begin, x.end);
 
-// verify the below sentences
+// VERIFY the below sentences
 // Like Longest Common Subsequence is to Longest Palindromic Subsequence, It is Longest Common Substring to Longest Palindromic Substring
-//  Sorry, above approach will fail for "abcdba" 
+// Sorry, above approach will fail for "abcdba" 
+// Longest palindromic substring is something you cant solve by the stuff I taught you. (aditya verma)
