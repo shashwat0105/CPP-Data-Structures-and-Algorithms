@@ -1,3 +1,4 @@
+// substring != subsequence 
 // https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
 // A subsequence is a sequence that appears in the same relative order, but not necessarily contiguous. But a substring needs to be continuos. 
 // Problem Statement:- x = abcdgh (length = m), y = abedfghr (length = n) :- Longest common subsequence is abcd -> length = 4 Ans, whereas longest common substring is ab -> length = 2
