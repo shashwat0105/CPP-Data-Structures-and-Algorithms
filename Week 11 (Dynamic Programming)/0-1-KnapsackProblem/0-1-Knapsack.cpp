@@ -55,6 +55,8 @@ int main()
 // memset(t, -1, sizeof(t))
 // Before calling recursive function we will check if in any cell there is any value if yes(-1 not present) then no need to call recursive fn, if no(ie -1 is present) then recursive fn is called
 
+// fun1 -> fun2 -> fun3 -> fun4... , this is NOT DP 
+// Below is DP, coz one function calls 2 functions.
 // say given constraints n<=100, W<=1000 we can make a static matrix too by taking slighly bigger value than constraints
 //                         K(3,2)
 //                  /               \
