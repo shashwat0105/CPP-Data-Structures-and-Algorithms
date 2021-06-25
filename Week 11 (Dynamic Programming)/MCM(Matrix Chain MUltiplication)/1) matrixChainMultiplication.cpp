@@ -74,7 +74,7 @@ int solve(int arr[], int i, int j){
 // if value of i = 0 then arr[0-1] is invalid, hence we take i = 1, & no issue in j = n-1
 
 // Two schemes of writing for loops(chose any)
-// (i) k = i to k = j-1 -> i to k & k+1 to j
+// (i) k = i to k = j-1 -> i to k & k+1 to j   (Preferred)
 // (ii) k = i to k = j  -> i to k-1 & k to j
 
 int solve(int arr[], int i, int j){
