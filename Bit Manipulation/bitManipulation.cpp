@@ -19,7 +19,7 @@
 // N = N/(2*i) // means shift right by i digits (is same as above) coz 50 -> 5 -> 5/(10^1) in this example base is 10, in binary base is 2 so /2^i
 
 
-// CHECKING FOR ITH SET BIT
+// CHECKING FOR ITH SET BIT (VERY IMP)
 // N = Number, i = index
 // N = 12(1100), i = 0 -> ans = false
 // N = 12(1100), i = 1 -> ans = true
@@ -27,7 +27,7 @@
 // N = 12 (00001100), Say, to check at i = 3
 // F = 1  (00000001)
 // F = F<<3 (00001000)
-// now we will do binary & of N and F if the resultant is not 00000000 then ith bit is 1 else is 1
+// now we will do binary & of N and F(1 left shifted i places) if the resultant is 00000000 then ith bit is 0 else is 1
 
 cin>>n>>i;
 int f = 1;
@@ -39,6 +39,10 @@ if(res == 0) cout<<"false"<<endl;
 else 
     cout<<"true";
 
+// short code for ith bit is set or not
+cin>>n>>i;
+if(n&(1<<i)) return true;
+else         return false;
 
 // BITWISE XOR OPERATION // (2 bit are same ans 0, different then 1)
 // Properties
