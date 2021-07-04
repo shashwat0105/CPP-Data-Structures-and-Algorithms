@@ -58,6 +58,53 @@ int main(){
 
 
 // Method 2: Adjacency list
+// vector<int> adj[6]
+// 0 
+// 1 (2, 5, 3)  // these denotes the edge 1-2, 1-5, 1-3 and so on
+// 2 (1, 3, 4)
+// 3 (1, 5, 2, 4)
+// 4 (2, 3)
+// 5 (1, 3)
+
+// Space Complexity = O(N + 2E) // n = no of nodes, E = no of edges
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n, m; // n = no of nodes, m = no of edges
+    cin>>n>>m;
+
+    // declaring the adjacent list
+    vector<int> adj[n+1]; // if weights are also given then vector<pair<int, int>>adj[n+1] // first int will store the to edge, second int will store the weight
+
+    // taking edges as input
+    for(int i=0; i<m; i++){
+        int u, v;
+        cin>>u>>v;
+
+        adj[u].push_back(v); // adj[u].push_back({v, wt}); // difference if its a weighted graph
+        adj[v].push_back(u);  // we wont write this if the graph is a directed one
+    }
+    return 0;
+}
 
 
+
+// CONNECTED COMPONENTS IN A GRAPH
+
+// 1---3            2---9         5---7
+//     |                              |
+// 6---4                              10
+// |
+// 8
+//  C1                C2            C3    // these are 3 components of 1 graph
+
+// syntax
+for(int i=0; i<=10; i++){ // for every node is called coz a graph can have multiple components
+    if(!vis[i]){          // if i is not visited
+        dfs(i)
+        bfs(i) code
+    }
+}
 
