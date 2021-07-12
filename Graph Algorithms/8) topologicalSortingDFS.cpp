@@ -41,10 +41,9 @@ class Solution{
             topo.push_back(st.top());                 // take all the stack elements and put it into a vector
             st.pop();
         }
-        return topo;
+        return topo;                                  // finally returning that vector which will be having one of the topo sorts
     }
 };
-
 
 
 

@@ -1,4 +1,3 @@
-// http://www.i2symbol.com/symbols/arrows   (copied arrow symbols from here)
 // "DIRECTED GRAPH"
 
 1 →  2 →  3 → 4 
@@ -19,6 +18,8 @@ Adjacency List
 9 → 7
 
 // In directed we use 2 arrays to keep track of visited nodes
+vis[]
+dfsVis[]
 
 class Solution{
 private:
