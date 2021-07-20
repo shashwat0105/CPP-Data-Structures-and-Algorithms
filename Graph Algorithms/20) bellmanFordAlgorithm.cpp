@@ -50,7 +50,7 @@ int main(){
             }
         }
     }
-    int fl = 0;
+    int fl = 0;                                     // one more relaxation to check if there is negative cycle. 
     for(auto it : edges){
         if(dist[it.u] + it.wt < dist[it.v]){
             cout<< "Negative Cycle";
