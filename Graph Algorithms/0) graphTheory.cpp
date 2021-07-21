@@ -1,6 +1,7 @@
 // http://www.i2symbol.com/symbols/arrows   (copied arrow symbols from here)
 
 // YT resources followed: 1) Striver's Graph(Not so good that I want to revise again from here)
+//                        2) Codencode Graph Playlist 
 
 // Two types of graphs
 // 1) Undirected  2) Directed
@@ -58,11 +59,11 @@ int main(){
 }
 
 // Space = n*n
-// Disadvantage of this method is that cannot be used for larger n like 10^5 size 2D array
+// Disadvantage of this method is that cannot be used for larger n like 10^5 size 2D array (will take approx 40GB space, while CF, SPOJ allows only 1.5GB )
 
 
 // Method 2: Adjacency list
-// vector<int> adj[6]
+// vector<int> adj[6]        // adjacency list can be stored using vector in C++ (Each index is a vector itself so you can add elements to it ) & array list in JAVA
 // 0 
 // 1 (2, 5, 3)  // these denotes the edge 1-2, 1-5, 1-3 and so on
 // 2 (1, 3, 4)
@@ -76,19 +77,20 @@ int main(){
 using namespace std;
 
 int main(){
-    int n, m; // n = no of nodes, m = no of edges
+    int n, m;                     // n = no of nodes, m = no of edges
     cin>>n>>m;
 
     // declaring the adjacent list
-    vector<int> adj[n+1]; // if weights are also given then vector<pair<int, int>>adj[n+1] // first int will store the to edge, second int will store the weight
+    vector<int> adj[n+1];         // if weights are also given then vector<pair<int, int>>adj[n+1] // first int will store the to edge, second int will store the weight
 
     // taking edges as input
-    for(int i=0; i<m; i++){
+    for(int i=0; i<m; i++){       // can use while(m--)  loop as well
         int u, v;
         cin>>u>>v;
 
-        adj[u].push_back(v); // adj[u].push_back({v, wt}); // difference if its a weighted graph
-        adj[v].push_back(u);  // we wont write this if the graph is a directed one
+        // take input of edge say between u and v, In the adjacency list of u insert v and in the adjacency list of v insert u. (coz if edge is 1 to 2 then it is also 2 to 1 in undirected graph)
+        adj[u].push_back(v);      // adj[u].push_back({v, wt}); // difference if its a weighted graph
+        adj[v].push_back(u);      // we wont write this if the graph is a directed one
     }
     return 0;
 }
@@ -105,8 +107,8 @@ int main(){
 //  C1                C2            C3    // these are 3 components of 1 graph
 
 // syntax
-for(int i=0; i<=10; i++){ // for every node is called coz a graph can have multiple components
-    if(!vis[i]){          // if i is not visited
+for(int i=0; i<=10; i++){         // for every node is called coz a graph can have multiple components
+    if(!vis[i]){                  // if i is not visited
         dfs(i)
         bfs(i) code
     }
