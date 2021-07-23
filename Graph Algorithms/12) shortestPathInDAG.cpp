@@ -20,7 +20,7 @@
 5 -> (3,1)
 
 // In order to find shortest path we need to first find topological sort.
-// Usins DFS, stack
+// Using DFS, stack
 
 void findTopoSort(int node, int vis[], stack<int> &st, vector<pair<int,int>> &adj[]){
     vis[node] = 1;                           // whenever we reach the dfs mark it as 1
