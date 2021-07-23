@@ -60,5 +60,22 @@ int main(){
 }
 
 
+//  ALTERNATE CODE ( for globally declared arrays )
+
+bool dfs(int v, int c){                     // passing the node as well as the color of the node
+    vis[v] = 1;                             // as soon as we visit a node we mark it as 1
+    col[v] = c;                             // and color it with c which is either 0 or 1
+
+    for(int child: adj[v]){                 // we traverse in the adjacency list of node v
+        if(vis[child]==0){                  // if the child is not visited (ie not colored yet too)
+            if(dfs(child, c^1)==false)      // we do its dfs call and color the node with opposite color (inversion can be done by XOR by 1 or using NOT opperation), will return false (bool function) even if a single edge has same color
+                return false;                                
+        }
+        else if(col[v]==col[child]){        // if the child is already visited ie both child and node are having a color and we check if they have same color
+            return false;
+        }
+    }
+    return true;                            // adjacency list has been traversed successfully & we didn't got any same color adjacent nodes.
+}
 
 
