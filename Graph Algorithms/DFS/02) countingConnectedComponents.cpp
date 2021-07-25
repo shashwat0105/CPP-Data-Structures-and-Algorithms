@@ -39,14 +39,14 @@
 #include <vector>
 using namespace std;
 
-vector<int> ar[100001];          // if u pass 'n' here then it will be out of scope. Coz we know adjacency list will be of size n
+vector<int> adj[100001];          // if u pass 'n' here then it will be out of scope. Coz we know adjacency list will be of size n
 int vis[100001];                 // when u declare an integer array globally in c++ then all elements are initialised to 0
  
 void dfs(int node)
 {
 	vis[node] = 1;
  
-	for(int child : ar[node])
+	for(int child : adj[node])
 	if(!vis[child])
 	dfs(child);
  
@@ -54,11 +54,11 @@ void dfs(int node)
  
 int main()
 {
-	int n , m , a , b;
+	int n , m , u , v;
 	cin>>n>>m;
  
 	for(int i=1;i<=m;i++)
-	cin>>a>>b , ar[a].push_back(b) , ar[b].push_back(a);
+	cin>>u>>v , adj[u].push_back(v) , adj[v].push_back(u);
  
 	int cc = 0;
  
