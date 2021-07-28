@@ -1,5 +1,7 @@
 // http://www.i2symbol.com/symbols/arrows   (copied arrow symbols from here)
 
+// DFS is used more than BFS due to convenience of implementation.
+
 // YT resources followed: 1) Striver's Graph(Not so good that I want to revise again from here)
 //                        2) Codencode Graph Playlist 
 

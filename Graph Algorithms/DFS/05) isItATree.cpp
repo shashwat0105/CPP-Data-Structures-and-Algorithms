@@ -60,6 +60,6 @@ int main(){
 
 // Take care of for loop i=0 or 1, < or <= , I did a mistake here.
 
-// m == n-1 means not a cycle only with single connected graph
+// m == n-1 means not a cycle only with single connected graph ie it has to be a tree
 // m != n-1 means can or cannot be a cycle
 

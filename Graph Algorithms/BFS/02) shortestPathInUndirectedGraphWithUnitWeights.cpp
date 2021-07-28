@@ -1,3 +1,11 @@
+// SINGLE SOURCE SHORTEST PATH (SSSP) For Unweighted Graph we use BFS
+// BFS is level order traversal.
+// For SSSP in a tree we use DFS because of the property of a tree that ,1.) only one connected component, 2.) n-1 edges if n nodes are there. 
+// Meaning in a tree there is "no cycles" so for any node there is only one path from source so it has to be the smallest path. 
+// While a graph can contain cycles so a node can have more than one paths from source, so to find the shortest of a number of paths we have to use BFS.
+
+// For weighted we will have Dijasktra's algorithm.
+
     1 --- 2
   / |     \
 0   |      \    7
@@ -47,3 +55,7 @@ void BFS(vector<int>adj[], int N, int src){    // we have adjacency list, no of 
     }
     for(int i=0; i<N; i++) cout<< dist[i]<<" "; // print out the distance array
 }
+
+
+// To practice later
+// https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/

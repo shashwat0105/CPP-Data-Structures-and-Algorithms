@@ -1,3 +1,5 @@
+// Depth-first search can be conveniently implemented using recursion.
+// Hence used to in applications more in compare to BFS
 // https://youtu.be/rEa4014IxR8 
 
 // 1---2---4       3---5
@@ -55,7 +57,7 @@ void dfs(int v){                          // takes the argument of current node
     }
 }
 
-// or
+// or (We use this)
 
 void dfs(int v){                          // takes the argument of current node
     vis[v] = 1;                           // as we reach node we mark it as visited '1'
