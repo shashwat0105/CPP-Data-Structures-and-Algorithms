@@ -35,6 +35,7 @@
 // All the equal signs will be considered as edges
 // Unequal we will say later and check if they lie in same connected component or different
 // Unequals will be in different connected components.
+// Just iterate over all inequalities from the input, and if for any inequality a != b, a and b are in the same connected component, the answer is NO, otherwise, the answer is YES.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,7 +58,7 @@ void dfs(int node){
 }
 
 int main(){
-    std::ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL);   // to avoid TLE
+    ios_base::sync_with_stdio(0);            // to avoid TLE
     
     int t,n,k,u,v;                           // k is not number of edges here but no of relations given
     string op;                               // op = to read the operators =, != as strings 
