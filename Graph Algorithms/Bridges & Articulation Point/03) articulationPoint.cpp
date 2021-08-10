@@ -1,4 +1,6 @@
-// Articulation point is a node on whose removal, the graph is broken down into two or more components.
+// An articulation point(or Cut Vertex) is a vertex which when removed makes the graph disconnected Or
+// more precisely it increases the number of connected components.
+
 
 // Formulae which we will use:
 // low[it] <= tin[node]  && parent!= -1
@@ -76,3 +78,26 @@ int main()
 
     rteturn 0;
 }
+
+
+// **************************************************
+// https://youtu.be/zuY5PtC1ogY
+
+// Relation b/w Bridges & Articulation point
+// An end point of a bridge is actually an articulation point
+// Will all the end points be articulation points? Ans: NO 
+
+// So, whatever end point of a bridge having degree >=2 is an articulation point.
+
+// Can Articulation point exist without a bridge? Ans: YES
+// Hence, finding bridge algo cannot be used to find articulation point, we have to modify the dfs tree algo.
+
+// & For the root node, if it has more than 1 subtree then is the articulation point.
+
+// Since the same node can be found as articulation point by many subtrees, it is a good idea to use a set. (stores unique values), instead of a count variable and cnt ++
+
+// Readings:
+// https://cp-algorithms.com/graph/cutpoints.html
+// https://codeforces.com/blog/entry/68138
+
+
