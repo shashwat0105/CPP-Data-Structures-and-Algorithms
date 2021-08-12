@@ -47,4 +47,58 @@ class Solution{
 };
 
 
+//***********************************************************************
+// https://youtu.be/7CTpoVNIc8o
+// In each iteration we chose a node which has 0 in degree(no of edges towards a node)
+// ie the nodes which have all its dependencies already traversed or have no dependencies.
+ 
+// Topological sort is possible for only DAG (Directed Acyclic Graph) doesn;t contain any cycle
+#include <bits/stdc++.h>
+using namespace std;
 
+vector<int> adj[100];     
+vector<int> res;                   // array to store the resultant order of toposort
+int in[100];                       // array to keep the in degree of each node
+
+void kahn(int n){
+    queue<int> q;                  // create a queue to store all the nodes having in degree 0
+    for(int i=1;i<=n;i++){
+        if(in[i]==0){
+            q.push(i);             // now the queue contains the nodes having indegree 0
+        }
+    }
+
+    while(!q.empty()){
+        int curr = q.front();
+        res.push_back(curr);       // we also push it into our result
+
+        q.pop();                   // and we remove this node from the queue
+
+        for(int node: adj[curr]){  // for each node in the adjacency list of current node
+            in[node]--;            // we decrease its in degree as we removed its parent (edge removal process)
+            if(in[node]==0){       // and if it becomes 0 we will add it into our queue
+                q.push(node);
+            }
+        }
+    }
+
+    cout<<"Topological Sort : ";
+    for(int node : res){
+        cout<<node<<" ";
+    }
+}
+
+int main(){
+    int n,m,u,v;
+    cin>>n>>m;
+    
+    while(m--){
+        cin>>u>>v;
+        adj[u].push_back(v);       // this will be a directed graph u -> v
+        in[v]++;                   // Jisko push kar rhe hai ie say 3 -> 4, we push 4 into adj[3] ie in degree of 4 will increase
+    }
+
+    kahn(n);
+
+    return 0;
+}

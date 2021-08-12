@@ -46,4 +46,7 @@ class Solution{
 };
 
 
-
+//*****************************************************
+// USES:
+// 
+// In OS to find a deadlock (If there exist a cycle among the process then there is a deadlock)

@@ -1,5 +1,4 @@
-// 
-// Kahn's algorithm
+ // Kahn's algorithm
 
 // Topological sort is possible for only DAG (Directed Acyclic Graph)
 // Hence, if a graph has a cycle then its topological sort is not possible (reverse thinking)
