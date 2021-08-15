@@ -1,13 +1,15 @@
 // https://cses.fi/problemset/task/1192
-// floor means "jameen" in this ques
 
+// Mistakes I made:
+// floor means "jameen" in this ques
+// I was storing character in int array :(
 
 // Problem is to count the no of connected components
 #include<bits/stdc++.h>
 using namespace std;
 
 int N,M;                                      // We assume rows are 1 to N, columns are 1 to M
-int ar[1001][1001];                           // now we need to store the whole grid
+char ar[1001][1001];                           // now we need to store the whole grid, also the elements of grid are characters so we make char array
 bool vis[1001][1001];
 
 bool isValid(int x, int y){
