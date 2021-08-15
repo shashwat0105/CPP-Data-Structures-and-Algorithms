@@ -9,7 +9,7 @@
 using namespace std;
 
 int N,M;                                      // We assume rows are 1 to N, columns are 1 to M
-char ar[1001][1001];                           // now we need to store the whole grid, also the elements of grid are characters so we make char array
+char ar[1001][1001];                         // now we need to store the whole grid, also the elements of grid are characters so we make char array
 bool vis[1001][1001];
 
 bool isValid(int x, int y){
