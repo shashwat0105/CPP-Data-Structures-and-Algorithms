@@ -1,3 +1,5 @@
+// "THOSE WHO CANNOT REMEMBER THE PAST ARE CONDEMNED TO REPEAT IT" ~ DP
+
 // High package companies ask this topic
 // Nutanix asked a derivative of MCM(matrix chain multiplication) ques
 // DP = Enhanced recursion(recursion + storage)
@@ -8,7 +10,7 @@
 
 // DONT MAKE TABLE IN THE START ONLY(WHICH IS CALLED TOP DOWN APPROACH) :- WRONG APPROACH(COZ U WILL DEFINITELY MAKE A MISTAKE IN MAKING IT)
 Steps to solve:-
-Recursive -> Memoize -> Top down if u want
+Recursive -> Memoize -> Top down(if u want)
 Just write the recursive function first.
 
 

@@ -1,0 +1,34 @@
+C++ has inbuilt function sort()
+
+Knapsack & Fractional Knapsack
+In Fractional Knapsack, we can break items for maximizing the total value of knapsack. 
+https://www.geeksforgeeks.org/fractional-knapsack-problem/
+
+Hashing
+In c++ inbuilt :- unordered map :- key & value 2 things
+Number -> Index -> 0 or 1 , multiple values in same index goes in form of list at that index.
+Time complexity is O(1) for inserting, deleting & searching. Worst case of searching can be O(k), k
+is number of elements in the list.
+Hashing searching is O(1)
+Uses extra space O(n)
+In Hashing we don't search by comparing to the value stored(linear/binary search) but by array index/key.
+Index = Hash_Function(Key), In case key is not equal to the array index. So, we fetch the index by passing key in a Hash Function which does the
+required calculation.
+Hash function is used 2 times, 1st while inserting/deleting the data 2nd while searching the key.
+Parameters of a good hash function:- 1) Easy to compute 2) Even Distribution 3) Minimise Collisions
+We generally do modulo to shorten the size of keys into size of index(size of hash table)
+
+
+
+Finding any repeating elements
+
+Checking if 2 arrays are equal or not
+M1 Sorting then comparing
+M2 Using Hashing
+
+In built functions in C++ STL 
+These all three functions accepts the start iterator, end iterator and the element to be checked as parameters and returns 
+binary_search()  True if the element is present otherwise False. Does not give any information about the location of the element if it exists.
+upper_bound()   returns the iterator pointing to the element just > the element passed(whether the element is present or not). If all the element in the range compare less than val, the function returns last. 
+lower_bound()   returns the iterator pointing to the element >= the element passed(whether the element is present or not).
+
