@@ -14,7 +14,7 @@
 // 3 T
 // 4 T
 // 5 T
-// i(n)
+// i(n) ie no of elements
 
 // Choice diagram
 // Analogy with 0/1 knapsack wt[] -> arr[] -> i, val[] is ignored & W -> Sum -> j, max is changed to || or (coz no sense of max(true, false))
@@ -22,24 +22,29 @@
 // code
 boolean subsetSum(int arr[], int Sum, int n){
     
+    bool t[n+1][Sum+1];                                    // bool or int(while counting) depending on value to be stored
+
     // base condition
-    for(int i = 0; i < n+1; i++){
-        for(int j = 0; j < Sum+1; j++){
-            if(i==0){
-                t[i][j] = False;
+    for(int i=0; i<=N; i++){
+        t[i][0]=true;
+    }
+    for(int j=1; j<=s; j++){                              // start from 1: // Initialize top row, except dp[0][0], as false. With  0 elements, no other sum except 0 is possible
+        t[0][j]=false;
+    } 
+    // Choice Diagram     // Fill the subset table in bottom up manner
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= Sum; j++){
+            if(arr[i-1] <= j){
+                t[i][j] = t[i-1][j-arr[i-1]] || t[i-1][j]; // Either we include or not include // true || false // In knapsack in place of weight we were subtracting the weight which was included, here we are subtracting the number which is included from Sum.
             }
-            if(j==0){
-                t[i][j]== True; // this will overwrite the [0][0] position to finally true
+            else{
+                t[i][j] = t[i-1][j];
             }
         }
     }
-    // Choice Diagram
-    if(arr[i-1] <= j){
-        t[i][j] = t[i-1][j-arr[i-1]] || t[i-1][j]; // Either we include or not include // true || false // In knapsack in place of weight we were subtracting the weight which was included, here we are subtracting the number which is included from Sum.
-    }
-    else{
-    t[i][j] = t[i-1][j];
-    }
 
-    return t[n][Sum];  // the right bottom most cell of the table
+    return t[n][Sum];                                      // the right bottom most cell of the table
 }
+
+// *** Dont use two for loops for base condition sometimes works sometimes dont, above works well
+

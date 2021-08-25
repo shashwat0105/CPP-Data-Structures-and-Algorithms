@@ -19,3 +19,19 @@ Knapsack Problem are of 3 types
 2. 0-1 Knapsack (Use of DP)
 3. Unbounded Knapsack (In this u can put any item any number of times too ie unbounded supply of items) In other u can put only once
 
+// Nice Article: 
+// https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/tutorial/
+
+
+First, design the backtrack function, which returns the correct answer. Pass whatever arguments you need to this function.(simple recursive function)
+Second, remove all the arguments from the function, that are either read-only or redundant (you are able to compute them from other arguments). Known as Minimizing the state space of function arguments
+And third, simply cache it. (memoisation) [This step changes the TC from 2^n to n^2]
+
+// Learnings:
+// Sometimes when the t[n] is filled with the help of t[n] say t[n]+=jump(n-i,k,t) in this case you can't initialize all elements of t[n] to -1, instead initialize to 0.
+
+// If you dont have access to main function(for memset) this way u can make a 2D array and initialise it to -1
+// vector<vector<int>>dp(n + 1, vector<int>(sum + 1, -1));
+
+
+

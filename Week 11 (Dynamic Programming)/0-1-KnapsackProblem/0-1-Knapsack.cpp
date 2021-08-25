@@ -12,7 +12,7 @@
 // 1) Base condtion:- Think of the smallest valid input(smallest & valid)
 // 2) Choice Diagram:- W1 -> i) W1 <= W -> Include or Not Include ii) W1 > W -> Not Include(ie item is heavier than bag capacity)
 // We will write if else for these "three" include, not include conditions 
-// We check for the last array element ie n-1 whether to include it or not first and move to the front
+// We check for the last array element ie n-1 whether to include it or not first and then move towards   the front
 
 // Knapsack problems has only 1 array, just that it has 2 properties. 
 // Whenever recursive function is called it is called with smaller input:- n-> n-1> n-2 otherwise it will never end
@@ -34,7 +34,7 @@ int knapsack(int wt[], int val[], int W, int n){
         return(knapsack(wt, val, W, n-1));
     }
 }
-
+     
 int main()
 {
     int val[] = { 60, 100, 120 };
@@ -99,7 +99,7 @@ int knapsack(int wt[], int val[], int W, int n){
         return t[n][W] = (knapsack(wt, val, W, n-1));
     }
 }
-
+     
 int main()
 {
     memset(t, -1, sizeof(t));
@@ -145,7 +145,7 @@ int knapSack(int wt[], int val[], int W, int n)
                 t[i][j] = t[i - 1][j];
         }
     }
-    return t[n][W];
+    return t[n][W]; 
 }
  
 int main()

@@ -20,23 +20,25 @@
 // code
 int countOfSubsetSum(int arr[], int Sum, int n){
     
+    int t[n+1][Sum+1];
+
     // base condition
-    for(int i = 0; i < n+1; i++){
-        for(int j = 0; j < Sum+1; j++){
-            if(i==0){
-                t[i][j] = 0;
+    for(int i=0; i<=N; i++){
+        t[i][0]=1;
+    }
+    for(int j=1; j<=s; j++){
+        t[0][j]=0;
+    } 
+    // Choice Diagram
+    for(int i=1; i<=N; i++){
+        for(int j=1; j<=s; j++){
+            if(arr[i-1] <= j){
+                t[i][j] = t[i-1][j-arr[i-1]] + t[i-1][j]; // Either we include or not include, just replaced || by + 
             }
-            if(j==0){
-                t[i][j]== 1; // this will overwrite the [0][0] position to finally 1
+            else{
+                t[i][j] = t[i-1][j];
             }
         }
-    }
-    // Choice Diagram
-    if(arr[i-1] <= j){
-        t[i][j] = t[i-1][j-arr[i-1]] + t[i-1][j]; // Either we include or not include, just replaced || by + 
-    }
-    else{
-        t[i][j] = t[i-1][j];
     }
 
     return t[n][Sum];  // the right bottom most cell of the table
