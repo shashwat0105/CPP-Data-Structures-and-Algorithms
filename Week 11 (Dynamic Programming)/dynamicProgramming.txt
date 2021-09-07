@@ -32,6 +32,9 @@ And third, simply cache it. (memoisation) [This step changes the TC from 2^n to 
 
 // If you dont have access to main function(for memset) this way u can make a 2D array and initialise it to -1
 // vector<vector<int>>dp(n + 1, vector<int>(sum + 1, -1));
+// can initialise it in other function as well.
 
+// In knapsacks(0/1 or unbounded) the topmost and left most are initialise both with all 0 so do it in double for loop together
 
+// But in in their variations like subset sum or rod cutting or any other I do it by seperate for loops(no relation with i or j) coz different values are to be initialised.
 

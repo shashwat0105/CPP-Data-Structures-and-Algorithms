@@ -2,18 +2,18 @@
 // Multiple occurences of same item is allowed
 
 // For example:- The item is icecream:- 
-// 1) I dont like icecream -> So, I wont take it regardless of the number of times you offer me. (Processed)
+// 1) I dont like icecream -> So, I WON'T take it regardless of the number of times you offer me. (Processed)
 // 2) I like icecream -> I can take it any number of times you offer me. (Unprocessed)
 
 // 0/1 -> Item -> 1) Taken -> Processed -> n-1 -> i-1
 //                2) Not Taken -> Processed -> n-1 -> i-1
-// unbounded -> Item -> 1) Taken -> Unprocessed -> n -> i  (Here is the code variation only)
-//                      2) Not Taken -> Processed -> n-1 -> i-1
+// unbounded -> Item -> 1) Taken -> Unprocessed -> n -> i  (Here is the code variation only) ie agar lena hai toh hm usko apni array se nahi hataenge
+//                      2) Not Taken -> Processed -> n-1 -> i-1    ie agar nahi lena hai toh hata denge array se
 
 
 #include <bits/stdc++.h>
 using namespace std;
- 
+
 int unboundedKnapSack(int wt[], int val[], int W, int n)
 {
 
@@ -38,7 +38,7 @@ int unboundedKnapSack(int wt[], int val[], int W, int n)
     }
     return t[n][W];
 }
- 
+
 int main()
 {
     int val[] = { 60, 100, 120 };
@@ -51,3 +51,4 @@ int main()
     return 0;
 }
 
+// THIS UNBOUNDED KNAPSACK CAN BE DONE IN O(n) SPACE AS WELL (GFG CODE)

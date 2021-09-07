@@ -1,3 +1,5 @@
+// And the sum of subsets must add to sum of the array, else the below approach wont work.
+
 // Problem statement arr[] : {1, 1, 2, 3}, difference = 1  // these are different 1's
 // O/P :- 3 -> {{1,2},{1,3}}, {{1,2},{1,3}}, {{1,1,2},{3}} = No. of pair of subsets whose difference of sum is 1 ie S2 - S1 = 1 
 // S2 - S1 = diff -> (i)

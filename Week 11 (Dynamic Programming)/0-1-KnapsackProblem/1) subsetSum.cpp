@@ -26,10 +26,10 @@ boolean subsetSum(int arr[], int Sum, int n){
 
     // base condition
     for(int i=0; i<=N; i++){
-        t[i][0]=true;
+        t[i][0]=true;                                     // initilising the leftmost column
     }
     for(int j=1; j<=s; j++){                              // start from 1: // Initialize top row, except dp[0][0], as false. With  0 elements, no other sum except 0 is possible
-        t[0][j]=false;
+        t[0][j]=false;                                    // initilising the topmost row
     } 
     // Choice Diagram     // Fill the subset table in bottom up manner
     for(int i = 1; i <= n; i++){
@@ -47,4 +47,8 @@ boolean subsetSum(int arr[], int Sum, int n){
 }
 
 // *** Dont use two for loops for base condition sometimes works sometimes dont, above works well
+
+// NOTE: This code works only for positive numbers in the array.
+// https://www.geeksforgeeks.org/find-subarray-with-given-sum-in-array-of-integers/   (Deals Negative Numbers too) use of hasmap.
+
 
