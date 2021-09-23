@@ -59,6 +59,7 @@ void insert(int a[], int n){
         }
     }
 }
+
 int main(){
     int arr[] = {-1,9,2,-5,3,1};
     int n = sizeof(arr)/ sizeof(arr[0]);
@@ -195,7 +196,22 @@ int main(){
     else
         cout<<"key not found"<<endl;
 
-    
-    
+    umap.insert(make_pair("mobile", 24000));
+
+    for(auto itr = umap.begin(); itr!= umap.end(); itr++){
+        cout<<itr->first<<" "<<itr->second<<endl;
+    }
+
+     int arr[] = {7,1,0,3,5,0,1,3,2,5,7,3,8,9,9};
+     unordered_map<int,int> umaped;
+
+     for(int i=0; i<15; i++){
+         umaped[arr[i]]++;               // it will store the keys and its count, coz whenever we insert a key its corresponding value is 0 by default.
+     }
+     
+     for(auto itr = umaped.begin(); itr!= umaped.end(); itr++){
+        cout<<itr->first<<" "<<itr->second<<endl;
+    }
 }
+
 
