@@ -25,10 +25,10 @@ boolean subsetSum(int arr[], int Sum, int n){
     bool t[n+1][Sum+1];                                    // bool or int(while counting) depending on value to be stored
 
     // base condition
-    for(int i=0; i<=N; i++){
+    for(int i=0; i<=n; i++){
         t[i][0]=true;                                     // initilising the leftmost column
     }
-    for(int j=1; j<=s; j++){                              // start from 1: // Initialize top row, except dp[0][0], as false. With  0 elements, no other sum except 0 is possible
+    for(int j=1; j<=Sum; j++){                              // start from 1: // Initialize top row, except dp[0][0], as false. With  0 elements, no other sum except 0 is possible
         t[0][j]=false;                                    // initilising the topmost row
     } 
     // Choice Diagram     // Fill the subset table in bottom up manner
