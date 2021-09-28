@@ -1,4 +1,4 @@
-# DSA-11-Weeks-GFG
+# DSA-11-Weeks
 As of now you can study:
 1) Dynamic Programming (Week 11)
 2) Graph Algorithms (Week 9)
