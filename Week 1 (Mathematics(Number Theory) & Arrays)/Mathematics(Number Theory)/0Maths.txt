@@ -1,3 +1,25 @@
+Topics:
+1) Primality Test
+2) Prime factorization
+3) Sieve of Eratosthenes (In a range to find whether a given no is prime or not, it generates al)
+4) Binary Exponentiation (Allow us to calculate a^n in log n time)
+5) Euclid Algorithm for GCD
+6) Goldbach's conjecture
+7) Finding number of divisors of N
+8) Calculating Binomial Coefficient 
+9) Segmented Sieve 
+10) Modulo Inverse (very imp)
+11) Extended Euclidean (To calculate modulo inverse(if it exists) & to solve a  Linear Diophantine equation (LDE))
+12) Matrix exponentiation (Matrix^n)
+13) Fibonacci numbers in O(logn) (we use matrix exponentiation for this)
+14) Chinese Remainder Theorem
+15) Euler Totient Function (ETF of a number n = no of integers from 1 to n whose GCD with n is 1 ie co-prime with n) example: ETF of 6 is 2 (1 and 5)
+16) Sum of divisors
+17) Pollard p-1 method (Integer factorization(20 digits))
+18) Pollard Rho Algorithm
+
+
+
 MATHEMATICS:-
 The task is to find the count of digits present in N
 Simple Solution that comes in mind is:
