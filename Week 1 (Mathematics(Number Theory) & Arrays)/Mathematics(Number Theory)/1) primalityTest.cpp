@@ -102,3 +102,81 @@ int main(){
         cout<<primes[n-1]<<endl;
     }
 }
+
+
+// SAMPLE PROBLEM 1
+// To print prime from L to R(Both inclusive), L and R are integers
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPrime(int n){
+    if(n <= 1) return false;
+
+    for(int i=2; i*i<=n; i++){
+        if(n%i == 0) return false;
+    }
+    return true;
+}
+
+int main(){
+    int L, R;
+    cin>>L>>R;
+
+    for(; L<=R; L++){                       // or for(int i=L; i<=R; i++){
+        if(isPrime(L)) cout<<L<<" ";
+    }
+}
+
+
+// SAMPLE PROBLEM 2
+// https://www.hackerearth.com/practice/math/number-theory/primality-tests/practice-problems/algorithm/micro-and-prime-prime-1/
+
+// BRUTE FORCE that will give TLE in other test cases
+
+#include <iostream>
+using namespace std;
+
+bool isPrime(int n){
+	if(n <= 1) return false;
+
+    for(int i=2; i*i<=n; i++){
+        if(n%i == 0) return false;
+    }
+    return true;
+}
+
+bool isPrimePrime(int X){
+	int count=0;
+	for(int i=2; i<=X; i++){
+		if(isPrime(i)){
+			count++;
+		}
+	}
+	if(isPrime(count)){
+		return true;
+	}
+	return false;
+}
+
+int main() {
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	int t,L,R;
+	cin >> t;
+	int cnt=0;										
+	while(t--){
+		cin>>L>>R;
+		for(; L<=R; L++){
+			if(isPrimePrime(L)){
+				cnt++;	
+			}
+		}
+		cout<<cnt<<endl;
+		cnt=0;
+	}		
+}
+
+
+// OPTIMISED METHOD
+
+

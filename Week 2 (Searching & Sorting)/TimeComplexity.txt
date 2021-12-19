@@ -1,12 +1,6 @@
 Time complexity of all searching and sorting algorithms (All log are base 2)
-Binary Search -> O(logn) 
-Linear Search -> O(n)
-Quick Sort ->    O(nlogn), worst case is O(n^2)
-Merge Sort ->    O(nlogn)
-Insertion Sort-> O(n^2)
-Bubble Sort->    O(n^2)
-Heap Sort ->     O(nlogn)
-Selection Sort ->O(n^2)
+https://www.hackerearth.com/practice/notes/sorting-and-searching-algorithms-time-complexities-cheat-sheet/
+
 Height of CBT(Complete Binary Tree) -> O(logn)
 Insertion in Heap -> O(logn)
 Construct Heap ->O(nlogn)
@@ -19,3 +13,16 @@ DFS -> O(V + E)
 BFS -> O(V + E)
 All pair shortest (Floyd Warshall) -> O(n^3)
 Dijkstra -> O(V^2)
+
+
+EXTRA:
+Time complexity of the following loop:
+for (int i = 0; i <=n-1; i=i+j){        // this i=i+j is effectively i=i+k
+    for(int j=i+1; j<=k; j++){
+        // constant work
+    }
+}
+
+Inner loop runs k times
+Outer loops runs n/k times
+Total time (n/k)*k = O(n) Ans

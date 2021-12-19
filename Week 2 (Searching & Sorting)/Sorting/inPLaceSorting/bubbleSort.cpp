@@ -8,9 +8,9 @@ void bubbleSort(int arr[], int n)
 {
     int i, j;
     // for number of pass
-    for(i=0; i<n-1; i++)  // we check 2nd last with last element, so our passes go till 2nd last element
+    for(i=0; i<n-1; i++)         // we check 2nd last with last element, so our passes go till 2nd last element
         // for comparison in each pass
-        for(j=0; j<n-1-i; j++)  // to decrease number of comparision as right most part of size i is sorted already
+        for(j=0; j<n-1-i; j++)   // to decrease number of comparision as right most part of size i is sorted already
             if(arr[j]>arr[j+1])  // if left element is greater than right we swap
                 swap(arr[j], arr[j+1]);
                 // or
