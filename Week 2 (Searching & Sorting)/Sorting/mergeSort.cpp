@@ -18,9 +18,9 @@ using namespace std;
 void merge(int arr[], int l, int mid, int r, int size) // backbone of the code used to merge after the splitting
 {
     // Step 1. 3 variables 
-    int i = l;     // keeps track of index of left sub array
+    int i = l;       // keeps track of index of left sub array
     int j = mid+1;   // keeps track of index of right sub array
-    int k = l;     // keeps track of index of temporary array
+    int k = l;       // keeps track of index of temporary array
 
     // Step 2. Create temporary array
     int temp[size];
@@ -82,7 +82,9 @@ void mergeSort(int arr[], int l, int r, int size)  // l points to the leftmost i
 
         // Step 4
         merge(arr, l, mid, r, size);  
-
+    }
+    else{
+        return;
     }
 }
 
@@ -106,3 +108,10 @@ int main()
     }
     return 0;
 }
+
+// Analysis of TC of merge sort (merge sort function)
+// T(n) =  k + T(n/2) + T(n/2) + kn = cn + 2T(n/2)
+// T(n) = sigma(i=1 to logn) kn = knlog base2(n)
+// Hence, T(n) = O(n log n) // roughly it grows linearly becoz logn is a very small factor
+
+
