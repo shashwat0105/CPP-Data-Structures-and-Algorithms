@@ -2,7 +2,7 @@
 
 // https://youtu.be/FyzWXlSMNoI
 
-// simply used the merge function of the merge sort.
+// simply used the merge function of the merge sort. (from last)
 // TC = O(m+n)
 // SC = O(1)
 
@@ -20,9 +20,10 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n){
         }
         
     }
-    while(i>=0){
+    while(i>=0){                           // the code will also work without this while block as well
         nums1[k--] = nums1[i--];
     }
+    
     while(j>=0){
         nums1[k--] = nums2[j--];
     }
