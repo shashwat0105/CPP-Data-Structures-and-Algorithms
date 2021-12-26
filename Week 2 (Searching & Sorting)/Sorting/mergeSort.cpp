@@ -88,8 +88,8 @@ void mergeSort(int arr[], int l, int r, int size)  // l points to the leftmost i
     }
 }
 
-int main()
-{
+int main(){
+    
     cout<<"Enter size of array";
     int size;
 	cin>>size;
