@@ -9,7 +9,7 @@ using namespace std;
 
 int main(){
     unordered_map<string, int> umap;  // key is string, value is int
-    umap["shashwat"] = 44;
+    umap["shashwat"] = 44;            // map[key] = value  (syntax)
     umap["hello"] = 55;
     umap["world"] = 66;
 
@@ -72,3 +72,18 @@ int main(){
 
 unordered_map< node*, bool > hashtable;  // can be used
 
+// Code:
+bool containsCycle(node *head){
+    unordered_map< node*, bool> hashtable;
+
+    node *temp = head;
+    while(temp != NULL){
+        if(hashtable.count(temp) != 0){
+            return true;
+        }
+
+        hashtable[temp] = true;
+        temp = temp->next;
+    }
+    return false;
+}

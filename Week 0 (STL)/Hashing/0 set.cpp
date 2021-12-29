@@ -17,9 +17,15 @@ int main(){
     s.insert(5);
     s.insert(20);
     s.insert(20);                                    // duplicacy is ignored
+    s.erase(5);
 
-    for(auto it = s.begin(); it!= s.end(); it++){
+    for(auto it = s.begin(); it!= s.end(); it++){    // s.end is the iterator pointing to something "after" the last element
         cout<<(*it)<<endl;                           // will print in a random order: 20,5,10,50
+    }
+
+    // OR to print same as above
+    for(auto x: s){
+        cout<< x <<" "<<endl;                        // will print in a random order
     }
 
     cout<<"No of elements: "<<s.size()<<endl;        // size  = 4     
@@ -28,33 +34,26 @@ int main(){
     // cout<<"No of elements: "<<s.size()<<endl;     // size = 0  
 
     int key = 25;
-    if(s.find(key) == s.end()){
-        cout<<"key not found"<<endl;
+    if(s.find(key) != s.end()){
+        cout<<"key found"<<endl;                     // Searching in O(1) time
     }
     else{
-        cout<<"key found"<<endl;
-    }
-
-
-    int deleted_key = 50;
-    s.erase(deleted_key);
-    for(auto it = s.begin(); it!= s.end(); it++){
-        cout<<(*it)<<endl;                           
+        cout<<"key not found"<<endl;
     }
 
 
     int key=20;
-    if(s.find(key) == s.end()){       // if the iterator of the key is equal to iterator of end
+    if(s.find(key) == s.end()){                      // if the iterator of the key is equal to iterator of end
         cout<<"key not found"<<endl;
 
     }
     else{
         auto temp=s.find(key);
-        s.erase(temp);               // if the key is found we want to erase that key.(method 2 to delete)
+        s.erase(temp);                               // if the key is found we want to erase that key.(method 2 to delete)
     }
 
 
-    if(s.count(5)){                  // count function returns 1 or 0 depending on if its present or not.
+    if(s.count(5)){                                  // count function returns 1 or 0 depending on if its present or not.
         cout<<"key found"<<endl;
     }
     else

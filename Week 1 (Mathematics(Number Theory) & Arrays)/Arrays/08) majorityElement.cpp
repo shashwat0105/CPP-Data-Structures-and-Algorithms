@@ -19,7 +19,7 @@ public:
 };
 
 
-// can also write
+// can also write the above as: 
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
@@ -27,7 +27,7 @@ public:
         
         int n = nums.size();
         for(auto x: nums){
-            umap[x]++;                           // // it will store the keys and its count, coz whenever we insert a key its corresponding value is 0 by default.
+            umap[x]++;                              // // it will store the keys and its count, coz whenever we insert a key its corresponding value is 0 by default.
             if(umap[x] > n/2) return x;
         }
         return -1;
@@ -49,7 +49,7 @@ public:
 
 
 // Method 3:
-// Moore's Voting Algorithm
-// TC = O(n), SC = O(1)  // Most efficient algo
+// Moore's Voting Algorithm or Voting algorithm  (Famous algo)
+// TC = O(n), SC = O(1)      // Most efficient algo
 
 
