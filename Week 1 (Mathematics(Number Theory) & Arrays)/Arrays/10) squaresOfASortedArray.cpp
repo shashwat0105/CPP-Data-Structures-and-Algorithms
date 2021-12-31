@@ -30,11 +30,11 @@ public:
         for(int i=0; i<n; i++){
             if(abs(nums[l]) > abs(nums[r])){
                 res[n-i-1] = nums[l] * nums[l++];
-                // l++;                                   // to clear doubt why this is wrong
-            }
-            else
+                // l++;                                   
+            else{
                 res[n-i-1] = nums[r] * nums[r--];
                 // r--;
+            } 
         }
         return res;
     }
