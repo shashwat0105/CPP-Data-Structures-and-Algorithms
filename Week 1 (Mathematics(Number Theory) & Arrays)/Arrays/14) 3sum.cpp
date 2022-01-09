@@ -4,7 +4,7 @@ https://leetcode.com/problems/3sum/
 
 https://youtu.be/onLoX6Nhvmg
 
-// We will fix 1 num & use modified 2 pointer approach for 2 sum problem.
+// We will fix 1 num & use modified 2 pointer approach used in 2 sum problem.
 // Notice that the solution set must not contain duplicate triplets.
 
 // Due to this our pointers will move left, right any no of steps till they become unequal to their past values.
@@ -21,6 +21,8 @@ public:
         int n=nums.size();
         
         for(int i=0; i<n-2; ++i){
+            
+		    if (nums[i] > 0) break;  // all numbers from now on will be greater than 0, no point in continuing (for this ques)
             if(i==0 || (i>0 && nums[i]!=nums[i-1])){   // to avoid repetition in 1st number
                 int a = nums[i];
                 int newTarget = 0-a;
