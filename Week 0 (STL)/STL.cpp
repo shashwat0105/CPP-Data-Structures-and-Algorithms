@@ -2,8 +2,6 @@
 
 // All STL containers by default are passed by value, so to update the changes in main, we pass by reference in function: array<int, 6> &arr
 
-
-
 #include<bits/stdc++.h>
 // #include<vector>
 // #include<algorithm>

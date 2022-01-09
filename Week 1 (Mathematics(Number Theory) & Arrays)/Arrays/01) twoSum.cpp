@@ -1,4 +1,5 @@
 https://leetcode.com/problems/two-sum
+// In this ques we have to return indices.
 Solution vid: https://youtu.be/o2WOhGSfx_8
 
 // Brute force: Time: O(n^2), Space: O(1)
