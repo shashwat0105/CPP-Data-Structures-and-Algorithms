@@ -1,3 +1,10 @@
+https://leetcode.com/problems/trapping-rain-water/
+
+https://www.geeksforgeeks.org/trapping-rain-water/
+
+
+
+// OLD SOLUTION
 // min(left boundary, right boundary) - arr[i]
 #include <bits/stdc++.h>
 using namespace std;
