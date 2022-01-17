@@ -4,4 +4,5 @@ As of now you can study:
 2) Graph Algorithms (Week 9)
 3) Searching/Sorting Algorithms (week 2)
 4) Hashing (Week 0)
+5) Arrays (Week 1)
 
