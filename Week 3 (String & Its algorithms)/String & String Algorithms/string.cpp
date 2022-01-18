@@ -1,5 +1,7 @@
 https://youtu.be/abZEVCRYZP8  (Nice Video)
 
+https://youtube.com/playlist?list=PLqjW-ORyj-hLKFq_ESmFpXDnaLKaTCMio (String manipulation small playlist) can refer for logics of good inbuilt/operations methods.
+
 // character is stored using single quotes 'a'
 // string(group of characters) is stored using double quotes "abcshsaa"
 
