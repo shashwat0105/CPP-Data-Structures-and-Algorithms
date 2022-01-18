@@ -1,7 +1,5 @@
 https://youtu.be/abZEVCRYZP8  (Nice Video)
 
-https://youtube.com/playlist?list=PLqjW-ORyj-hLKFq_ESmFpXDnaLKaTCMio (String manipulation small playlist) can refer for logics of good inbuilt/operations methods.
-
 // character is stored using single quotes 'a'
 // string(group of characters) is stored using double quotes "abcshsaa"
 
@@ -52,6 +50,13 @@ int main(){
 }
 
 // Method 2 is runnig the loop till half and comparing the characters
+
+https://youtube.com/playlist?list=PLqjW-ORyj-hLKFq_ESmFpXDnaLKaTCMio (String manipulation small playlist) can refer for logics of good inbuilt/operations methods.
+
+string::find method
+https://www.cplusplus.com/reference/string/string/find/
+https://www.geeksforgeeks.org/string-find-in-cpp/
+
 
 
 // Big numbers > 10^18 are handled using strings.
