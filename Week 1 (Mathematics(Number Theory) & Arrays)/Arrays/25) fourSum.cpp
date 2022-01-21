@@ -9,9 +9,9 @@ public:
         int n=nums.size();
         
         for(int i=0; i<n-3; ++i){
-            if(i==0 || (i>0 && nums[i]!=nums[i-1])){
+            if(i==0 || (i>0 && nums[i]!=nums[i-1])){                     // to avoid repetition in 1st number
                 for(int j=i+1; j<n-2; ++j){
-                    if(j==1 || (j>1 && nums[j]!=nums[j-1])){
+                    if(j==i+1 || (j>1 && nums[j]!=nums[j-1])){           // to avoid repetition in 2nd number
                         int newTarget = target - (nums[i] + nums[j]);
                         int s = j+1;
                         int e = n-1;
@@ -19,8 +19,8 @@ public:
                         while(s<e){
                             if(nums[s]+nums[e]==newTarget){
                                 res.push_back({nums[i], nums[j], nums[s], nums[e]});  
-                                while(s<e && nums[s]==nums[s+1]) s++;        
-                                while(s<e && nums[e]==nums[e-1]) e--;        
+                                while(s<e && nums[s]==nums[s+1]) s++;    // to avoid repetition in 3rd number       
+                                while(s<e && nums[e]==nums[e-1]) e--;    // to avoid repetition in 4th number      
                                 s++;
                                 e--;
                             }
@@ -36,7 +36,10 @@ public:
 };
 
 
-THis also works:
+// This also works:
+// 1) using two while for first two numbers
+// or
+// 2) using two if with continue statements
 
 class Solution {
 public:
@@ -45,7 +48,9 @@ public:
         if(nums.size()<4) return v;
         sort(nums.begin(), nums.end());
         for(int i=0;i<nums.size()-3;i++){
+        // if (i > 0 && A[i] == A[i - 1]) continue;
             for(int j=i+1;j<nums.size()-2;j++){
+        // if (j > i + 1 && A[j] == A[j - 1]) continue;
                 int start=j+1;
                 int end=nums.size()-1;
                 while(start<end){
@@ -67,3 +72,6 @@ public:
         return v;
     }
 };
+
+
+
