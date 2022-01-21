@@ -1,6 +1,5 @@
 https://leetcode.com/problems/4sum/
 
-// Why this fails for second example?
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
