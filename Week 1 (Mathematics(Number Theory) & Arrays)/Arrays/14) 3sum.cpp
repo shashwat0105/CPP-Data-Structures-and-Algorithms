@@ -33,7 +33,7 @@ public:
                     if(nums[s]+nums[e]==newTarget){
                         res.push_back({nums[i], nums[s], nums[e]});  // Inserting a vector inside a vector
                         while(s<e && nums[s]==nums[s+1]) s++;        // to avoid repetition in 2nd number
-                        while(s<e && nums[e]==nums[e-1]) e--;        // to avoid repetition in 3rd number
+                        while(s<e && nums[e]==nums[e-1]) e--;        // to avoid repetition in 3rd number (the code will work without this loop as well)
                         s++;
                         e--;
                     }

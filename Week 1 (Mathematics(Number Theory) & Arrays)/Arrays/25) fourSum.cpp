@@ -4,13 +4,14 @@ class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>> res;
-        sort(nums.begin(), nums.end());
         int n=nums.size();
+        if(n < 4) return res;
+        sort(nums.begin(), nums.end());
         
         for(int i=0; i<n-3; ++i){
             if(i==0 || (i>0 && nums[i]!=nums[i-1])){                     // to avoid repetition in 1st number
                 for(int j=i+1; j<n-2; ++j){
-                    if(j==i+1 || (j>1 && nums[j]!=nums[j-1])){           // to avoid repetition in 2nd number
+                    if(j==i+1 || (j>i+1 && nums[j]!=nums[j-1])){           // to avoid repetition in 2nd number
                         int newTarget = target - (nums[i] + nums[j]);
                         int s = j+1;
                         int e = n-1;
@@ -19,7 +20,7 @@ public:
                             if(nums[s]+nums[e]==newTarget){
                                 res.push_back({nums[i], nums[j], nums[s], nums[e]});  
                                 while(s<e && nums[s]==nums[s+1]) s++;    // to avoid repetition in 3rd number       
-                                while(s<e && nums[e]==nums[e-1]) e--;    // to avoid repetition in 4th number      
+                                while(s<e && nums[e]==nums[e-1]) e--;    // to avoid repetition in 4th number (the code will work without this loop as well)      
                                 s++;
                                 e--;
                             }
@@ -38,7 +39,7 @@ public:
 // This also works:
 // 1) using two while for first two numbers
 // or
-// 2) using two if with continue statements
+// 2) using two if with continue statements for first two numbers
 
 class Solution {
 public:
@@ -71,6 +72,10 @@ public:
         return v;
     }
 };
+
+// K-Sum
+// BEST from discuss
+// https://leetcode.com/problems/4sum/discuss/1341213/C%2B%2BPython-2-solutions-Clean-and-Concise-Follow-up%3A-K-Sum
 
 
 
