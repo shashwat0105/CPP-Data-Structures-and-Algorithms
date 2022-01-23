@@ -55,8 +55,13 @@ public:
 
 
 
-// Yet to understand a binary search solution
+// Binary search solution (mast)
 // TC = O(nlogn), SC = O(1)
+// Lets say there is an separate array containing numbers [1, 2, 3, 4, .... N]
+// we will apply binary search on "this" array! & shrink in the direction of repeated number
+// Let's say n=10 and I select mid=5. Then I count all the numbers in the array which are less than equal mid. 
+// If there are more than 5 numbers that are less than 5, one of them has occurred more than once. So I shrink the search space from [1 10] to [1 5]. 
+// Otherwise the duplicate number is in the second half so for the next step the search space would be [6 10].
 
 class Solution {
 public:
