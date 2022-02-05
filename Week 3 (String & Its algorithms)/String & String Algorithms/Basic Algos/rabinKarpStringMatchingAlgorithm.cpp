@@ -1,6 +1,6 @@
 // Given string text of length N
 // Given string pattern of length M
-// To find all occurrences of pattern in text in O(N+M)
+// To find all occurrences of pattern in text in TC =  O(N+M)
 
 // Prerequisites:
 // string hashing

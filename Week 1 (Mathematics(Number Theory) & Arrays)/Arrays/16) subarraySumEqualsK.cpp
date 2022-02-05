@@ -8,6 +8,9 @@ https://leetcode.com/problems/subarray-sum-equals-k/
 // we are now at sum, so, the interval between the previous point(s) and now sums up to, by definition, sum - (sum - k), which equates k.
 // We collect all those occurrences in count and finally we return it.
 
+
+// Target is another small prefix sum, which checks if Bigger prefix sum - k exists in the hashmap.
+// pref - target is the sum of that subarray
 https://leetcode.com/problems/subarray-sum-equals-k/discuss/301242/General-summary-of-what-kind-of-problem-can-cannot-solved-by-Two-Pointers
 
 class Solution {
@@ -17,14 +20,14 @@ public:
         int res=0;                             // number of found subarray
         int pref = 0;                          // cumulated sum
         unordered_map<int, int> countPref;     // prefix sum recorder
-        countPref[0]++;
+        countPref[0]++;                        // to take into account those subarrays that begin with index 0
         
         for(int i=0; i<n; i++){
             pref += nums[i];
             int target = pref - k;
             res += countPref[target];
             countPref[pref]++;
-        }
+        }   
         return res;
     }
 };
