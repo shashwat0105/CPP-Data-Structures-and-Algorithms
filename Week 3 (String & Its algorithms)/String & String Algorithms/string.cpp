@@ -1,5 +1,16 @@
 https://youtu.be/abZEVCRYZP8  (Nice Video)
 
+// C++ provides following two types of string representations −
+// 1) The C-style character string.
+// char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+// char greeting[] = "Hello";
+// 2) The string class type introduced with Standard C++.
+// string str1 = "Hello";
+// string str2 = "World";
+
+ 
+
+
 // character is stored using single quotes 'a'
 // string(group of characters) is stored using double quotes "abcshsaa"
 
