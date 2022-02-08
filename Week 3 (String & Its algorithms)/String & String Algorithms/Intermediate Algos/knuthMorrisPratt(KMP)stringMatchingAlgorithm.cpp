@@ -19,6 +19,8 @@ P3: a a a a b a a c d
 pi  0 1 2 3 0 1 2 0 0
 
 
+//  Algorithm to create prefix array or value array or KMP 
+// Jo string pass kar rahe ho uska prefix value array ban jaega
 vector<int> prefix_function(string s) {
     int n = (int)s.length();
     vector<int> pi(n);

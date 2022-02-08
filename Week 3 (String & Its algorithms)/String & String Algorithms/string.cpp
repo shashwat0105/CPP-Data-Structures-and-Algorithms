@@ -10,7 +10,6 @@ https://youtu.be/abZEVCRYZP8  (Nice Video)
 
  
 
-
 // character is stored using single quotes 'a'
 // string(group of characters) is stored using double quotes "abcshsaa"
 
@@ -42,6 +41,17 @@ int main(){
     }
 
 }
+
+// STRING METHODS:
+// string::substr
+// stringName.substr(start index, no of characters to include)
+// ex:
+// string s = abcdedf
+// s.substr(2,3) // cde is the output substring
+
+// string::strstr
+// For string pattern matching(For detail se practice problem)
+
 
 // CHECK PALINDROME 
 int main(){
