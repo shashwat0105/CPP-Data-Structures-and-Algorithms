@@ -14,7 +14,7 @@ public:
         
         for(int i=0; i<n; i++){
             pref += nums[i];
-            int remainder = (pref%k + k)%k;
+            int target = (pref%k + k)%k;   // target is the remainder
             
             res += countPref[target];
             countPref[target]++;
