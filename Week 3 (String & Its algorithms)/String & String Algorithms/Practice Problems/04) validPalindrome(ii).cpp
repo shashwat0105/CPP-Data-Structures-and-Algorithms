@@ -52,7 +52,7 @@ public:
             else{
                 //Removing Left
                 int L1 = i+1, R1 = j;
-                while(L1<=R1 && s[L1] == s[R1]){     // also we dont want to return false when char arent equal so we dont use if to check if they are equal.
+                while(L1<=R1 && s[L1] == s[R1]){     // OR you can use if and else with break statment.    
                     ++L1;
                     --R1;
                     if(L1>=R1) return true;          // either is true then true
@@ -77,13 +77,14 @@ public:
 ////////////////////
 Some learning
 //Removing Left
-// THIS DOESNT WORK
+// THIS ALSO WORKS
 // int L1 = L+1, R1 = R;
 // while(L1<=R1){
-//     if(s[L1] == s[R1]){   // here we have to now do something about else they are not equal loop tab bhi run hoga     
+//     if(s[L1] == s[R1]){       
 //         ++L1;
 //         --R1;
 //     }
+//     else if(s[L1]!=s[R1]) break;
 //     if(L1>=R1) return true;
 // }
 

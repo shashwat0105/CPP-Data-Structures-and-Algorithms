@@ -4,6 +4,7 @@ https://leetcode.com/problems/implement-strstr/
 
 // Python Implementation(BEST):
 // We have string slicing facility in python
+// string[start:end:step]   // syntax
 if needle == "":
     return 0
 
