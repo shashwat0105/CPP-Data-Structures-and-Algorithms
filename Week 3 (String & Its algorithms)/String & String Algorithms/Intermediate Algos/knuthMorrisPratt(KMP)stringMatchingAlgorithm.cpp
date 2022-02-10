@@ -20,9 +20,9 @@ pi  0 1 2 3 0 1 2 0 0
 
 
 //  Algorithm to create prefix array or value array or KMP 
-// Jo string pass kar rahe ho uska prefix value array ban jaega
+// Jo string pass kar rahe ho uska prefix value array ban jaega (CRUX: Iska use krna aana chahiye bas)
 vector<int> prefix_function(string s) {
-    int n = (int)s.length();
+    int n = s.size();
     vector<int> pi(n);
     for (int i = 1; i < n; i++) {
         int j = pi[i-1];
@@ -36,3 +36,5 @@ vector<int> prefix_function(string s) {
 }    
 
 
+// Watch this video in sometime in future Jab sab ho jae
+// https://youtu.be/__Cu92rei1s  (Detailed explanation by Pepcoding)

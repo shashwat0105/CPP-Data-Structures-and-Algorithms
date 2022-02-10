@@ -25,6 +25,7 @@ public:
         for(int i=0; i<n; i++){
             pref += nums[i];
             int target = pref - k;
+            
             res += countPref[target];
             countPref[pref]++;
         }   
