@@ -1,4 +1,5 @@
 TC = O(n)
+https://cp-algorithms.com/string/z-function.html
 
 Z-function for this string s is an array of length n where the i-th element is equal to 
 the greatest number of characters starting from the position i that coincide with the first characters of s.
