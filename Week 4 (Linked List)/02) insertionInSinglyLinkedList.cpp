@@ -1,3 +1,12 @@
+In accordance with this syntax
+NODE SYNTAX:
+// C++
+struct Node{       
+    int data;      
+    Node *next;    // next will store the address of the next node, next is Node type
+};
+
+
 // INSERTION
 
 // A node at the beginning 

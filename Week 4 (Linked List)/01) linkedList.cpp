@@ -1,5 +1,8 @@
 Singly Linked list: Head -> A -> B -> C -> D -> NULL
 
+// Better ki variable name k paas star lagaya karo
+// ie Node *x, *y, *temp
+
 Some Reference Link
 https://practice.geeksforgeeks.org/tracks/dsa-workshop-1-linkedlist/?batchId=308
 GFG Linked List is good too.
@@ -17,7 +20,7 @@ SINGLY LINKED LIST
 NODE SYNTAX:
 // C++
 struct Node{       // creating a new data type whose name is "Node"
-    int val;       // val is int type
+    int data;      // data is int type
     Node *next;    // next will store the address of the next node, next is Node type
 };
 
@@ -40,7 +43,7 @@ struct Node{
     Node *next;  // pointer
 };
 
-// Function to print contents of a linked list starting from a given node
+// Function to print contents of a linked list starting from a given node (Linked list traversal).
 void printList(Node *node){
     while(node!=NULL){
         cout<<node->data<<" ";
@@ -76,14 +79,6 @@ int main(){
 
 
 
-
-// DELETION
-
-// Delete the head(first) node
-
-// Delete the tail(last) node
-
-// Delete any particular node
-
-
+// Difference between Arrays and LinkedList
+https://youtu.be/KMc-B051ne8
 
