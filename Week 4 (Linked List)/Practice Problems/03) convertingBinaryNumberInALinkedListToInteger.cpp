@@ -30,3 +30,23 @@ public:
         return res;
     }
 };
+
+
+// Method 2
+// In a single traversal
+// We assume when we go on a node its the last node so we multiply it with  2^0 ie 1  
+// if we find another node we multiple with 2 
+
+class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+        ListNode *temp = head;
+        int res = 0;
+        while(temp!=NULL){
+            res*=2;
+            res += (temp->val);    // val * 2^0 = val
+            temp = temp->next;
+        }
+        return res;
+    }
+};

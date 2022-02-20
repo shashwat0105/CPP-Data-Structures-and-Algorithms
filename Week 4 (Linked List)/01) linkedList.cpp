@@ -82,3 +82,23 @@ int main(){
 // Difference between Arrays and LinkedList
 https://youtu.be/KMc-B051ne8
 
+
+
+// STL for Singly LinkedList
+https://www.cplusplus.com/reference/forward_list/forward_list/
+
+forward_list<int>              // integer type singly linked list   
+
+insert_after
+erase_after
+
+// In forward list, jo delete krna hai uske phle wala node dena padega
+// But in doubly linked list, jo delete krna hai wahi node dedo kaam ho jaega(thats an advantage of DLL)
+
+// STL for doubly LinkedList
+https://www.cplusplus.com/reference/list/list/
+
+list<int>
+
+insert
+erase
