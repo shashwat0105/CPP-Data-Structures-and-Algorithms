@@ -27,6 +27,8 @@ public:
 // We should free the memory to avoid leakage using delete() // good practice (In this code, right is initised outside the loop so not easily can be freed, but see method 3)
 
 // Method 2: Using recursion
+TC = O(N)
+SC = O(N)
 
 https://youtu.be/_Dc1IqY2WpQ
 
@@ -45,6 +47,8 @@ public:
 };
 
 // Iterative approach (similar to method 1)
+TC = O(N)
+SC = O(1)
 
 class Solution {
 public:
