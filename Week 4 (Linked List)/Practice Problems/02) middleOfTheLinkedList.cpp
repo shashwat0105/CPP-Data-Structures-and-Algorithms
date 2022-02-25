@@ -36,21 +36,12 @@ public:
 
 // Method 2: Without finding the length of node (Interviewer will expect this approach)
 
-Two pointers:
-Slow pointer moves one step
-Fast pointer moves two steps
-When fast will reach at the end, slow will be in the middle.
+// Two pointers:
+// Slow pointer moves one step
+// Fast pointer moves two steps
+// When fast will reach at the end, slow will be in the middle.
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {

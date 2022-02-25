@@ -19,7 +19,7 @@ public:
         if(fast==NULL || fast->next==NULL) return NULL;  // ie cycle not found, ie upar wala while break hua not because fast==slow
         
         fast = head;
-        while(fast!=slow){
+        while(fast!=slow){                               // the point they meet again is the start of the cycle.
             slow = slow->next;
             fast = fast->next;    
         }
