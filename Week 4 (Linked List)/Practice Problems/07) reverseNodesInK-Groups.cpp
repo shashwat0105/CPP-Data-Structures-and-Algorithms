@@ -16,30 +16,30 @@ https://youtu.be/TeDcLjOOiK4
 class Solution {
 public:
     void reverse(ListNode *s, ListNode *e){
-        ListNode *p=NULL, *c=s, *n=s->next;
-        while(p!=e){  // ie jabtak previous end node tak na pahuch jae, coz current NULL pahuchega we dont know
+        ListNode *p=NULL, *c=s, *n;
+        while(p!=e){                                      // ie jabtak previous end node tak na pahuch jae, coz current NULL pahuchega we dont know
+            n = c->next;
             c->next = p;
             p = c;
             c = n;
-            if(n!=NULL) n = n->next;
         }
     }
     
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(head==NULL || head->next==NULL||k==1) return head;
-        
+        if(head==NULL || head->next==NULL||k==1) return head;  // base condition
+    
         ListNode *s = head, *e = head;
         int inc = k-1;
         while(inc--){
-            e = e->next;             // e is now at the end of k terms, s is at the start
-            if(e==NULL) return head; // a sublinked list has length < k ie e reaches NULL, then do nothing ie return head
+            e = e->next;                                  // e is now at the end of k terms, s is at the start
+            if(e==NULL) return head;                      // a sublinked list has length < k ie e reaches NULL, then do nothing ie return head
         }
 
         ListNode *nextHead  = reverseKGroup(e->next, k);  // nextHead is the new head of a smaller reversed sublinkedlist  // calling recursively
         reverse(s, e);
         s->next = nextHead;
 
-        return e;                    // e after reversal will be the head of the linkedlist, that's why we return it
+        return e;                                         // e after reversal will be the head of the linkedlist, that's why we return it
     }
 };
 
@@ -67,7 +67,7 @@ public:
     }
     
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(head==NULL || head->next==NULL||k==1) return head;
+        if(head==NULL || head->next==NULL || k==1) return head;
         
         ListNode *dummy = new ListNode(-1);
         dummy->next = head;

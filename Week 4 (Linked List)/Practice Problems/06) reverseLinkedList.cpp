@@ -24,20 +24,24 @@ We need THREE temp pointers to reverse a linked list
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        if(head==NULL) return NULL;
-        ListNode *p = NULL, *c = head, *n = head->next;
+        if(head==NULL || head->next==NULL) return head;
+        ListNode *p = NULL, *c = head, *n;
         
         while(c!=NULL){
-            c->next = p;
+            n = c->next;
+            c->next = p;    // we are assigning p to c ka next,, ie c ka next should point to p(previous)
             p = c;
             c = n;
-            if(n!=NULL) n = n->next;
         }
         return p;
     }
 };
 
-// RECURSIVE SOLUTION (is solution ko recursion topic padhne k baad ar ache se samjhna hai)
+// Animation and chaining of the steps(helps to remember) can be found here:
+https://leetcode.com/problems/reverse-linked-list/discuss/1449712/Easy-C%2B%2BJavaPythonJavaScript-Explained%2BAnimated
+
+
+// RECURSIVE SOLUTION 
 // TC = O(N)
 // SC = O(N) // Internal stack memory is used
 
@@ -45,8 +49,8 @@ class Solution {
 public:
     ListNode *reverse(ListNode *head){
         if(head->next == NULL) return head;
-        ListNode *reverseHead = reverse(head->next);   // recursive call that will reverse the list except head and first element
-        head->next->next = head;                       // ie next of first element should point to head, our work of reversing first two nodes
+        ListNode *reverseHead = reverse(head->next);       // recursive call that will reverse the list except head and first element
+        head->next->next = head;                           // ie next of first element should point to head, our work of reversing first two nodes (actually this same work will be done by recursion later)
         head->next = NULL;
         return reverseHead;
     }
@@ -54,6 +58,19 @@ public:
     ListNode* reverseList(ListNode* head) {
         if(head==NULL) return NULL;
         return reverse(head);
+    }
+};
+
+OR simply:
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(head==NULL || head->next ==NULL) return head;   // base condition
+        ListNode *reverseHead = reverseList(head->next);   // recursive call
+        head->next->next = head;                           // ie next of first element should point to head
+        head->next = NULL;              
+        return reverseHead;
     }
 };
 
