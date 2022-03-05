@@ -59,9 +59,9 @@ public:
         if(head==NULL) return NULL;
         return reverse(head);
     }
-};
+};  
 
-OR simply:
+// OR simply:
 
 class Solution {
 public:
@@ -73,4 +73,30 @@ public:
         return reverseHead;
     }
 };
+
+
+// Recursive way to reverse first N elements
+ListNode successor = NULL;
+ListNode* reverseN(ListNode* head, int n){
+    if(n==1){
+        successor = head->next;
+        return head;
+    }
+    ListNode *reverseHead = reverseN(head->next, n-1);
+    head->next->next = head;
+    head->next = successor;
+    return reverseHead;
+}
+
+
+// Recursive way to reverse between given left and right positions (reverse list (ii) problem)
+ListNode successor = NULL;
+ListNode *reverseBetween(ListNode* head, int left, int right){
+    if(left<=1){
+        return reverseN(head, right-left+1);
+    }
+    head->next = reverseBetween(head->next, left-1, right-1);
+    return head;
+}
+
 

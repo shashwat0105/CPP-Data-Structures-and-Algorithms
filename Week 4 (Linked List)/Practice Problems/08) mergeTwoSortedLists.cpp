@@ -1,5 +1,7 @@
 https://leetcode.com/problems/merge-two-sorted-lists/
 
+Merge two lists in sorted manner.
+
 https://youtu.be/0QPpgAsd4IY
 
 // This can be done by using a third LL or modifying the existing linked list, depending on the demand of the interviewer.
@@ -28,7 +30,31 @@ public:
 };
 
 
-// Iterative approach
+// Iterative approach (Still without any extra LL)
 // Just like merge sort in arrays
 
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode *dummy = new ListNode(-1);
+        ListNode *temp = dummy;
+        
+        while(list1 && list2){              // when both the lists are not null
+            if(list1->val < list2->val){
+                temp->next = list1;
+                list1 = list1->next;
+            }
+            else{
+                temp->next = list2;
+                list2 = list2->next;
+            }
+            temp = temp->next;
+        }
 
+        // if(list1) temp->next = list1;
+        // else temp->next = list2;
+        temp->next = list1 ? list1 : list2;   // either of them becomes null
+        
+        return dummy->next;
+    }
+};
