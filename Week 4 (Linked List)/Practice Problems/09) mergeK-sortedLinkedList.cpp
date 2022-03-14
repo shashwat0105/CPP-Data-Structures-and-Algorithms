@@ -7,9 +7,9 @@ https://youtu.be/RYJ3vs8qx10
 // TC = O(NK log NK)   , k = no of lists, n = average size of each list
 
 // Approach 2:
-// Compare 2 lists merge them into 1, then merge this with other and so on.
+// Compare 2 lists merge them into 1, then merge this with other and so on. 
 
-// Approach 3:
+// Approach 3: 
 // Compare 1st elements of all the lists add it to the result 
 // TC = O(K * NK)
 
@@ -28,6 +28,7 @@ https://youtu.be/RYJ3vs8qx10
 
 // Priority queue is used in C++ to make a min-heap
 
+// Approach 3:
 
 class cmp{
 public:  // by default is private so we need to make it public

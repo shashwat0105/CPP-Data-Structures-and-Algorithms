@@ -23,7 +23,7 @@ public:
         return head;
     }
 };
-
+ 
 // We should free the memory to avoid leakage using delete() // good practice (In this code, right is initised outside the loop so not easily can be freed, but see method 3)
 
 // Method 2: Using recursion
