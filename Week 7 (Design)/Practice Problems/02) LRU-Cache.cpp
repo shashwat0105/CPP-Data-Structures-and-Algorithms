@@ -72,3 +72,7 @@ public:
 
 
 // Iska discuss section ar dusre YT videos future mein dekhna hai
+
+// YT
+https://youtu.be/xDEuM5qa0zg
+https://youtu.be/Xc4sICC8m4M

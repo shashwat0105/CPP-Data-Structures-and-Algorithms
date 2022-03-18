@@ -2,7 +2,7 @@ https://leetcode.com/problems/fibonacci-number
 
 // Method 1:
 // Recursion:
-// TC = O(n)
+// TC = O(2^n), SC = O(n)
 
 class Solution {
 public:
@@ -17,6 +17,7 @@ public:
 
 
 // Method 2: Dynamic Programming
+// TC = O(n)
 class Solution {
 public:
     int fib(int n) {
