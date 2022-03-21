@@ -9,7 +9,7 @@ public:
         vector<int> two;
         
         for(int i=0; i<nums.size(); i++){
-            for(int j=0; j<nums.size(); j++){
+            for(int j=0; j<nums.size(); j++){       // or j=i+1 , and remove the i>j condition in the below line
                 if(nums[i]+nums[j]==target && i>j){
                     two.push_back(i);
                     two.push_back(j);
