@@ -21,7 +21,7 @@
 // In recursive call complete left side is called first then moving to right and so on, which is nothing but going in depth ie DFS
 
 class Solution{
-    void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &res){
+    void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &res){     // takes the argument of current node not total number of nodes.
         res.push_back(node);                 // we push the node
         vis[node] = 1;                       // now the node is visited so we mark it as 1
         for(auto it: adj[node]){             // for every node we check its adjacency node if
