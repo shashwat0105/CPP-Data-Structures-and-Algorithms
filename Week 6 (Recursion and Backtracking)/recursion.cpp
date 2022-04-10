@@ -53,9 +53,11 @@ void print(int n){
         cout<<n<<" ";  
         return;
     }
-    cout<<n<<" ";      // I know the value of n so first I print the value of n (ie printed while moving towards the base case)
+    cout<<n<<" ";      // I know the value of n so first I print the value of n (ie printed while moving towards the base case also known as backtracking)
     print(n-1);
 }
+
+// For this above two ques, you can also use an extra variable i, and increment and decrement accordingly and print it to solve the ques as well.
 
 // To check if an array is sorted using recursion
 
@@ -76,6 +78,7 @@ int power(int a, int n){
 }
 
 // TC and SC = O(logn)
+// Calculating power faster
 a^n = (a^n/2)^2 or a*((a^n/2)^2) depending on n is even or odd respectively.
 int fastPower(int a, int n){
     if(n==0) return 1;
@@ -87,3 +90,10 @@ int fastPower(int a, int n){
     }
     return subProbSq;
 }
+
+
+// These above problems had 1 recursive call.
+// More than 1 recursive call
+// Eg fibonacci number (2)
+// N-queens (n calls)
+

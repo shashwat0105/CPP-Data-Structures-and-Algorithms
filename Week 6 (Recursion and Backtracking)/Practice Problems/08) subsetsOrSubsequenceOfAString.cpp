@@ -72,3 +72,35 @@ void subset(string ip,string op,){
 	subset(ip,op1,m);
 	subset(ip,op2,m);
 }
+
+
+// To verify this:
+// TC = O(2^N *N)
+// SC = O(N)  // Because at a time N elements will be in the stack space.
+
+
+// This can also be extended to find subsequences with a given sum. (Using an extra sum variable we can do)
+// But there will be better methods
+https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/
+
+https://youtu.be/eQCS_v3bw0Q  (Striver)
+
+// In order to print just one subsequence.
+
+// Whenever base condition is satisfied return true.
+// If (true) return from the function no need to make further calls.
+// We will change the return type from void to bool. As it is not a good practice to use global variables.
+    
+// In order to count the number of subsequences
+int f()  // return type changes to int
+{
+    base case
+        return 1 if condition satisfies
+        return 0 if condition is not satisfied
+
+    lf()   // recursive calls
+    rf()
+
+    return lf + rf
+}
+

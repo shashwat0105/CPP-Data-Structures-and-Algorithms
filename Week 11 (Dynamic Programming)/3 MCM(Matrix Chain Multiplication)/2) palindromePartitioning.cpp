@@ -1,4 +1,6 @@
-// https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/
+https://leetcode.com/problems/palindrome-partitioning/
+
+https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/
 
 // Given a string, a partitioning of the string is a palindrome partitioning if every substring of the partition is a palindrome. 
 // Example:
