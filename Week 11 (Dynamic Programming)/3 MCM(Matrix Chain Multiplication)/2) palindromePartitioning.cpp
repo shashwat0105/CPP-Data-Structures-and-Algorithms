@@ -159,3 +159,40 @@ int main(){
 // Basically you could move the isPalindrome check below the t[i][j] != -1 check. Then, it will be the same 
 
 
+// Method 2: Using backtracking/recursion
+// Video Solution:
+https://youtu.be/WBgsABoClE0 (Striver)
+
+// For every string/substring we loop in every index if that partition is possible or not.
+
+class Solution {
+public:
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> ans;
+        vector<string> op;
+        solve(0, s, op, ans);
+        return ans;
+    }
+    
+    void solve(int index, string s, vector<string> &op, vector<vector<string>> &ans){
+        if(index == s.size()){    // the partition | reaches the last index
+            ans.push_back(op);
+            return;
+        }
+        
+        for(int i=index; i<s.size(); ++i){                  // we are standing at an index uske baad se har index pe partition karke dekhenge
+            if(isPalindrome(s, index, i)){
+                op.push_back(s.substr(index, i-index+1));   // we can only add it as a substring(do the partition) if it is a palindrome
+                solve(i+1, s, op, ans);                     // recursive call
+                op.pop_back();                              // backtrack
+            }
+        }
+    }
+    
+    bool isPalindrome(string s, int start, int end){
+        while(start<=end){
+            if(s[start++] != s[end--]) return false;
+        }
+        return true;
+    }
+};

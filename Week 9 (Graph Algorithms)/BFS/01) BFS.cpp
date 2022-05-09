@@ -55,7 +55,7 @@ while (!q.empty()) {
     }
 }
 
-// For this ques
+// For this ques (Graph is connected is given)
 https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1/#
 
 vector<int> bfsOfGraph(int V, vector<int> adj[]) {

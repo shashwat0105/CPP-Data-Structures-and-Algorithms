@@ -97,3 +97,74 @@ int fastPower(int a, int n){
 // Eg fibonacci number (2)
 // N-queens (n calls)
 
+
+// Another way of writing recursing (left and right part(Utkarsh Gupta))
+
+// Program of sum of n numbers
+int sumN(int n){
+    if(n==0){
+        return;
+    }
+    int leftPart = sumN(n-1);
+    return leftPart + n;
+}
+
+// Sum of digits of a number
+// Example: 34527 = (3+4+5+2+7) = (3+4+5+2)+(7 ie the last digit)
+
+int sumDigits(int n){
+    if(n==0){
+        return;
+    }
+    int lastDigit = n%10;           ff// will give 7 from 34527
+    int remaining = n/10;           // will give 3452 from 34527 and so on
+    return lastDigit + remaining;
+}
+
+// Pattern printing using recursion
+1
+12
+123
+1234
+
+void patternPrint1(int n){
+    if(n==0){
+        return;
+    }
+
+    patternPrint1(n-1); // because of trust or recursive leap of faith ie first n-1 lines are already printed, what you have to do to print the last line
+    for(int i=1; i<=n; i++){
+        cout<<i<<" ";
+    }
+    cout<<"\n";
+}
+
+
+// Pattern 2
+1234
+123
+12
+1
+12
+123
+1234
+
+void pattern2(int n){
+    // incorrect intuitive base case, prints 1 twice
+    // if(n==0){   
+    //     return;
+    // }
+    if(n==1){
+        cout<<"1"; // this is the point where normal recursive rule is not followed but something else is followed
+        return;
+    }
+
+    for(int i=1; i<=n; i++){
+        cout<<i<<" ";
+    }
+    cout<<"\n";
+    pattern2(n-1);
+    for(int i=1; i<=n; i++){
+        cout<<i<<" ";
+    }
+}
