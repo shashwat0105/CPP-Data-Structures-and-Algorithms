@@ -18,7 +18,10 @@ Area possible from current building = widh of rectangle * height of current buil
 
 Max area = 12
 
-// CODE
+// CODE (Multiple Pass solution)
+// TC = O(4N)
+// SC = O(3N)
+
 
 class Solution {
 public:
@@ -65,15 +68,49 @@ public:
 
         int max_area=0;
         for(int i=0; i<n; i++){
-            max_area = max(max_area,(indexNSR[i]-indexNSL[i]-1)*heights[i]) ;
+            max_area = max(max_area, (indexNSR[i]-indexNSL[i]-1)*heights[i]) ;
         }
         return max_area;
     }
 };
 
 
+// One pass solution: 
 // Another PRO and Concise solution, comments section
 https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28905/My-concise-C%2B%2B-solution-AC-90-ms
 
 https://abhinandandubey.github.io/posts/2019/12/15/Largest-Rectangle-In-Histogram.html
+
+// This solution is difficult to explain which can mess up the interview
+// 1 pass solution (if interviewer upar wale se waise ho jaega satisfied but agar na ho toh hi batana hai)
+
+https://youtu.be/jC_cWLy7jSI 
+// (Striver)
+
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> s;
+        int maxArea = 0;
+        int n = heights.size();
+        
+        for(int i=0; i<=n; ++i){ // we go one more step in heights ie ground level
+            while(!s.empty() && (i==n || heights[s.top()] >= heights[i])){
+                int h = heights[s.top()];
+                s.pop();
+                int width;
+                if(s.empty()) width = i;
+                else width = i-s.top()-1;
+                maxArea = max(maxArea, width*h);
+            }
+            s.push(i);
+        }
+        return maxArea;
+    }
+};
+
+
+// Is code ko samajhne k liye examples leke dry run karke hi samajh paoge!! (For later)
+
+
 

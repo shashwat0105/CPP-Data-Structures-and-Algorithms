@@ -2,7 +2,7 @@ https://leetcode.com/problems/lru-cache/
 
 // TAGDA SAWAL HAI
 
-https://youtu.be/nN36SSIMn1k  (LIT VIDEO)
+https://youtu.be/nN36SSIMn1k  (LIT VIDEO fraz)
 
 // MOST ASKED INTERVIEW QUESTION
 
@@ -16,6 +16,7 @@ https://youtu.be/nN36SSIMn1k  (LIT VIDEO)
 // if capacity was infinite, then this could be implemented only by simple map.
 // Now since capacity is limited, we have to also see which data has to be evicted. We will use doubly linked list for this purpose.
 
+// We will use double linked list for LRU.
 
 // We will maintain the most recent data at the start of the DLL
 // 1) When we are putting data using put, we insert it at the start
@@ -73,6 +74,7 @@ public:
 
 // Iska discuss section ar dusre YT videos future mein dekhna hai
 
-// YT
+// YT 
+(Striver)
 https://youtu.be/xDEuM5qa0zg
 https://youtu.be/Xc4sICC8m4M
