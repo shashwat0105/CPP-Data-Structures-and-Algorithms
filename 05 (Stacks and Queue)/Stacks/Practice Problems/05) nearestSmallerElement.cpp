@@ -2,13 +2,14 @@ https://www.interviewbit.com/problems/nearest-smaller-element/
 
 // Nearest smaller element or Nearest smaller to left
 
-// Nearest Smaller Elementvector<int> Solution::prevSmaller(vector<int> &A) {
+// Nearest Smaller Element
+vector<int> Solution::prevSmaller(vector<int> &A) {
     vector<int> ans;
     stack<int> s;
 
     for(int i=0; i<A.size(); ++i){
         while(!s.empty() && s.top()>=A[i]){          // this comparison condition changes
-            s.pop();
+            s.pop();        
         }
         if(s.empty()){
             ans.push_back(-1);
@@ -32,7 +33,7 @@ vector<int> Solution::nextSmaller(vector<int> &A) {
     stack<int> s;
 
     for(int i=A.size()-1; i>=0; --i){
-        while(!s.empty() && s.top()>=A[i]){          // this comparison condition changes (Yeh = sign k liye consecutive equal elements in inputs deke dekh lena)
+        while(!s.empty() && s.top()>=A[i]){          // this comparison condition changes from NGR (Yeh = sign k liye consecutive equal elements in inputs deke dekh lena)
             s.pop();
         }
         if(s.empty()){

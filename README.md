@@ -1,6 +1,4 @@
-# DSA-11-Weeks
-As of now you can study:
-Whatever weeks you can see.
+# C++ | Data Structure and Algorithms
 
 For every practice question(particularly LeetCode):
-I have incorporated best explanation from LC discuss & YouTube videos.
+I have incorporated best explanation from Leetcode discuss & YouTube videos.

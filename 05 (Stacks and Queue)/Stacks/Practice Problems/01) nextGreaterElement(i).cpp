@@ -73,7 +73,7 @@ public:
             while(!s.empty() && s.top()<=nums2[i]){
                 s.pop();
             }
-            if(s.size()==0){          // checking ki kis condition se while terminate hua
+            if(s.size()==0){                            // checking ki kis condition se while terminate hua
                 dummyans.push_back(-1);
             }
             else{
