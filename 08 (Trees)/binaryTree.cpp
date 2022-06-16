@@ -39,3 +39,22 @@ main(){
    \
     5
 
+// TRAVERSAL IN TREE
+
+          1
+        /   \
+      2      3
+     /  \   /  \
+    4   5   6  7
+
+1) Inorder traversal: (Root beech mein)
+Left -> Root -> Right (Go to the subtrees and apply the same order)
+Order: 4 2 5 1 6 3 7
+
+2) Pre Order Traversal (Root sbse phle)
+Root -> Left -> Right
+Order: 1 2 4 5 3 6 7
+
+3) Post Order Traversal (Root sbse baad)
+Left -> Right -> Root
+Order: 4 5 2 6 7 3 1
