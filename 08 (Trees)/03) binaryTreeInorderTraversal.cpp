@@ -22,3 +22,28 @@ public:
 
 // Iterative
 
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode*> st;
+        TreeNode *node = root;
+        while(true){
+            if(node!=NULL){
+                st.push(node);
+                node = node->left;       // If the node is not null I move to the left
+            }
+            else{                        // when there is no node it is time to get the elements to fill in ans
+                if(st.empty()) break;    // directly break out
+                node = st.top();
+                st.pop();
+                ans.push_back(node->val);
+                node = node->right;
+            }
+        }
+        return ans;
+    }
+};
+
+https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/31231/C%2B%2B-Iterative-Recursive-and-Morris
+
