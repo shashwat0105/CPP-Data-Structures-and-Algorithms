@@ -58,3 +58,8 @@ Order: 1 2 4 5 3 6 7
 3) Post Order Traversal (Root sbse baad)
 Left -> Right -> Root
 Order: 4 5 2 6 7 3 1
+
+
+// For solving problems of binary tree:
+// Either have to do recursive traversal or level order traversal.
+
