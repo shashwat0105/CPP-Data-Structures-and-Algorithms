@@ -31,7 +31,7 @@ private:
 // Iterative Traversal 
 // O(N) time and space (call stack)
 // We use stack DS (LIFO)
-// I push right then left first in stack because of LIFO
+// ***** I push right then left first in stack because of LIFO *****
 
 class Solution {
 public:
@@ -42,11 +42,11 @@ public:
         stack<TreeNode*> st;
         st.push(root);
         while(!st.empty()){
-            root=st.top();
+            root=st.top();                                // Yeh alag se store karke karna jaroori hai nahi toh TLE ayega
             st.pop();
             ans.push_back(root->val);
-            if(root->right!=NULL) st.push(root->right);  // if there exist a right push in the stack
-            if(root->left!=NULL) st.push(root->left);    // if there exist a left push in the stack
+            if(root->right!=NULL) st.push(root->right);   // if there exist a right push in the stack
+            if(root->left !=NULL) st.push(root->left);    // if there exist a left push in the stack
         }
         return ans;
     }

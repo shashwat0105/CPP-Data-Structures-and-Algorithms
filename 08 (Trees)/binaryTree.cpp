@@ -59,6 +59,12 @@ Order: 1 2 4 5 3 6 7
 Left -> Right -> Root
 Order: 4 5 2 6 7 3 1
 
+Simplest Binary Tree Traversal trick for preorder inorder postorder
+https://youtu.be/WLvU5EQVZqY
+So in summary, always go from the root in counterclockwise direction around the tree. 
+ - For Pre-Order, print the nodes as you visit them for the first time. 
+ - For In-Order, print the nodes only when you visit them for the second time. 
+ - For Post-order, print the nodes when you visit them for the last time.
 
 // For solving problems of binary tree:
 // Either have to do recursive traversal or level order traversal.

@@ -2,7 +2,7 @@ https://leetcode.com/problems/binary-tree-inorder-traversal/
 
 left - root - right
 
-// Recursive
+// Recursive solutions k liye helper banaya karo acha rehta hai
 
 class Solution {
 public:
@@ -31,14 +31,14 @@ public:
         while(true){
             if(node!=NULL){
                 st.push(node);
-                node = node->left;       // If the node is not null I move to the left
+                node = node->left;       // If the node is not null I continuosly move to the left
             }
             else{                        // when there is no node it is time to get the elements to fill in ans
                 if(st.empty()) break;    // directly break out
-                node = st.top();
+                node = st.top();         // for all the nodes that were put into the stack
                 st.pop();
                 ans.push_back(node->val);
-                node = node->right;
+                node = node->right;      // while going back, we take the right nodes   
             }
         }
         return ans;
