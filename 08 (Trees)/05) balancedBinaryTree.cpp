@@ -48,3 +48,33 @@ return -1;
 }
 
 // Baaki code toh simple hai
+
+// Here we are makign a seprate variable to check for the height difference it will act like a counter.
+//By using that variable we can solve the question simply by using the concept of used in height of a binary tree.
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        int h=0;
+        int count=0;
+        count = height(root , h);
+        if(h == -1) return false;
+        
+        return true;
+        
+    }
+    
+    int height(TreeNode* root , int &h){
+        
+        if(root == nullptr) return 0;
+        
+        int lh = height(root->left,h);
+        int rh = height(root->right,h);
+        
+        if(abs(rh - lh) > 1){
+            h =  -1;
+        }
+        return 1+ max(lh,rh);
+        
+        
+    }
+};
