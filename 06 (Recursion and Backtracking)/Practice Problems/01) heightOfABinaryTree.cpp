@@ -32,3 +32,26 @@ public:
 // In interview you can clarify this from the interviewer.
 The height of tree can be represented into two forms, according to nodes (above code) and according to edges. 
 With some changes such as returning -1 instead of 0 will give the height in terms of edges.
+
+// Iterative solution
+// Using level order traversal ie BFS
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root==NULL) return 0;
+        queue<TreeNode *> q;
+        q.push(root);
+        int depth = 0;
+        while(!q.empty()){
+            int size = q.size();
+            depth++;                                 // jitni baar while loop chalega wahi uski depth hai
+            for(int i=0; i<size; ++i){
+                TreeNode *temp = q.front();
+                q.pop();
+                if(temp->left) q.push(temp->left);
+                if(temp->right) q.push(temp->right);
+            }
+        }
+        return depth;
+    }
+};
