@@ -1,5 +1,7 @@
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 
+// Esa diameter jiski nodes values ka sum maximum ho. wo nikalna hai, toh jaha pe height k liye +1 karte the waha pe bas node ki values daal denge
+
 If I am standing at a node,
 I can figure out the max value at left and max value at right of that node, then max path sum using that node as a curve will be
 maxL + val at that node + maxR

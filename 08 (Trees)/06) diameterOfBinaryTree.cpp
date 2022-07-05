@@ -6,7 +6,7 @@ Diameter of binary tree
 
 
 // We can find lH and rH at every node, and add them up and compare. The max will be the ans.
-// Finding height of tree in O(N) time we already know.
+// We know to calculate height of tree in O(N) time. (Is the crux of optimisation)
 
 class Solution {
 public:
@@ -23,10 +23,11 @@ public:
         
         int lH = height(root->left, diameter);
         int rH = height(root->right, diameter);
-        diameter = max(diameter, lH+rH);
+        diameter = max(diameter, lH+rH);         // diameter kya hoga? har instance pe leftHeight + rightHeight mein maximum
         
         return 1+max(lH, rH);  // lH akela calculate karne mein bhi toh 1+ karna hi padta hai ie chahe left height nikalna ho ya right height
     }
-    
 };
+
+
 
