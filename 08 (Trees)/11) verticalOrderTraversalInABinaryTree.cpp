@@ -5,6 +5,8 @@ https://youtu.be/q_a6lpbKJdw
 // Coordinates bana k kiya hai tab clearly visualise hoga!! (See above video)
 
 // Using level order traversal(Queue DS), can use other traversal algorithms.
+// As I traverse, on reaching every node I need to assign verticals, levels ie x, y coordinates.
+
 
 // Using verticals and levels.
 

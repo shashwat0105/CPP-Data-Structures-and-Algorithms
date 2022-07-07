@@ -22,15 +22,15 @@ class Solution
         vector<int> ans;
         if(root==NULL) return ans;
         
-        map<int, int> mp;
-        queue<pair<Node*, int>> q;
-        q.push({root, 0});
+        map<int, int> mp;                  // line(vertical), node value
+        queue<pair<Node*, int>> q;         // node, line(vertical   )
+        q.push({root, 0}); 
             
-        while(!q.empty()){
+        while(!q.empty()){                 // isme andar koi for loop use nahi hota hai
             auto it = q.front();           // get the topmost node
-            q.pop();
+            q.pop(); 
             Node *node = it.first;
-            int line = it.second;          // get the vertical line number
+            int line   = it.second;        // get the vertical line number
             if(mp.find(line)==mp.end()){   // if that line doesnt exist in the map
                 mp[line]=node->data;       // ie first time we are visiting so we add it to our map
             }
@@ -43,8 +43,8 @@ class Solution
             }
         }
         
-        for(auto it: mp){
-            ans.push_back(it.second);     // we will iterate in the map and insert the value
+        for(auto iter: mp){
+            ans.push_back(iter.second);     // we will iterate in the map and insert the value
         }
         return ans;
     }
