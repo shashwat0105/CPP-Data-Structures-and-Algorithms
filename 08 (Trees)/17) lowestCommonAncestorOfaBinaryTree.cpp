@@ -9,22 +9,22 @@ Root node, one of the two nodes can also be LCA
 // we will compare the paths and first where they match first is our ans.
 // In this approach they is extra space as we have to store both the paths.
 
-// Optimised:
+// Optimised: (Dry run karke dekh lo samajh aa jaega)
 
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {   // dfsTraversal
         // base case
-        if(root==NULL || root==p || root==q){
+        if(root==NULL || root==p || root==q){                         // if current root == p or root == q ie we found p or q in the tree ar wo return kar denge
             return root;
         }
-        TreeNode *left = lowestCommonAncestor(root->left, p, q);
+        TreeNode *left  = lowestCommonAncestor(root->left, p, q);     // because the return function is TreeNode type
         TreeNode *right = lowestCommonAncestor(root->right, p, q);
         
-        // result
-        if(left==NULL) return right;        // if left is NULL, return right whatever it is, be it NULL too    
+        // (Jab har subtree ki left ar right calls complete ho jaengi tab aage yeh chalega)
+        if(left==NULL)       return right;   // if left is NULL, return right whatever it is, be it NULL too(ie neither p nor q was in that subtree)    
         else if(right==NULL) return left;  
-        else return root;                   // both left and right are not, we found our ans. (ie under this root both p and q lie)
+        else return root;                    // both left and right are not, we found our ans. (ie under this root both p and q lie)
     }
 };
 
