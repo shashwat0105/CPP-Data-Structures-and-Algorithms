@@ -35,7 +35,7 @@ public:
     
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         unordered_map<TreeNode *, TreeNode *> parent_track;
-        markParents(root, parent_track, target);                       // I call this function and my parent map is ready
+        markParents(root, parent_track, target);                       // I call this function and my parent map is ready(Isme target pass karne ki koi jaroorat nahi hai)
         
         unordered_map<TreeNode*, bool> visited;
         queue<TreeNode *> queue;
@@ -88,7 +88,7 @@ public:
 private:
     std::vector<int> ans;   
     std::unordered_map<int, TreeNode*> parent; // son(n->val) => parent.  
-    // Record visited node, store just int val(unique)(given in question).
+    // Record visited node, store just int val(unique)(given in question). So, we can also use a set instead of a map
     std::unordered_set<int> visit;
 
     void findParent(TreeNode* node){
