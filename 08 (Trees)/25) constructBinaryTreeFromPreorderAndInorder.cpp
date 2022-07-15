@@ -40,3 +40,22 @@ public:
 TC = O(NlogN)
 SC = O(N)
 
+// Kushagra Pathak java soln baad mein dekhne k liye (same hi code hai almost)
+class Solution {
+    int idx=0;
+    
+    TreeNode buildTree(int[] preorder,int[] inorder,int start,int end)
+    {
+        if(start>end) return null;
+        TreeNode root=new TreeNode(preorder[idx++]);
+        int i=start;
+        while(inorder[i]!=root.val) i++;
+        
+        root.left=buildTree(preorder,inorder,start,i-1);
+        root.right=buildTree(preorder,inorder,i+1,end);
+        return root;
+    }
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return buildTree(preorder,inorder,0,inorder.length-1);
+    }
+}

@@ -20,7 +20,9 @@ public:
     }
 };
 
-// Iterative
+// Iterative (Important)
+Learn one iterative inorder traversal, apply it to multiple tree questions
+https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
 
 class Solution {
 public:
@@ -72,3 +74,11 @@ public:
         return ans;
     }
 };
+
+
+// Morris Traversal
+https://youtu.be/80Zug6D1_r4
+// Time= O(N)
+// SC = O(1)
+
+// Uses the concept of threaded binary tree

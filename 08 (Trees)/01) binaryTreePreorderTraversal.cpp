@@ -57,6 +57,13 @@ public:
 // O(N) time, O(1) space (WAAH!!)
 // But It also modifies the tree so it is not preferred in 99.99999% of the cases.
 
+// 1 line change from morris traversal of inorder so pehle uska code dekh skte ho
+
+
+
+
+
+
 // N-ary tree pre order traversal
 https://leetcode.com/problems/n-ary-tree-preorder-traversal/
 
