@@ -1,6 +1,6 @@
 // Depth-first search can be conveniently implemented using recursion.
 // Hence used to in applications more in compare to BFS
-// https://youtu.be/rEa4014IxR8 
+// https://youtu.be/9_ftWKch6vI (Can watch from 18:00 to revise)
 
 // 1---2---4       3---5
 //     |   |
@@ -68,3 +68,26 @@ void dfs(int v){                          // takes the argument of current node
     }
 }
 
+// Another general code that can to be used to solve DFS variations
+// Very COOL Stuff
+
+const int N = 1e5+10;
+vector<int> g[N];
+bool vis[N];
+
+// pseudo code
+void dfs(int vertex){
+    // ** Write codepiece here if you want to **
+    // Take action on vetex after entering the vertex.         (1)
+    vis[vertex] = true;                                                    // vertex m enter karne k baad we mark that it is visited
+    for(int child: g[vertex]){
+        // Take action on child before entering the child node (2)
+        cout<<"parent "<<vertex<<", child "<<child<<endl;                  // to print the traversal
+        if(vis[child]) continue;                                           // child mein ghusne se phle we check ki phle visited tha ki nahi
+        dfs(child);
+        // Take action on child after exiting the child node   (3)
+    }
+    // Take action on vertex before exiting the vertex         (4)
+}
+
+// 4 positions where u can write a piece of code depending on the question

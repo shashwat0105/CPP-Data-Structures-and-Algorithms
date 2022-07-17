@@ -52,28 +52,33 @@ int main(){
 
     // taking edges as input
     for(int i=0; i<m; i++){
-        int u, v;
-        cin>>u>>v;
-        adj[u][v] = 1;
-        adj[v][u] = 1;
+        int u, v;                 // if there has been weight then: int u, v, wt 
+        cin>>u>>v;                // cin>>u>>v>>wt
+        adj[u][v] = 1;            // adj[u][v] = wt;
+        adj[v][u] = 1;            // adj[v][u] = wt;
     }
+
+    // Finding that there is an edge between two nodes and what is its weight happens in O(1) time ; Advantage than method 2
+    if(adj[i][j]==1) return true;  // ie connected
+    return adj[i][j];              // fetch me the weight
+
     return 0;
 }
-
 // Space = n*n
 // Disadvantage of this method is that cannot be used for larger n like 10^5 size 2D array (will take approx 40GB space, while CF, SPOJ allows only 1.5GB )
 
 
+
 // Method 2: Adjacency list
-// vector<int> adj[6]        // adjacency list can be stored using vector in C++ (Each index is a vector itself so you can add elements to it ) & array list in JAVA
+// vector<int> adj[6]             // adjacency list can be stored using vector in C++ (Each index is a vector itself so you can add elements to it ) & array list in JAVA; This creates 6 adjacency lists ie 6 vectors
 // 0 
-// 1 (2, 5, 3)  // these denotes the edge 1-2, 1-5, 1-3 and so on
+// 1 (2, 5, 3)                    // these denotes the edge 1-2, 1-5, 1-3 and so on
 // 2 (1, 3, 4)
 // 3 (1, 5, 2, 4)
 // 4 (2, 3)
 // 5 (1, 3)
 
-// Space Complexity = O(N + 2E) // n = no of nodes, E = no of edges
+// Space Complexity = O(N + 2E)   // n = no of nodes, E = no of edges
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -94,12 +99,19 @@ int main(){
         adj[u].push_back(v);      // adj[u].push_back({v, wt}); // difference if its a weighted graph
         adj[v].push_back(u);      // we wont write this if the graph is a directed one
     }
+    
+    // Finding that there is an edge between two nodes and what is its weight happens in O(N) time ; Disadvantage than method 1
+    for(int child: adj[i]){              // pair<int, int> child : adj[i]   // in case of weight // or auto
+        if(child==j) return connected;   // child.first==j
+        child.second                     // will be weight if there is weight
+    }   
     return 0;
 }
 
 
 
-// CONNECTED COMPONENTS IN A GRAPH
+// CONNECTED COMPONENTS IN A GRAPH (One component is connected means from every node you can reach every other node)
+// Example of Undirected graph (No strong word is used)
 
 // 1---3            2---9         5---7
 //     |                              |
@@ -116,3 +128,15 @@ for(int i=0; i<=10; i++){         // for every node is called coz a graph can ha
     }
 }
 
+// In case of directed graph;
+// There has to be path from every node to every other node: then it is called strongly connected component.
+
+// Alogithms
+// Aani hi Chahiye
+// Dijasktra
+// Bellmanford
+// Advanced Algos and topics
+// Disjoint set union         :  Good and Simple questions bante hai iske
+// Minimum Spanning Tree      : Theory wise is important, implementation wise kam puchte hai
+// Directed Acyclic Graph (DAG)
+// Topological Sort
