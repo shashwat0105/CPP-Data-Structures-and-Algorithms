@@ -1,3 +1,5 @@
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+
 // 1---3           2---5---6
 //     |               |   |
 //     4               8---7
@@ -5,7 +7,7 @@
 
 // dfs:- 5->6->7->8->5 (hence cycle)
 
-//adj list
+//adj list = {{3}, {5}, {1,4}, {3}, {2,6,8}, {5,7}, {6,8}, {7,5}}
 // 1 - 3
 // 2 - 5 
 // 3 - 1 4
@@ -27,18 +29,20 @@
 
 // dfs(node, previousnode) calls:- dfs(1,-1)-> dfs(3,1) -> dfs(4,3) return false No adjacent nodes hence no further recursion calls
 // dfs(2, -1) (2 didnt had any prev node) -> dfs(5,2) -> dfs(6,5) -> dfs(7,6) -> dfs(8, this thing 7 is previous node and 5 is already visited) 
-// We aditionally pass parent in the argument.
 // ***** Any adjacent node other than previous node(parent node) is visited already means its a cycle *****
+// Matlab mai vo node pe ja raha hu jo already visited hai ar meri wo previous node bhi nahi hai, hence cycle hai!
+// Hence, We aditionally pass parent in the argument as well.
 
+    
 class Solution{
 public:
-    bool checkForCycle(int node, int parent, vector<int>& vis, vector<int>adj[]){
+    bool checkForCycleDFS(int node, int parent, vector<int>& vis, vector<int>adj[]){
         vis[node]=1;
         for(auto it : adj[node]){
-            if(vis[it] == 0){                                       // if the node is unvisited
-                if(checkForCycle(it, node, vis, adj)) return true;  // parent will be the node which we came from hence parent = node
+            if(vis[it] == 0){                                          // if the node is unvisited
+                if(checkForCycleDFS(it, node, vis, adj)) return true;  // // You make a dfs call to this child and setting the current node as parent, & if it returns true we return true and exit // ie parent will be the node which we came from hence parent = node
             }
-            else if(it!=parent){                                    // it is visited already also it is not equal to parent hence marks the presence of cycle
+            else if(it!=parent){                                       // it is visited already also it is not equal to parent hence marks the presence of cycle
                 return true;
             }
         }
@@ -50,7 +54,7 @@ public:
         vector<int>vis(V+1, 0);
         for(int i = 1; i<=V; i++){
             if(!vis[i]){
-                if(checkForCycle(i, -1, vis, adj))
+                if(checkForCycleDFS(i, -1, vis, adj))                // everytime a new dfs will be called, its parent will be -1
                     return true;
             }
         }
@@ -59,8 +63,7 @@ public:
 };
 
 
-// ALTERNATE CODE
-// https://youtu.be/eCG3T1m7rFY
+// ALTERNATE THOUGHT USING BACK EDGE 
          
 //          1
 //         / 

@@ -140,3 +140,13 @@ for(int i=0; i<=10; i++){         // for every node is called coz a graph can ha
 // Minimum Spanning Tree      : Theory wise is important, implementation wise kam puchte hai
 // Directed Acyclic Graph (DAG)
 // Topological Sort
+
+
+//
+DFS
+BFS
+Cycle Detection and Topological Sort
+Graph Algos on 2D Grid (Weak area currently)
+Bipartite Graph test
+Bridges and Articulation Point
+Strongly Connected Components(SCC)
