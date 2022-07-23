@@ -32,3 +32,71 @@ public:
 // If only one of them is in that subtree, then the result is that one of them. 
 // If neither are in that subtree, the result is null/None/nil.
 
+//*********************8
+// Lowest common ancestor of a general tree(A general tree is basically a graph).
+// Har node ka tree k root se path likh lo, with the help of parent
+// Parent we can store by running a dfs 
+// 1 2 3 4 5 6 7
+// 1 2 3 4 8 9 
+// So, LCA is 4 
+
+// TC = O(N)
+
+#include<bits/stdc++.h>
+using namespace std;
+
+const int n = 1e5+10;
+vector<int> g[N];
+int parent[N];
+
+void dfs(int v, int par=-1){
+    parent[v] = par;
+    for(int child: g[v]){
+        if(child==par) continue;
+        dfs(child, v);
+    }
+}
+
+// We will give a node it will return us the path vector
+// v ek node hogi uske parent pe jaenge fr uske parent pe jaenge...until we get -1
+vector<int> path(int v){
+    vector<int> ans;
+    while(v!=-1){
+        ans.push_back(v);
+        v = par[v];
+    }
+    // we want root first then the node at the last so we reverse
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
+
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        int x, y;
+        cin>>x>>y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+    dfs(1);   // We know that root is 1
+    int u, v; // two nodes whose LCA we want to find
+    vector<int> path_u = path(u);
+    vector<int> path_v = path(v);
+
+    int min_ln = min(path_u.size(), path_v.size());  // The vector which has smaller length I will run loop till there
+
+    int lca = -1;
+    for(int i=0; i<min_ln; i++){
+        if(path_u[i] == path_v[i]){
+            lca = path_u[i];
+        }
+        else break;
+    }
+    cout<<lca<<endl;
+
+    return 0;
+}
+
+// Advanced Algorithm
+// Binary uplifting which finds LCA in O(logn) time. (Can be used in CP but not in interviews)

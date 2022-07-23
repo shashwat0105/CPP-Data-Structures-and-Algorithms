@@ -1,5 +1,8 @@
 // Depth-first search can be conveniently implemented using recursion.
 // Hence used to in applications more in compare to BFS
+// Bfs is used in very specific cases only which I will explain in future videos; rest must of the stuff done using dis can be done using bfs as well; 
+// so mostly you will always use dfs only until and unless any special case arrives where only bfs works..
+
 // https://youtu.be/9_ftWKch6vI (Can watch from 18:00 to revise)
 
 // 1---2---4       3---5
@@ -70,6 +73,7 @@ void dfs(int v){                          // takes the argument of current node
 
 // Another general code that can to be used to solve DFS variations
 // Very COOL Stuff
+// 4 positions where u can write a piece of code depending on the question
 
 const int N = 1e5+10;
 vector<int> g[N];
@@ -90,4 +94,53 @@ void dfs(int vertex){
     // Take action on vertex before exiting the vertex         (4)
 }
 
-// 4 positions where u can write a piece of code depending on the question
+
+// Precompution using DFS
+https://youtu.be/w2oz11KWNQY
+
+// To find sum of elements in a subtree
+// Tree, hence we can avoid using visited, ie simply we can check with parent (DFS in tree)
+// To find number of even numbers in a subtree
+
+
+// Given Q queries, Q <= 10^5
+// In each query given V, Print subtree sum of V and Number of even numbers in subtree of V
+const int N = 1e5+10
+int g[N];
+int subtree_sum[N];              // For every array element we will compute sum of its subtree
+int even_ct[N];
+
+void dfs(int vertex, int par=0){
+    // Take action on vetex after entering the vertex.         (1)
+    subtree_sum[vertex] +=  vertex;                // Adding the vertex value // This can be done before or after the for loop 
+    if(vertex%2==0) even_ct[vertex]++;             // If the vertex is even we increase the count                                      
+    for(int child: g[vertex]){
+        // Take action on child before entering the child node (2)
+        if(child==par) continue;                                           
+        dfs(child);
+        // Take action on child after exiting the child node   (3)
+        subtree_sum[vertex] += subtree_sum[child]; // Qki Upar aate hue sum calculate hoga
+        even_ct[vertex] += even_ct[child];         // Har vertex mein uske child k paas kitne even honge wahi toh add karenge
+    }
+    // Take action on vertex before exiting the vertex         (4)
+}
+
+int main(){
+    int n;
+    cin>>n;
+
+    for(int i=0; i<n-1; ++i){
+        int x, y;
+        cin>>x>>y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+    dfs(1);                        // calling this will precompute both the arrays
+    int q;
+    while(q--){
+        int v;
+        cin>>v;
+        cout<<subtree_sum[v];     // we dont have to run dfs for every query as we have precomputed for every value
+        cout<<even_ct[v];
+    }
+}
