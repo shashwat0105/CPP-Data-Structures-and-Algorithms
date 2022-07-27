@@ -1,7 +1,9 @@
 // BFS is more difficult to implement than DFS.
-// We can calculate the distance from the starting node to all other nodes using breadth-first search
+// We can also calculate the shortest distance from the starting node to all other nodes using breadth-first search
 
 // Algo uses queue data structure
+// queue<int> q;  will be used normally
+// queue<pair<int, int>> q; is used in case of weighted graph and bfs in a 2D grid/matrix.
 
 class Solution{
 public:
@@ -26,7 +28,6 @@ public:
                             vis[it] = 1;             // marking it as visited
                         }
                     }
-
                 }
             }
         }
@@ -35,7 +36,7 @@ public:
 };
 
 
-// MINI CODE
+// CODE for a connected graph
 
 queue<int> q;
 bool visited[N];
@@ -48,9 +49,9 @@ while (!q.empty()) {
     int s = q.front(); q.pop();
     // process node s
     for (auto u : adj[s]) {
-    if (visited[u]) continue;
+        if (visited[u]) continue;
         visited[u] = true;
-        distance[u] = distance[s]+1;
+        distance[u] = distance[s]+1;           // this distance is also level
         q.push(u);
     }
 }
@@ -82,3 +83,22 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
     return bfs; 
 }
 
+//
+At a particular time there are atmost two consecutive levels inside the queue DS in BFS.
+
+// O-1 BFS 
+// The weights of the edges are either 0 or 1
+https://youtu.be/SQOQ99stCas
+
+// If the weight is 0, I want to process it first, hence I put it in front of the queue
+// If the weight is 1, as usual I will put it into the queue back
+
+// Similar Ques
+https://www.codechef.com/problems/REVERSE
+// Refer practice section
+
+
+// Multi Source BFS
+// We run normal bfs after adding all the sources simultaneously.
+
+https://www.codechef.com/SNCKPB17/problems/SNSOCIAL/  (refer practice section)
