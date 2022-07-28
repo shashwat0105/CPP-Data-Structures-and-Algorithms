@@ -1,4 +1,13 @@
 // DIJKSTRA'S ALGORITH
+// Similar to BFS 
+// Instead of queue, we will use a priority queue.
+// The code is for undirected graphs, the same Dijkstra function can be used for directed graphs also.
+
+// In simple BFS agar ek baar visit ho gaya use dobara queue mein nahi dalenge
+// But in dijakstra we can put it again in queue or our DS if we can further reduce the distance.
+
+
+
         2                5
 1-----------------2-------------5
 |                 |             |
@@ -31,8 +40,8 @@ int main(){
     int a,b,wt;
     for(int i=0; i<m; i++){
         cin>>a>>b>>wt;
-        g[a].push_back(make_pair(b,wt));   // storing weighted graphs
-        g[b].push_back(make_pair(a,wt));
+        g[a].push_back({b,wt});   // storing weighted graphs
+        g[b].push_back({a,wt});
     }
 
     cin>>source;
@@ -64,12 +73,11 @@ int main(){
     for(int i=1; i<=n; i++) cout<< dist[i]<<" "<<endl;
 
     return 0;   
-
 }
 
+// Practice Problem
+https://leetcode.com/problems/network-delay-time/
 
-
-
-
+// Priority queue has complex syntax so, we can use multiset or set as well.
 
 
