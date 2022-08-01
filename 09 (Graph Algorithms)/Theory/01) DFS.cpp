@@ -42,7 +42,6 @@ public:
                 dfs(i, vis, adj, res);               // we call the dfs recursive function
             }
         }
-
         return res;
     }
 };
