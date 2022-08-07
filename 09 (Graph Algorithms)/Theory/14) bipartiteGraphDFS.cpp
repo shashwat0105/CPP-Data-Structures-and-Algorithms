@@ -18,7 +18,7 @@ bool bipartiteDfs(int node, vector<int>adj[], int color[]){
     for(auto it : adj[node]){                                // traversing for all its adjacent nodes
         if(color[it] == -1){                                 // if the adjacent node has not been colored
             color[it] = 1 - color[node];                     // color it with exact opposite color
-            if(!bipartiteDfs(it, adf, color)){               // recursively calling dfs, boolean func so will return true or false  
+            if(!bipartiteDfs(it, adj, color)){               // recursively calling dfs, boolean func so will return true or false  
                 return false;                                // any of the call returns false, then it is completely false
             }
         }

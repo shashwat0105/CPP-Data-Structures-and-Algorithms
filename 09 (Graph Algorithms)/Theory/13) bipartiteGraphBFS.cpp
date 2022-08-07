@@ -20,7 +20,7 @@
 //     |   |                      // Yes, Bipartite
 //     B---G
 
-// Hence, If a graph has odd length cycle it is not bipartite, else bipartite
+// Hence, If a graph has odd length cycle it is not bipartite, else if has even length then bipartite
 
 // Code Building
 

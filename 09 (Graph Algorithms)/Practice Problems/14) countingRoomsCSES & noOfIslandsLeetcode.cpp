@@ -1,3 +1,5 @@
+V V V V IMPORTANT QUES AND CONCEPT:
+
 // https://cses.fi/problemset/task/1192
 
 // Mistakes I made:
