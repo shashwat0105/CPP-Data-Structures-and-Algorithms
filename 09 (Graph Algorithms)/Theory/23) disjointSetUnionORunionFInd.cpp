@@ -10,6 +10,7 @@ https://cp-algorithms.com/data_structures/disjoint_set_union.html
 // union() // Join the a, b groups into a single group. Root nodes are joined
 https://youtu.be/zEAmQqOpfzM
 
+// Just the DSU template gets repeated everywhere.
 
 // We assign single parent to every element in a set
 // Say, element a has parent x & element b has parent y -> And x = y then they belong to the same set,
@@ -45,7 +46,7 @@ void Union(int u, int v){   // Capital U as union is a reserved word.
     v = findParent(v);      // replacing v with the root of v
 
     // If rank is not there
-    // if(u!=v) parent[v] = u;   // v ko leke u k neeche attach kar dia
+    // if(u!=v) parent[v] = u;   // v ko leke u k neeche attach kar dia  ; If u==v then there is cycle formed due to joining of this edge.
 
     if(rank[u] < rank[v]){
         parent[u] = v;     // took u and attach it to v
@@ -81,6 +82,9 @@ int main(){
 
 // Finding number of connected components using DSU
 // Counting the number of roots ie find(v) == v count++;
+
+// DSU is also used for cycle detection.
+// If in making a union of two nodes and their parent is same hence there is a cycle!!.
 
 
 // Other practice problems
