@@ -15,6 +15,8 @@
 
 // we use STACK here to output and store the toposort order
 
+// Here it is given that it is a DAG, else we also have to check for a cycle.
+
 class Solution{
     void findTopoSort(int node, vector<int> &vis, stack<int> &st, vector<int>adj[]){   // passing the required parameters
         vis[node] = 1;                            // marking the node as 1 once visited

@@ -150,3 +150,28 @@ Graph Algos on 2D Grid (Weak area currently)
 Bipartite Graph test
 Bridges and Articulation Point
 Strongly Connected Components(SCC)
+
+// Cycle Detection Template using coloring method
+
+bool detectCycle_util(vector<vector<int>> &adj, vector<int> &vis, int node){
+    if(vis[node] == 1) return true;
+    if(vis[node] == 2) return false;
+    
+    vis[node] = 1;  // mark current as visited
+    for(auto child: adj[node]){
+        if(detectCycle_util(adj, vis, child)) return true;
+    }
+    vis[node] = 2;  // mark node as processed
+    return false;
+}
+
+bool detectCycle(vector<vector<int>> &adj, int n){
+    vector<int> vis(n, 0);
+    for(int i=0; i<n; ++i){
+        if(vis[i]==0){
+            if(detectCycle_util(adj, vis, i)) // there can be multiple components
+                return true;
+        }
+    }
+    return false;
+}
