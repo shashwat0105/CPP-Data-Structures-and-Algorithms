@@ -44,7 +44,7 @@ bool bipartiteBfs(int src, vector<int>adj[], int color[]){ // this func is bfs i
         int node = q.front();
         q.pop();
 
-        for(auto it = adj[node]){                // check for its adjacent node
+        for(auto it : adj[node]){                // check for its adjacent node
             if(color[it] == -1){                 // not been colored yet  
                 color[it] = 1-color[node];       // coloring with opposite color to the adjacent node, 1-1=0, 1-1=0
                 q.push(it);                      // once it is colored I push it in my queue data structure
