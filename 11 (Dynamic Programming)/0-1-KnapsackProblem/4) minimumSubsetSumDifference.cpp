@@ -1,5 +1,5 @@
 // https://www.geeksforgeeks.org/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum/
-// Problem Statement arr[] : {1, 2, 7}, To split array into to parts such that absolute(Sum2 - Sum1) = min
+// Problem Statement arr[] : {1, 2, 7}, To split array into two parts such that absolute(Sum2 - Sum1) = min
 // Here Output = 4
 // This problem is most similar to equal sum partition ques where Sum2 - Sum1 = 0, say S2 & S1
 // S1, S2 belongs to [0, sum of all array elements(range)] // We found the extreme values of S1 & S2 ie when subset is empty and completely fill
@@ -28,7 +28,7 @@
 int findMin(int arr[], int n){
     int Range=0;
     for(int i=0; i<n; i++){
-        Range+=arr[i];
+        Range+=arr[i];                             // All the possible sum values lies bw 1-Range
     }
 
     // Subset Sum making bottom up table
@@ -45,7 +45,7 @@ int findMin(int arr[], int n){
     for(int i=1;i<=n;i++){
         for(int j=1;j<=Range; j++){
             if(arr[i-1] <= j){
-                t[i][j] = t[i-1][j-arr[i-1]] || t[i-1][j];
+                t[i][j] = t[i-1][j-arr[i-1]] || t[i-1][j];         // Or means to chose if a particular sum is possible or not.
             }
             else{
                 t[i][j] = t[i-1][j];
@@ -58,7 +58,7 @@ int findMin(int arr[], int n){
 
     for(int j = Range/2; j>=0; j--){
         if(t[n][j]==true){
-            diff=Range-2*j;
+            diff=Range-2*j;                      // one sum is j(here 3), other sum is Range - j(here 7),, Hence, diff = Sum - j - j = 4(here).
             break;                               // no need to check on other T values
         }
     }

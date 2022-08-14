@@ -8,7 +8,7 @@
             Then if the recursion is calling one function it is not DP, if it is calling 2 function then yes, it can be DP
 2. Optimality - Max, Min, Largest etc
 
-// DONT MAKE TABLE IN THE START ONLY(WHICH IS CALLED TOP DOWN APPROACH) :- WRONG APPROACH(COZ U WILL DEFINITELY MAKE A MISTAKE IN MAKING IT)
+// DONT MAKE TABLE IN THE START ONLY(WHICH IS CALLED BOTTOM UP APPROACH) :- WRONG APPROACH(COZ U WILL DEFINITELY MAKE A MISTAKE IN MAKING IT)
 Steps to solve:-
 Recursive -> Memoize -> Top down(if u want)
 Just write the recursive function first.
@@ -37,4 +37,18 @@ And third, simply cache it. (memoisation) [This step changes the TC from 2^n to 
 // In knapsacks(0/1 or unbounded) the topmost and left most are initialise both with all 0 so do it in double for loop together
 
 // But in in their variations like subset sum or rod cutting or any other I do it by seperate for loops(no relation with i or j) coz different values are to be initialised.
+
+// Types of problems you can solve with DP
+// 1) Optimisation (min, max, shortest)
+// 2) Counting     (Count the number of ways)
+
+// Space Optimisation in Dynamic programming:
+// Generally while making the matrix, we may just require 2 rows or 2 columns or something like that.
+// So, we do % operation to optimise the space.
+// https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/ 
+// Refer Method 2 Tabulation is further space optimised by using just two rows : i%2
+
+// General DP Leetcode discuss links
+https://leetcode.com/problems/target-sum/discuss/455024/DP-IS-EASY!-5-Steps-to-Think-Through-DP-Questions.
+https://leetcode.com/problems/form-largest-integer-with-digits-that-add-up-to-target/discuss/654490/dp-is-easy-5-step-dp-thinking-process-explained
 

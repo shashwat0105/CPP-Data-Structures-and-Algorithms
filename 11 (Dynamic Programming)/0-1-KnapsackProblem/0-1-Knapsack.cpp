@@ -12,7 +12,7 @@
 // 1) Base condtion:- Think of the smallest valid input(smallest & valid)
 // 2) Choice Diagram:- W1 -> i) W1 <= W -> Include or Not Include ii) W1 > W -> Not Include(ie item is heavier than bag capacity)
 // We will write if else for these "three" include, not include conditions 
-// We check for the last array element ie n-1 whether to include it or not first and then move towards   the front
+// We check for the last array element ie n-1 whether to include it or not first and then move towards the front
 
 // Knapsack problems has only 1 array, just that it has 2 properties. 
 // Whenever recursive function is called it is called with smaller input:- n-> n-1> n-2 otherwise it will never end
@@ -30,7 +30,7 @@ int knapsack(int wt[], int val[], int W, int n){
     if(wt[n-1]<=W){
         return max(val[n-1]+ knapsack(wt, val, W-wt[n-1], n-1), knapsack(wt, val, W, n-1)); // Left part is when n-1 is included, Right part is when not included
     }
-    else if(wt[n-1>W]){
+    else if(wt[n-1]>W]){
         return(knapsack(wt, val, W, n-1));
     }
 }
@@ -55,7 +55,7 @@ int main()
 // memset(t, -1, sizeof(t))
 // Before calling recursive function we will check if in any cell there is any value if yes(-1 not present) then no need to call recursive fn, if no(ie -1 is present) then recursive fn is called
 
-// fun1 -> fun2 -> fun3 -> fun4... , this is NOT DP 
+// fun1 -> fun2 -> fun3 -> fun4... , this is NOT DP (as function will not get repeated coz everytime it will get smaller only).
 // Below is DP, coz one function calls 2 functions.
 // say given constraints n<=100, W<=1000 we can make a static matrix too by taking slighly bigger value than constraints
 //                         K(3,2)
@@ -98,6 +98,7 @@ int knapsack(int wt[], int val[], int W, int n){
     else if(wt[n-1>W]){
         return t[n][W] = (knapsack(wt, val, W, n-1));
     }
+    return -1;                                                                                       // Refer to bottom GFG passed code, so see a slight change. ie upar return na karna chaho toh last mein return t[n][W] bhi kar skte
 }
      
 int main()
@@ -129,7 +130,7 @@ int knapSack(int wt[], int val[], int W, int n)
     int t[n + 1][W + 1];
  
     // Build table K[][] in bottom up manner
-    for(int i = 0; i <= n; i++)
+    for(int i = 0; i <= n; i++)                // Note the loop is running from 0 to n(included)
     {
         for(int j = 0; j <= W; j++)
         {
@@ -160,14 +161,15 @@ int main()
     return 0;
 }
 
+// the code above is after replacing n with i and W with j.
 // if(wt[n-1]<=W){
 //     t[n][W] = max(val[n-1]+ t[n-1][W-wt[n-1]], t[n-1][W]);  // basically with the help of smaller sub problems(already solved before) solving the bigger problem
 // }
 // else{
 //     t[n][W] = t[n-1][W];
 // }
-// the code above is after replacing n with i and W with j.
 
+// You can notice that for nth row we only require n-1 th row, ie we can optimise the space.
 
 // Identification of knapsack problem?
 // Above ques can also be said as single item array which has 2 properties weight & value.
@@ -176,6 +178,44 @@ int main()
 
 // Some points:-
 // For ex You want to find fibonnaci of 5
-// Memoisation or top down : Will find by fib 4, fib 3, then fib 2, then fib 1, then fib 0 ( Only finds those values which are required )
+// Memoisation or top down : Will find by fib 4, fib 3, then fib 2, then fib 1, then fib 0 ( "Only finds those values which are required" )
 // Tabulation or bottom approach will find :- fib 0 then fib 1 then fib 2 then fib 3 then fib 4 then fib 5 (Fills complete table by finding each and every value)
 // 
+
+********************************
+// Memoisation solution that passes in GFG:
+int solveKs(int W, int wt[], int val[], int n, vector<vector<int>> &dp){
+    if(n==0 || W==0) return 0;
+    
+    if(dp[n][W]!= -1) return dp[n][W];   // lookup
+    
+    if(wt[n-1]<=W){
+        dp[n][W] = max(solveKs(W, wt, val, n-1, dp) , val[n-1] + solveKs(W-wt[n-1], wt, val, n-1, dp));
+    }
+    else if(wt[n-1]>W){
+        dp[n][W] = solveKs(W, wt, val, n-1, dp);
+    }
+    return dp[n][W];
+}
+
+int knapSack(int W, int wt[], int val[], int n) {  
+    vector<vector<int>> dp(n+1, vector<int>(W+1, -1));
+    return solveKs(W, wt, val, n, dp);
+}
+
+
+********************************
+// Space Optimised using two rows.
+
+********************************
+// Most Space Optimised O-1 Knapsack solution (WOW):
+ int knapSack(int W, int wt[], int val[], int n) {  
+    vector<int> dp(W+1,0);
+    for(int i=0;i<n;i++){
+        for(int j=W;j>=wt[i];j--){
+            dp[j]=max(dp[j], dp[j-wt[i]]+val[i]);
+        }
+    }
+    return dp[W];
+}
+
