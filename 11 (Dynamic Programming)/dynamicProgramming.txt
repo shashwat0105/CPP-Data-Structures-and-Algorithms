@@ -1,3 +1,7 @@
+A GEM jise poora karna hai:
+https://leetcode.com/discuss/general-discussion/665604/Important-and-Useful-links-from-all-over-the-Leetcode
+
+
 // "THOSE WHO CANNOT REMEMBER THE PAST ARE CONDEMNED TO REPEAT IT" ~ DP
 
 // High package companies ask this topic
@@ -10,6 +14,7 @@
 
 // DONT MAKE TABLE IN THE START ONLY(WHICH IS CALLED BOTTOM UP APPROACH) :- WRONG APPROACH(COZ U WILL DEFINITELY MAKE A MISTAKE IN MAKING IT)
 Steps to solve:-
+
 Recursive -> Memoize -> Top down(if u want)
 Just write the recursive function first.
 
@@ -47,6 +52,56 @@ And third, simply cache it. (memoisation) [This step changes the TC from 2^n to 
 // So, we do % operation to optimise the space.
 // https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/ 
 // Refer Method 2 Tabulation is further space optimised by using just two rows : i%2
+
+// In Memoisation:
+// How to Pass t or dp matrix:
+
+Way 1:
+Globally declaring:
+
+Using 2D array
+
+int t[1001][1001];
+int solve(..., )
+int main(){
+    memset(t, -1, sizeof(t));
+    solve();
+}
+
+Using 2D vector
+
+vector<vector<int>>dp;
+int solve(..., )
+int main(){
+    dp.resize(n+1,vector<int>(m+1,-1));
+    solve();
+}
+
+
+Way 2:
+Declaring inside main:
+
+Using 2D array
+
+int solve(..., t[][1001]){}
+int main(){
+    int t[1001][1001];
+    for(int i=0; i<1001; ++i){
+        for(int j=0; j<1001; ++j){
+            t[i][j] = -1;
+        }
+    }
+    solve(...., t);
+}
+
+Using 2D vector
+
+int solve(..., vector<vector<int>> &dp){}
+int main(){
+    vector<vector<int>> dp(n+1, vector<int>(m,-1));
+    solve(...., dp);
+}
+
 
 // General DP Leetcode discuss links
 https://leetcode.com/problems/target-sum/discuss/455024/DP-IS-EASY!-5-Steps-to-Think-Through-DP-Questions.

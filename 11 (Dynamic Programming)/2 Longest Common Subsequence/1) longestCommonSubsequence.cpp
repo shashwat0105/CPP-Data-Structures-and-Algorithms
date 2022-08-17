@@ -1,7 +1,7 @@
 // substring != subsequence 
 // https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
 // A subsequence is a sequence that appears in the same relative order, but not necessarily contiguous. But a substring needs to be continuos. 
-// Problem Statement:- x = abcdgh (length = m), y = abedfghr (length = n) :- Longest common subsequence is abcd -> length = 4 Ans, whereas longest common substring is ab -> length = 2
+// Problem Statement:- x = abcdgh (length = m), y = abedfghr (length = n) :- Longest common subsequence is abdgh -> length = 4 Ans, whereas longest common substring is ab -> length = 2
 // While writing recursive solution 3 things to be taken care of :- (i) Base condition (ii) Choice Diagram (iii) Making Input -> Smaller
 
 // Base condition :- Smallest valid input, here input are the two strings hence smallest valid length of string is 0 ie empty string.
@@ -30,8 +30,8 @@ int LCS(string x, string y, int m, int n){
 // Hence  table t[m+1][n+1] is made of index 0 to m & 0 to n
 
 int t[1001][1001];
-
-int LCS(string x, string y, int m, int n){
+ 
+int LCS(string &x, string &y, int m, int n){    // IMPORTANT TO PASS BY REFERENCE (Even though its value is not Changing)
     // base condition
     if(m==0 || n==0){
         return 0;
@@ -39,7 +39,6 @@ int LCS(string x, string y, int m, int n){
     if(t[m][n]!= -1){
         return t[m][n];
     }
-
 
     // choice diagram
     if(x[m-1] == y[n-1]){   // ie last element is common
@@ -76,25 +75,94 @@ int main(){
 // Ex subproblem(sp) :- m = 2 & n = 4 ie x = ab, y = abcd -> LCS = 2 will be stored there
 // Ans = t[m][n]
 
-int LCS(string x, string y, int m, int n){
+int LCS(string x, string y, int m, int n){          // Approach works for LC too.
 
     int t[m+1][n+1];
 
-    for (int i = 0; i < m+1; i++){
-        for (int j = 0; j < n; j++){
-            // base condition(Initialisation)
-            if(i==0 || j==0){
-                t[i][j] = 0;
-            }
+    // base condition(Initialisation)
+    for(int i=0; i<=m; ++i) t[i][0] = 0;
+    for(int j=0; j<=n; ++j) t[0][j] = 0;
 
+    for (int i = 1; i <= m; i++){
+        for (int j = 1; j <= n; j++){
             // choice diagram
-            if(x[i-1] == y[j-1]){   // ie last element is common
-                t[i][j] = 1 + t[i-1][j-1];  // (qki yahi toh chahiye hai for count of LCS) & size of both strings are reduced by 1
+            if(x[i-1] == y[j-1]){                     // ie last element is common
+                t[i][j] = 1 + t[i-1][j-1];            // (qki yahi toh chahiye hai for count of LCS) & size of both strings are reduced by 1
             }
             else
                 t[i][j] = max(t[i][j-1], t[i-1][j]);  // reducing size of strings one at a time
             }
     }
-
     return t[m][n];
 }
+
+**************************************************
+LEETCODE
+https://leetcode.com/problems/longest-common-subsequence/
+
+// Memoised
+// NOTE:
+// When we pass it as (string a, string b) ie by value then, in every recursive call the string value will be copied again and again in the memory stack 
+// but passing it as (string &a, string &b) ie by reference will just pass address which will point to the address of the particular value or string.
+
+class Solution {
+public:
+    int LCS(string &x, string &y, int n, int m, int t[][1001]){
+        if(n==0 || m ==0){
+            return 0;
+        }
+        if(t[n][m]!= -1){
+            return t[n][m];
+        }
+        
+        if(x[n-1] == y[m-1]){
+            return t[n][m] = 1 + LCS(x, y, n-1, m-1, t);
+        }
+        else{
+            return t[n][m] = max(LCS(x, y, n-1, m, t), LCS(x, y, n, m-1, t));
+        }
+    }
+    
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+        
+        int t[1001][1001];
+        for(int i=0; i<1001; ++i){
+            for(int j=0; j<1001; ++j){
+                t[i][j] = -1;
+            }
+        }
+        return LCS(text1, text2, n, m, t);
+    }
+};
+
+// Here, we traversed the string from the back:
+// Start from the begining and base case here is reaching the end of any of the strings in the recursion
+// If you start from the end then base case would be reaching the start of any of the strings.
+// For most of the Dp-string questions, we can solve by taking the pointers from start or end but the only difference is the base cases.
+
+// Code if started from beginning of the string:
+class Solution {
+public:
+    vector<vector<int>>dp;
+    
+    int longestCommonSubsequence(string text1, string text2) {
+        int n=text1.length(),m=text2.length();
+        dp.resize(n+1,vector<int>(m+1,-1));
+        return backtrack(text1,text2,0,0);
+    }
+    
+    int backtrack(string &str1,string &str2,int i,int j){
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        if(i==str1.length() || j==str2.length()) return 0;
+        
+        if(str1[i]==str2[j])
+            return dp[i][j]= 1+backtrack(str1,str2,i+1,j+1);
+        else
+            return dp[i][j]= max(backtrack(str1,str2,i+1,j),backtrack(str1,str2,i,j+1));
+    }
+};
+
+// SPACE OPTIMISED SOLUTION
