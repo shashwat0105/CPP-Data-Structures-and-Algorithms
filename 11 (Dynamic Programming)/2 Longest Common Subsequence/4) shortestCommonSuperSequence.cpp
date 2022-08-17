@@ -17,4 +17,54 @@
 // Hence, Worst case length = m + n
 // Best case(length of shortest supersequence) = (m+n) - LCS   // Ans
 
-return m+n -LCS(x, y, m, n);
+return m+n - LCS(x, y, m, n);
+
+// Hence, the code will look like:
+int LCS(string x, string y, int m, int n){
+    int t[101][101];
+    
+    for(int i=0; i<=m; ++i) t[i][0] = 0;
+    for(int j=0; j<=n; ++j) t[0][j] = 0;
+    
+    for(int i=1; i<=m; ++i){
+        for(int j=1; j<=n; ++j){
+            if(x[i-1] == y[j-1]){
+                t[i][j] = 1+ t[i-1][j-1];
+            }
+            else{
+                t[i][j] = max(t[i-1][j], t[i][j-1]);
+            }
+        }
+    }
+    return t[m][n];
+}
+    
+int shortestCommonSupersequence(string x, string y, int m, int n){
+    //code here
+    return m+n-LCS(x, y, m, n);
+}
+
+
+// Method 2:
+// Yet to understand (Refer Yt or GFG explanation)
+int shortestCommonSupersequence(string x, string y, int n, int m){
+    // dp[i][j] -> length of common shortest subsequnce from x till i 
+    // and from y till j
+    vector<vector<int>>dp(n+1,vector<int>(m+1,0));
+    for(int i=0;i<=m;i++){
+        dp[0][i]=i;
+    }
+    for(int i=0;i<=n;i++){
+        dp[i][0]=i;
+    }
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            if(x[i-1]==y[j-1])dp[i][j]=1+dp[i-1][j-1];
+            else{
+                dp[i][j]=1+min(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+    }
+    return dp[n][m];
+}
+

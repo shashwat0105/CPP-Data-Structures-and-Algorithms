@@ -1,6 +1,34 @@
+LCS Template:
+
+int LCS(string x, string y){
+    int m = x.size();
+    int n = y.size();
+    int t[1001][1001];
+
+    for(int i=0; i<=m; ++i) t[i][0] = 0;
+    for(int j=0; j<=n; ++j) t[0][j] = 0;
+
+    for(int i=1; i<=m; ++i){
+        for(int j=1; j<=n; ++j){
+            if(x[i-1] == y[j-1]){
+                t[i][j] = 1 + t[i-1][j-1];
+            }
+            else{
+                t[i][j] = max(t[i-1][j], t[i][j-1]);
+            }
+        }
+    }
+    return t[m][n];
+}
+ 
+
+Explanation:
 // substring != subsequence 
 // https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
 // A subsequence is a sequence that appears in the same relative order, but not necessarily contiguous. But a substring needs to be continuos. 
+// Subsequence mein right-bottom corner element return hota hai.
+// Substring mein ek result(max) variable bana k chalte hai wo return hota hai.
+
 // Problem Statement:- x = abcdgh (length = m), y = abedfghr (length = n) :- Longest common subsequence is abdgh -> length = 4 Ans, whereas longest common substring is ab -> length = 2
 // While writing recursive solution 3 things to be taken care of :- (i) Base condition (ii) Choice Diagram (iii) Making Input -> Smaller
 

@@ -1,4 +1,6 @@
-// https://www.geeksforgeeks.org/print-shortest-common-supersequence/
+https://leetcode.com/problems/shortest-common-supersequence/   // Here I have to print the supersequence as well!!
+https://www.geeksforgeeks.org/shortest-possible-combination-two-strings/    (Contains two methods)
+https://www.geeksforgeeks.org/print-shortest-common-supersequence/          (Contains one method)
 
 // Given two strings X and Y, print the shortest string that has both X and Y as subsequences. 
 // If multiple shortest supersequence exists, print any one of them.
@@ -60,6 +62,7 @@ while(i>0){
 
 while(j>0){
     s.push_back(y[j-1]);
+    j--;
 }
 
 reverse(s.begin(), s.end());
