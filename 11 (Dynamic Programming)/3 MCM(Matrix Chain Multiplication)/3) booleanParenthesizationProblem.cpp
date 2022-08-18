@@ -1,5 +1,7 @@
 // https://www.geeksforgeeks.org/boolean-parenthesization-problem-dp-37/
 
+https://leetcode.com/discuss/general-discussion/1279635/boolean-parenthesization-easy-c
+
 Evaluate Expression To True-Boolean Parenthesization Recursion
 Given a boolean expression with following symbols.
 Symbols

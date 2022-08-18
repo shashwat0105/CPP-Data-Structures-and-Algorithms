@@ -54,6 +54,7 @@ And third, simply cache it. (memoisation) [This step changes the TC from 2^n to 
 // Refer Method 2 Tabulation is further space optimised by using just two rows : i%2
 
 // In Memoisation:
+// Memoization is keeping a memo of expensive func calls in memory that are reused.
 // How to Pass t or dp matrix:
 
 Way 1:
@@ -104,6 +105,7 @@ int main(){
 
 
 // General DP Leetcode discuss links
-https://leetcode.com/problems/target-sum/discuss/455024/DP-IS-EASY!-5-Steps-to-Think-Through-DP-Questions.
+https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns
+    
 https://leetcode.com/problems/form-largest-integer-with-digits-that-add-up-to-target/discuss/654490/dp-is-easy-5-step-dp-thinking-process-explained
 

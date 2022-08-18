@@ -2,6 +2,8 @@ https://leetcode.com/problems/palindrome-partitioning/
 
 https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/
 
+// Method 1: Using Dynamic programming: 
+
 // Given a string, a partitioning of the string is a palindrome partitioning if every substring of the partition is a palindrome. 
 // Example:
 //   “aba|b|bbabb|a|b|aba” is a palindrome partitioning of “ababbbabbababa”.
@@ -49,9 +51,9 @@ int solve(string s, int i, int j){
         int tempans = solve(s, i, k) + solve(s, k+1, j) + 1; // Here C1 = no of partition in left, C2 is no of partition in right, C3 is "1" partiton b/w left and right 
 
         //ans = min(ans, temp);
-    if(temp<mn){
-        mn = temp;
-    }
+        if(temp<mn){
+            mn = temp;
+        }
     }
     return mn;
 }
@@ -62,11 +64,11 @@ int solve(string s, int i, int j){
 // Variables which are changing are i & j
 // 0 < s < 1000 given in ques
 
-int static t[1001][1001];  // using static, no need to pass 't' inside functions (verify this)
+int static t[1001][1001];               // using static, no need to pass 't' inside functions (verify this)
 
 int solve(string s, int i, int j){
     if(i>=j){
-        return 0; // Either the string is empty or has 1 character only then no need of partition.(already palindrome)
+        return 0;                       // Either the string is empty or has 1 character only then no need of partition.(already palindrome)
     }
     if(isPalindrome(s, i, j) == True){
         return 0;
@@ -77,13 +79,13 @@ int solve(string s, int i, int j){
     }
 
     int mn = INT_MAX;
-    for(k=i; k<=j-1; k++){  // yaha har ek position pe partition krna hai so k++, somewhere it may be k+2 when needed
+    for(k=i; k<=j-1; k++){                                   // yaha har ek position pe partition krna hai so k++, somewhere it may be k+2 when needed
         int tempans = solve(s, i, k) + solve(s, k+1, j) + 1; // Here C1 = no of partition in left, C2 is no of partition in right, C3 is "1" partiton b/w left and right 
 
         //ans = min(ans, temp); Verify this!
-    if(temp<mn){
-        mn = temp;
-    }
+        if(temp<mn){
+            mn = temp;
+        }
     }
     return t[i][j] = mn;  // return as well as storing in table
 }
@@ -107,11 +109,11 @@ int main(){
 // In above case subprblem i to j is solved or not beforehand is checked
 // In optimisation it may be possible that subprblem left(i to k) or right(k+1 to j) may be solved beforehand
 
-int static t[1001][1001];  // using static, no need to pass 't' inside functions (verify this)
+int static t[1001][1001];              // using static, no need to pass 't' inside functions (verify this)
 
 int solve(string s, int i, int j){
     if(i>=j){
-        return 0; // Either the string is empty or has 1 character only then no need of partition.(already palindrome)
+        return 0;                      // Either the string is empty or has 1 character only then no need of partition.(already palindrome)
     }
     if(isPalindrome(s, i, j) == True){
         return 0;
@@ -125,10 +127,10 @@ int solve(string s, int i, int j){
     for(k=i; k<=j-1; k++){  
         // Instead of this line write below lines:- int tempans = solve(s, i, k) + solve(s, k+1, j) + 1; 
         if(t[i][k] != -1){
-            int left = t[i][k];  // we got the value from before solved 
+            int left = t[i][k];       // we got the value from before solved 
         }
         else
-            left = solve(s, i, k); // we didn;t get the value we call the solve fn to solve it and give to left and store in table as well
+            left = solve(s, i, k);    // we didn;t get the value we call the solve fn to solve it and give to left and store in table as well
             t[i][j] = left;
         
         if(t[k+1][j]!=-1){
@@ -145,7 +147,7 @@ int solve(string s, int i, int j){
         mn = temp;
     }
     }
-    return t[i][j] = mn;  // return as well as storing in table
+    return t[i][j] = mn;            // return as well as storing in table
 }
 
 int main(){

@@ -1,3 +1,4 @@
+// HARD Difficulty level topic.
 // NUTANIX always asks ques based on variation of MCM, read interview experiences, base pay 22 LPA
 // We will learn memoisation/top down of MCM (bottom up doesn't has benefits)
 
@@ -18,7 +19,7 @@
 // (ii) Think of 1st invalid input (here this helps more in MCM)
 
 // i == j (One element in the array, makes sense)
-// i>j (invalid input)
+// i > j (invalid input)
 
 // FORMAT SKELETON
 int solve(int arr[], int i, int j){
@@ -76,13 +77,13 @@ int solve(int arr[], int i, int j){
 // Two schemes of writing for loops(chose any)
 // (i) k = i to k = j-1 -> i to k & k+1 to j   (Preferred)
 // (ii) k = i to k = j  -> i to k-1 & k to j
-
+ 
 int solve(int arr[], int i, int j){
     // Step 1: Find i & j values  (i = 1 & j = n-1)
     // Step 2: Find right base condition
     // Base condition
-    // Previously it was i>j, but even i == j valid? No, coz it will mean the array contains only 1 element which is also not valid. Because arr[i-1]*arr[i], we want atleast 2 elements in the array to define size of a matrix. 
-    if(i>=0){
+    // Previously it was i>j, but even i == j is invalid. Coz it will mean the array contains only 1 element which is also not valid. Because arr[i-1]*arr[i], we want atleast 2 elements in the array to define size of a matrix. 
+    if(i>=j){
         return 0;
     }
     int mn = INT_MAX;
@@ -105,39 +106,27 @@ int main(){
 }
 
 
-// Can try this ques later based on MCM :- https://leetcode.com/problems/burst-balloons/
-
 // MEMOIZATION OR TOP DOWN METHOD
 // Changing variables are i & j
 
 // size of matrix n, say constraints given n<1000
 
-int static t[1001][1001];
+// (Works in GFG)
 
-int solve(int arr[], int i, int j){
-    if(i>=0){
-        return 0;
-    }
-    if(t[i][j]!= -1){
-        return t[i][j];
-    }
-    int mn = INT_MAX;
+int solve(int arr[], int i, int j, vector<vector<int>> & dp){
+    if(i>=j) return 0;
+    if(dp[i][j]!= -1) return dp[i][j];
     
-    for(int k = i; k<=j-1; k++){
-        int tempans = solve(arr, i, k) + solve(arr, k+1, j) + arr[i-1]*arr[k]*arr[j];  
-
-        if(tempans < mn){
-            mn = tempans;
-        }
+    int minVal = INT_MAX;
+    for(int k=i; k<j; ++k){
+        int tempAns = solve(arr, i, k, dp) + solve(arr, k+1, j, dp) + arr[i-1]*arr[k]*arr[j];
+        minVal = min(tempAns, minVal);
     }
-    return t[i][j] = mn;
+    return dp[i][j] = minVal;                    // minVal is assigned to dp[i][j] and either of them is returned.
 }
 
-int main(){
-    memset(t, -1, sizeof(t));
-    solve(arr, 1, size-1);
+int matrixMultiplication(int N, int arr[]){
+    // code here
+    vector<vector<int>> dp(N+1, vector<int>(N+1, -1));
+    return solve(arr, 1, N-1, dp);
 }
-
-
-
-
