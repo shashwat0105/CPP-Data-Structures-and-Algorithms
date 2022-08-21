@@ -15,8 +15,7 @@ https://leetcode.com/problems/coin-change-2/            (This is coin change 2 o
 
 int coinChangeI(int coin[], int Sum, int n)                     // if there is long long   // n is the size of coin array.
 {
-
-    int t[n + 1][Sum + 1];                    // Then do, long long int t[n+1][Sum+1];
+    int t[n + 1][Sum + 1];                                      // Then do, long long int t[n+1][Sum+1];
     // base condition (Taken from count of subset sum problem)  // Better in separate loops.
     for(int i=0; i<=n; i++){
         t[i][0]=1;                                              // initilising the leftmost column
@@ -30,7 +29,7 @@ int coinChangeI(int coin[], int Sum, int n)                     // if there is l
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= Sum; j++){
             // choice diagram
-            else if (coin[i - 1] <= j)
+            if (coin[i - 1] <= j)
                 t[i][j] = t[i][j - coin[i - 1]] + t[i - 1][j];  // remove the max, val & insert + in the knapsack code & i-1 -> i when choice is to take the coin unboundedly
             else
                 t[i][j] = t[i - 1][j];
@@ -39,7 +38,8 @@ int coinChangeI(int coin[], int Sum, int n)                     // if there is l
     return t[n][Sum];
 }
 
-// Space optimised Bottom Up
+// Space optimised Bottom Up:
+
 class Solution {
   public:
     long long int count(int coins[], int n, int amount) {
@@ -53,6 +53,7 @@ class Solution {
 };
 
 // Memoised solution:
+
 long long int count_help(int i, int s[], int m, int sum,vector<vector<long long int>>& dp){
     if(i==m) return 0;
     if(sum<0) return 0;
@@ -68,3 +69,5 @@ long long int count(int S[], int m, int sum){
     vector<vector<long long int>>dp(m+1,vector<long long int>(sum+1,-1));
     return count_help(0,S,m,sum,dp);
 }
+
+

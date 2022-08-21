@@ -1,4 +1,11 @@
+All CSES DP Solutions: https://codeforces.com/blog/entry/70018
+
+// CSES has tight test cases so bottom up always works.
+
 https://cses.fi/problemset/task/1633/ 
+
+// Note:
+// In this problem: 1+2 and 2+1 are considered to be different.
 
 // Bottom Up
 
