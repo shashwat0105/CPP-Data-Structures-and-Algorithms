@@ -168,3 +168,13 @@ void pattern2(int n){
         cout<<i<<" ";
     }
 }
+
+
+// A recursive way of thinking
+
+Level:   current where u are
+Choice:  For each level what options do u have to go to the next level
+Check:   Check if the current partial solution is valid as a problem. ie it is in the boundary.
+Move:    If it is a valid choice, evaluate that branch using recursion.
+
+

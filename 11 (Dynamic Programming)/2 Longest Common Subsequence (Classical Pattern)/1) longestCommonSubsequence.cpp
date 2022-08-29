@@ -36,7 +36,8 @@ Explanation:
 // Hence LCS = 0, in base condition 
 
 // Choice Diagram (See the screenshot too)
-// (i) If the last string element matches shortening the string length -> n-1 & m-1  (ii) If the last element does not matches then we take 2 cases in which we shorten the string one at a time ie n-1, m & n, m-1  -> then we take thier max
+// (i) If the last string element matches shortening the string length -> n-1 & m-1  
+// (ii) If the last element does not matches then we take 2 cases in which we shorten the string one at a time ie (n-1, m) & (n, m-1)  -> then we take thier max
 
 int LCS(string x, string y, int m, int n){
     // base condition
@@ -45,7 +46,7 @@ int LCS(string x, string y, int m, int n){
     }
 
     // choice diagram
-    if(x[m-1] == y[n-1]){   // ie last element is common
+    if(x[m-1] == y[n-1]){                // ie last element is common
         return 1 + LCS(x, y, m-1, n-1);  // Instead of value when the elements matches we add 1 (qki yahi toh chahiye hai for count of LCS)
     }
     else

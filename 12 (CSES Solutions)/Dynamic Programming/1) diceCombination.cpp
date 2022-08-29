@@ -20,7 +20,7 @@ int main() {
   dp[0] = 1;
   for (int i = 1; i <= n; i++){
     for (int x = 1; x <= 6 && i-x >= 0; x++){
-        (dp[i] += dp[i-x]) %= mod;                // dp[i] = (dp[i]+dp[i-x])%mod;
+        dp[i] = (dp[i]+dp[i-x])%mod;                 // (dp[i] += dp[i-x]) %= mod;
     }
   }
   cout << dp[n] << endl;

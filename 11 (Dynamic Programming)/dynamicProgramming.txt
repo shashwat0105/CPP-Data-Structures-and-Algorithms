@@ -104,6 +104,9 @@ int main(){
 }
 
 
+// You need not to think about the dp table dimensions and focus on trying to find out what all information do I need to store so I can uniquely define a subproblem.
+
+
 // General DP Leetcode discuss links
 https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns
     

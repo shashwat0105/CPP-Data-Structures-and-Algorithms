@@ -1,5 +1,10 @@
 https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 
+Easy Explanation:
+https://www.youtube.com/watch?v=WR6-DrAsNpc  
+(Yet to watch)
+
+
 Jo iska preorder hai wo linkedlist k form m likhna hai
 
 How is it tough then?
