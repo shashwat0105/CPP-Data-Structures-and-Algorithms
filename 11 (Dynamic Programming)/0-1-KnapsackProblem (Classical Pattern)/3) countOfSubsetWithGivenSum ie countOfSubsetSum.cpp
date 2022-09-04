@@ -24,7 +24,7 @@ int countOfSubsetSum(int arr[], int Sum, int n){
 
     // base condition
     for(int i=0; i<=n; i++){
-        t[i][0]=1;
+        t[i][0]=1;                                       // This is 1 not 0.
     }
     for(int j=1; j<=Sum; j++){
         t[0][j]=0;
