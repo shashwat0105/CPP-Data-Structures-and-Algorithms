@@ -47,3 +47,7 @@ public:
         return a>b;                  // max heap, a<b min heap
     }
 }
+
+// Identification of heap ques:
+// K hoga ques mein
+// Smallest largest etc 

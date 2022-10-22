@@ -1,5 +1,7 @@
 https://cses.fi/problemset/task/2181/
 
+https://youtu.be/lPLhmuWMRag
+
 dp(i, mask) = number of ways to fill the column from ith to mth given that some positions are already filled.
 
 mask = these positions are already filled for this column.
@@ -30,7 +32,7 @@ void init_code(){
     #endif 
 }
  
-void generate_next_masks(int current_mask, int i, int next_mask, int n, vector<int>& next_masks){
+void generate_next_masks(int current_mask, int i, int next_mask, int n, vector<int>& next_masks){  // finds how many next masks can be formed.
       if(i == n + 1){
         next_masks.push_back(next_mask);
         return;
