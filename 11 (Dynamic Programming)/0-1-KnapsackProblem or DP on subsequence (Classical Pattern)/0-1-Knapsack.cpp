@@ -93,7 +93,7 @@ int knapsack(int wt[], int val[], int W, int n){
     
     // choice diagram
     if(wt[n-1]<=W){
-        return t[n][W] = max(val[n-1]+ knapsack(wt, val, W-wt[n-1], n-1), knapsack(wt, val, W, n-1)); 
+        return t[n][W] = max(val[n-1] + knapsack(wt, val, W-wt[n-1], n-1), knapsack(wt, val, W, n-1)); 
     }
     else if(wt[n-1>W]){
         return t[n][W] = (knapsack(wt, val, W, n-1));
@@ -182,30 +182,6 @@ int main()
 // Tabulation or bottom approach will find :- fib 0 then fib 1 then fib 2 then fib 3 then fib 4 then fib 5 (Fills complete table by finding each and every value)
 // 
 
-********************************
-// Memoisation solution that passes in GFG:
-int solveKs(int W, int wt[], int val[], int n, vector<vector<int>> &dp){
-    if(n==0 || W==0) return 0;
-    
-    if(dp[n][W]!= -1) return dp[n][W];   // lookup
-    
-    if(wt[n-1]<=W){
-        dp[n][W] = max(solveKs(W, wt, val, n-1, dp) , val[n-1] + solveKs(W-wt[n-1], wt, val, n-1, dp));
-    }
-    else if(wt[n-1]>W){
-        dp[n][W] = solveKs(W, wt, val, n-1, dp);
-    }
-    return dp[n][W];
-}
-
-int knapSack(int W, int wt[], int val[], int n) {  
-    vector<vector<int>> dp(n+1, vector<int>(W+1, -1));
-    return solveKs(W, wt, val, n, dp);
-}
-
-
-********************************
-// Space Optimised using two rows.
 
 ********************************
 // Most Space Optimised O-1 Knapsack solution (WOW):
@@ -219,3 +195,114 @@ int knapSack(int W, int wt[], int val[], int n) {
     return dp[W];
 }
 
+// **************** Striver ka gyan
+
+1) Express in terms of f(ind, W)
+2) Explore all paths pick and not pick
+3) max of all possible ways.
+
+// Memoised passes GFG
+
+int solve(int ind, int W, int wt[], int val[], vector<vector<int>> &dp){
+    // starting at n-1 so write base case at index = 0. Thief has single element and has W weight left to take.
+    if(ind==0){                     // Base case different tareeke se likha hai, coz isme ind=0 means 1 element is there, above 0 means no element is there.
+        if(wt[0]<=W) return val[0];
+        return 0;                   // in other cases when he cannot steal.
+    }
+    
+    if(dp[ind][W]!= -1) return dp[ind][W];
+    
+    int notTake = 0 + solve(ind-1, W, wt, val, dp);
+    int take = INT_MIN;
+    if(wt[ind]<=W){
+        take = val[ind] + solve(ind-1, W-wt[ind], wt, val, dp);
+    }
+    return dp[ind][W] = max(take, notTake);
+}
+
+int knapSack(int W, int wt[], int val[], int n) { 
+    // Your code here
+    vector<vector<int>> dp(n, vector<int> (W+1, -1));
+    return solve(n-1, W, wt, val, dp);
+}
+
+// Tabulated
+
+int knapSack(int maxW, int wt[], int val[], int n) { 
+    // Your code here
+    vector<vector<int>> dp(n, vector<int> (maxW+1, 0));
+    
+    for(int w= wt[0]; w<=maxW; ++w){  // base case for every w which is less than w
+        dp[0][w] = val[0];
+    }
+    
+    for(int ind=1; ind<n; ++ind){
+        for(int w=0; w<=maxW; ++w){
+            int notTake = 0 + dp[ind-1][w];
+            int take = INT_MIN;
+            if(wt[ind]<=w){
+                take = val[ind] + dp[ind-1][w-wt[ind]];
+            }
+            dp[ind][w] = max(take, notTake);
+        }
+    }
+    return dp[n-1][maxW];
+}
+
+// Space optimised
+
+// 2 rows
+
+int knapSack(int maxW, int wt[], int val[], int n) { 
+    // Your code here
+    vector<int> prev(maxW+1, 0), cur(maxW+1, 0);
+    
+    for(int w= wt[0]; w<=maxW; ++w){  // base case for every w which is less than w
+        prev[w] = val[0];
+    }
+    
+    for(int ind=1; ind<n; ++ind){
+        for(int w=0; w<=maxW; ++w){
+            int notTake = 0 + prev[w];
+            int take = INT_MIN;
+            if(wt[ind]<=w){
+                take = val[ind] + prev[w-wt[ind]];
+            }
+            cur[w] = max(take, notTake);
+        }
+        prev = cur;
+    }
+    return prev[maxW];
+}
+
+// Single row
+
+// Even if we reverse the weight loop voz it just depends on previous row. The ans remains the same
+for(int ind=1; ind<n; ++ind){
+    for(int w=maxW; w>=0; --w){
+        ... // same ans
+
+w-wt[ind] : no need of right elements. ie depends on left elements so cant fill left to right.
+
+// code
+
+int knapSack(int maxW, int wt[], int val[], int n) { 
+    // Your code here
+    vector<int> prev(maxW+1, 0);
+    
+    for(int w= wt[0]; w<=maxW; ++w){  // base case for every w which is less than w
+        prev[w] = val[0];
+    }
+    
+    for(int ind=1; ind<n; ++ind){
+        for(int w=maxW; w>=0; --w){
+            int notTake = 0 + prev[w];
+            int take = INT_MIN;
+            if(wt[ind]<=w){
+                take = val[ind] + prev[w-wt[ind]];
+            }
+            prev[w] = max(take, notTake);
+        }
+    }
+    return prev[maxW];
+}

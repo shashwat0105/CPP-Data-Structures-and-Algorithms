@@ -1,3 +1,5 @@
+// DP on subsequence
+
 // Problem statement arr[] : {1, 1, 2, 3}, Sum = 1, We need to put + or - sign before element of array and get the sum = 1
 // For ex:- +1-1-2+3 = 1 , -1+1-2+3 = 1, +1+1+2-3 = 1, & then count the number of such combos, Here O/P = 3
 // Now:- +1-1-2+3 = (+1+3)-(+1+2) -> Same as difference of sum of 2 subsets.
@@ -137,4 +139,37 @@ public:
 // Method 5: Space optimised
 https://leetcode.com/problems/target-sum/discuss/1174595/99-faster-oror-Using-DP-oror-Formula-explain
 
+// Striver count partition same code works
+
+int solve(vector<int> &num, int tar){
+    int n = num.size();
+    vector<int> prev(tar+1, 0), cur(tar+1, 0);
+    if(num[0]==0) prev[0] = 2;
+    else prev[0] = 1;
+
+    if(num[0]!= 0 && num[0]<=tar) prev[num[0]] = 1;
+    for(int ind = 1; ind<n; ++ind){
+        for(int sum = 0; sum<=tar; ++sum){
+            int notTake = prev[sum];
+            int take = 0;
+            if(num[ind]<=sum) take = prev[sum-num[ind]];
+
+            cur[sum] = take + notTake;
+        }
+        prev = cur;
+    } 
+    return prev[tar];
+}   
+
+int countPartition(int n, int d, vector<int> &arr){
+    int totSum = 0;
+    for(auto &it: arr) totSum += it;
+    if(totSum - d < 0 || (totSum - d)%2) return false;
+    return solve(arr, (totSum-d)/2);
+}
+
+int findTargetSumWays(vector<int>& nums, int target) {
+    int n = nums.size();
+    return countPartition(n, target, nums);
+}
 

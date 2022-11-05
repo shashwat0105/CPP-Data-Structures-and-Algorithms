@@ -99,7 +99,7 @@ Using 2D vector
 
 int solve(..., vector<vector<int>> &dp){}
 int main(){
-    vector<vector<int>> dp(n+1, vector<int>(m,-1));
+    vector<vector<int>> dp(n+1, vector<int>(m,-1));   // If 1D then : vector<int> dp(n+1, -1);
     solve(...., dp);
 }
 

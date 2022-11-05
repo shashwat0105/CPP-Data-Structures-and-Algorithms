@@ -1,3 +1,5 @@
+// DP on subsequence
+
 // https://www.geeksforgeeks.org/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum/
 // Problem Statement arr[] : {1, 2, 7}, To split array into two parts such that absolute(Sum2 - Sum1) = min
 // Here Output = 4
@@ -64,3 +66,49 @@ int findMin(int arr[], int n){
     }
     return diff;
 }
+
+
+// GFG 
+https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+
+int minDifference(int arr[], int n)  { 
+    // Your code goes here
+    int totSum = 0;
+    for(int i=0; i<n; ++i) totSum+= arr[i];
+    int sum = totSum;
+    vector<vector<bool>> dp(n, vector<bool>(sum+1, 0));
+    
+    for(int i=0; i<n; ++i) dp[i][0] = true;
+    if(arr[0]<=sum) dp[0][arr[0]] = true;
+    
+    for(int ind=1; ind<n; ++ind){
+        for(int target=1; target<=sum; ++target){
+            bool notTake = dp[ind-1][target];
+            bool take = false;
+            if(arr[ind]<=target) take = dp[ind-1][target-arr[ind]];
+            dp[ind][target] = take | notTake;
+        }
+    }
+    // DP table is now created : dp[n-1][col->0 to totSum]
+    
+    int mini = 1e9;
+    for(int s1=0; s1<=totSum/2; ++s1){
+        if(dp[n-1][s1]){
+            mini = min(mini, abs(totSum-2*s1));
+        }
+    }
+    return mini;
+} 
+
+
+// We can optimise space as well: dp[n-1][s1] will be prev[s1]  (because last row hi toh chahiye hai    )
+
+
+//
+-ve numbers wala
+
+https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+
+https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/discuss/2721045/BEST-SOLUTION-oror-%22Tabulation%22-Failed-oror-(FULL-EXPLAINATION)-oror-C%2B%2B
+
+https://www.youtube.com/results?search_query=2035.+Partition+Array+Into+Two+Arrays+to+Minimize+Sum+Difference

@@ -78,7 +78,7 @@ public:
     int solve(int amount, vector<int>& coins){
         if(amount==0) return 0;
         
-        int ans = INT_MAX;
+        int ans = INT_MAX;                                              
         for(int coin: coins){
             if(amount-coin>=0){                                        // to avoid handling amount<0 base case
                 ans = min(ans + 0LL, solve(amount-coin, coins)+1LL);   // Long long is used to avoid overflow and, min compares both same data types. 
@@ -123,5 +123,98 @@ public:
 // 1D DP Code: Refer discuss section
 
 
+// Striver ka Gyan:
+1) Express in terms of  f(ind, Target)
+2) Perform all stuffs
+3) return min
 
+Base case for memoised:
+If target is say 12
+arr[0] is 4. 
+If this target is divisible by 4 then only it is possible to make up this target. Else it is not.
 
+Base case for bottom up:
+When the index is 0, the target call could be anything from 0 to T.
+
+// Memoised
+
+int solve(int ind, vector<int>& coins, int amount, vector<vector<int>> &dp){
+    if(ind==0){
+        if(amount%coins[0] == 0){
+            return amount/coins[0];
+        }
+        else return 1e9;  // ie sum is not possible
+    }
+    
+    if(dp[ind][amount]!= -1) return dp[ind][amount];
+    
+    int notTake = solve(ind-1, coins, amount, dp);
+    int take = 1e9;
+    if(coins[ind]<=amount){
+        take = 1 + solve(ind, coins, amount-coins[ind], dp);
+    }
+    return dp[ind][amount] = min(take,notTake);
+}
+
+int coinChange(vector<int>& coins, int amount) {
+    int n = coins.size();
+    vector<vector<int>> dp(n, vector<int>(amount+1, -1));
+    int ans = solve(n-1, coins, amount, dp);
+    if(ans>=1e9) return -1;                           // Important to do else wrong ans
+    else return ans;
+}
+
+// Tabulated
+
+ int coinChange(vector<int>& coins, int amount) {
+    int n = coins.size();
+    vector<vector<int>> dp(n, vector<int>(amount+1, 0));
+    
+    for(int sum=0; sum<=amount; sum++){
+        if(sum%coins[0]==0) dp[0][sum] = sum/coins[0];
+        else dp[0][sum] = 1e9;
+    }
+    
+    for(int ind = 1; ind<n; ++ind){
+        for(int sum=0; sum<=amount; ++sum){
+            int notTake = dp[ind-1][sum];
+            int take = 1e9;
+            if(coins[ind]<=sum){
+                take = 1 + dp[ind][sum-coins[ind]];
+            }
+            dp[ind][sum] = min(take, notTake);
+        }
+    }
+    
+    int ans = dp[n-1][amount];
+    if(ans>=1e9) return -1;
+    else return ans;
+}
+
+// Space optimised
+
+int coinChange(vector<int>& coins, int amount) {
+    int n = coins.size();
+    vector<int> prev(amount+1, 0), cur(amount+1, 0);
+    
+    for(int sum=0; sum<=amount; sum++){
+        if(sum%coins[0]==0) prev[sum] = sum/coins[0];
+        else prev[sum] = 1e9;
+    }
+    
+    for(int ind = 1; ind<n; ++ind){
+        for(int sum=0; sum<=amount; ++sum){
+            int notTake = prev[sum];
+            int take = 1e9;
+            if(coins[ind]<=sum){
+                take = 1 + cur[sum-coins[ind]];   // ind-1 ki jagah ind hai so yeh cur m save hoga
+            }
+            cur[sum] = min(take, notTake);
+        }
+        prev = cur;
+    }
+    
+    int ans = prev[amount];
+    if(ans>=1e9) return -1;
+    else return ans;
+}
