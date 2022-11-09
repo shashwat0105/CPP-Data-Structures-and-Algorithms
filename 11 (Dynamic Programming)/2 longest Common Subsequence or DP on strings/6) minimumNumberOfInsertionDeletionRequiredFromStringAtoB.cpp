@@ -16,8 +16,9 @@
 // Hence, No. of Deletion = m - LCS
 //        No. of Insertion = n - LCS
 // m,n are length of strings.
+// Hence, total operations required will be : m+n - 2*lcs
 
-
+// Intuition? What are the things I cannot touch? ie keep intact ie here LCS
 
 // GFG CODE
 

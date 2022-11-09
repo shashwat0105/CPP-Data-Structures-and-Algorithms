@@ -1,6 +1,8 @@
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 https://www.geeksforgeeks.org/minimum-insertions-to-form-a-palindrome-dp-28/
 
+// Idea is to keep the "longest" palindrome portion of the string intact.
+
 // Similar to min no of deletion ques (give 2 min to think if u have any similar ques before)
 
 // I/P : x  = "aebcbda" 
@@ -8,7 +10,9 @@ https://www.geeksforgeeks.org/minimum-insertions-to-form-a-palindrome-dp-28/
 // In aebcbda , "ed" is disturbing!
 // So, to make a palindrome we can either delete e, d or insert e, d and make it's pair
 
-// Hence, No of insertions = No. of deletions.(LOL) = Length of string - LPS 
+Hence, No of insertions = No. of deletions.(LOL) = Length of string - LPS 
+
+****   
 
 class Solution {
 public:

@@ -195,3 +195,125 @@ public:
 };
 
 // SPACE OPTIMISED SOLUTION
+
+
+// ***************************** STRIVER  ************************
+
+1) Express in terms of (index1, index2)  // A single index won't be able to express both the strings
+2) Explore possibilities on that index
+3) Take the best among them.
+
+f(2, 5) means LCS of string 1 [0...2] and string 2 [0...5]
+
+// previous array problems: pick and notPick
+// Here in string matches or not matches
+
+// If match reduce/shrink both index and return
+// If not match reduce/shrink one by one and take max and return
+
+// Memoised
+
+class Solution {
+public:
+    int solve(int ind1, int ind2, string &text1, string &text2, vector<vector<int>> &dp){
+        if(ind1<0 || ind2<0) return 0;
+
+        if(dp[ind1][ind2]!= -1) return dp[ind1][ind2];
+
+        if(text1[ind1]==text2[ind2]) return dp[ind1][ind2] = 1 + solve(ind1-1, ind2-1, text1, text2, dp);
+
+        return dp[ind1][ind2] = 0 + max(solve(ind1-1, ind2, text1, text2, dp), solve(ind1, ind2-1, text1, text2, dp));
+    }
+
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+
+        vector<vector<int>> dp(n, vector<int> (m, -1));
+        return solve(n-1, m-1, text1, text2, dp);
+    }
+};
+
+// Tabulation to optimise the auxiliary stack space
+
+Steps
+1) Copy the base case (bit tricky thing)
+2) Write the changing parameters in opposite fashion Here ind1 and ind2
+3) Copy the recurence
+
+// We cannot access negative index, so we will do shifting of index. 
+Instead of f(n-1, m-1) call f(n, m)
+
+// Hence you can also modify the memoised code too 
+class Solution {
+public:
+    int solve(int ind1, int ind2, string &text1, string &text2, vector<vector<int>> &dp){
+        if(ind1==0 || ind2==0) return 0;
+
+        if(dp[ind1][ind2]!= -1) return dp[ind1][ind2];
+
+        if(text1[ind1-1]==text2[ind2-1]) return dp[ind1][ind2] = 1 + solve(ind1-1, ind2-1, text1, text2, dp);
+
+        return dp[ind1][ind2] = 0 + max(solve(ind1-1, ind2, text1, text2, dp), solve(ind1, ind2-1, text1, text2, dp));
+    }
+
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+
+        vector<vector<int>> dp(n+1, vector<int> (m+1, -1));
+        return solve(n, m, text1, text2, dp);
+    }
+};
+
+// Base case for tabulation
+i==0 means dp[0][j] i from 0 to n (shifted)
+j==0 means dp[i][0] i from 0 to m (shifted)
+
+//
+class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+
+        vector<vector<int>> dp(n+1, vector<int> (m+1, 0));
+
+        // base case
+        for(int ind1=0; ind1<=n; ++ind1) dp[ind1][0] = 0;  // ind1, ind2 can be taken as i, j
+        for(int ind2=0; ind2<=m; ++ind2) dp[0][ind2] = 0;
+
+        for(int ind1=1; ind1<=n; ++ind1){
+            for(int ind2=1; ind2<=m; ++ind2){
+                if(text1[ind1-1]==text2[ind2-1]) dp[ind1][ind2] = 1 + dp[ind1-1][ind2-1];
+                else dp[ind1][ind2] = 0 + max(dp[ind1-1][ind2], dp[ind1][ind2-1]);  // need to write else, coz all the values need to be filled, in recursion it returned
+            }
+        }
+        return dp[n][m];
+    }
+};
+
+// Space optimised
+// Using two rows.
+
+class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+
+        vector<int> prev(m+1, 0), cur(m+1, 0);
+        
+        // base case
+        for(int ind2=0; ind2<=m; ++ind2) prev[ind2] = 0;                       // only a row is required, no column // for first row everyone is zero
+
+        for(int ind1=1; ind1<=n; ++ind1){
+            for(int ind2=1; ind2<=m; ++ind2){
+                if(text1[ind1-1]==text2[ind2-1]) cur[ind2] = 1 + prev[ind2-1];
+                else cur[ind2] = 0 + max(prev[ind2], cur[ind2-1]);             // need to write else, coz all the values need to be filled, in recursion it returned
+            }
+            prev = cur;
+        }
+        return prev[m];
+    }
+};

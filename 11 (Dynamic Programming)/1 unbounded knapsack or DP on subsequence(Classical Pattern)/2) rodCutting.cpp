@@ -115,7 +115,7 @@ int cutRod(int price[], int n) {   // n is the size of the array as well as the 
 
 // 1 D
 // Same as unbounded
-// Just replace cur by prev ie rewrite simply
+// Just replace cur by prev ie rewrite in the same array simply
 
 int cutRod(int price[], int n) {   // n is the size of the array as well as the target to be made
     //code here
