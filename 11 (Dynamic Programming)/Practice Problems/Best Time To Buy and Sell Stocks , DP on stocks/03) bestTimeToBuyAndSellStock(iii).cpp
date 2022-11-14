@@ -46,3 +46,151 @@ public:
 // TC = O(n*k)
 
 Here k is 2 so its fine but if k is large then there will be a TLE
+
+
+// STRIVER
+
+// From buy and sell 2
+// I add one more state "cap"
+// f(ind, buy, cap){
+//     if(buy)
+
+//     else  // sell
+// }
+
+// If I do sell then I am completing a transaction ie no of transactions left will get reduced by 1
+
+dp[ind][buy][cap] = [n][2][3]
+// cap can be 0 1 or 2
+
+// Memoised 
+
+class Solution {
+public:
+    int solve(int ind, int buy, int cap, vector<int>& prices,  vector<vector<vector<int>>> &dp){
+        int n = prices.size();
+        if(cap==0) return 0; // should be executed first
+        if(ind==n) return 0;
+
+        if(dp[ind][buy][cap]!= -1) return dp[ind][buy][cap];
+
+        int profit = 0;
+        if(buy){
+            profit = max(-prices[ind] + solve(ind+1, 0, cap, prices, dp), 0 + solve(ind+1, 1, cap, prices, dp));
+        }
+        else{
+            profit = max(prices[ind] + solve(ind+1, 1, cap-1, prices, dp), 0 + solve(ind+1, 0, cap, prices, dp));
+        }
+        return dp[ind][buy][cap] = profit;
+    }
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<vector<int>>> dp(n, vector<vector<int>> (2, vector<int>(3, -1)));
+        return solve(0, 1, 2, prices, dp);
+    }
+};
+
+// Tabulated
+// base case
+// when cap is 0, ind and buy can be anything
+// when ind is n, buy and cap can be anything
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<vector<int>>> dp(n+1, vector<vector<int>> (2, vector<int>(3, 0)));
+
+        // first base case // practically writing base case doesn't make any sense coz we are again assigning zero.
+        // for(int ind=0; ind<n; ++ind){
+        //     for(int buy=0; buy<=1; ++buy){
+        //         dp[ind][buy][0] = 0;
+        //     }
+        // }
+        // // second base case
+        // for(int buy = 0; buy<=1; ++buy){
+        //     for(int cap = 0; cap<=2; ++cap){
+        //         dp[n][buy][cap] = 0;
+        //     }
+        // }
+
+        int profit = 0;
+        for(int ind=n-1; ind>=0; --ind){
+            for(int buy = 0; buy<=1; ++buy){
+                for(int cap = 1; cap<=2; ++cap){
+                    if(buy){
+                        profit = max(-prices[ind] + dp[ind+1][0][cap], 0 + dp[ind+1][1][cap]);
+                    }
+                    else{
+                        profit = max(prices[ind] + dp[ind+1][1][cap-1], 0 + dp[ind+1][0][cap]);
+                    }
+                    dp[ind][buy][cap] = profit;
+                }
+            }
+        }
+
+        return dp[0][1][2];
+    }
+};
+
+// Space optimised
+// TC = O(N*2*3)
+// SC = O(1)
+
+[ind+1] needs to be optimized
+
+//
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<int>> after(2, vector<int>(3, 0));
+        vector<vector<int>> cur(2, vector<int>(3, 0));
+
+        int profit = 0;
+        for(int ind=n-1; ind>=0; --ind){
+            for(int buy = 0; buy<=1; ++buy){
+                for(int cap = 1; cap<=2; ++cap){
+                    if(buy){
+                        profit = max(-prices[ind] + after[0][cap], 0 + after[1][cap]);
+                    }
+                    else{
+                        profit = max(prices[ind] + after[1][cap-1], 0 + after[0][cap]);
+                    }
+                    cur[buy][cap] = profit;
+                }
+            }
+            after = cur;
+        }
+
+        return after[1][2];
+    }
+};
+
+// METHOD 2
+// NOT Intuitive 4 variables solution
+
+// Method 3
+// dp[N][4]
+
+// B S B S
+// 0 1 2 3
+  even even
+
+f(ind, transactions){
+    if(ind==n || transactions== 4) return 0;
+
+    if(transactions %2 ==0) // buy : max: -prices[ind] + f(ind+1, trans+1), 0 + f(ind+1, trans)
+    else                    // sell : max: prices[ind] + f(ind+1, trans+1) , 0 + f(ind+1, trans)
+}
+
+// You can write code for this as well similar to above
+// Memo
+
+
+// Tabulated
+
+
+// Space optimization
+
