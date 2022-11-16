@@ -1,4 +1,4 @@
-// https://www.geeksforgeeks.org/boolean-parenthesization-problem-dp-37/
+https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
 https://leetcode.com/discuss/general-discussion/1279635/boolean-parenthesization-easy-c
 
@@ -62,8 +62,8 @@ int solve(string s, int i, int j, int isTrue){
     for(int k = i+1; k<=j-1; k+=2){
         int lT = solve(s, i, k-1, 1);  // or solve(s, i, k-1, true), & 0 instead of F, the subproblem's right index will be one less than k, coz k points to an operator
         int lF = solve(s, i, k-1, 0);
-        int rT = solve(s, k+1, j, 0);
-        int rF = solve(s, k+1, j, 1);
+        int rT = solve(s, k+1, j, 1);
+        int rF = solve(s, k+1, j, 0);
 
         // calculating final ans (simple boolean algebra)
         if(s[k] == '&'){
@@ -202,7 +202,118 @@ int main(){
 }
 
 
-// Practice this
-// https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/
+//  **** STRIVER *************
+
+https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+
+// No of ways to evaluate boolean expression to true?
+
+// At every operator I can do a partition and solve the left and right subproblems.
+
+// If the partition operator is a '&'
+// Then both left and right subproblems must yield true.
+// x * y ways both are true.
+
+// If the partition operator is '|'
+// left  |  right
+// left is true for x1 ways   | right is true for x2 ways
+// left is false for x3 ways  | right is false for x4 ways
+// Total ways: x1*x2 + x4*x1 + x3*x2
+
+// If the partition operator is '^'
+// left  |  right
+// left is true for x1 ways   | right is true for x2 ways
+// left is false for x3 ways  | right is false for x4 ways
+// Total ways: x1*x4 + x3*x2
+
+// Hence for both left and right subproblems I need to figure out, in how many ways It can be true and it can be false.
+// ie whatever range I am solving, I want to find in how many ways I can make it true/ false
+
+// Proper error free working code:
+
+int solve(int i, int j, int isTrue, string &s, vector<vector<vector<int>>> &dp){
+    if(i>j) return 0;
+    if(i==j){        // only one element in the partition
+        if(isTrue){  // I want a true
+            return s[i]=='T';
+        }
+        else return s[i]=='F';
+    }
+    
+    if(dp[i][j][isTrue]!= -1) return dp[i][j][isTrue];
+    
+    int ways = 0;
+    for(int ind=i+1; ind<=j-1; ind+=2){ // opertor moves from i+1 to j-1 with two jumps
+        int lT = solve(i, ind-1, 1, s, dp); // for left part represented by i, ind-1 to be true represented by 1
+        int lF = solve(i, ind-1, 0, s, dp);
+        int rT = solve(ind+1, j, 1, s, dp);
+        int rF = solve(ind+1, j, 0, s, dp);
+        
+        if(s[ind]=='&'){
+            if(isTrue) ways = ways + (rT*lT);  // I want a true when operator is &, both needs to be true
+            else ways = ways + (lF*rT) + (lT*rF) + (lF*rF);
+        }
+        else if(s[ind]=='|'){
+            if(isTrue) ways = ways + (lF*rT) + (lT*rF) + (lT*rT);
+            else ways = ways + (lF*rF);
+        }
+        else if(s[ind]=='^'){ // XOR : T^T = F, F^F = F, T^F = T, F^T = T
+            if(isTrue) ways = ways + (lF*rT) + (lT*rF);
+            else ways = ways + (lF*rF) + (lT*rT);
+        }
+    }
+    return dp[i][j][isTrue] = ways%1003;  // modulo karna hoga tab saare test case pass honge
+}
 
 
+
+int countWays(int n, string &s){
+    // code here
+    vector<vector<vector<int>>> dp(n, vector<vector<int>> (n, vector<int>(2, -1)));
+    return solve(0, n-1, 1, s, dp);
+}
+
+
+// Tabulated code
+
+
+#include<bits/stdc++.h>
+#define ll long long 
+int mod = 1000000007;
+int evaluateExp(string & exp) {
+    int n= exp.size();
+    vector<vector<vector<ll>>> dp(n, vector<vector<ll>> (n, vector<ll> (2, 0)));
+    for(int i=0; i<n; i++){
+        dp[i][i][1] = exp[i] == 'T';
+        dp[i][i][0] = exp[i] == 'F';
+    }
+
+    for(int i=n-1; i>=0; i--){
+        for(int j=i+1; j<n; j++){
+            for(int isTrue=0; isTrue <=1; isTrue++){
+                ll ways=0;
+                for(int ind =i+1; ind <= j-1; ind=ind+2){
+                    ll lT = dp[i][ind-1][1];
+                    ll lF = dp[i][ind-1][0];
+                    ll rT = dp[ind+1][j][1];
+                    ll rF = dp[ind+1][j][0];
+
+                    if(exp[ind] == '&'){
+                        if(isTrue) ways = (ways + (lT * rT)%mod)%mod;
+                        else ways = (ways + (lT*rF)%mod + (lF*rF)%mod + (lF*rT)%mod)%mod;
+                    }
+                    else if(exp[ind] == '|'){
+                        if(isTrue) ways = (ways + (lT*rT)%mod + (lT*rF)%mod + (lF*rT)%mod)%mod;
+                        else ways = (ways + (lF*rF)%mod)%mod;
+                    }
+                    else{
+                        if(isTrue) ways = (ways + (lT*rF)%mod + (lF*rT)%mod)%mod;
+                        else ways = (ways + (lT*rT)%mod + (lF*rF)%mod)%mod;
+                    }
+                }
+                dp[i][j][isTrue] = ways;
+            }
+        }
+    }
+    return dp[0][n-1][1];
+}

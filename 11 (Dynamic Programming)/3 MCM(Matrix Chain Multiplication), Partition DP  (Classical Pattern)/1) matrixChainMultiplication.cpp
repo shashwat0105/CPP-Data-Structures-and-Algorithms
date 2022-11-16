@@ -130,3 +130,109 @@ int matrixMultiplication(int N, int arr[]){
     vector<vector<int>> dp(N+1, vector<int>(N+1, -1));
     return solve(arr, 1, N-1, dp);
 }
+
+
+
+**************************** STRIVER ***********************************
+
+start point i       k - partitions                   end point j
+
+// Two matrices:
+m*n and n*o
+// Then number of multiplications are m*n*o
+
+https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+
+Given matrix dimensions
+Array is given:
+[10 20 30 40 50]
+     A  B  C  D
+
+ith matrix dimension is given by A[i-1] * A[i]
+
+Rules of partition DP:
+1) Start with entire block/array (i, j) ~ (start pt, end pt)
+2) Try all partition. Run a loop to try all partitions
+3) Return the best possible two partition.
+
+f(1, 4): return min multiplications to multiply matrix 1 to matrix 4
+f(1, n-1) is what u need to find.
+
+Base case when there is only one matrix ie i==j
+
+Our parition variable can move either
+k = i to j-1  (preferred)      or       i+1 to j
+f(i, k), f(k+1, j)             or     f(i, k-1), f(k, j)
+
+Suppose I make a partition at k
+
+
+Steps required to multiply (AB)*(CD)
+= 10*30*50  ie [i-1]*[k]*[j]
+
+Then steps = A[i-1]*A[k]*A[j] // steps required to multiply those two partitions
+                + f(i, k)     // steps required to multiply all elements inside this partition
+                    + f(k+1, j) // steps required to multiply all elements inside this partition
+
+Take min of all these steps
+
+// Memoised
+
+int solve(int i, int j, int arr[], vector<vector<int>> &dp){
+    // base case
+    if(i==j) return 0;
+    
+    if(dp[i][j]!= -1) return dp[i][j];
+    
+    int mini = 1e9;
+    for(int k=i; k<j; ++k){
+        int steps = arr[i-1]*arr[k]*arr[j] + solve(i, k, arr, dp) + solve(k+1, j, arr, dp);
+        mini = min(mini, steps);
+    }
+    return dp[i][j] = mini;
+}
+
+int matrixMultiplication(int n, int arr[]){
+    // code here
+    vector<vector<int>> dp(n, vector<int>(n, -1));
+    return solve(1, n-1, arr, dp);    
+}
+
+// TC = O(N^3)
+// SC = O(N^2 + N)
+
+// Tabulation
+
+1) Copy paste base case
+2) Write down the changing parameters
+// Understanding part i--->    <----j top down
+//                    <------i j----> bottom up something like that
+// Just opposite and take care of edge case.
+// In top down i was moving from 1 to n-1 hence here it will move opposite n-1 to 1
+// In top down j was moving from n-1 to 1 hence here it will opposite and j will always be right of i so, i+1 to n-1
+3) Copy the recurence
+
+int matrixMultiplication(int n, int arr[]){
+    // code here
+    vector<vector<int>> dp(n+1, vector<int>(n+1, 0));
+    
+    // base case
+    for(int i=0; i<n; ++i){
+        dp[i][i] = 0;
+    }
+    
+    for(int i=n-1; i>=1; --i){
+        for(int j=i+1; j<n; ++j){
+            int mini = 1e9;
+            for(int k=i; k<j; ++k){
+                int steps = arr[i-1]*arr[k]*arr[j] + dp[i][k] + dp[k+1][j];
+                mini = min(mini, steps);
+            }
+            dp[i][j] = mini;
+        }
+    }
+        
+    return dp[1][n-1];
+}
+
+
