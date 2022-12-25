@@ -1,5 +1,7 @@
 https://youtu.be/Cg7SI0WtmXY
 
+https://youtu.be/edJ19qIL8WQ  TO watch striver
+
 Array should be sorted.
 
 For an element x in the search space.

@@ -83,6 +83,43 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
     return bfs; 
 }
 
+// Whether a destination is reachable from a source or not using BFS:
+class Solution {
+public:
+    bool solveBFS(int n, unordered_map<int, vector<int>> &ump, int s, int d){
+        vector<int> vis(n, 0);
+        queue<int> q;
+        q.push(s);
+        vis[s] = 1;
+
+        while(!q.empty()){
+            int temp = q.front();
+            q.pop();
+            vis[temp] = 1;
+            for(auto it: ump[temp]){
+                if(!vis[it]){
+                    q.push(it);
+                    vis[it]=1;
+                }
+            }
+        }
+        return vis[d];
+    }
+
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        unordered_map<int, vector<int>> ump;
+
+        for(auto &edge: edges){
+            ump[edge[0]].push_back(edge[1]);
+            ump[edge[1]].push_back(edge[0]);
+        }
+
+        return solveBFS(n, ump, source, destination);
+
+        // source se bfs chala do jo bhi visited ho jae use mark kar do, destination ka return kr do
+    }
+};
+
 //
 At a particular time there are atmost two consecutive levels inside the queue DS in BFS.
 

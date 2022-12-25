@@ -168,5 +168,8 @@ for(int i=0;i<3; i++){
 
 //***************************************************************
 
+We can use .insert(v.beigin()+3) etc to insert anywhere in the DS
+We can use .erase(v.beigin())  etc to erase an element anywhere in the DS
+
 
 
