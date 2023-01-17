@@ -29,7 +29,7 @@ public:
                 int s = i+1;
                 int e = n-1;
                 
-                while(s<e){
+                while(s<e){ 
                     if(nums[s]+nums[e]==newTarget){
                         res.push_back({nums[i], nums[s], nums[e]});  // Inserting a vector inside a vector
                         while(s<e && nums[s]==nums[s+1]) s++;        // to avoid repetition in 2nd number

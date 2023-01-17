@@ -16,3 +16,6 @@ A sorting algorithm is said to be stable if two objects with equal keys(value) a
 
 Unstable:-
 1) Heap Sort
+
+All (15+) Sorting Methods 
+https://leetcode.com/problems/sort-an-array/discuss/1401412/C%2B%2B-Clean-Code-Solution-or-Fastest-or-All-(15%2B)-Sorting-Methods-or-Detailed

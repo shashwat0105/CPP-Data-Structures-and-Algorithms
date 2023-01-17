@@ -116,9 +116,9 @@ int sumDigits(int n){
     if(n==0){
         return;
     }
-    int lastDigit = n%10;           ff// will give 7 from 34527
+    int lastDigit = n%10;           // will give 7 from 34527
     int remaining = n/10;           // will give 3452 from 34527 and so on
-    return lastDigit + remaining;
+    return lastDigit + sumDigits(remaining);
 }
 
 // Pattern printing using recursion

@@ -169,7 +169,9 @@ for(int i=0;i<3; i++){
 //***************************************************************
 
 We can use .insert(v.beigin()+3) etc to insert anywhere in the DS
-We can use .erase(v.beigin())  etc to erase an element anywhere in the DS
+We can use .erase(v.beigin())  etc to erase an element or elements in a range anywhere in the DS
 
+rbegin()  points to last iterator in a vector etc. Used to reverse sort as well.
+https://cplusplus.com/reference/vector/vector/rbegin/
 
 

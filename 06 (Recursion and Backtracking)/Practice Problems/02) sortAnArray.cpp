@@ -14,7 +14,7 @@ Base condition  // smallest valid input
 Hypothesis      // kaam kya karega
 Induction       // kaam kaise karwaenge
 
-// Insertion sort using recursion (Gives TLE in leetcode, learn for concept.)
+// Insertion sort using recursion (Gives TLE in leetcode, just learn for concept.)
 class Solution {
 public:
     vector<int> sortArray(vector<int>& nums) {
@@ -44,5 +44,38 @@ public:
     }
 };
 
+// Do merge sort instead.
+
+class Solution {
+public:
+    void merge(vector<int> &nums, int low, int mid, int high) {
+        if (low >= high) return;
+        int l = low, r = mid + 1, k = 0, size = high - low + 1;
+        vector<int> sorted(size, 0);
+        while (l <= mid and r <= high)
+            sorted[k++] = nums[l] < nums[r] ? nums[l++] : nums[r++];
+        while (l <= mid) 
+            sorted[k++] = nums[l++];
+        while (r <= high) 
+            sorted[k++] = nums[r++];
+        for (k = 0; k < size; k++)
+            nums[k + low] = sorted[k];
+    }
+    void mergeSort(vector<int>& nums, int low, int high){
+        if(low>=high) return;
+        int mid = (low+high)>>1;
+        mergeSort(nums, low, mid);
+        mergeSort(nums, mid+1, high);
+        merge(nums, low, mid, high);
+    }
+    
+    vector<int> sortArray(vector<int>& nums) {
+       int low = 0;
+       int high = nums.size()-1;
+      
+       mergeSort(nums, low, high);
+       return nums;
+    }
+};
 
 

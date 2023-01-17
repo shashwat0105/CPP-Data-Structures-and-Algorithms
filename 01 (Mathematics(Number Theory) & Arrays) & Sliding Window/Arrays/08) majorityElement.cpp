@@ -65,6 +65,9 @@ public:
 // At last we confirm the count of majority winner. (If it is not given whether majority element always exist or not)
 // We are cancelling one element with another if they are not equal.
 
+*******************************************************************
+// Extra check code if not given majority element always exists:
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {

@@ -2,16 +2,23 @@ https://leetcode.com/problems/pascals-triangle/
 
 https://youtu.be/6FLvhQjZqvM  (Must watch while revising)
 
+Pascal triangle to be visualised as:
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> res(numRows);                  // vector of vector of int of size numRows
+        vector<vector<int>> res(numRows);                  // vector of vector of int of size numRows, numRows number of vectors are declared
         
         for(int i=0; i<numRows; i++){                      // i = rows, j = columns
             res[i].resize(i+1);                            // for every row, number of the row = no of columns, resizing empty vector to size i+1
             res[i][0] = res[i][i] = 1;                     // every row has first & last element as 1
             
-            for(int j=1; j<i; j++){
+            for(int j=1; j<i; j++){                        // traverse from first column to second last column
                 res[i][j] = res[i-1][j-1] + res[i-1][j];   // [i][j] current row, column, [i-1] previous row, [j] [j-1] whose sum is to be done
             }
         }
@@ -19,6 +26,19 @@ public:
     }
 };
 
+// If you dont want to use resize
+class Solution {
+public:
+    vector<vector<int>> generate(int n) {
+        vector<vector<int>> ans(n);             // initialize n rows
+        for(int i = 0; i < n; i++) {
+            ans[i] = vector<int>(i+1,1);        // ith row(0-indexed) has i+1 elements ar sabko 1 kar dia
+            for(int j = 1; j < i; j++)          // 1st and last elements will be 1, rest will be sum of two elements from above row
+                ans[i][j] = ans[i - 1][j] + ans[i - 1][j - 1];            
+        }
+        return ans;
+    }
+};
 
 // Element of rth row & cth column is given by the binomial coefficient formula:
 // C(r-1, c-1)  (For 1 based indexing)
@@ -34,7 +54,7 @@ public:
         
         for(int i=0; i<rowIndex+1; i++){         // coz 0 based indexing given in ques
             res.push_back(nCk);
-            nCk = nCk * (rowIndex - i)/ (i+1);
+            nCk = nCk * (rowIndex - i)/ (i+1);   // An optimised way of finding nCr
         }
         return res;
     }

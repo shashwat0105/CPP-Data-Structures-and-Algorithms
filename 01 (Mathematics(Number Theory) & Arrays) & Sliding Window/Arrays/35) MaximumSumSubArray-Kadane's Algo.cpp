@@ -1,21 +1,25 @@
-// 
 https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 
 https://leetcode.com/problems/maximum-subarray
 
-int maxSubarraySum(int arr[], int n){  // n is the size of array
-    int best = 0, sum =0;
-    for(int i=0; i< n; i++){
-        sum = max(arr[i], sum+arr[i]);
-        best = max(best, sum);
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {  // maxi = max sum so far, sum = sum ending here
+        int maxi= nums[0], sum=0;         // atleast one element should be in the subarray, maxi can be INT_MIN as well 
+        int n = nums.size();
+        for(int i=0; i<n; ++i){
+            sum = sum+nums[i];
+            maxi = max(maxi, sum);
+            sum = max(0, sum);  // we carry a subarray as long as it gives a positive sum (crux of kadane)
+        }
+        return maxi;
     }
-    return best;
-}
+};
 
 https://leetcode.com/problems/maximum-subarray/discuss/1595195/C%2B%2BPython-7-Simple-Solutions-w-Explanation-or-Brute-Force-%2B-DP-%2B-Kadane-%2B-Divide-and-Conquer
 
 // Print the subarray:
-//And also print that subarray
+// And also print that subarray
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {

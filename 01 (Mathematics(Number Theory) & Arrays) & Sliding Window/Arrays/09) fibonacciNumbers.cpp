@@ -1,5 +1,7 @@
 https://leetcode.com/problems/fibonacci-number
 
+https://leetcode.com/problems/fibonacci-number/solutions/1159786/fibonacci-number-easy-solution-w-multiple-approaches-explained/
+
 // Method 1:
 // Recursion:
 // TC = O(2^n), SC = O(n)
@@ -32,6 +34,27 @@ public:
         return f[n];
     }
 };
+
+// We can space optimise this as well.
+int fib(int n) {
+	if(n <= 1)
+		return n;
+	int prev2 = 0, prev1 = 1, cur;
+	for(int i = 2; i <= n; i++)
+		cur = prev2 + prev1, prev2 = prev1, prev1 = cur;
+	return cur;
+}
+
+// Golden Ration 
+https://en.wikipedia.org/wiki/Fibonacci_number#Relation_to_the_golden_ratio
+TC = O(1) or O(logn)
+Works for small values of n only.
+
+int fib(int n) {
+	double goldenRatio = (1 + sqrt(5)) / 2;
+	return round(pow(goldenRatio, n) / sqrt(5));
+}
+
 
 // Tiling problem (Similar to fibonnaci)
 https://www.geeksforgeeks.org/tiling-problem/
