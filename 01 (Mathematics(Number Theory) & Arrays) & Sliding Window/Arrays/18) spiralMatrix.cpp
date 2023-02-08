@@ -1,5 +1,22 @@
 https://leetcode.com/problems/spiral-matrix/
 
+
+// In this approach, we will be using four loops to print all four sides of the matrix.
+
+// 1st loop: This will print the elements from left to right.
+
+// 2nd loop: This will print the elements from top to bottom.
+
+// 3rd loop: This will print the elements from right to left.
+
+// 4th loop: This will print the elements from bottom to top.
+
+top        right
+
+
+left       bottom
+
+
 // TC - O(m*n)
 
 class Solution {

@@ -29,3 +29,28 @@ public:
         return (int)((long)maxWidthDiff * maxHeightDiff % 1000000007);
     }
 };
+
+
+// Python
+
+class Solution:
+    def maxArea(self, h: int, w: int, horizontalCuts: List[int], verticalCuts: List[int]) -> int:
+
+        horizontalCuts.append(0)
+        horizontalCuts.append(h)
+        verticalCuts.append(0)
+        verticalCuts.append(w)
+
+        horizontalCuts.sort()
+        verticalCuts.sort()
+        
+        maxHDiff=0
+        for i in range(0, len(horizontalCuts)-1):
+            maxHDiff = max(maxHDiff, horizontalCuts[i+1]-horizontalCuts[i])
+
+        maxWDiff=0
+        for i in range(0, len(verticalCuts)-1):
+            maxWDiff = max(maxWDiff, verticalCuts[i+1]-verticalCuts[i])
+
+        return (maxWDiff * maxHDiff % 1000000007)
+        

@@ -22,3 +22,11 @@ public:
     }
 };
 
+90: Transpose + Reverse Rows
+180: Reverse Rows + Reverse columns
+270 : Transpose + Reverse Columns
+
+Reverse row : reverse(matrix[i].begin(), matrix[i].end());
+Reverse column: reverse(matrix.begin(), matrix.end());
+
+

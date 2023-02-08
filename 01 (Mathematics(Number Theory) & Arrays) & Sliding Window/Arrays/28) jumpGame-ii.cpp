@@ -34,6 +34,8 @@ public:
 
 
 // Other code that passes
+https://leetcode.com/problems/jump-game-ii/solutions/1192401/easy-solutions-w-explanation-optimizations-from-brute-force-to-dp-to-greedy-bfs/?orderBy=most_votes
+
 // Once the current point reaches right, then trigger another jump, and set the new right with farthest
 
 class Solution {

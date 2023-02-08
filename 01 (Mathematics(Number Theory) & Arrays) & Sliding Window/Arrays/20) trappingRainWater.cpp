@@ -1,5 +1,40 @@
 https://leetcode.com/problems/trapping-rain-water/
 
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        vector<int> maxL(n);
+        vector<int> maxR(n);
+        
+        maxL[0] = height[0];
+        for(int i=1; i<n; ++i){
+            maxL[i] = max(height[i], maxL[i-1]);  // height k current ko compare karenge maxL mein jo phle store tha usse
+        }
+        // for(auto it: maxL){
+        //     cout<<it<<" ";
+        // }
+        
+        maxR[n-1] = height[n-1];
+        for(int i=n-2; i>=0; --i){
+            maxR[i] = max(height[i], maxR[i+1]);
+        }
+        
+        // for(auto it: maxR){
+        //     cout<<it<<" ";
+        // }
+        
+        vector<int> water(n);
+        int totalWater=0;
+        for(int i=0; i<n; ++i){
+            water[i] = min(maxL[i], maxR[i]) - height[i];
+            totalWater+=water[i];
+        }
+        return totalWater;
+    }
+};
+
+
 https://www.geeksforgeeks.org/trapping-rain-water/
 
 

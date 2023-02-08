@@ -12,6 +12,8 @@ https://leetcode.com/problems/find-all-duplicates-in-an-array/
 // As we move in the array the first 3 will point at position 3(index 2)(so we subtract 1), then second 3 will again point at position 3(index 2)
 // We will make some changes first time we encounter a position so as to distinguish if it is encountered again in the future (here making it negative)
 
+// " modifying the array elements is allowed "
+
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
@@ -30,4 +32,8 @@ public:
     }
 };
 
+
+https://leetcode.ca/search/
+
+And search the word duplicate for all such questions
 

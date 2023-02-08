@@ -30,7 +30,7 @@ public:
             minSum = min(minSum, curSum);                  
         }
         res = totSum-minSum;
-        
+            
         return res;
     }
 };

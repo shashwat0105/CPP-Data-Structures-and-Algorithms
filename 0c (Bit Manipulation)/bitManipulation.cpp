@@ -1,3 +1,5 @@
+http://graphics.stanford.edu/~seander/bithacks.html
+
 // Done from codencode playlist
 // Overview
 // 1. How to check if ith bit is set or not
