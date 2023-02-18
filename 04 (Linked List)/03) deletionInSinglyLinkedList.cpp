@@ -87,7 +87,8 @@ void deleteNode(struct Node** head, int position){
 
 // C) Deleting a node whose "pointer is given"
 
-// This can be done by following a similar approach as in the above two cases, by first finding the node just previous to it and updating its next pointer. The time complexity of this would be again O(N).
+// This can be done by following a similar approach as in the above two cases, by first finding the node just previous to it and updating its next pointer. 
+// The time complexity of this would be again O(N).
 
 // However, this particular case can be solved with O(1) time complexity if the pointer to the node to be deleted is given.
 // Effective solution is to copy the data from the next node to the node to be deleted and delete the next node.

@@ -28,12 +28,12 @@ public:
         ListNode *p = NULL, *c = head, *n;
         
         while(c!=NULL){
-            n = c->next;
-            c->next = p;    // we are assigning p to c ka next,, ie c ka next should point to p(previous)
-            p = c;
-            c = n;
+            n = c->next;    //save the next ke aage waali chain
+            c->next = p;    // we are assigning p to c ka next,, ie c ka next should point to p(previous) ie //point it backwards
+            p = c;          /* move fwd */
+            c = n;          /* move fwd */
         }
-        return p;
+        return p;           // when loop will end c will be pointing to NULL
     }
 };
 
@@ -76,7 +76,7 @@ public:
 
 
 // Recursive way to reverse first N elements
-ListNode successor = NULL;
+ListNode* successor = NULL;
 ListNode* reverseN(ListNode* head, int n){
     if(n==1){
         successor = head->next;
@@ -90,7 +90,7 @@ ListNode* reverseN(ListNode* head, int n){
 
 
 // Recursive way to reverse between given left and right positions (reverse list (ii) problem)
-ListNode successor = NULL;
+ListNode* successor = NULL;
 ListNode *reverseBetween(ListNode* head, int left, int right){
     if(left<=1){
         return reverseN(head, right-left+1);
@@ -99,4 +99,54 @@ ListNode *reverseBetween(ListNode* head, int left, int right){
     return head;
 }
 
+// (reverse list (ii) problem) Iterative
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if(head==NULL || head->next==NULL || left==right) return head;
+        
+        ListNode *dummy = new ListNode(-1);
+        dummy->next = head;
+        
+        ListNode *p = dummy;   // instead of taking p as NULL, taking as dummy
+        for(int i=0; i<left-1; i++) p=p->next;
+        // cout<<p->val;
+        
+        ListNode *c=p->next,*n;
+        
+        for(int i=0; i<right-left; i++){
+            n = c->next;
+            c->next=n->next;
+            n->next=p->next;
+            p->next=n;
+        }
+        return dummy->next;
+    }
+};
 
+// other way: 
+
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        dummy = ListNode(0, head)     # set up a dummy node to avoid edge cases (left = 0)
+        leftPrev = dummy
+        cur = head
+        #1. iterative until reaching the left
+        for i in range(left - 1):
+            leftPrev, cur = cur, cur.next
+            
+        #2 reverse part: from left -> right  similarly like problem 206
+        prev = None  # set up a prev node
+        for i in range(right - left + 1):
+            tmp_next = cur.next
+            cur.next = prev
+            prev, cur = cur, tmp_next
+            
+        #3 connect linked list
+        # e.g. original linked list 1->2->3->4->5, after part 1 and part 2, 
+		# leftPrev = 1, cur = 5, prev = 4, so leftPrev.next(2).next should be 5, that is cur
+		# lefrPrev(1).next should be 4, that is prev
+		leftPrev.next.next = cur   
+        leftPrev.next = prev
+        
+        return dummy.next

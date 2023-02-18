@@ -30,7 +30,7 @@ class Node{
     Node next;
 }
 
-// Every node takes 4 (for val)+ 4 (for next) = 8 bytes of memory.
+// Every node takes 4 (for val) + 4 (for next) = 8 bytes of memory.
 
 // Traversal in a linked list
 // A program to create a linked list with three nodes and print it.
@@ -79,9 +79,12 @@ int main(){
 
 
 
-// Difference between Arrays and LinkedList
+// Difference between Arrays and LinkedList (IMP)
 https://youtu.be/KMc-B051ne8
-
+1) In memory allocation LL are more efficient than arrays.
+2) We dont have random access in LL.
+3) Sorting and Searching requires random access hence we have to use arrays in this case.
+4) Insert/Delete is O(1) in LL whereas we need to shift all elements in arrays hence it is O(1)
 
 
 // STL for Singly LinkedList
@@ -90,7 +93,7 @@ https://www.cplusplus.com/reference/forward_list/forward_list/
 forward_list<int>              // integer type singly linked list   
 
 insert_after
-erase_after
+erase_after                    // Jo aap doge uske baad wala hi delete hoga
 
 // In forward list, jo delete krna hai uske phle wala node dena padega
 // But in doubly linked list, jo delete krna hai wahi node dedo kaam ho jaega(thats an advantage of DLL)
@@ -101,8 +104,8 @@ https://www.cplusplus.com/reference/list/list/
 list<int>
 
 insert
-erase
-
+erase                         // Jo doge wahi delete ho jaega
+  
 
 
 // Summary of problems

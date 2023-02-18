@@ -42,4 +42,3 @@ public:
         return slow;   // slow jaha pe rahega wahi mera middle element hoga
     }
 };
-

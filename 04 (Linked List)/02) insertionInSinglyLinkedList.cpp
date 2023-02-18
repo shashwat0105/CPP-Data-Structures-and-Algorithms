@@ -13,7 +13,7 @@ struct Node{
 // TC = O(1)
 // 4 steps:
 /* Given a reference (pointer to pointer) to the head of a list and an int, insert a new node on the front of the list. */
-void push(struct Node** head,int new_data){
+void push(struct Node** head, int new_data){
     // 1. Allocate the node
     Node *new_node = new Node;
 
@@ -29,7 +29,7 @@ void push(struct Node** head,int new_data){
 
 // After a given node
 // TC = O(1)
-// The insertAfter() function must receive a pointer to the previous node after which the new node is to be inserted.
+// The insertAfter() function must receive a "pointer to the previous node" after which the new node is to be inserted.
 
 // We dont need to traverse till this node because its pointer is already passed
 void insertAfter(struct Node* prev_node, int new_data){

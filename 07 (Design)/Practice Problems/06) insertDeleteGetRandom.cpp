@@ -1,5 +1,7 @@
 https://leetcode.com/problems/insert-delete-getrandom-o1/description/
 
+https://youtu.be/3yTnLrNdJGo (code story with mik)
+
 // Asked in many companies.
 
 // Usually the first thing that comes to find when we hear "lookup" , "insert" in constant time is "hashmaps".

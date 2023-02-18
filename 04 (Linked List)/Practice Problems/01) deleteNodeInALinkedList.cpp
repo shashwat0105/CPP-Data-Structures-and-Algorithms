@@ -24,6 +24,21 @@ public:
     }
 };
  
+// Or: coz we are just making next node same as current node and deleting the next node.
+void deleteNode(ListNode* node) {
+    ListNode *temp = node->next;   // if u wish to delete we have to store it in temp.
+    *node = *temp;
+    delete temp;
+}
+
+// or if u not wish to delete simply:
+void deleteNode(ListNode* node) {
+    *node = *node->next;
+}
+
+// In various languages:
+https://leetcode.com/problems/delete-node-in-a-linked-list/solutions/65455/1-3-lines-c-java-python-c-c-javascript-ruby/
+
 // Since it is guaranteed that the node to be deleted is not the last node
 // (we have used method 3 from deletion.cpp file)
  

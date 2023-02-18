@@ -5,7 +5,8 @@ https://leetcode.com/problems/design-hashmap/
 class MyHashMap {
 public:
   
-    vector<int> m;                            // An error I faced while initilising -1 here: https://stackoverflow.com/questions/39560277/vector-declaration-expected-parameter-d
+    vector<int> m;                      // An error I faced while initilising -1 here: 
+                                        // https://stackoverflow.com/questions/39560277/vector-declaration-expected-parameter-d
     MyHashMap() {
         int siz = 1e6+1;
         m.resize(siz);
@@ -34,7 +35,6 @@ public:
  */
 
 
-
 // METHOD 2
 
 class MyHashMap {
@@ -50,7 +50,7 @@ public:
     int hash(int key){
         return key%siz;
     }
-    
+
     // iterator of type list of pair, which will return the location
     list<pair<int, int>> :: iterator search(int key){
         int i = hash(key);
@@ -84,6 +84,8 @@ public:
     }
 };
 
+// everywhere
+list<pair<int, int>> :: iterator  iski jagah pe auto likh skte ho chahe variable declare ya function return type.
 
 
 

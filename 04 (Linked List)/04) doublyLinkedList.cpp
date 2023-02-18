@@ -64,7 +64,7 @@ void append(struct Node **head, int new_data){
     // Put in data
     new_node->data = new_data;
 
-    // his new node is going to be the last node, so make next of it as NULL 
+    // this new node is going to be the last node, so make next of it as NULL 
     new_node->next = NULL;
 
     // If linkedlist is empty then make new node as head

@@ -10,13 +10,15 @@ public:
         set<int> s;
         
         for(int i=0; i<n-1; ++i){
-            if(binary_search(nums.begin()+i+1, nums.end(), nums[i]+k)){
+            if(binary_search(nums.begin()+i+1, nums.end(), nums[i]+k)){  
                 s.insert(nums[i]);
             }
         }
         return s.size();
     }
 };
+
+// binary_search(start address, end address, value to find)
 
 // Sort and Binary Search without set
 class Solution {
@@ -58,3 +60,5 @@ public:
         return res;
     }
 };
+
+// count also returns true or false like find

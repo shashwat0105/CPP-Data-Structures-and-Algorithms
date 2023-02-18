@@ -29,7 +29,7 @@ public:
 // Method 2: Recursive approach (cleaner code but takes extra internal stack space)
 https://youtu.be/JrRoR7ycM8U  (in the later part)
 
-// We just check for the heaf equal to val or not rest will be done by recursion.
+// We just check for the head equal to val or not rest will be done by recursion.
 
 // If you want to free the memory (good practice)
 class Solution {
@@ -37,9 +37,9 @@ public:
     ListNode* removeElements(ListNode* head, int val) {
         if(head==NULL) return NULL;
         
-        head->next = removeElements(head->next, val);  // recursive call
+        head->next = removeElements(head->next, val);  // recursive call // jo bhi head ka next laake dega use laake head k next m chipka denge
 
-        if(head->val == val){
+        if(head->val == val){   // Mujhe bas head ka kaam krna hai, agar head ki value val hai toh mai uska next return karaunga.
             ListNode *ans = head->next;
             delete head;  // free that nodes from memory which is equal to val
             return ans;

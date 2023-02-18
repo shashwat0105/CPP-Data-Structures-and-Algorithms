@@ -1,5 +1,8 @@
 http://graphics.stanford.edu/~seander/bithacks.html
 
+https://dev.to/the_unconventional_coder/bit-manipulation-hacks-3n88
+
+
 // Done from codencode playlist
 // Overview
 // 1. How to check if ith bit is set or not

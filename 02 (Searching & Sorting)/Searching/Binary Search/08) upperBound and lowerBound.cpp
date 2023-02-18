@@ -7,9 +7,18 @@ Array should be sorted.
 For an element x in the search space.
 Lower bound: Finds x and returns its iterator (if multiple x are there returns the iterator of first x), 
              if x is not there finds an element just greater than x.
+             ie helps to find element >=x element
 
 Upper bound: Agar wo element present bhi hai na toh bhi uska greater hi element nikalega.
 ie doesnot finds x.
+auto l = lower_bound(nums.begin(), nums.end(), val) - nums.begin();  // index
+
+
+Upper bound can be used to find element in some way <= x.
+How?
+It will give bigger element just move one step back (index) and u will get an element <= x.
+auto r = upper_bound(nums.begin(), nums.end(), val) - nums.begin();  // index
+
 
 They return the location of the element.
 for arrays returns pointer

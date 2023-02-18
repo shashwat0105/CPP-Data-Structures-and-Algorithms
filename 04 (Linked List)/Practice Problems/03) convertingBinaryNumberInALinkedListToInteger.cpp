@@ -36,6 +36,14 @@ public:
 // In a single traversal
 // We assume when we go on a node its the last node so we multiply it with  2^0 ie 1  
 // if we find another node we multiple with 2 
+// addition of each new node will multiply all current node's value by 2.
+
+// Parse linked list starting from the head: while head.next:
+// The current value is head.next.val. Update the result by shifting it by one to the left and 
+// adding the current value using logical OR: num = (num << 1) | head.next.val.
+
+// Return num.
+
 
 class Solution {
 public:
@@ -50,3 +58,12 @@ public:
         return res;
     }
 };
+
+// Bit manipulation of above
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        num = head.val
+        while head.next:
+            num = (num << 1) | head.next.val
+            head = head.next
+        return num

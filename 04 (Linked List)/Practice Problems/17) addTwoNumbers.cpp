@@ -2,7 +2,7 @@ https://leetcode.com/problems/add-two-numbers/
 
 https://youtu.be/LBVsXSMOIk4
 
-Edge cases: Linked list of unequal lengths.
+Edge cases: Linked list of unequal lengths. (pehle interviewer se discuss karo taaki use yeh na lage ki tmne yeh pehle kia hua hai)
 
 // Addition happens from ones digit and so on & the list is already reversed so no issue ie directly addition of digits can be performed digit by digit.
 
@@ -27,8 +27,8 @@ public:
             }
             sum+=carry;
             carry=sum/10;
-            ListNode *node = new ListNode(sum%10);
-            temp->next=node;
+            ListNode *cur_node = new ListNode(sum%10);
+            temp->next= cur_node;                           // jo new node banayi hai use attach bhi toh krna padega
             temp = temp->next;
         }
         return dummy->next;

@@ -88,3 +88,35 @@ public:
 // to_string inbuilt function
 https://www.cplusplus.com/reference/string/to_string/
 
+
+
+//////////////// VALID ANAGRAM /////////
+
+https://leetcode.com/problems/valid-anagram/description/
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int n = s.size();
+        int m = t.size();
+        if(n!=m) return false;
+        vector<int> counts(26, 0);
+        for(int i=0; i<n; ++i){
+            counts[s[i]-'a']++;
+            counts[t[i]-'a']--;
+        }
+        for(auto count : counts){
+            if(count) return false; 
+        }
+        return true;
+    }
+};
+
+//
+class Solution {
+public:
+    bool isAnagram(string s, string t) { 
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        return s == t; 
+    }
+};

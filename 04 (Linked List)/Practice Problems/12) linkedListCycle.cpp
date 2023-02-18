@@ -10,6 +10,7 @@ https://leetcode.com/problems/linked-list-cycle/
 
 // Method 2(Slow and fast pointer approach)
 // without extra space
+// Cycle hai ki nahi bas yeh return hai isme
 
 class Solution {
 public:
@@ -37,5 +38,4 @@ k = n(a-2b) - m
 // k = start of loop to point where they can meet. We can see k is a finite value. Hence proved.
 
 // Even if the speed is 3x, 4x, 5x it will catch the slow pointer.
-
 
