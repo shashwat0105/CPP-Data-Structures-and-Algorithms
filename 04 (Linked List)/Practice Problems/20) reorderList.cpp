@@ -2,9 +2,10 @@ https://leetcode.com/problems/reorder-list/
 
 Method 1: O(1) space
 
-// Divide the list into two halves. (Using fast and slow pointers)
-// Reverse the second half.
-// Merge the two lists L1 after L2 after L1 and so on. (Different from sorted merging we did in the past)
+// FInd the mid of the list (Using fast and slow pointers), 
+// split it into two half lists
+// Reverse the second half. (mid(not included) k baad wali list reverse kari jaati hai)
+// Merge the two lists L1 after L2 after L1 and so on. (Different from sorted merging we did in the past) Dono list ki nodes ko alternately(one by one) merge krna hai
 
 class Solution {
 public:
@@ -30,10 +31,10 @@ public:
         // merge the two lists
         ListNode *fH = head, *sH = p;    // fH is the head of the first list, sH is the head of the second list.
         while(sH){
-            ListNode *temp1=fH->next, *temp2=sH->next;
-            fH->next = sH;
-            sH->next = temp1;
-            fH = temp1;
+            ListNode *temp1=fH->next, *temp2=sH->next;   // dono k next ko save kar lia
+            fH->next = sH;    // make connection  (draw karke dekhna easy hai)                   
+            sH->next = temp1; // make connection
+            fH = temp1;       // dono ko ek ek aage badha dia
             sH = temp2;
         }
         
@@ -64,7 +65,6 @@ public:
 };
 
 // Using deque
-
 
 class Solution {
 public:

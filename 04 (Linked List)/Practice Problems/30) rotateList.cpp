@@ -30,13 +30,13 @@ public:
             len++;
         }
         
-        temp->next = head;
+        temp->next = head;  // last node ko first node se join kr dia
         k = k%len;
         k = len-k;
         
         while(k--) temp = temp->next;
-        head = temp->next;  // making new head location
-        temp->next = NULL;
+        head = temp->next;  // making new head location(after making temp k next ko head node)
+        temp->next = NULL;  // temp ka connection break kar denge ar null ko point kr denge
         
         return head;
     }
