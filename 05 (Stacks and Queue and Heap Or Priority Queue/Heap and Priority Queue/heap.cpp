@@ -1,28 +1,40 @@
 What is heap?
 
-It is a Complete binary tree that comes with heap order properties.
+It is a "Complete binary tree" that comes with heap order properties.
 // In a CBT all the levels are filled from the left side.
 
 Max heap:
-root node element is greater than both the child nodes.
+Every node has a value greater than its descendants.
 
 Min heap:
-root node is less than both the child nodes.
+Every node has a value smaller than its descendants.
 
-//
-If a node is at ith index in an array implementation. (i>=1)
+/*
+Array implementation with 1 based indexing.
+If a node is at ith index, (i>=1) 
 Then left child will be at 2*i th index.  
 And the right child will be at 2*i + 1 th index.
 Parent will be at i/2 index.
 
-// In a complete binary tree.
-// Leaf nodes = [n/2+1 to n] th index of the array.
+In a complete binary tree.
+Leaf nodes = [n/2+1 to n] th index of the array.
+
+Array implementation with 0 based indexing.
+If a node is at ith index 
+Then left child will be at 2*i+1 th index.  
+And the right child will be at 2*i + 2 th index.
+Parent will be at |(i-1)/2| index.
+
+*/
 
 // Property that the index of any node in a CBT will always be less than the total nodes in the tree
 
 
-Eg: Array: X 60 50 40 30 20 
-
+Eg: Array: 1 3 6 9 5 8
+       1
+    3     6
+  9   5  8 
+ 
 // Insertion:
 Say: 55
 Step 1: Insert at end index.
@@ -110,14 +122,22 @@ int main(){
     return 0;
 }
 
-// TC = O(logn)
+TC = O(logn)
 
 
 // DELETION
-Means deleting the last node.
+Case-01: Deletion of the leaf nodes
+This case is straightforward to handle. We delete/disconnect the leaf node from the max heap in this case. 
+After deleting the leaf node, we don’t need to change any value in the max heap.
 
-Step1: Swap the root node with the last node(in the array).
-Step2: Delete the last
-Step3: Propagate the root node to put it to its correct position.
-
+Case-02: Deletion of some other node
+This case is strenuous as deleting a node other than the leaf node disturbs the heap properties. This case takes two steps for deletion:
+Delete the selected element from the given heap tree and replace the value of the last node with deleted node.
+Check the max heap properties for the entire heap and keep calling the heapify() function until we get the max heap.
 TC = O(logn)
+
+// Extract min element from min heap
+Swap last and root node.  // root node is minimum
+Decrease the size
+Call minHeapify at the root node
+Return the last node.

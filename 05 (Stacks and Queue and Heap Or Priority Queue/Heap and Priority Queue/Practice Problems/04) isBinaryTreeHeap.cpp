@@ -17,19 +17,19 @@ class Solution {
         if(index >= count)return 0;                      // any index in a cbt cannot be greater than count
         
         else{
-            bool left = isCBT(tree->left,2*index+1,count);
-            bool right = isCBT(tree->right,2*index+2,count);
+            bool left = isCBT(tree->left, 2*index+1,count);
+            bool right = isCBT(tree->right, 2*index+2,count);
             return left && right;
         }
     }
     
     bool isMaxHeap(Node *tree){
-        if(tree->left==NULL && tree->right==NULL)return true;     // leaf node
+        if(tree->left==NULL && tree->right==NULL) return true;     // leaf node
         
-        if(!tree->right)return tree->data>=tree->left->data;
+        if(!tree->right)return tree->data >= tree->left->data;
         
         else{
-            bool left=isMaxHeap(tree->left);
+            bool left = isMaxHeap(tree->left);
             bool right = isMaxHeap(tree->right);
             bool cur = (tree->data >= tree->left->data) && (tree->data >= tree->right->data);
             return left && right && cur;
@@ -40,7 +40,7 @@ class Solution {
     bool isHeap(struct Node* tree) {
         // code here
         int index = 0;
-        int count= countNodes(tree);
+        int count = countNodes(tree);
         return isCBT(tree,index,count) && isMaxHeap(tree);
     }
 };

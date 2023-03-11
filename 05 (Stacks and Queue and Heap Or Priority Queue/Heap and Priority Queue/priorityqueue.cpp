@@ -1,7 +1,6 @@
 // Using inbuilt priority queue class as a heap data structure.
 
 // PRIORITY QUEUE
-// https://youtu.be/sb6we7NpPr4
 // First element of queue is greater than all other elements.
 // Elements are in non-increasing order
 // C++ creates a "max-heap" for priority queue.
@@ -31,7 +30,25 @@ int main(){
 // Syntax to create a min heap for priority queue 
 priority_queue <int, vector<int>, greater<int>> g = gq;  
 
+// If interview asks why such?
+// used vector as an underlying container to store data values.
+// we use greater<int> whenever we want to reverse the values.
+
 // In case of numeric values, we can also multiply the values with -1 and use max heap to get the effect of min heap.
+// While printing we can again *-1 and get back original.
+
+// Create Priority Queue from exisiting:
+1) Array
+int arr[] = {15, 10, 20};
+priority_queue <int> pq (arr, arr+3);  // Behind the scene TC of build a heap = O(N)
+
+2) Vector
+vector<int> v = {15, 10, 20};
+priority_queue <int> pq(v.begin(), v.end());
+
+// Push, Pop operations are done in O(logn) time
+// empty(), size(), top() are checked in O(1) time 
+
 
 // Custom Comparator:
 // Priority queue to work with user defined classes/structures.

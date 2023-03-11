@@ -2,7 +2,7 @@ https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
 
 long long minCost(long long arr[], long long n) {
     // Your code here
-    priority_queue<long long, vector<long long>, greater<long long>> pq;
+    priority_queue<long long, vector<long long>, greater<long long>> pq; // min heap
     
     for(int i=0; i<n; ++i){
         pq.push(arr[i]);
@@ -18,7 +18,7 @@ long long minCost(long long arr[], long long n) {
         pq.pop();
         
         long long sum = a+b;
-        cost+= sum;
+        cost += sum;
         
         pq.push(sum);
     }

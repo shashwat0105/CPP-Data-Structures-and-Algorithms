@@ -23,3 +23,9 @@ Apply decreasing binary search on peak to end element
 And see if you can search the element.
 
 Similar to pivot that u found in case of rotated sorted array.
+
+
+// Similar ques on BS on answer
+https://leetcode.com/problems/minimum-time-to-complete-trips/solutions/1802416/c-answer-on-binary-search-list-of-related-problems/
+
+https://leetcode.com/problems/minimum-time-to-complete-trips/solutions/3266855/all-binary-search-problems/

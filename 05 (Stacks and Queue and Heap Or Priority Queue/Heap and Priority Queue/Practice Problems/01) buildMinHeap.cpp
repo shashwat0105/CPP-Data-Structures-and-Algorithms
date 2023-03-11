@@ -15,7 +15,7 @@ void heapify(vector<int> &arr, int n, int i){
         smallest = right;
     }
 
-    if(smallest!= i){  // ie largest has been updated
+    if(smallest!= i){               // ie smallest has been updated
         swap(arr[smallest], arr[i]);
         heapify(arr, n, smallest);  // recur again for remaining
     }
