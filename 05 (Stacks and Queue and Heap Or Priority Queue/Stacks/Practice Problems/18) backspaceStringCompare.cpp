@@ -1,42 +1,35 @@
 https://leetcode.com/problems/backspace-string-compare/   
 
+// Method 1: Using stack extra space:
+// A data structure jisme agar # encounter ho then we pop the element.
+
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
-        stack<char>st1;
-        stack<char>st2;
-        
-        if(s[0]=='#' || t[0])
-        
-        for(int i=0; i<s.length(); i++){
-            if(s[i]!='#'){
-                st1.push(s[i]);
-            }
-            else if(!st1.empty()){        // (Imp to check else runtime error) Note that after backspacing an empty text, the text will continue empty.
-                st1.pop();
-            }
+        stack<char> st1, st2;
+
+        for(auto &c: s){
+            if(c!='#') st1.push(c);
+            else if(!st1.empty()) st1.pop(); // (Imp to check else runtime error) Note that after backspacing an empty text, the text will continue empty.
+        }                                    // error for testcase like: t = ##cd#e  ie starting m hi # aa jae
+
+        for(auto &d: t){
+            if(d!='#') st2.push(d);
+            else if(!st2.empty()) st2.pop();
         }
-        
-        for(int i=0; i<t.length(); i++){
-            if(t[i]!='#'){
-                st2.push(t[i]);
-            }
-            else if(!st2.empty()){
-                st2.pop();
-            }
-        }
-        
-        if(st1==st2) return true;
-        else return false;
+
+        return st1==st2;
     }
 };
 
-
 // Method 2 (Tough)
 // O(1) Space using Two Pointer
-// Abhi yeh mujhe dhang se nahi samjha hai dry run karke hi samjhega
 // https://youtu.be/tUxW1JwEb9M
 
+// Approach:
+// We will traverse from the back. (back space se relate karo back traversal)
+// If we encounter a backspace we count how many backspaces are there. ie increment the count
+// If we encounter a alphabet we decrement the count.
 // We will take two count variables which will be incremented on encountering a '#' and decremented on encountering an alphabet
 
 class Solution {
@@ -47,8 +40,8 @@ public:
         int countA=0;
         int countB=0;
         
-        while(i>=0 || j>=0){
-            while(i>=0 && (countA>0 || s[i]=='#')){
+        while(i>=0 || j>=0){                         // agar koi bhi string bachi ho toh bhi dekhna hoga ki kahi uski net value "" hai ya nahi yeh case bhi ho skta
+            while(i>=0 && (countA>0 || s[i]=='#')){  // hash milega toh mai andar chala jaunga, alphabet mile with some count of pending hash toh andar jaunga
                 if(s[i]=='#') countA++;
                 else countA--;
                 i--;
@@ -59,9 +52,9 @@ public:
                 j--;
             }
             
-            if(i>=0 && j>=0){
+            if(i>=0 && j>=0){                        // sirf alphabets mile ne pending counts of hash to I need to compare
                 if(s[i]!=t[j]) return false;
-                else i--, j--;
+                else i--, j--;                       
             }
             else{
                 if(i>=0 || j>=0) return false;
@@ -71,7 +64,9 @@ public:
     }
 };
 
-//
+// Dry run on:
+s = nzp#om##g
+t = b#nzp#op##g
+
 // Can read comments
 https://leetcode.com/problems/backspace-string-compare/solution/  
-https://leetcode.com/problems/backspace-string-compare/discuss/135873/8-lines-C%2B%2B-O(1)-space-easy-to-understand

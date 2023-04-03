@@ -1,41 +1,24 @@
 https://leetcode.com/problems/same-tree/
 
+Method 1: During the traversal comparsion
 We can do any traversal we know and solve the ques
 
-// Algorithm for the recursion:
-// 1)
-// If one of the node is NULL then return the equality result of p and q.
-// This boils down to if both are NULL then return true, 
-// but if one of them is NULL but not the other one then return false
-// 2)
-// At this point both root nodes represent valid pointers ie both are not null
-// Return true if the root nodes have same value and (Matlab node value same ho ar left ar right subtree bhi same ho)
-// the left tree of the roots are same (recursion)
-// and the right tree of the roots are same (recursion). 
-// Otherwise return false. 
-
-class Solution {
-public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL || q==NULL) return (p==q);
-        
-        return (p->val==q->val) && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);    // agar dono null nahi hai 
+bool isSameTree(TreeNode* p, TreeNode* q) {
+    // If both trees are empty, they are the same
+    if (!p && !q) {
+        return true;
     }
-};
-
-
-// OR
-class Solution {
-public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL && q==NULL) return true;
-        if(p==NULL || q==NULL) return false;
-        if(p->val!=q->val)     return false;
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    
+    // If one of the trees is empty or they have different values, they are not the same
+    if (!p || !q || p->val != q->val) {
+        return false;
     }
-};
+    
+    // Recursively check if the left and right subtrees are the same
+    return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+}
 
-
+Method 2: Comparing after complete traversal.
 // Point: Agar do tree ka in order traversal same hoga toh tree same hoga - False
 // Point: Agar kisi do tree k koi do traversal say In and Pre order same hai toh tree same hoga - True
 
@@ -55,3 +38,6 @@ void inorder(TreeNode *root, vector<int>& v){
 }
 
 // So in this ques, dono ka in ar pre order vector nikal k compare kar lo solve ho jaega ques
+
+// Follow up:
+https://leetcode.com/problems/subtree-of-another-tree/

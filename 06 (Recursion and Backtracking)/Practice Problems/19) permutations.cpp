@@ -1,8 +1,5 @@
 https://leetcode.com/problems/permutations/
 
-// If we donot modify our array while going back, we will get wrong result.
-// Restore our original array while going back (Backtracking)
-
 // Method 1: With more space complexity
 
 How will the recursion tree be?
@@ -20,12 +17,12 @@ Say [1,2,3]
 
 class Solution {
 public:
-    void recurPermute(vector<int> &ip, vector<int> &op, vector<vector<int>> &ans, int freq[]){
+    void recurPermute(vector<int> &ip, vector<int> &op, vector<vector<int>> &ans, vector<int> &freq){
         if(op.size()==ip.size()){
             ans.push_back(op);
             return;
         }
-        for(int i=0; i<ip.size(); i++){
+        for(int i=0; i<ip.size(); i++){            // Here If I take 2 as first element we can take 1 and 3 ie peeche ja skte hai so for loop 0 se start hoga.(can pick any element at any stage)
             if(!freq[i]){
                 op.push_back(ip[i]);
                 freq[i]=1;
@@ -39,23 +36,22 @@ public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
         vector<int> op;
-        // int freq[nums.size()] = {0};           // map or frequency array (pata ni yeh q nahi chal raha)
-        int freq[nums.size()];                    // map or frequency array
-        for(int i=0; i<nums.size(); i++) freq[i] = 0;
+        int n = nums.size();
+        vector<int> freq(n, 0); // map or frequency array
         recurPermute(nums, op, ans, freq);
         return ans;
     }
 };
 
-
 // Method 2: With lesser space complexity
 
-https://youtu.be/f2ic2Rsc9pU
+https://youtu.be/f2ic2Rsc9pU  (Striver)
 
 Using swapping technique
 [1,2,3]
-Swap 1 with 1: We get 1 at the start position
-Swap 1 with 2: We get 2 at the start position
+Swap 1 with 1: We get 1 at the start position: Swap 2 with 2(123) or Swap 2 with 3(132)
+Swap 1 with 2: We get 2 at the start position: Swap 1 with 1(213) or Swap 1 with 3(231)
+Swap 1 with 3: We get 3 at the start position: Swap 2 with 2(321) or Swap 2 with 1(312)
 
 TC = O(N!*N)
 SC = O(N)
@@ -67,7 +63,7 @@ public:
             ans.push_back(nums);
             return;
         }
-        for(int i=index; i<nums.size(); i++){
+        for(int i=index; i<nums.size(); i++){ // I will start swapping from current index to last.
             swap(nums[index], nums[i]);
             recurPermute(index+1, nums, ans);
             swap(nums[index], nums[i]);       // reswap ie backtracking step

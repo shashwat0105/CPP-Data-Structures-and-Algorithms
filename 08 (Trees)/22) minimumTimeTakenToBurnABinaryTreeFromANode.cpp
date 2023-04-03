@@ -76,12 +76,16 @@ class Solution {
     {
         // Your code goes here
         unordered_map<Node *, Node *> parent_track;
-        Node * res = markParents(root, parent_track, target);
+        Node * res = markParents(root, parent_track, target);  // does parent mapping as well as return me address of target node.
         int time = findMaxDistance(parent_track, res);
         return time;
     }
 };
 
 
+LEETCODE:
+https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
 
+Just see my submission code is exact same.
 
+// I have done without flag as well by returning time-1;

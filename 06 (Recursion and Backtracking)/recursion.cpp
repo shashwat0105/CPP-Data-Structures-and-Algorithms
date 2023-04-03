@@ -37,23 +37,25 @@ Method 3) Using Choice Diagram (Hard)
 // (very good example to understand power of recursion)
 // Print 1 to N using recursion
 
+// n bolta hai n-1 se ki 1 to n-1 print karwa k lao fr mai n print kr dunga
 void print(int n){
     if(n==1){          // or if(n<=0) return;
         cout<<n<<" ";  
         return;
     }
     print(n-1);
-    cout<<n<<" ";      // here I first reach the base case then I start printing from base to N (ie printed while moving away from the base case)
+    cout<<n<<" ";      // here I first reach the base case then I start printing from base to N (ie printed while moving away from the base case also known as backtracking)
 }
 
 // Print N to 1 using recursion
 
+// n bolta hai n-1 se ki mai n print kr deta hu tm n-1 se 1 print karwa dena
 void print(int n){
     if(n==1){          // or if(n<=0) return;
         cout<<n<<" ";  
         return;
     }
-    cout<<n<<" ";      // I know the value of n so first I print the value of n (ie printed while moving towards the base case also known as backtracking)
+    cout<<n<<" ";      // I know the value of n so first I print the value of n (ie printed while moving towards the base case)
     print(n-1);
 }
 

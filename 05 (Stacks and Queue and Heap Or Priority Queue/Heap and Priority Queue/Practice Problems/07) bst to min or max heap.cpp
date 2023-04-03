@@ -1,6 +1,6 @@
 https://practice.geeksforgeeks.org/problems/bst-to-max-heap/1
 
-https://www.geeksforgeeks.org/convert-bst-min-heap/
+To max heap
 
 1 2 3 4 5 6 7 
 
@@ -43,3 +43,8 @@ class Solution{
     }
     
 };
+
+
+To min heap
+https://www.geeksforgeeks.org/convert-bst-min-heap/
+

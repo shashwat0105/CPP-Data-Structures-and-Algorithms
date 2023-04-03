@@ -1,6 +1,7 @@
 https://practice.geeksforgeeks.org/problems/nearly-sorted-1587115620/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
 // K-K groups m move krke heap bana k smallest element nikal k lete jao.
+// Elements at max k positions pe hai
 
 Asked in Flipkart
 

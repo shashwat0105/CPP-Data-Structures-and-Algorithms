@@ -1,38 +1,46 @@
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
+https://youtu.be/_-QHfMDde90 (Striver)
+https://youtu.be/Oi3_06ultic (MIK)
+
 Root node, one of the two nodes can also be LCA
 
 // Brute force:
 // LCA(4, 7)
+Method 1:
 // We write the path from 4 to root
 // and path from 7 to root.
 // we will compare the paths and first where they match first is our ans.
 // In this approach they is extra space as we have to store both the paths.
 
+Method 2:
 // Optimised: (Dry run karke dekh lo samajh aa jaega)
 
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {   // dfsTraversal
         // base case
-        if(root==NULL || root==p || root==q){                         // if current root == p or root == q ie we found p or q in the tree ar wo return kar denge
+        if(!root || root==p || root==q){                         // if current root == p or root == q ie we found p or q in the tree ar wo return kar denge
             return root;
         }
         TreeNode *left  = lowestCommonAncestor(root->left, p, q);     // because the return function is TreeNode type
         TreeNode *right = lowestCommonAncestor(root->right, p, q);
         
         // (Jab har subtree ki left ar right calls complete ho jaengi tab aage yeh chalega)
-        if(left==NULL)       return right;   // if left is NULL, return right whatever it is, be it NULL too(ie neither p nor q was in that subtree)    
-        else if(right==NULL) return left;  
-        else return root;                    // both left and right are not, we found our ans. (ie under this root both p and q lie)
+        if(!left)       return right;        // if left is NULL, return right whatever it is, be it NULL too(ie neither p nor q was in that subtree)    
+        else if(!right) return left;  
+        else return root;                    // both left and right are not NULL, we found our ans. (ie under this root both p and q lie)
     }
 };
 
-// If the current (sub)tree contains both p and q, then the function result is their LCA. 
+// If the current (sub)tree contains both p and q, then the function result is their LCA(return root). 
 // If only one of them is in that subtree, then the result is that one of them. 
 // If neither are in that subtree, the result is null/None/nil.
 
-//*********************8
+LC discuss: 
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solutions/1306476/c-python-2-solutions-clean-concise-o-n/?orderBy=most_votes
+
+//**************************************************************************************************************
 // Lowest common ancestor of a general tree(A general tree is basically a graph).
 // Har node ka tree k root se path likh lo, with the help of parent
 // Parent we can store by running a dfs 

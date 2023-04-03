@@ -8,9 +8,10 @@ Balanced BT = For every node: Height of Left subtree - Height of Right subtree <
 
 // Proper solution
 // We know to find height of tree from a node in O(n) time.
-
+// I want to return boolean true false as well as height(integer) so what I will do?:
 // If it is not a balanced tree it returns -1, else returns the height of the tree.
 
+// This code can be slightly faster due to "early return" as soon as u get an unbalanced node.
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
@@ -49,15 +50,14 @@ public:
 
 // Baaki code toh simple hai
 
-// Ek ar similar code
+// Ek ar similar code (more concise and readable)
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
         int counter = 0;
         height(root, counter);
         
-        if(counter==1) return false;
-        return true;
+        return !(count==-1);
     }
     
     int height(TreeNode *root, int &counter){

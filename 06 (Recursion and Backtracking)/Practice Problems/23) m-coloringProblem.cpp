@@ -4,6 +4,7 @@ Can a graph be colored with M colors.
 Bipartite had M = 2
 
 // We try every color (Recursion is trying every possibility)
+// Start at node 0: I can color it with color 1, or color 2, or color 3... and so on so just do it.
 
 // TC = O(N^M)
 // SC = O(2N)
@@ -19,13 +20,13 @@ bool isSafe(int node, int color[], bool graph[101][101], int n, int col){  // co
 
 bool solve(int node, int color[], int m, int n, bool graph[101][101]){
     if(node == n){            // on coloring all the n nodes
-        return true;
+        return true;          
     }
     
     for(int i=1; i<=m; ++i){                                    // trying every color from 1 to n
         if(isSafe(node, color, graph, n, i)){                   // will tell if its possible to color with that color, ie no adjacent have same color
             color[node] = i;                                    // color with color i
-            if(solve(node+1, color, m, n, graph)) return true;  // call the recursive function again
+            if(solve(node+1, color, m, n, graph)) return true;  // call the recursive function again. // imp to return true so that it doesn't check for other branches.
             color[node] = 0;                                    // if the above doesnt returns a true, I backtrack ie take off that color
         }
     }
@@ -36,6 +37,5 @@ bool solve(int node, int color[], int m, int n, bool graph[101][101]){
 bool graphColoring(bool graph[101][101], int m, int n) { // m = colors, n = no of nodes
     // your code here
     int color[n] = {0};                                  // a color array with all values 0
-    if(solve(0, color, m, n, graph)) return true;
-    return false;
+    return solve(0, color, m, n, graph);
 }

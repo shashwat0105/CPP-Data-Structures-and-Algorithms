@@ -6,11 +6,16 @@ Every level except the last is completely filled.
 // Do any traversal and count++
 // TC = O(N)
 // SC = O(H): H = height of binary tree, complete tree: logn is the height
-inorder(root, &cnt){
-    if(root == NULL) return;
+void traverse(TreeNode *root, int &cnt){
+    if(!root) return;
     cnt++;
-    inorder(root->left);
-    inorder(root->right);
+    traverse(root->left, cnt);
+    traverse(root->right, cnt);
+}
+int countNodes(TreeNode* root) {
+    int cnt=0;
+    traverse(root, cnt);
+    return cnt;
 }
 
 // Optimisation < O(N) is asked
@@ -27,7 +32,6 @@ inorder(root, &cnt){
 
 // TC = O(logN*logN)
 
-
 class Solution {
 public:
     int countNodes(TreeNode* root) {
@@ -39,16 +43,15 @@ public:
         
         while(leftNode){
             lH++;
-            leftNode = leftNode->left;
+            leftNode = leftNode->left;   // left node always is thre coz complete binary tree
         }
         while(rightNode){
             rH++;
-            rightNode = rightNode->left;
+            rightNode = rightNode->right;
         }
         
-        if(lH == rH) return (1<<lH) - 1;      // this is faster than pow operation
+        if(lH == rH) return (1<<lH) - 1;      // this is faster than pow operation // 2^lH - 1
         
-        return 1+ countNodes(root->left) + countNodes(root->right);
+        return 1 + countNodes(root->left) + countNodes(root->right);
     }
 };
-

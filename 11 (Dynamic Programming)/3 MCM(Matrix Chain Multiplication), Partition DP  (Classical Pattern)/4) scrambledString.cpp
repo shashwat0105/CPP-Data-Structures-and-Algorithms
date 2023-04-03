@@ -55,7 +55,10 @@ We say that “rgtae” is a scrambled string of “great”.
 // Base condition
 
 
+// LEETCODE:
+https://leetcode.com/problems/scramble-string/
 
+https://youtu.be/Fx96uB9EIDQ  (MIK)
 
 
 

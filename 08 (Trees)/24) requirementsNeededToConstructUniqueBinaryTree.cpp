@@ -7,4 +7,3 @@ Can u construct a "unique" binary tree using:
 3) Postorder and Inorder   -> YES
 
 Inorder is required because it is important to know what is in the left and right of the binary tree.
-

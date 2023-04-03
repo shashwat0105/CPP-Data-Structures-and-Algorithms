@@ -141,3 +141,8 @@ Swap last and root node.  // root node is minimum
 Decrease the size
 Call minHeapify at the root node
 Return the last node.
+
+//
+For more practice
+Refer
+https://leetcode.com/discuss/general-discussion/1127238/master-heap-by-solving-23-questions-in-4-patterns-category

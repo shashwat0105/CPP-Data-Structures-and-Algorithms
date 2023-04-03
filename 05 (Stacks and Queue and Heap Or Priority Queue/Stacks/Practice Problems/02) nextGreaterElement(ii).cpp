@@ -1,11 +1,10 @@
 https://leetcode.com/problems/next-greater-element-ii/
 
-
 https://youtu.be/Du881K7Jtk8 (Striver)
 
 // We can have the same array repeated again. And use modulo (for circular array handling)
 
-Array can be imagined as: 1 7 5 3 8 5 1 7 5 3 8 5
+Array can be imagined as: 1 7 5 3 8 5, 1 7 5 3 8 5
 
 class Solution{
 public:
@@ -52,7 +51,7 @@ public:
             }
             s.push(nums[i]);
         }
-        reverse(ans.begin(), ans.end());           // I forget this
+        reverse(ans.begin(), ans.end());           // I forget this coz push_back kia hai
         return ans;
     }
 }; 

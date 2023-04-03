@@ -17,7 +17,7 @@ class Solution
         
         // while going back
         if(root->data != leftSum+rightSum) flag = 0;    // marking flag as 0, when it violates the condition
-        return leftSum+rightSum+root->data;
+        return leftSum + rightSum + root->data;
     }
     
     bool isSumTree(Node* root)
@@ -39,16 +39,17 @@ class Solution {
     // Convert a given tree to a tree where every node contains sum of values of
     // nodes in left and right subtrees in the original tree
     int solve(Node *node){
-        if(node==NULL) return 0;
+        if(node==NULL) return 0; 
         //if(node->left==NULL && node->right==NULL) node->data = 0;  (Iski jaroorat nahi hai, leftsum + rightsum 0+0 se ho jaega automatically qki uski left ar right node exist nahi karti(base case))
         
         int leftSum = solve(node->left);
         int rightSum = solve(node->right);
+        // while going back
         int x = node->data;                      // save the old value, as it will get updated later
-        node->data = leftSum+rightSum;
-        return leftSum+rightSum+x;
-        
+        node->data = leftSum + rightSum;
+        return leftSum + rightSum + x;
     }
+    
     void toSumTree(Node *node)
     {
         // Your code here

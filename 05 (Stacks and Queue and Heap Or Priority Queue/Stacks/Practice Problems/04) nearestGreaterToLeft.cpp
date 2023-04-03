@@ -33,7 +33,6 @@ for(int i=0; i<n; ++i){
     s.push(arr[i]);
 }
 
-
 https://www.geeksforgeeks.org/closest-greater-or-same-value-on-left-side-for-every-element-in-array/
 
 Other solution

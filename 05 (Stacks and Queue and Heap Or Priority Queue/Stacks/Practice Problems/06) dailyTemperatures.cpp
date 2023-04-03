@@ -1,5 +1,7 @@
 https://leetcode.com/problems/daily-temperatures/
 
+// Same as NGER
+// We have to return days to wait ie difference in indices.
 
 class Solution {
 public:
@@ -22,8 +24,4 @@ public:
         return ans;
     }
 };
-
-
-Similar Pattern Problems:
-https://github.com/xiaoylu/leetcode_category/tree/master/MonotonicQueue
 

@@ -1,4 +1,7 @@
-https://www.geeksforgeeks.org/next-greater-element/
+https://www.scaler.com/topics/next-greater-element/
+
+GFG 
+https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
 Next greater element or nearest greater to right
 
@@ -41,7 +44,8 @@ class Solution{
         stack<long long> s;
         
         for(int i=n-1; i>=0; i--){
-            while(!s.empty() && s.top()<=arr[i]){  // DONT write while(s.top()<=arr[i]&& !s.empty()){} as it will give segementation error as first condition is checked first and if stack is empty then u cant access the top element
+            // First I will remove all the smaller elements from the stack.
+            while(!s.empty() && s.top()<=arr[i]){  // DONT write while(s.top()<=arr[i] && !s.empty()){} as it will give segementation error as first condition is checked first and if stack is empty then u cant access the top element
                 s.pop();
             }
             if(s.size()==0){                       // checking ki kis condition se while terminate hua
@@ -52,8 +56,8 @@ class Solution{
             }
             s.push(arr[i]);                       // [1 3 2 4]  In this example when we permanently pop 2, we also push 3 ie a better ans in the stack at the top. So, there is no issue
         }
-        reverse(ans.begin(), ans.end());
-        return ans;
+        reverse(ans.begin(), ans.end());          // push_back karoge toh reverse krna padega nahi toh ans[i] mein hi store kar dete.
+        return ans;     
     }
 };
 
@@ -81,7 +85,7 @@ public:
             }
             s.push(nums2[i]);
         }
-        reverse(dummyans.begin(), dummyans.end());
+        reverse(dummyans.begin(), dummyans.end());     
         
         vector<int> ans;
         
@@ -102,7 +106,7 @@ public:
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        unordered_map<int, int> m;  // instead of dummyans we will use map to store
+        unordered_map<int, int> m;                  // instead of dummyans we will use map to store
         stack<int> s;
         
         int n = nums2.size();
@@ -133,30 +137,29 @@ public:
 // PEECHE SE HI TRAVERSAL KARNA YAAD RAKHO(BEST YAHI HAI)
 
 
+
 ---------- OPTIONAL -----------
-// We can also traverse from start(Ispe thoda analysis krna hai) (In this ques order doesnt matter as we are storing in map, but kya NGE ques start traversal se solve ho skta hai)
+// We can also traverse from start(Ispe thoda analysis krna hai) (In this ques order doesnt matter as we are storing in map, but kya NGE ques start traversal se solve ho skta hai (YES))
 https://leetcode.com/problems/next-greater-element-i/discuss/671261/C%2B%2B-or-Map-%2B-Stack-or-Commented
+
+4 5 2 25 7 8
+// Lets say hamare paas abhi 5 aya toh mai dekhunga ki stack m kitne elements hai jinka NGE yeh 5 ho skta hai. 
+// Usko assign kr dunga ar unhe stack se bahar nikal dunga ar 5 ko stack m daal dunga.
 
 NGE Ques start traversal
 https://youtu.be/T-E3hWEPWWU
 
 vector<long long> nextLargerElement(vector<long long> arr, int n){
-       // Your code here
-       stack<int>st;
-       vector<long long> res(n , -1);
-       
-       for(int i=0;i<n;i++){
-           
-           if(st.empty()) {
-               st.push(i);
-               continue;
-           }
-           while(!st.empty() && arr[st.top()] < arr[i]){
-               res[st.top()] = arr[i];
-               st.pop();
-           }
-           st.push(i);
-       }
-       return res;
-   }
-};
+    // Your code here
+    stack<long long>st;
+    vector<long long> res(n , -1);   // taaki remaining walo ko -1 na assign krna pade
+    
+    for(int i=0;i<n; i++){
+        while(!st.empty() && arr[st.top()] < arr[i]){
+            res[st.top()] = arr[i];
+            st.pop();
+        }
+        st.push(i);     // Stack indices ka banaya hai.
+    }
+    return res;
+}

@@ -32,13 +32,13 @@ public:
 };
 
 
-
 // If kth largest is aked
 // 1 traversal to compute the total number of nodes.
 // Then traverse to find n-kth node.
 or
-// Kth largest element can be done in single traversal. By using reverse inorder traversal i.e.(Right-Node-Left)
+// Kth largest element can be done in single traversal. By using reverse inorder traversal i.e.(Right-Root-Left)
 
+// Iterative inorder:
 int kthLargest(TreeNode* root, int k) {
     stack<TreeNode*> st; 
     TreeNode* node = root;

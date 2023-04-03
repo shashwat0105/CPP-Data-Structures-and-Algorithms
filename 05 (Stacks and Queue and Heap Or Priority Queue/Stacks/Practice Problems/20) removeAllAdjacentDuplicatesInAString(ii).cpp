@@ -2,6 +2,77 @@ https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
 
 // Using a string instead of stack so that u dont need to reverse, as a string can also be accessed from the end
 
+// Other method using pair in stack or vector 
+// See stack is concept jisme apan last element ko access karte hai jaroori nahi hai ki stack use kare hi, faltu mein fr reverse bhi karna padega.
+
+https://youtu.be/oANMk2_jxmU
+
+// Syntax:
+// If u want to add 'a' 5 times, and 'b' 2 times then instead of a (while) loop 
+// res.append(5, 'a');
+// res.append(2, 'b');
+// can be used
+
+class Solution {
+public:
+    string removeDuplicates(string s, int k) {
+        vector<pair<char, int>> st;                  // st is a vector so stl of vector will be used 
+        for(auto c: s){
+            if(st.empty() || st.back().first!=c){
+                st.push_back({c, 1});
+            }
+            else{ // if it gets matched
+                st.back().second++;
+                if(st.back().second==k){            // is If block ko else k bahar bhi likh sakte hai koi dikkat nahi hai
+                    st.pop_back();                  // last element ko poora hata do (Isme ek hi element mein sab hai toh hatane mein loop ni lagega)
+                }
+            }
+        }
+
+        string ans;
+        for(auto x: st){
+            ans.append(x.second, x.first);         // phle ata hai uska count, fr ata hai jo element dalna hai
+        }
+        return ans;
+    }
+};
+
+// Using stack instead of vector.
+string removeDuplicates(string s, int k) {
+    stack<pair<char, int>> st;
+    int i=0, n=s.size();
+    while (i < n){
+        if (st.empty()){
+            st.push({s[i], 1});
+        }
+        else {
+            if (st.top().first != s[i]){
+                st.push({s[i], 1});
+            }
+            else {
+                st.top().second++;
+                if (st.top().second == k){
+                    st.pop();
+                }
+            }
+        }
+        i++;
+    }
+
+    string ans = "";
+    while (!st.empty()){
+        int t = st.top().second;
+        while (t--){
+            ans += st.top().first;
+        }
+        st.pop();
+    }
+
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
+
+// Other approach similar to what I thought.
 // Using extra space to store the occurence of last occured element.
 // My mistaked thought process
 // Also we just cannot use one flag variable(that I was thinking initially) instead of a vector or extra space
@@ -31,39 +102,3 @@ public:
         return str;
     }
 };
-
-// Other method using pair of stack or vector 
-// See stack is concept jisme apan last element ko access karte hai jaroori nahi hai ki stack use kare hi, faltu mein fr reverse bhi karna padega.
-
-https://youtu.be/oANMk2_jxmU
-
-// Syntax:
-// If u want to add 'a' 5 times, and 'b' 2 times then instead of a loop 
-// res.append(5, 'a');
-// res.append(2, 'b');
-// can be used
-
-class Solution {
-public:
-    string removeDuplicates(string s, int k) {
-        vector<pair<char, int>> st;                  // st is a vector so stl of vector will be used 
-        for(auto c: s){
-            if(st.empty() || st.back().first!=c){
-                st.push_back({c, 1});
-            }
-            else{ // if it gets matched
-                st.back().second++;
-                if(st.back().second==k){            // is If block ko else k bahar bhi likh sakte hai koi dikkat nahi hai
-                    st.pop_back();                  // last element ko poora hata do (Isme ek hi element mein sab hai toh hatane mein loop ni lagega)
-                }
-            }
-        }
-
-        string ans;
-        for(auto x: st){
-            ans.append(x.second, x.first);         // phle ata hai uska count, fr ata hai jo element dalna hai
-        }
-        return ans;
-    }
-};
-

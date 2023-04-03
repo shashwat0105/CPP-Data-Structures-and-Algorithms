@@ -2,7 +2,7 @@
 
 // DFS is used more than BFS due to convenience of implementation.
 
-// YT resources followed: 1) Striver's Graph(Not so good that I want to revise again from here)
+// YT resources followed: 1) Striver's Graph
 //                        2) Codencode Graph Playlist 
 
 // Two types of graphs

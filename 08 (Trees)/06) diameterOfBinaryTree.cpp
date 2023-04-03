@@ -16,7 +16,7 @@ public:
         return diameter;
     }
     
-    int height(TreeNode *root, int &diameter){
+    int height(TreeNode *root, int &diameter){  // diameter is changing has to be passed by reference
         if(root==NULL){
             return 0;
         }
@@ -30,11 +30,11 @@ public:
 };
 
 
-// Diameter of a tree (which is an undirected graph basically, ie we can go to parent too)
+// Diameter of a tree(acyclic graph) (which is an undirected graph basically, ie we can go to parent too)
 // Here root is unknown too, hence we cannot do one dfs and find the two largest values and add them
 // Also 1 is generally the root of the such trees, can see from sample test cases.
 
-https://youtu.be/m8qXEz1Xe8w
+https://youtu.be/m8qXEz1Xe8w (LUV)
 https://www.quora.com/How-do-I-find-the-diameter-of-a-tree
 https://www.geeksforgeeks.org/dynamic-programming-trees-set-2/
 http://courses.csail.mit.edu/6.046/fall01/handouts/ps9sol.pdf (CLRS mein hai yeh ques)
@@ -45,9 +45,9 @@ http://courses.csail.mit.edu/6.046/fall01/handouts/ps9sol.pdf (CLRS mein hai yeh
 // Find max distance from every node ie har node ko root maan k max depth calculate kar lo
 // O(n^2)
 
-// Optimised
-//  Step 1: From any vertex x of a tree find the farthest vertex u, ie x ko root maan k max depth nikalo (THis u has to be one of the end of diameter)
-//  Step 2: From vertex u find the farthest vertex v, ie u ko root maan k max depth nikalo ie dist(u,v)             (This v will be the other end of the diameter) (As we go directly on parent nodes)
+// Optimised using 2 DFS
+//  Step 1: From any arbitrary vertex x of a tree find the farthest vertex u, ie x ko root maan k max depth nikalo (This u has to be one of the end of diameter)
+//  Step 2: From vertex u find the farthest vertex v, ie u ko root maan k max depth nikalo ie dist(u,v)  (This v will be the other end of the diameter) (As we go directly on parent nodes)
 //  dist(u,v) gives you the diameter. 
 
 #include<bits/stdc++.h>
@@ -55,15 +55,15 @@ using namespace std;
 
 const int n = 1e5+10;
 vector<int> g[N];
-int depth[N]
+int depth[N];
 
 // Tree mein dfs parent pass karke lagana so that we dont visit that again
 void  dfs(int v, int par=-1){
-    for(int child: g[v]{
+    for(int child: g[v]){
         if(child == par)continue;
         depth[child] = depth[v]+1;  // coz depth neeche jaate jaate calculate hoti hai 
         dfs(child, v);
-    })
+    }
 }
 
 int main(){
@@ -97,4 +97,6 @@ int main(){
     cout<<max_depth<<endl;
 }
 
+// solve this ques later
+https://leetcode.com/problems/minimum-height-trees/description/
 

@@ -175,3 +175,5 @@ rbegin()  points to last iterator in a vector etc. Used to reverse sort as well.
 https://cplusplus.com/reference/vector/vector/rbegin/
 
 
+// STL Good ones:
+https://github.com/MAZHARMIK/Cpp-STL-Quick-Help/blob/main/README.md

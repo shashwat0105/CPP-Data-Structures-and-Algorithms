@@ -6,7 +6,7 @@ https://leetcode.com/problems/flatten-nested-list-iterator/
 // If the value is list we traverse the list which contains integers or list(which will be traversed)
 // This makes it a recursive problem. (we dont know how many nested lists are present)
 
-// In comments 
+// In comments of the editor 
 // getInteger and getList are implemented already
 
 https://youtu.be/FxrTMj1dtxM
@@ -22,7 +22,7 @@ class NestedIterator {
 public:
     void helper(vector<NestedInteger> &nestedList){         // to classify whether it is integer or a list
         for(int i=0; i<nestedList.size(); ++i){
-            if(nestedList[i].isInteger()){
+            if(nestedList[i].isInteger()){                  // if it is an integer yeh method already built in hai commented code mein LC k
                 ans.push_back(nestedList[i].getInteger());
             }
             else{
@@ -56,3 +56,6 @@ public:
 // Iterator cannot be copied yeh pata ni kya hai dekh lena ar bhi solutions (YT pe jada ni hai)
 https://leetcode.com/problems/flatten-nested-list-iterator/discuss/?currentPage=1&orderBy=most_votes&query=
 
+https://leetcode.com/problems/flatten-nested-list-iterator/solutions/80169/concise-c-without-storing-all-values-at-initialization/
+
+https://leetcode.com/problems/flatten-nested-list-iterator/solutions/80169/concise-c-without-storing-all-values-at-initialization/

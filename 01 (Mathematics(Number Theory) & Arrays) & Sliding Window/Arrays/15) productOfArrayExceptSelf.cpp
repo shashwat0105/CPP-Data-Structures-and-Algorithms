@@ -5,7 +5,7 @@ https://leetcode.com/problems/product-of-array-except-self/solutions/1342916/3-m
 // You can seggregate the problem in no of zeroes, then we can use the divide operation as well.
 // ie ki ek zero hai ya ek se jada zero hai.
 
-https://youtu.be/E0FqAbHjf4E  (GOLD)
+https://youtu.be/E0FqAbHjf4E  (GOLD-erricto)
 
 // My first solution
 class Solution {
@@ -73,7 +73,7 @@ public:
         int cur = 1;
 
         for(int i=0; i<n; ++i){
-            res[i]*=cur;
+            res[i]*=cur;                         
             cur *=nums[i];
         }
         for(auto x: res) cout<<x<<" ";
@@ -87,7 +87,7 @@ public:
 };
 
 // One pass, no extra space solution
-https://youtu.be/bNvIQI2wAjk (Better theory explanation)
+https://youtu.be/bNvIQI2wAjk (Better theory explanation - neetcode)
 https://leetcode.com/problems/product-of-array-except-self/discuss/65627/O(n)-time-and-O(1)-space-C%2B%2B-solution-with-explanation  (Code courtesy)
 
 Directly store the product of prefix and suffix into the final answer array
@@ -101,7 +101,7 @@ public:
         int preProduct = 1;
         int postProduct = 1;
         for(int i=0; i<n; i++){
-            res[i] *= preProduct;
+            res[i] *= preProduct;       // res m iske pehle tak ka product ko hi store kr rhe hai
             preProduct *= nums[i];
             
             int j=n-i-1;

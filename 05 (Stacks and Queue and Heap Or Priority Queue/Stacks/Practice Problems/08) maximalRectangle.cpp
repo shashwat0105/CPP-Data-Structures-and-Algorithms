@@ -57,50 +57,29 @@ public:
         vector<int> indexNSL(n);
         stack<int> s;
                 
-        // NSR                                                     (is NSR k code mein reverse karne ki jaroorat nahi padi maine cout karke dekh lia hai, BUT WHY?)
+        // NSR                                                     
         for(int i=n-1; i>=0; --i){
-            while(!s.empty() && heights[s.top()]>=heights[i]){
-                s.pop();
-            }
+            while(!s.empty() && heights[s.top()]>=heights[i]) s.pop();  // equal hua toh bhi expand kr jaega isliye pop kr skte hai.
             indexNSR[i] = s.empty()? n : s.top();
-            // if(s.empty()){
-            //     indexNSR[i] = n;
-            // }
-            // else{
-            //     indexNSR[i] = s.top();
-            // }
             s.push(i);
         } 
 
-        // for(auto it: indexNSR){
-        //     cout<<it<<" ";
-        // }
-        
         // empty the stack to be used again
         while(!s.empty()) s.pop();
         
         // NSL
         for(int i=0; i<n; ++i){
-            while(!s.empty() && heights[s.top()]>=heights[i]){
-                s.pop();
-            }
+            while(!s.empty() && heights[s.top()]>=heights[i]) s.pop();
             indexNSL[i] = s.empty()? -1 : s.top();                 // instead of an array can take this as a variable, and calculate max_area here itself.(See my submitted solutions)
             s.push(i);
         }
 
-        // for(auto it: indexNSL){
-        //     cout<<it<<" ";
-        // }
-
         int max_area=0;
         for(int i=0; i<n; i++){
-            max_area = max(max_area,(indexNSR[i]-indexNSL[i]-1)*heights[i]) ;
+            max_area = max(max_area, (indexNSR[i]-indexNSL[i]-1)*heights[i]) ;
         }
         return max_area;
     }
-    
 };
 
-// Do analysis of other methods.
-// Check the leetcode discuss/YT for other short and DP solutions
-https://leetcode.com/problems/maximal-rectangle/discuss/?currentPage=1&orderBy=most_votes&query=
+// Can use one pass histogram code as well.

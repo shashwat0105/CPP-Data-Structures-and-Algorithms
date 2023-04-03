@@ -7,7 +7,7 @@
 
 https://dynalist.io/d/8JunO-H3ZxPg9wDul58ouDMS (Master Tree DS almost Saare topics cover ho jaenge)
 
-// DFS in tree 
+// DFS at any arbitrary node in tree 
 // Like we do in graphs, instead of visited, we took parent
 void dfs(int vertex, int parent=0){
     for(auto child : g[vertex]){

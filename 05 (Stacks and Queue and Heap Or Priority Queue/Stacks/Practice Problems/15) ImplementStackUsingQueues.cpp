@@ -60,7 +60,6 @@ public:
 
 // Using single queue
 
-
 // TC = O(N), SC = O(N)
 // Push in queue
 // Iterate to one less than the size of the queue and push the front element again and pop the element

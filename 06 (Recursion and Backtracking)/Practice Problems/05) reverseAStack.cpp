@@ -11,7 +11,7 @@ void insertAtBottom(stack<int> &s, int ele){
         return;
     }
 
-    int temp = s.size();
+    int temp = s.top();
     s.pop();
     insertAtBottom(s, ele);  // recursive call for the new s 
     s.push(temp);
@@ -29,3 +29,22 @@ void reverse(stack<int> &s){
     return;
 }
 
+// Thinking
+// High Level Thinking
+Expectation
+5       1
+4       2
+3   ->  3
+2       4
+1       5
+Given   Reversed
+
+Faith
+4       1
+3   ->  2
+2       3
+1       4
+Given   Reversed
+
+Relating faith with expectation.
+That we have insert that 5 at the bottom of the reversed stack provided by reverse(4)

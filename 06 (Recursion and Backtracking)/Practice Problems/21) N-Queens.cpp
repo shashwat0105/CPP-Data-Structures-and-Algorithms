@@ -1,6 +1,6 @@
 https://leetcode.com/problems/n-queens/
 
-https://youtu.be/i05Ju7AftcM
+https://youtu.be/i05Ju7AftcM  (Striver)
 
 Can see the recursive tree from here.
 We go in column and then in every row of that column to check for a valid position
@@ -90,15 +90,19 @@ bool isValid(int row, int col){
 
 
 
-// Method 2 (To understand again more):
+// Method 2 :
 // Better Time complexity!!
-// Every call inside isValid was taking O(N) time
+// Every call inside isValid was taking O(N) time ki hame peeche tak baar baar jana padta tha ki is diagonal ya line m queen toh nahi rakhi.
+// Diagonal or row k saare elements ko agar kisi same hash value se denote kr dene ki saare elements in one diagonal have same hash value.
+// Ar kisi bhi ek jagah queen rakhne pe us hash ko mark kr den toh wo O(1) mein m check ho jaega ki diagonal filled hai ya nahi, poora peeche tak baar baar nahi jana padega.
 
 // Hence, we optimise it using hashing // ie if there was already there a queen or not
 // We hash the left check using a vector of size n
 // We hash the left lowerDiagonal using a vector of size 2n -1
+// Index value at a particular cell in upper diagonal is given by (row+col)
 // We hash the left upperDiagonal using a vector of size 2n-1
-// Index value at a particular cell is given by (n-1) + (row-col)
+// Index value at a particular cell in upper diagonal is given by (n-1) + (row-col)
+
 
 class Solution {
     

@@ -1,4 +1,6 @@
 // "DIRECTED GRAPH"
+// Check code story with mik video
+// Along with vis, the node should be in current recursion for cycle in directed graph.
 
 1 →  2 →  3 → 4 
 	 ↑    ↓   ↓    

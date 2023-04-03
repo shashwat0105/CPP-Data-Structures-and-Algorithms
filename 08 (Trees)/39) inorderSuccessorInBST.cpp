@@ -20,15 +20,16 @@ https://youtu.be/SXKAD2svfmI
 // Best
 // Using searching in BST to find the first value > key 
 // Ki left m jane pe milega ya right mein
+// Same as ceil and floor ques.
 
 TreeNode * inorderSuccessor(TreeNode *root, TreeNode *k){
     TreeNode *successor = NULL;
     while(root){
-        if(k->val >= root->val){
-            root = root->left;
+        if(k->val >= root->val){   // root ki value choti hai it cannot be a candidate
+            root = root->right;
         }
         else{
-            successor = root;
+            successor = root;     // it can be a candidate.
             root = root->left;
         }
     }

@@ -11,4 +11,5 @@ Explore
 Unchoose
 
 https://leetcode.com/problems/subsets/discuss/27281/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
-
+(Used recursion + iteration approach)
+Pehla element koi bhi index ka ho skta hai 0, 1, 3, 4 ... Tree ki kai branches ban gyi hence for loop laga skte

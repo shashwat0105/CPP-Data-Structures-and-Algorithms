@@ -7,21 +7,23 @@ We will do anticlockwise boundary traversal.
 
 https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1/
 
-
-// Left boundary excluding leafs    
-// Leaf Nodes  (For getting leaf nodes, )
-// Right boundary in reverse order excluding leafs ()
+Steps:
+// 1) Left boundary excluding leafs    
+// 2) Leaf Nodes  (For getting leaf nodes, )
+// 3) Right boundary in "reverse" order excluding leafs ()
 
 // For left boundary:
-// You will start from root's left
-// If there is a left node go to left, if there is not a left node go to right.
+// Take a pointer(curr) that start from root's left
+// If there is a left node go to left, if there is not a left node go to right. (ie either u go left or right)
 // Until you reach a leaf node.
 
 // For leaf nodes:
 // To print the leaf nodes, we can do a simple preorder traversal, and check if the current node is a leaf node or not. If it is a leaf node just print it.
+// We can do any traversal just left to right print hona chahiye. Here we go first left and then right(ie dono jana hai)
+
 
 // For right boundary in reverse order:
-// You will start from root's right.
+// Take a pointer(curr) that start from root's right.
 // Go to right, right, if there does not exist a right, go to left until you reach a leaf node.
 // store the elements in  a stack/vector and add the elements from the top to the data structure
 
@@ -35,7 +37,7 @@ public:
         return (node->left==NULL && node->right==NULL);
     }
     
-    void leftBoundary(Node *root, vector<int> &res){
+    void addLeftBoundary(Node *root, vector<int> &res){
         Node * curr = root->left;
         while(curr){
            if(!isLeaf(curr)) res.push_back(curr->data);
@@ -53,7 +55,7 @@ public:
         if(root->right) addLeafNodes(root->right, res);
     }
     
-    void rightBoundary(Node *root, vector<int> &res){
+    void addRightBoundary(Node *root, vector<int> &res){
         Node *curr = root->right;
         vector<int> temp;
         while(curr){
@@ -70,72 +72,55 @@ public:
         vector<int> res;
         if(root==NULL) return res;
         if(!isLeaf(root)) res.push_back(root->data);
-        leftBoundary(root, res);
+        addLeftBoundary(root, res);
         addLeafNodes(root, res);
-        rightBoundary(root, res);
+        addRightBoundary(root, res);
         return res;
-        
     }
 };
 
 
 
 
-// Instead of while using recursive goin down the tree
-private: void traverseleft(Node *root,vector<int> &ans){
-    if(root==NULL)
-        return;
-    if(root->left==NULL && root->right==NULL)
-        return;
-    ans.push_back(root->data);                      // isme jaate time hi push kar dia
-    if(root->left)
-        traverseleft(root->left,ans);
-    else
-        traverseleft(root->right,ans);
+// Instead of a while loop using recursive going down the tree
+void traverseleft(Node *root, vector<int> &ans){
+    if(!root || (root->left==NULL && root->right==NULL)) return;  // if root is null or leaf node found.
+    
+    ans.push_back(root->data);                                    // isme jaate time hi push kar dia
+    if(root->left) traverseleft(root->left,ans);
+    else traverseleft(root->right,ans);
 }
    
-void traverseleaf(Node *root,vector<int> &ans){
-    if(root==NULL)
+void traverseleaf(Node *root, vector<int> &ans){
+    if(root==NULL) return;
+    if(root->left==NULL && root->right==NULL){
+        ans.push_back(root->data);
         return;
-    if(root->left==NULL && root->right==NULL)
-        {
-            ans.push_back(root->data);
-            return;
-        }
-        traverseleaf(root->left,ans);
-        traverseleaf(root->right,ans);
+    }
+    traverseleaf(root->left, ans);
+    traverseleaf(root->right, ans);
 }
+
+
 void traverseright(Node *root,vector<int> &ans){
-    if(root==NULL)
-        return;
-    if(root->left==NULL && root->right==NULL)
-        return;
+    if(!root || (root->left==NULL && root->right==NULL)) return;  // if root is null or leaf node found.
     
-    if(root->right)
-        traverseright(root->right,ans);
-    else
-        traverseright(root->left,ans);
-        
+    if(root->right) traverseright(root->right,ans);
+    else traverseright(root->left,ans);
     ans.push_back(root->data);                 // adding data while going back, can say post order type  
 }
+
 public:
-   vector <int> boundary(Node *root)
-   {
+   vector <int> boundary(Node *root){
        vector<int> ans;
        if(root==NULL)
            return ans;
        
-       ans.push_back(root->data);
-       //left part
-       traverseleft(root->left,ans);
-       //left leaf
-       traverseleaf(root->left,ans);
-       //right leaf
-       traverseleaf(root->right,ans);
-       //Right part
-       traverseright(root->right,ans);
+       if(root->left || root->right) ans.push_back(root->data);  // wo leaf node na ho toh hi I will push
+
+       traverseleft(root->left,ans);          //left part
+       traverseleaf(root,ans);                //leaf part
+       traverseright(root->right,ans);        //Right part
        
        return ans;
-       //Your code here
-   }
-
+    }

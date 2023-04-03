@@ -1,3 +1,58 @@
+Leetcode:
+https://leetcode.com/problems/online-stock-span/
+
+CRUX:
+O/P = Index of current - Index of Next greater element to Left (NGEL)  // If there is greater element to left
+    = Index of current + 1 // otherwise
+
+Instead of stack<int> s  -> stack<pair<int, int> s;
+In stack we will store price along with its span, so that agla koi aye toh wo previous wale ka span use kar paega.
+
+// Better Code and Complexity
+// Refer this below for dry run and image
+https://leetcode.com/problems/online-stock-span/discuss/636856/Single-stack-explanation-with-Diagram
+
+class StockSpanner {
+public:
+    stack<pair<int, int>> s;   // stack of pair<Price, Span>
+    StockSpanner() {} 
+    
+    int next(int price) {
+        int span = 1;
+        while(!s.empty() && s.top().first<=price){
+            span+=s.top().second;                   // stack ka element chhote hai toh span increase hoga
+            s.pop();
+        }
+        s.push({price, span});
+        return span;
+    }
+};
+
+// Using a vector
+class StockSpanner {
+private: 
+    vector<int> prices;
+    stack<int>s;
+    int i=0;
+public:
+    StockSpanner() {
+    }
+    
+    int next(int price) {
+        prices.push_back(price);
+        while (!s.empty() && prices[s.top()]<=prices[i]){
+            s.pop();     
+        }
+        int val;
+        if (s.empty()) val = i+1;
+        else val = i - s.top();
+        s.push(i);
+        i++;
+        return val;
+    }
+};
+
+GFG:
 https://practice.geeksforgeeks.org/problems/stock-span-problem-1587115621/1/
 
 https://youtu.be/p9T-fE1g1pU
@@ -21,13 +76,12 @@ Vector storing index of NGL:   -1  0  1  1  3  1  0
 
 Output ans                 : (0--1) (1-0) (2-1) (3-1) (4-3) (5-1) (6-0)
 
-Instead of stack<int> s  -> stack<pair<int, int> s;
 
 CODE:
 class Solution
 {
     public:
-    //Function to calculate the span of stockâ€™s price for all n days.
+    //Function to calculate the span of stock's price for all n days.
     vector <int> calculateSpan(int price[], int n)
     {
        // Your code here
@@ -109,48 +163,4 @@ class Solution
     }
 };
 
-
-https://leetcode.com/problems/online-stock-span/
-
-class StockSpanner {
-private: 
-    vector<int> prices;
-    stack<int>s;
-    int i=0;
-public:
-    StockSpanner() {
-    }
-    
-    int next(int price) {
-        prices.push_back(price);
-        while (!s.empty() && prices[s.top()]<=prices[i]){
-            s.pop();     
-        }
-        int val;
-        if (s.empty()) val = i+1;
-        else val = i - s.top();
-        s.push(i);
-        i++;
-        return val;
-    }
-};
-
-// Better Code and Complexity
-https://leetcode.com/problems/online-stock-span/discuss/636856/Single-stack-explanation-with-Diagram
-
-class StockSpanner {
-public:
-    stack<pair<int, int>> s;   // stack of pair<Price,Count>
-    StockSpanner() {} 
-    
-    int next(int price) {
-        int span = 1;
-        while(!s.empty() && s.top().first<=price){
-            span+=s.top().second;                   // stack ka element chhote hai toh span increase hoga
-            s.pop();
-        }
-        s.push({price, span});
-        return span;
-    }
-};
 

@@ -1,10 +1,11 @@
 https://leetcode.com/problems/find-k-closest-elements/
 
-We will make a max heap because we want to keep 0, 0, 1, 1.. differences.
+We will make a max heap because we want to keep 0, 0, 1, 1.. differences. 
+ie we want to preserve smaller difference and pop out larger differnces.
 
 // Will store a pair.
 pair<int, int>
-{abs(arr[i]-x, arr[i])}  // will get automatically sort acc to abs values.
+{abs(arr[i]-x), arr[i]}  // will get automatically sort acc to abs values.
 
 // code
 

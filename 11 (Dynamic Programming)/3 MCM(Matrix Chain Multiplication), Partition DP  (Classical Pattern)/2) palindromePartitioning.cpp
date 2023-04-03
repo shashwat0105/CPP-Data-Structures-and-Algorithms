@@ -1,4 +1,5 @@
 https://leetcode.com/problems/palindrome-partitioning/
+// Isko LC pe DP se submit nahi kia hai
 
 https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/
 
@@ -166,6 +167,7 @@ int main(){
 https://youtu.be/WBgsABoClE0 (Striver)
 
 // For every string/substring we loop in every index if that partition is possible or not.
+// aabb: a|abb and aa|bb partitions are possible at first coz others like aab|b in this aab is not a valid palindrome toh aage check hi ni hoga.
 
 class Solution {
 public:
@@ -179,12 +181,12 @@ public:
     void solve(int index, string s, vector<string> &op, vector<vector<string>> &ans){
         if(index == s.size()){    // the partition | reaches the last index
             ans.push_back(op);
-            return;
+            return; 
         }
         
         for(int i=index; i<s.size(); ++i){                  // we are standing at an index uske baad se har index pe partition karke dekhenge
             if(isPalindrome(s, index, i)){
-                op.push_back(s.substr(index, i-index+1));   // we can only add it as a substring(do the partition) if it is a palindrome
+                op.push_back(s.substr(index, i-index+1));   // we can only add it as a substring(do the partition) if it(index to i) is a palindrome
                 solve(i+1, s, op, ans);                     // recursive call
                 op.pop_back();                              // backtrack
             }

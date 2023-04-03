@@ -6,7 +6,7 @@ https://youtu.be/0FtVY6I4pB8
 
 // We can do vertical order traversal and the last node will make the bottom view.
 
-// Map : (line, node)
+// Map : (line, node)  // line means vertical line
 
 class Solution {
   public:

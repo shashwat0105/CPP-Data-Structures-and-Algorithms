@@ -32,8 +32,8 @@ public:
                 
                 // find position to fill nodes value
                 int index = (flag)? i: (size-i-1);     // depending on true/false of the flag I fill the value either at the front of row vector or end of row vector   (different step) 
-                
                 row[index]=node->val;                  // filling the value
+                
                 if(node->left){                        // I check the left and right and push it
                     nodesQueue.push(node->left);
                 }

@@ -1,5 +1,6 @@
 https://leetcode.com/problems/trapping-rain-water/
 
+https://youtu.be/m18Hntz4go8 (Striver)
 
 // Total unit of water = Sum of water trapped above each building
 
@@ -43,9 +44,55 @@ public:
         int totalWater=0;
         for(int i=0; i<n; ++i){
             water[i] = min(maxL[i], maxR[i]) - height[i];
-            totalWater+=water[i];
+            totalWater += water[i];
         }
         return totalWater;
+    }
+};
+
+// Dont do with stack as it is difficult to explain.
+
+// Without extra space:
+https://leetcode.com/problems/trapping-rain-water/solutions/1374608/c-java-python-maxleft-maxright-so-far-with-picture-o-1-space-clean-concise/?orderBy=most_votes
+
+Another Genius:
+https://leetcode.com/problems/trapping-rain-water/solutions/17403/c-two-pointers/?orderBy=most_votes
+
+2 pointer approach. total 4 variables
+l = 0
+r = n-1
+leftMax = 0;
+rightMax = 0;
+
+// In above approach
+min(leftMax, rightMax) - a[i];
+either u are taking leftMax-a[i] or rightMax-a[i]
+Konsa lena hai iske liye usi direction m move kr rhe jiski height choti hai.
+
+//
+class Solution {
+public:
+// without extra space
+    int trap(vector<int>& height) {
+        int n = height.size();
+        if(n<=2) return 0;
+        int l=0, r=n-1;
+        int res = 0;
+        int maxL = 0, maxR = 0;
+
+        while(l<=r){
+            if(height[l]<=height[r]){                 // left wali wall se ans nikal skte hai isliye left side se move karenge
+                if(height[l]>=maxL) maxL = height[l]; // need to update it as water cannot be trapped here
+                else res += maxL - height[l];         // It can trap some water so we calculate it
+                l++;
+            }
+            else{
+                if(height[r]>=maxR) maxR = height[r];
+                else res += maxR - height[r];
+                r--;
+            }
+        }
+        return res;
     }
 };
 

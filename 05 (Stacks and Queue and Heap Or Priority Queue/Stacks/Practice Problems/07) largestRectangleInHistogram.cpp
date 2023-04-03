@@ -1,6 +1,6 @@
 https://leetcode.com/problems/largest-rectangle-in-histogram/
 
-https://youtu.be/J2X70jj_I1o
+https://youtu.be/J2X70jj_I1o (AV)
 
 A building can be expanded into other buildings only when other building heights >= current building height.
 
@@ -22,7 +22,6 @@ Max area = 12
 // TC = O(4N)
 // SC = O(3N)
 
-
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
@@ -31,40 +30,22 @@ public:
         vector<int> indexNSL(n);
         stack<int> s;
                 
-        // NSR                                                     (is NSR k code mein reverse karne ki jaroorat nahi padi maine cout karke dekh lia hai, BUT WHY?)
+        // NSR                                                     
         for(int i=n-1; i>=0; --i){
-            while(!s.empty() && heights[s.top()]>=heights[i]){
-                s.pop();
-            }
+            while(!s.empty() && heights[s.top()]>=heights[i]) s.pop();  // equal hua toh bhi expand kr jaega isliye pop kr skte hai.
             indexNSR[i] = s.empty()? n : s.top();
-            // if(s.empty()){
-            //     indexNSR[i] = n;
-            // }
-            // else{
-            //     indexNSR[i] = s.top();
-            // }
             s.push(i);
         } 
 
-        // for(auto it: indexNSR){
-        //     cout<<it<<" ";
-        // }
-        
         // empty the stack to be used again
         while(!s.empty()) s.pop();
         
         // NSL
         for(int i=0; i<n; ++i){
-            while(!s.empty() && heights[s.top()]>=heights[i]){
-                s.pop();
-            }
+            while(!s.empty() && heights[s.top()]>=heights[i]) s.pop();
             indexNSL[i] = s.empty()? -1 : s.top();                 // instead of an array can take this as a variable, and calculate max_area here itself.(See my submitted solutions)
             s.push(i);
         }
-
-        // for(auto it: indexNSL){
-        //     cout<<it<<" ";
-        // }
 
         int max_area=0;
         for(int i=0; i<n; i++){
@@ -109,8 +90,4 @@ public:
     }
 };
 
-
 // Is code ko samajhne k liye examples leke dry run karke hi samajh paoge!! (For later)
-
-
-

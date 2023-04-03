@@ -1,11 +1,11 @@
 https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 
-https://youtu.be/-YbXySKJsX8 
+https://youtu.be/-YbXySKJsX8  (Striver)
 
 // Serialise or deconstruct a tree to a string
 // Again construct a tree from that string
 
-// Can do any traversal technique
+// Can do any traversal technique, I will do level order
 
 // Is ques ko ar discuss section ar YT videos se padhna hai, basically find other codes
 

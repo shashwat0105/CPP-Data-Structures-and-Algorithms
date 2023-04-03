@@ -1,7 +1,7 @@
 https://leetcode.com/problems/sudoku-solver/
 
 https://takeuforward.org/data-structure/sudoku-solver/
-https://youtu.be/FWAIf_EVUKE
+https://youtu.be/FWAIf_EVUKE   (Striver)
 
 // We only need to return one valid sudoku(only one exists) not all possible(more complexity).
 
@@ -46,3 +46,12 @@ public:
         solve(board);
     }
 };
+
+
+// To check in submatrix:
+board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3]
+
+3 * (row / 3), 3 * (col / 3)
+This points at top left element in a submatrix.
++i/3 and i%3 will help in moving in the submatrix at 9 places as i increments.
+

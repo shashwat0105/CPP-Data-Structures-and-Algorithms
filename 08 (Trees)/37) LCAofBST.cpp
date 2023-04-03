@@ -1,7 +1,7 @@
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 
 // LCA of BT: TC = O(N)
-// LCA of BST: TC = O(Height of tree) ie logn
+// LCA of BST: TC = O(Height of tree) ie O(H) ie logn
 
 // Possibilities
 // Say (5, 9) 
@@ -26,6 +26,18 @@ public:
             return lowestCommonAncestor(root->right, p, q);     // 3) right mein tab move karna hai jab dono badi ho
         }
         return root;                                            // 4) root tab return krna hai jab ek choti ho ek badi ho ie ek left mein ek right mein OR 1) special case ek node equal ho gyi ho ie usi ko return kar do
-    }
+    } 
 };
 
+// Iterative Code:
+TreeNode *LCAinaBST(TreeNode *root, TreeNode *p, TreeNode *q){
+    while (root){
+        if (root->data > p->data && root->data > q->data)
+            root = root->left;                              //both values are on left of current node
+        else if (root->data < q->data && root->data < p->data)
+            root = root->right;                             //both values are on right of current node
+        else
+            return root;                                    //this node is LCA of p and q
+    }
+    return NULL;
+}

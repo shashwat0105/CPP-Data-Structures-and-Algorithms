@@ -20,55 +20,33 @@ public:
     }
 };
 
-// Iterative (Important)
-Learn one iterative inorder traversal, apply it to multiple tree questions
-https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
 
-class Solution {
-public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> ans;
-        stack<TreeNode*> st;
-        TreeNode *node = root;
-        while(true){
-            if(node!=NULL){
-                st.push(node);
-                node = node->left;       // If the node is not null I continuosly move to the left
-            }
-            else{                        // when there is no node it is time to get the elements to fill in ans
-                if(st.empty()) break;    // directly break out when there are no nodes anywhere to travel
-                node = st.top();         // for all the nodes that were put into the stack
-                st.pop();
-                ans.push_back(node->val);
-                node = node->right;      // while going back, we take the right nodes   
-            }
-        }
-        return ans;
-    }
-};
+// Iterative (Important)
+
+// If the node is not null I continuosly move to the left and add all the nodes to the stack.
+// when there is no left node it is time to get the elements to fill in ans
+// I add the top node to my ans, and mark my current node as right node of the node popped,(now keep repeating) I again move left of this right node... ie left root right
 
 https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/31231/C%2B%2B-Iterative-Recursive-and-Morris
 
-https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/31232/Three-Methods-to-Solve-(C%2B%2B)
-(Refer Method 2 and 3)
-
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
+        if(root==NULL) return {};
         vector<int> ans;
         stack<TreeNode *> st;
-        TreeNode *pCurrent = root;
+        TreeNode *curr = root;
         
-        while(!st.empty() || pCurrent){
-            if(pCurrent){
-                st.push(pCurrent);
-                pCurrent = pCurrent->left;
-            }
+        while(!st.empty() || curr){
+            if(curr){
+                st.push(curr);
+                pCurr = pCurr->left;
+            }  // If it becomes NULL
             else{
-                TreeNode *pNode = st.top();
-                ans.push_back(pNode -> val);
+                curr = st.top();
                 st.pop();
-                pCurrent = pNode ->right;
+                ans.push_back(curr -> val);
+                curr = curr ->right;
             }
         }
         return ans;
@@ -77,8 +55,42 @@ public:
 
 
 // Morris Traversal
-https://youtu.be/80Zug6D1_r4
+https://youtu.be/80Zug6D1_r4 (Striver)
 // Time= O(N)
 // SC = O(1)
 
 // Uses the concept of threaded binary tree
+
+// Observation:
+// From the last node of any subtree you go back to the root.
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {   // MORRIS
+        vector<int> inorder;
+        TreeNode* curr = root;
+        while (curr) {
+            if (!curr->left) {  // If the current node has no left child, add its value to the inorder vector and move to the right subtree
+                inorder.push_back(curr->val);
+                curr = curr->right;
+            } 
+            else {  // If the current node has a left child, find the rightmost node in its left subtree
+                TreeNode* rightmost = curr->left;
+                while (rightmost->right && rightmost->right != curr) {
+                    rightmost = rightmost->right;
+                }
+
+                if (!rightmost->right) {  // If the rightmost node does not have a threaded link to the current node, create one and move to the left child
+                    rightmost->right = curr;
+                    curr = curr->left;
+                } 
+                else {  // If the rightmost node already has a threaded link to the current node, add the current node's value to the inorder vector and remove(cut) the threaded link
+                    inorder.push_back(curr->val);
+                    rightmost->right = NULL;
+                    curr = curr->right;
+                }
+            }
+        }
+        return inorder;
+    }
+};

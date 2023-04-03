@@ -55,3 +55,17 @@ public:
         return depth;
     }
 };
+
+// https://leetcode.com/problems/minimum-depth-of-binary-tree/
+// Good ques
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(root==NULL) return 0;
+        int lH = minDepth(root->left);
+        int rH = minDepth(root->right);
+        if(root->left==NULL) return 1 + rH; // agar root ka left null hoga toh min wo 0 return kr dega but 0 thodi na koi height hoti hai koi element toh hona hi chahiye hence yeh case hame handle alag se krna padega
+        if(root->right==NULL) return 1 + lH;
+        return 1 + min(lH, rH);  
+    }
+};

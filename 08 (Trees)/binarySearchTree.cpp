@@ -3,7 +3,7 @@
     L     R
 
 For a binary search tree(BST) following condition should strictly follow for node values:
-=>   Left part of tree <N< Right part of tree
+=>   Left part of tree < N < Right part of tree
 =>   Entire left subtree should itself be a BST
 
 // Primarily duplicates are not allowed.

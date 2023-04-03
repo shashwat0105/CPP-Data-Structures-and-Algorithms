@@ -3,6 +3,8 @@ https://www.interviewbit.com/problems/nearest-smaller-element/
 // Nearest smaller element or Nearest smaller to left
 
 // Nearest Smaller Element
+// Left to right traverse karenge ar dekhenge ki stack m abhi koi bada element toh nahi hai, sabko pop kar do
+
 vector<int> Solution::prevSmaller(vector<int> &A) {
     vector<int> ans;
     stack<int> s;
@@ -25,7 +27,7 @@ vector<int> Solution::prevSmaller(vector<int> &A) {
 Nearest Smaller to Right
 
 // We will traverse from right
-// reverse at end
+// reverse at end coz using push_back
 // equality condition changes
 
 vector<int> Solution::nextSmaller(vector<int> &A) {

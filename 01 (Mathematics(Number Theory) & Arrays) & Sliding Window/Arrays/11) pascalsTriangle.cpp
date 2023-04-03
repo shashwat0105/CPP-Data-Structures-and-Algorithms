@@ -11,30 +11,12 @@ Pascal triangle to be visualised as:
 
 class Solution {
 public:
-    vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> res(numRows);                  // vector of vector of int of size numRows, numRows number of vectors are declared
-        
-        for(int i=0; i<numRows; i++){                      // i = rows, j = columns
-            res[i].resize(i+1);                            // for every row, number of the row = no of columns, resizing empty vector to size i+1
-            res[i][0] = res[i][i] = 1;                     // every row has first & last element as 1
-            
-            for(int j=1; j<i; j++){                        // traverse from first column to second last column
-                res[i][j] = res[i-1][j-1] + res[i-1][j];   // [i][j] current row, column, [i-1] previous row, [j] [j-1] whose sum is to be done
-            }
-        }
-        return res;
-    }
-};
-
-// If you dont want to use resize
-class Solution {
-public:
     vector<vector<int>> generate(int n) {
         vector<vector<int>> ans(n);             // initialize n rows
-        for(int i = 0; i < n; i++) {
-            ans[i] = vector<int>(i+1,1);        // ith row(0-indexed) has i+1 elements ar sabko 1 kar dia
+        for(int i = 0; i < n; i++) {            // i = rows, j = columns
+            ans[i] = vector<int>(i+1,1);        // ith row(0-indexed) has i+1 elements ar sabko 1 kar dia // every row has first & last element as 1
             for(int j = 1; j < i; j++)          // 1st and last elements will be 1, rest will be sum of two elements from above row
-                ans[i][j] = ans[i - 1][j] + ans[i - 1][j - 1];            
+                ans[i][j] = ans[i - 1][j] + ans[i - 1][j - 1];  // // [i][j] current row, column, [i-1] previous row, [j] [j-1] whose sum is to be done           
         }
         return ans;
     }

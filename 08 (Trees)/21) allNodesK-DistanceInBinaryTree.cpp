@@ -1,10 +1,14 @@
 https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
 
-// We will use a hashmap to store the parent of a particular node.
-// Keep on moving 1 distance everytime radially outwards and mark it as visited.
-// After k steps, nodes inside my queue ds, will be at a distance of k
+// Basically converted the tree into a graph
+// When you have to traverse back use a map to store the parent node of a particular node
+// Keep on moving 1 distance everytime(with every node u push in queue) radially outwards(in 3 directions: up, left, right) and mark it as visited.
+// After k steps, nodes inside my queue ds, will be at a distance of k ie my ans
 
-// Striver solution (All BFS)
+Let say u called for target node = 5 and u got: 6, 3 and 2 as they are at 1 distance from 5.
+Now: 6 k liye teeno direction call hongi, 3 k liye, 2 k liye, and so on. (this is moving radially outwards).
+
+// Striver solution (All BFS) // One BFS to mark the parent nodes, other BFS to move radially outwards.
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -16,7 +20,7 @@ https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
  */
 class Solution {
 public:
-    void markParents(TreeNode *root, unordered_map<TreeNode *, TreeNode *> &parent_track, TreeNode * target){  // isko bfs ya dfs kaise bhi create kar skte 
+    void markParents(TreeNode *root, unordered_map<TreeNode *, TreeNode *> &parent_track){  // isko bfs ya dfs kaise bhi create kar skte 
         queue<TreeNode *> queue;
         queue.push(root);
         while(!queue.empty()){
@@ -35,7 +39,7 @@ public:
     
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         unordered_map<TreeNode *, TreeNode *> parent_track;
-        markParents(root, parent_track, target);                       // I call this function and my parent map is ready(Isme target pass karne ki koi jaroorat nahi hai)
+        markParents(root, parent_track);                               // I call this function and my parent map is ready
         
         unordered_map<TreeNode*, bool> visited;
         queue<TreeNode *> queue;
@@ -88,8 +92,7 @@ public:
 private:
     std::vector<int> ans;   
     std::unordered_map<int, TreeNode*> parent; // son(n->val) => parent.  
-    // Record visited node, store just int val(unique)(given in question). So, we can also use a set instead of a map
-    std::unordered_set<int> visit;
+    std::unordered_set<int> visited;           // Record visited node, store just int val(unique)(given in question). So, we can also use a set instead of a map
 
     void findParent(TreeNode* node){
         if (!node) {
@@ -106,10 +109,10 @@ private:
     }
     
     void dfs(TreeNode* node, int K) {
-        if (!node || visit.find(node->val) != visit.end()) {
+        if (!node || visited.find(node->val) != visited.end()) {
             return;
         }
-        visit.insert(node->val);
+        visited.insert(node->val);       // mark as visited
         if (K == 0) {
             ans.push_back(node->val);
             return;
@@ -120,3 +123,5 @@ private:
     }
 };
 
+// This made entire graph both directions (extra)
+https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/solutions/1199584/c-build-graph-and-bfs-commented/

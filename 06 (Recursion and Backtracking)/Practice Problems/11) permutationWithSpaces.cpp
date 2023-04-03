@@ -1,6 +1,10 @@
 // Permutation of string letters is not involved in this ques.
 
+// In theory:
+https://www.geeksforgeeks.org/print-possible-strings-can-made-placing-spaces/
+
 https://practice.geeksforgeeks.org/problems/permutation-with-spaces3627/1
+
 
 S = "ABC"
 Output: (A B C)(A BC)(AB C)(ABC)
@@ -9,8 +13,7 @@ Output: (A B C)(A BC)(AB C)(ABC)
 https://youtu.be/1cspuQ6qHW0
 
 
-// Isme yeh backtracking kaha lag rahi hai yeh bihari se discuss krna hai ya bina uske ho rha hai
-
+// Without backtracking by making copies (Taught by Aditya Verma)
 class Solution{
 public:
     vector<string> ans;
@@ -49,6 +52,29 @@ public:
     }
 };
 
-// In theory:
-https://www.geeksforgeeks.org/print-possible-strings-can-made-placing-spaces/
+// With Backtracking:
 
+void solve(int i, string s, vector<string> &ans, int n, string temp){
+    if(i==n-1){
+        temp += s[n-1];
+        ans.push_back(temp);
+        return;
+    }
+    
+    // pick
+    temp+= s[i];
+    temp+=' ';
+    solve(i+1, s, ans, n, temp);
+    temp.pop_back();
+    
+    // not pick
+    solve(i+1, s, ans, n, temp);
+} 
+
+vector<string> permutation(string S){
+    // Code Here
+    int n = S.size();
+    vector<string> ans;
+    solve(0, S, ans, n, "");
+    return ans;
+}

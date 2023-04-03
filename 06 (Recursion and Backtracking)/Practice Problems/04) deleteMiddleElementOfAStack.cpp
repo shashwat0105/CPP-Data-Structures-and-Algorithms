@@ -4,11 +4,12 @@ https://practice.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1/
 
 // We first remove all items one by one(moving towards the base case), then we recur. 
 // After recursive calls, we push all items back(moving away from the base case) except the middle item.  
-// You can imagine the call stack as it was beautifully explained in my CP udemy course (Prateek narang)
+// You can imagine the call stack as it was beautifully explained in CP udemy course (Prateek narang)
 
 class Solution
 {
     public:
+    // main recursion function
     void solve(stack<int> &s, int k){  // kth element from the top has to be deleted
         if(k==1){
             s.pop();
@@ -47,7 +48,8 @@ void deleteMid(stack<int>&s, int sizeOfStack){
 }
 
 OR 
-// Using an extra stack
+// Using an extra stack, taking out n/2 elements from original and putting in another stack.
+// Then putting back elements.
 int i=0;
 stack<int>t;  // new stack t
 while(i<(sizeOfStack)/2){

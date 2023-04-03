@@ -21,7 +21,7 @@ bool getPath(TreeNode* root, vector<int> &arr, int x){                          
     if(root->val==x) return true;
     if(getPath(root->left, arr, x) || getPath(root->right, arr, x)) return true; // if node x is present in root’s left or right subtree, return true.
     
-    arr.pop_back();                                                              // Else remove root’s data value from arr[] and return false.
+    arr.pop_back();                                                              // Else remove root’s data value from arr[] (backtrack) and return false.
     return false;
 }
 vector<int> Solution::solve(TreeNode* A, int B) {
@@ -32,3 +32,35 @@ vector<int> Solution::solve(TreeNode* A, int B) {
 }
 
 // In ques there is given b always exist.
+
+// 
+https://leetcode.com/problems/binary-tree-paths/
+
+All paths from root to leaf is asked here.
+
+class Solution {
+public:
+    void getPaths(TreeNode *root, string s, vector<string> &ans){
+        if(!root->left && !root->right){
+            ans.push_back(s);
+            return;
+        } 
+
+        if(root->left) getPaths(root->left, s + "->" + to_string(root->left->val), ans);
+        if(root->right) getPaths(root->right, s + "->" + to_string(root->right->val), ans);
+    }
+
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> ans;
+        if(!root) return ans;
+
+        string s = to_string(root->val);
+        getPaths(root, s, ans);
+        return ans;
+    }
+};
+
+// With backtracking
+https://leetcode.com/problems/binary-tree-paths/solutions/1805157/c-backtracking/
+
+https://leetcode.com/problems/binary-tree-paths/solutions/3147262/backtracking-c/

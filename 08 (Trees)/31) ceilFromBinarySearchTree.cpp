@@ -4,12 +4,16 @@ https://www.geeksforgeeks.org/floor-and-ceil-from-a-bst/
 
 // Ceil of an integer is the closest integer greater than or equal to a given number.
 
+// Method:
+// If u find a number greater than key, then it can be a possible ans so update our ceil value.
+// Now move towards smaller values.
+
 int findCeil(BinaryTreeNode<int> *root, int x){
     // Write your code here.
     int ceil= -1;
     while(root){
-        if(root->data == x){
-            ceil = root->data;
+        if(root->data == x){              // If key already exist in our BST (best hai yahi return kr do)
+            ceil = x;
             return ceil;
         }
         if(root->data > x){
