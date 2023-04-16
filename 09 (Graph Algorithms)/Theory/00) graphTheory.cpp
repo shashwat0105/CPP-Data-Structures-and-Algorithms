@@ -70,7 +70,10 @@ int main(){
 
 
 // Method 2: Adjacency list
+
 // vector<int> adj[6]             // adjacency list can be stored using vector in C++ (Each index is a vector itself so you can add elements to it ) & array list in JAVA; This creates 6 adjacency lists ie 6 vectors
+// vector<vector<int>> adj;       // This also can be used.
+Or better using unordered_map (I will use this from now on)
 // 0 
 // 1 (2, 5, 3)                    // these denotes the edge 1-2, 1-5, 1-3 and so on
 // 2 (1, 3, 4)
@@ -88,7 +91,7 @@ int main(){
     cin>>n>>m;
 
     // declaring the adjacent list
-    vector<int> adj[n+1];         // if weights are also given then vector<pair<int, int>>adj[n+1] // first int will store the to edge, second int will store the weight
+    unordered_map<int, vector<int>> adj; // if weights are also given then vector<pair<int, int>>adj[n+1] // first int will store the to edge, second int will store the weight
 
     // taking edges as input
     for(int i=0; i<m; i++){       // can use while(m--)  loop as well
@@ -129,7 +132,7 @@ for(int i=0; i<=10; i++){         // for every node is called coz a graph can ha
 }
 
 // In case of directed graph;
-// There has to be path from every node to every other node: then it is called strongly connected component.
+// If there is a path from every node to every other node: then it is called strongly connected component.
 
 // Alogithms
 // Aani hi Chahiye
@@ -141,37 +144,11 @@ for(int i=0; i<=10; i++){         // for every node is called coz a graph can ha
 // Directed Acyclic Graph (DAG)
 // Topological Sort
 
+// DFS
+// BFS
+// Cycle Detection and Topological Sort
+// Graph Algos on 2D Grid 
+// Bipartite Graph test
+// Bridges and Articulation Point
+// Strongly Connected Components(SCC)
 
-//
-DFS
-BFS
-Cycle Detection and Topological Sort
-Graph Algos on 2D Grid (Weak area currently)
-Bipartite Graph test
-Bridges and Articulation Point
-Strongly Connected Components(SCC)
-
-// Cycle Detection Template using coloring method
-
-bool detectCycle_util(vector<vector<int>> &adj, vector<int> &vis, int node){
-    if(vis[node] == 1) return true;
-    if(vis[node] == 2) return false;
-    
-    vis[node] = 1;  // mark current as visited
-    for(auto child: adj[node]){
-        if(detectCycle_util(adj, vis, child)) return true;
-    }
-    vis[node] = 2;  // mark node as processed
-    return false;
-}
-
-bool detectCycle(vector<vector<int>> &adj, int n){
-    vector<int> vis(n, 0);
-    for(int i=0; i<n; ++i){
-        if(vis[i]==0){
-            if(detectCycle_util(adj, vis, i)) // there can be multiple components
-                return true;
-        }
-    }
-    return false;
-}

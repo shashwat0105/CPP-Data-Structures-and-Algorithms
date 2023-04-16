@@ -1,7 +1,13 @@
-// To get MINIMUM SPANNING TREE using Kruskal's algorithm
-
 // Minimum Spanning Tree:
 // Given a graph we want to find to a tree, whose sum of weights of edges is minimum.
+
+// To get MINIMUM SPANNING TREE using Kruskal's algorithm
+// We chose minimum weight edges first beech m kahi se bhi and make a edge between them.
+
+https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1?
+
+Step1 : Sort all the edges according to weight.
+Step2 :  Add the edges in less to more weigh. Make a connection using DSU. Whether a new (u, v) edge is required or not, can be found by DSU easily.
 
 // Uses disjoint set data structure 
 // All nodes are imagined to be separate.
@@ -24,58 +30,17 @@
 
 // TC = O(M log M) + O(M* 4 alpha) = O(n log n)
 // SC = O(M)
-#include<bits/stdc++.h>
-using namespace std;
 
-struct node {
-    int u;
-    int v;
-    int wt;
-    node(int first, int second, int weight){
-        u = first;
-        v = second;
-        wt = weight;
-    }
-};
+https://youtu.be/DMnDM_sxVig (STRIVER)
 
-bool comp(node a, node b){                      // comparator
-    return a.wt < b.wt
+// For code do visit:
+https://takeuforward.org/data-structure/kruskals-algorithm-minimum-spanning-tree-g-47/
+Just used the disjoint set class.
+
+if (ds.findUPar(u) != ds.findUPar(v)) {  // If their ultimate parent are different then I take that edge to my MST and add an edge between them using union by size or rank.
+    mstWt += wt;
+    ds.unionBySize(u, v);
 }
-
-int findPar(int u, vector<int>& parent)
-
-int main(){
-    int N, m;
-    cin >> N >> m;
-    vector<node> edges;
-    for(int i=0; i<N; i++){
-        int u,v,wt;
-        cin >>u>>v>>wt;
-        edges.push_back(node(u,v,wt));       // storing in a linear data structure
-    }
-    sort(edges.begin(), edges.end(), comp);  // sorting with the help of comparator
-
-    vector<int> parent(N);                   // making of disjoint set data structure
-    for(int i=0; i<N; i++){
-        parent[i] = i;
-    }
-    vector<int> rank(N, 0);                  // rank array initialised with zero
-
-    int cost = 0;                            // store the MST cost
-    vector<pair<int, int>> mst;              // will store all the edges of the mst
-    for(auto it : edges){
-        if(findPar(it.v, parent)!= findPar(it.u, parent)){  // if they donot belong to the same component
-            cost += it.wt;                    // add the edge weight to the cost
-            mst.push_back({it.u, it.v});      // push it in our linear data structure
-            unionn(it.u, it.v, parent, rank);
-        }
-    } 
-    
-    cout << cost << endl;
-	for(auto it : mst) cout << it.first << " - " << it.second << endl; 
-    return 0;
-}
-
 
 // Another code from LUV
 
@@ -132,7 +97,7 @@ int main(){
         if(find(u)==find(v)) continue;   // ie their parent is same
         Union(u, v);                     // else we will join them 
         total_cost += wt;
-        cout<<u<<" "<<v<<endl;
+        cout<<u<<" "<<v<<endl;           // Also printing the edge is between which nodes. // ya ans vector m store kar lo koi
     }
     cout<<total_cost<<endl;
 }

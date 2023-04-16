@@ -48,7 +48,7 @@ void dfs(int x, int y){
 
     for(int i=0;i<4;i++){
        if(isValid(x+dx[i],y+dy[i])){
-          dfs(x+dx[i],y+dy[i]); 
+          dfs(x+dx[i], y+dy[i]); 
        } 
     }  
 }
@@ -88,3 +88,7 @@ int main(){
 
 // OUTPUT
 // 6
+
+// Practice Ques(see submission):
+https://leetcode.com/problems/number-of-islands/description/
+https://leetcode.com/problems/count-sub-islands/description/

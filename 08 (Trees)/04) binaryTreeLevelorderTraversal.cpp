@@ -38,5 +38,5 @@ if(root->left)  q.push(root->left);
 // In n-ary tree
 https://leetcode.com/problems/n-ary-tree-level-order-traversal/
 
-// Diagonal Traversal  (Not done yet)
+// Diagonal Traversal  (Not done yet by me)
 https://www.geeksforgeeks.org/diagonal-traversal-of-binary-tree/

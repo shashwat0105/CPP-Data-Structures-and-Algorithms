@@ -5,57 +5,6 @@
 // queue<int> q;  will be used normally
 // queue<pair<int, int>> q; is used in case of weighted graph and bfs in a 2D grid/matrix.
 
-class Solution{
-public:
-    vector<int>bfsOfGraph(int V, vector<int> adj[]){ // no of nodes in entire graph is V
-        vector<int> bfs;                             // vector of integers name it bfs
-        vector<int> vis(V+1, 0);                     // visted array of size n+1
-
-        for(int i = 1; i<=V; i++){                   // 1 based indexing  (This I am running BFS on every node for disconnected graph can cause runtime error when using for graphs that are given connected)
-            if(!vis[i]){                             // if the node is not visited 
-                queue<int>q;
-                q.push(i);                           // we push the node we are visting right now in a queue
-                vis[i] = 1;                          // we mark the node visited
-
-                while(!q.empty()){                   // iterating till the queue is not empty
-                    int node = q.front();            // we took out the first element of the queue
-                    q.pop();                         // also made sure it was deleted from the queue
-                    bfs.push_back(node);             // our bfs has traversed that node so we push it in bfs vector 
-
-                    for(auto it : adj[node]){        // all the adjacent nodes were put into the queue
-                        if(!vis[it]){                // adjacency node has not been visited ie marked as zero
-                            q.push(it);              // take that node and push it into queue 
-                            vis[it] = 1;             // marking it as visited
-                        }
-                    }
-                }
-            }
-        }
-        return bfs;
-    }
-};
-
-
-// CODE for a connected graph
-
-queue<int> q;
-bool visited[N];
-int distance[N];
-
-visited[x] = true;
-distance[x] = 0;
-q.push(x);
-while (!q.empty()) {
-    int s = q.front(); q.pop();
-    // process node s
-    for (auto u : adj[s]) {
-        if (visited[u]) continue;
-        visited[u] = true;
-        distance[u] = distance[s]+1;           // this distance is also level
-        q.push(u);
-    }
-}
-
 // For this ques (Graph is connected is given)
 https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1/#
 
@@ -82,6 +31,60 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
     }
     return bfs; 
 }
+
+// For Disconnected components(undirected graph)
+void bfs(int i, vector<int> &ans, vector<int>&vis, vector<int> adj[]){
+    vis[i]=1; // mark as visited    
+    
+    queue<int>q;
+    q.push(i);                           // we push the node we are visting right now in a queue
+    vis[i] = 1;                          // we mark the node visited
+
+    while(!q.empty()){                   // iterating till the queue is not empty
+        int node = q.front();            // we took out the first element of the queue
+        q.pop();                         // also made sure it was deleted from the queue
+        ans.push_back(node);             // our bfs has traversed that node so we push it in bfs vector 
+
+        for(auto it : adj[node]){        // all the adjacent nodes were put into the queue
+            if(!vis[it]){                // adjacency node has not been visited ie marked as zero
+                q.push(it);              // take that node and push it into queue 
+                vis[it] = 1;             // marking it as visited
+            }
+        }
+    }
+}
+
+vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+    // Code here
+    vector<int> ans;  
+    vector<int> vis(V, 0); 
+    
+    for(int i=0; i<V; ++i){
+        if(!vis[i]) bfs(i, ans, vis, adj);
+    }
+    return ans;
+}
+
+// CODE for a connected graph finding distance of every node ie level.
+
+queue<int> q;
+bool visited[N];
+int distance[N];
+
+visited[x] = true;    // x is the starting node
+distance[x] = 0;
+q.push(x);
+while (!q.empty()) {
+    int s = q.front(); q.pop();
+    // process node s
+    for (auto u : adj[s]) {
+        if (visited[u]) continue;
+        visited[u] = true;
+        distance[u] = distance[s]+1;           // this distance is also level
+        q.push(u);
+    }
+}
+
 
 // Whether a destination is reachable from a source or not using BFS:
 class Solution {
@@ -121,11 +124,11 @@ public:
 };
 
 //
-At a particular time there are atmost two consecutive levels inside the queue DS in BFS.
+At a particular time there are atmost two consecutive levels inside the queue DS in BFS. // On not using with q.size() wala for loop.
 
 // O-1 BFS 
 // The weights of the edges are either 0 or 1
-https://youtu.be/SQOQ99stCas
+https://youtu.be/SQOQ99stCas (LUV)
 
 // If the weight is 0, I want to process it first, hence I put it in front of the queue
 // If the weight is 1, as usual I will put it into the queue back

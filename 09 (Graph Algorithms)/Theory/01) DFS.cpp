@@ -3,7 +3,7 @@
 // Bfs is used in very specific cases only which I will explain in future videos; rest must of the stuff done using dis can be done using bfs as well; 
 // so mostly you will always use dfs only until and unless any special case arrives where only bfs works..
 
-// https://youtu.be/9_ftWKch6vI (Can watch from 18:00 to revise)
+// https://youtu.be/9_ftWKch6vI (Can watch from 18:00 to revise) (LUV)
 
 // 1---2---4       3---5
 //     |   |
@@ -11,6 +11,7 @@
 
 // above are 2 components of a graph
 // Adjacency List for the given graph
+   u    v(child)
 // 1 -> 2
 // 2 -> 1 4 7
 // 3 -> 5
@@ -24,20 +25,20 @@
 // In recursive call complete left side is called first then moving to right and so on, which is nothing but going in depth ie DFS
 
 class Solution{
-    void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &res){     // takes the argument of current node not total number of nodes.
+    void dfs(int u, vector<bool> &vis, vector<int> adj[], vector<int> &res){     // takes the argument of current node not total number of nodes.
         res.push_back(node);                 // we push the node
-        vis[node] = 1;                       // now the node is visited so we mark it as 1
-        for(auto it: adj[node]){             // for every node we check its adjacency node if
-            if(!vis[it]){                    // if it is not visited then we call the dfs function again
-                dfs(it, vis, adj, res);      // using recursion cos recursive calls are dfs
+        vis[u] = true;                       // now the node is visited so we mark it as true
+        for(int &v: adj[u]){                 // for every node we check its adjacency node if
+            if(!vis[v]){                     // if it is not visited then we call the dfs function again
+                dfs(v, vis, adj, res);       // using recursion cos recursive calls are dfs
             }
         }
     }
 public:
-    vector<int>dfsOfGraph(int V, vector<int>adj[]){  // no of node = V, edges and nodes stored in adjacency list
-        vector<int>vis(V+1, 0);                      // size of the array V+1 and initialised to all 0
+    vector<int>dfsOfGraph(int n, vector<int>adj[]){  // no of nodes = n, edges and nodes stored in adjacency list
+        vector<bool>vis(n+1, false);                 // size of the array n+1 and initialised to all 0
         vector<int>res;                              // store our dfs result
-        for(int i = 1; i<=V; i++){                   // we go to every node and see (coz there could be multiple components)     
+        for(int i = 1; i<=n; i++){                   // we go to every node and see (coz there could be multiple components)     
             if(!vis[i]){                             // if the node is not visited ie is not 0
                 dfs(i, vis, adj, res);               // we call the dfs recursive function
             }
@@ -49,22 +50,12 @@ public:
 
 // We use two things visted array & adjacency list,,, the compiler here creates a stack which keep track of executing the function
 
-void dfs(int v){                          // takes the argument of current node
-    vis[v] = 1;                           // as we reach node we mark it as visited '1'
-    cout<<v<<"->";                        // printing the node for dfs order  
-    for(int i=0; i<adj[v].size(); i++){   // move in the adjacency list of 
-        int child = adj[v][i];            // child is the node connected to current node
-        if(vis[child]==0)                 // we check if it is visited or not
-            dfs(child);                   // if it is not visited we make recursive call to that child
-    }
-}
-
-// or (We use this)
+// We use this
 
 void dfs(int v){                          // takes the argument of current node
     vis[v] = 1;                           // as we reach node we mark it as visited '1'
     cout<<v<<"->";                        // printing the node for dfs order  
-    for(int child: adj[v]){               // move in the adjacency list of ,,, using for each loop
+    for(int &child: adj[v]){               // move in the adjacency list of ,,, using for each loop
         if(vis[child]==0)                 // we check if it is visited or not
             dfs(child);                   // if it is not visited we make recursive call to that child
     }
@@ -95,7 +86,7 @@ void dfs(int vertex){
 
 
 // Precompution using DFS
-https://youtu.be/w2oz11KWNQY
+https://youtu.be/w2oz11KWNQY  (LUV)
 
 // To find sum of elements in a subtree
 // Tree, hence we can avoid using visited, ie simply we can check with parent (DFS in tree)
@@ -106,7 +97,7 @@ https://youtu.be/w2oz11KWNQY
 // In each query given V, Print subtree sum of V and Number of even numbers in subtree of V
 const int N = 1e5+10
 int g[N];
-int subtree_sum[N];              // For every array element we will compute sum of its subtree
+int subtree_sum[N];                                // For every array element we will compute sum of its subtree
 int even_ct[N];
 
 void dfs(int vertex, int par=0){

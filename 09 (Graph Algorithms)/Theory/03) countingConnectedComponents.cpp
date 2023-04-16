@@ -1,5 +1,3 @@
-// https://youtu.be/z49Ohr5Ypnw
-
 // https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
 // https://www.geeksforgeeks.org/program-to-count-number-of-connected-components-in-an-undirected-graph/
 // https://www.hackerearth.com/problem/algorithm/connected-components-in-a-graph/

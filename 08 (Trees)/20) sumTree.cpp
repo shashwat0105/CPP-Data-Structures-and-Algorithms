@@ -58,3 +58,15 @@ class Solution {
 };
 
 
+Write a c++ code to calculate subtree sum at every node
+
+int dfs(TreeNode* root, vector<int>& sums) {
+    if (!root) {
+        return 0;
+    }
+    int leftSum = dfs(root->left, sums);
+    int rightSum = dfs(root->right, sums);
+    int sum = root->val + leftSum + rightSum;
+    sums[root->val] = sum;
+    return sum;
+}

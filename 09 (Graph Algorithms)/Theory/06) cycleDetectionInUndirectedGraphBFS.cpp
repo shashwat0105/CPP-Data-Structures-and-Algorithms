@@ -34,12 +34,12 @@ https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/
 class Solution{
 
 public:
-    bool checkForCycle(int s, int V, vector<int>adj[], vector<int>& visited){  // takes the starting node for which bfs will start, no of nodes(not required tho), graph stored in adjacency list and visited array
+    bool checkForCycleBFS(int s, vector<int>adj[], vector<int>& visited){  // takes the starting node for which bfs will start, no of nodes(not required tho), graph stored in adjacency list and visited array
 
         // create queue for bfs
         queue<pair<int, int>> q;         // create a queue which stores the node as well as previous/parent
 
-        visited[s] = true;               // marking the node which is visited now
+        visited[s] = 1;                  // marking the node which is visited now
         q.push({s, -1});                 // initial starting node with previous as -1
 
         while(!q.empty()){               // when queue is not empty
@@ -49,7 +49,7 @@ public:
 
             for(auto it : adj[node]){    // we traverse for all its adjacent nodes
                 if(!visited[it]){        // if its not been visited yet
-                    visited[it] = true;  // mark it as visited
+                    visited[it] = 1;     // mark it as visited
                     q.push({it, node});  // put it in the pair queue
                 }
                 else if(par!=it){        // if the adjacent node is already visited and is not equal to parent that means there is a cycle, vis is true, hence we check if its a node which is the forward node, hence checking if not parent
@@ -60,17 +60,15 @@ public:
         return false;                    // queue became empty and doesn't has a cycle
     }
     
-
 public: 
     bool isCycle(int V, vector<int>adj[]){        // V = total no of nodes, adjacency list
-        vector<int>vis(V+1, 0);                   // will declare a visited array which will be initially marked as 0
-        for(int i=1; i<=V; i++){
+        vector<int> vis(V+1, 0);                  // will declare a visited array which will be initially marked as 0
+        for(int i=0; i<V; i++){
             if(!vis[i]){                          // for every unvisited node we will call the checkForCycle function
-                if(checkForCycle(i, V, adj, vis)) // i = starting node for which bfs is called, no of nodes, adjacency list and visited array
+                if(checkForCycleBFS(i, adj, vis)) // i = starting node for which bfs is called, no of nodes, adjacency list and visited array
                     return true;                  // will return true when checkForCycle will return true
             }
         }
-
         return false;
     }
 };
