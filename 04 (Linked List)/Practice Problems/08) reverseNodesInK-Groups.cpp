@@ -2,7 +2,7 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 // BADHIYA SAWAL HAI YEH!! LC HARD
 
-https://youtu.be/TeDcLjOOiK4
+https://youtu.be/TeDcLjOOiK4  (FRAZ)
 
 // We have swapped the nodes, not the values inside the nodes
 
@@ -46,7 +46,7 @@ public:
 
 // Method 2 
 
-https://youtu.be/dbRJFnQoKTI
+https://youtu.be/dbRJFnQoKTI  (FRAZ)
 
 TC = O(N)
 SC = O(1)
@@ -93,3 +93,58 @@ public:
     }
 };
 
+
+// another code sample:
+ListNode* reverseKGroup(ListNode* head, int k) {
+	if(!head || !head->next) return head;
+	ListNode newHead(0);
+	ListNode *pre = &newHead, *cur = head, *next = NULL;
+	newHead.next = head;
+	int len = 0;
+	for(ListNode *p = head; p; p = p->next) len++;
+	int times = len/k;
+	while(times) {
+		for(int i = 1; i < k; ++i) {
+			next = cur->next;
+			cur->next = cur->next->next;
+			next->next = pre->next;
+			pre->next = next;
+			if(i == k-1) {
+				pre = cur;
+				cur = cur->next;
+			}
+		}
+		times--;
+	}
+	return newHead.next;
+}
+
+// Another recursive code
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        // Check if there are at least k nodes remaining
+        ListNode* curr = head;
+        int count = 0;
+        while (curr && count < k) {
+            curr = curr->next;
+            count++;
+        }
+        // If there are at least k nodes, reverse the current group
+        if (count == k) {
+            curr = reverseKGroup(curr, k); // Recursively reverse the remaining groups
+
+            // Reverse the current group
+            while (count > 0) {
+                ListNode* nextNode = head->next;
+                head->next = curr;
+                curr = head;
+                head = nextNode;
+                count--;
+            }
+            head = curr;
+        }
+
+        return head;
+    }
+};

@@ -54,7 +54,8 @@ class Solution{
 Time complexity: O(K log K +  (N – K) log K) = O(nlogk)
 Auxiliary Space: O(K)
 
-Quick select Average: O(N) it is still O(N^2) in worst case.
+Quick select Average: O(N) it is still O(N^2) in worst case. But this worst case is almost never acheived
 // https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/
 
 https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/60294/solution-explained/
+https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/60309/c-stl-partition-and-heapsort/

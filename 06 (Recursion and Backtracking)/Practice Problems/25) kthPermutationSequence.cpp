@@ -1,3 +1,4 @@
+HARD
 https://leetcode.com/problems/permutation-sequence/
 
 // Brute force to start in interview:

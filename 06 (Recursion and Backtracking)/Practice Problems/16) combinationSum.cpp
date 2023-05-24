@@ -80,10 +80,10 @@ class Solution {
             return;
         }
         
-        for(int i=currIndex; i<ip.size(); i++){ //try all possible options for the next level
-            op.push_back(ip[i]); //put 1 option into the combination
-            combination(ip, target-ip[i], op, i, ans); //try with this combination, whether it gives a solution or not.
-            op.pop_back(); //when this option backtrack to here, remove this and go on to the next option.
+        for(int i=currIndex; i<ip.size(); i++){ // try all possible options for the next level // currIndex is the level
+            op.push_back(ip[i]);                // put 1 option into the combination // Yeh push krne se hi level badhegi
+            combination(ip, target-ip[i], op, i, ans); // try with this combination, whether it gives a solution or not. // i is same because I can chose the same element again in the next level.
+            op.pop_back();                      // when this option backtrack to here, remove this and go on to the next option.
         }
     }
 public:

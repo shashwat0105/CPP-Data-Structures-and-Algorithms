@@ -41,6 +41,7 @@ using namespace std;
 struct Node{
     int data;    // data
     Node *next;  // pointer
+    Node(int x) : val(x), next(nullptr) {}
 };
 
 // Function to print contents of a linked list starting from a given node (Linked list traversal).
@@ -57,7 +58,7 @@ int main(){
     struct Node* second = NULL;
     struct Node* third = NULL;
 
-    // allocate 3 nodes in the heap  (THree blocks have been allocated dynamically using the "new" keyword)
+    // allocate 3 nodes in the heap  (Three blocks have been allocated dynamically using the "new" keyword)
     head = new Node;
     second = new Node;
     third = new Node;

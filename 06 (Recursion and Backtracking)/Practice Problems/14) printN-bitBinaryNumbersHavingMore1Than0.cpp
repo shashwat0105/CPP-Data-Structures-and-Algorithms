@@ -5,7 +5,7 @@ https://practice.geeksforgeeks.org/problems/print-n-bit-binary-numbers-having-mo
 #1's >= #0's  (Legal Prefix)
 
 Use wired headset to hear
-https://youtu.be/U81n0UYtk98
+https://youtu.be/U81n0UYtk98 (Aditya Verma)
 
 Start mein 1 hi rakhna padega
 

@@ -23,18 +23,16 @@ class Solution{
         a[i][j] = 0; // mark it visited
 
         // downward (we chose down first to maintain the order)
-        if(i+1<n ) solve(i+1, j, a, n, ans, move+'D'); // that cell is inside the boundary
+        solve(i+1, j, a, n, ans, move+'D'); // that cell is inside the boundary
     
         // left
-        if(j-1>=0) solve(i, j-1, a, n, ans, move+'L');
-        
+        solve(i, j-1, a, n, ans, move+'L');
         
         // right
-        if(j+1>=0) solve(i, j+1, a, n, ans, move+'R');
-        
+        solve(i, j+1, a, n, ans, move+'R');
         
         // upward
-        if(i-1>=0) solve(i-1, j, a, n, ans, move+'U');
+        solve(i-1, j, a, n, ans, move+'U');
         
         a[i][j] = 1;
     }
@@ -55,9 +53,8 @@ class Solution{
 // Coz down is nothing but i+1 and j+0 and so are others
 
 class Solution{
-    void solve(int i, int j, vector<vector<int>> &a, int n, vector<string> &ans, string move,
-    int di[], int dj[]){
-        if(i<0 || j<0 || i>=n || j>=n || a[i][j]==0) return;
+    void solve(int i, int j, vector<vector<int>> &a, int n, vector<string> &ans, string move, int di[], int dj[]){
+        if(i<0 || j<0 || i>=n || j>=n || a[i][j]==0) return;  // out of bound
         if(i==n-1 && j==n-1){        // reached the destination 
             ans.push_back(move);
             return;

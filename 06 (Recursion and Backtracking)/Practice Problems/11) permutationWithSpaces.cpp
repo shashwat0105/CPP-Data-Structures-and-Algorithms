@@ -62,8 +62,8 @@ void solve(int i, string s, vector<string> &ans, int n, string temp){
     }
     
     // pick
-    temp+= s[i];
-    temp+=' ';
+    temp += s[i];
+    temp +=' ';
     solve(i+1, s, ans, n, temp);
     temp.pop_back();
     

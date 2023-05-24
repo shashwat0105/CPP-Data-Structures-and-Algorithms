@@ -4,7 +4,7 @@ class Solution {
 public:
     typedef pair<string, int> P;
     
-    struct lambda {
+    struct cmp {
         bool operator()(P& a, P& b){
             return a.second > b.second || (a.second == b.second && a.first < b.first);
         }  
@@ -19,7 +19,7 @@ public:
             m[word]++;
         }
 
-        priority_queue<P, vector<P>, lambda> pq; // jada frequency walo ko preserve krna hai
+        priority_queue<P, vector<P>, cmp> pq; // jada frequency walo ko preserve krna hai
 
         for(auto &x: m){
             auto freq = x.second;
@@ -37,3 +37,4 @@ public:
     }
 };
 
+https://github.com/MAZHARMIK/Interview_DS_Algo/blob/master/Heap/Top%20K%20Frequent%20Words.cpp  (MIK)

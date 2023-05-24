@@ -24,3 +24,6 @@ vector<int> subsetSums(vector<int> arr, int N){
 }
 
 // Dusra hai ki wahi op nikalo ar fr op k har element ko add krke sum nikal k ans m push kr do(Jiski jaroorat ni hai)
+
+// Very Similar ques
+https://leetcode.com/problems/sum-of-all-subset-xor-totals/

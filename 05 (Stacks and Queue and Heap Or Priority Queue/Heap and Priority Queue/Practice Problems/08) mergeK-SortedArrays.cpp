@@ -6,3 +6,5 @@ https://www.geeksforgeeks.org/merge-k-sorted-arrays-set-2-different-sized-arrays
 // Remove the root element of Minheap and put it in the output array and insert the next element from the array of removed element. 
 // To get the result the step must continue until there is no element left in the MinHeap. 
 
+Time Complexity: O(N Log k)
+Auxiliary Space: O(N)

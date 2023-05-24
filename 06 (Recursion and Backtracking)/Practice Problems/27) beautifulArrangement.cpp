@@ -1,6 +1,8 @@
 https://leetcode.com/problems/beautiful-arrangement/
 
-https://youtu.be/xf8qAkqDr8Y
+https://youtu.be/xf8qAkqDr8Y  (Algo made easy)
+
+TC = O(K), SC = O(N)  // k = number of arrangements we are getting.
 
 class Solution {
 public:
@@ -10,7 +12,8 @@ public:
            return;
         } 
         
-        for(int i=1; i<=n; ++i){
+        // i is the number I am filling at a particular position. ie I am trying every number from 1 to N to fill in those positions.
+        for(int i=1; i<=n; ++i){                             // first step is to think about range of your loop, har level m kitne choices rahenge
             if(!visited[i] && (pos%i==0 || i%pos==0)){
                 visited[i] = true;
                 calculate(n, pos+1, visited, count);

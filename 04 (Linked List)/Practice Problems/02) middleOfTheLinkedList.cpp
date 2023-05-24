@@ -14,7 +14,7 @@ public:
         int mid = flag/2;
         
         // Now from the start I have to move mid no of times to reach the mid element
-        temp = head;                        // Initilising temp with head
+        temp = head;                        // Initilising temp with head again
         while(mid--){
             temp = temp->next;
         }

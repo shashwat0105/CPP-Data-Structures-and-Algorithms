@@ -47,4 +47,4 @@ Faith
 Given   Reversed
 
 Relating faith with expectation.
-That we have insert that 5 at the bottom of the reversed stack provided by reverse(4)
+That we have to insert that 5 at the bottom of the reversed stack provided by reverse(4)

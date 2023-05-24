@@ -15,13 +15,15 @@ public:
     
         while(left){
             if(left->next && left->val == left->next->val){
-                while(left->next && left->val == left->next->val) left = left->next;   // skipping the nodes.
-                prev->next = left->next;
+                while(left->next && left->val == left->next->val){
+                    left = left->next;                   // move till the end of duplicates sublist
+                } 
+                prev->next = left->next;                 // skip all duplicates // left is pointing to the last duplicate node
             }
             else{
-                prev = prev->next;
+                prev = prev->next;                      // otherwise, move predecessor
             }
-            left = left->next;
+            left = left->next;                          // move forward
         }
         return dummy->next;
     }

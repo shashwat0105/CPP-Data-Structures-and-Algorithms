@@ -27,3 +27,19 @@ public:
     }
 };
 
+TC:
+It takes N steps to generate a single permutation. 
+Since there are in total N! possible permutations, at most it would take O(N * N!) steps to generate all permutations. 
+Multiply Horizontal vs Vertical
+
+This set approach is better.
+If you avoid set then it will become more difficult to uderstand for you.
+Reference:
+// pass by value also no swapping back 
+https://leetcode.com/problems/permutations-ii/solutions/18596/a-simple-c-solution-in-only-20-lines/
+// Set method
+https://leetcode.com/problems/permutations-ii/solutions/18632/Short-40ms-C++-solution-similar-to-Permutation-I-solution/
+
+
+// Similar ques
+https://leetcode.com/problems/letter-tile-possibilities/

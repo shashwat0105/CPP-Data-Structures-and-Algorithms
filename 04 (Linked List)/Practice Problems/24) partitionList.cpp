@@ -18,7 +18,6 @@ https://leetcode.com/problems/partition-list/
 
 TC = O(n), SC = O(1)
 
-
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {

@@ -79,7 +79,7 @@ class heap(){
         }cout<<endl;
     }
 
-    void deleteFromHeap(){
+    void deleteFromHeap(){  // deletes the root node 
         if(size==0){
             cout<<"nothing to delete"<<endl;
             return;
@@ -94,11 +94,11 @@ class heap(){
             int rightIndex = 2*i+1;
 
             if(leftIndex<size && arr[i]<arr[leftIndex]){
-                swap(arr[leftIndex],arr[i]);
+                swap(arr[leftIndex], arr[i]);
                 i = leftIndex;
             }
             else if(rightIndex<size && arr[i]<arr[rightIndex]){
-                swap(arr[rightIndex],arr[i]);
+                swap(arr[rightIndex], arr[i]);
                 i = rightIndex;
             }
             else return;

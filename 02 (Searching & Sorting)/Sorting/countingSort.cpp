@@ -78,3 +78,6 @@ int main()
     return 0;
 }
 
+// 
+Counting sort algorithm is efficient when range of data to be sorted is fixed. 
+For example to sort string consisting of ASCII characters: the range is from 0 to 255(ASCII range). Counting sort uses an extra constant space proportional to range of data.

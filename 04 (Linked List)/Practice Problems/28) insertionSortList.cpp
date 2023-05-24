@@ -30,9 +30,9 @@ public:
                 prev->next = cur->next;
                 cur->next = cur->next->next;
                 prev->next->next = temp;
-                prev = dummy;  // firse yaha se comparsion start krna padega
+                prev = dummy;               // firse yaha se comparsion start krna padega
             }
-            else cur = cur->next; // element at right position already
+            else cur = cur->next;          // element at right position already
         }
         return dummy->next;
     }

@@ -4,6 +4,8 @@ https://leetcode.com/problems/top-k-frequent-elements/
 
 here key is the frequency.
 
+TC = O(nlogk)
+
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {

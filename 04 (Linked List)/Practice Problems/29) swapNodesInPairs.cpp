@@ -16,7 +16,7 @@ public:
             ListNode *nxtPair = curr->next->next;
             ListNode *second = curr->next;
             
-            // reverse this pair
+            // reverse this pair : curr and second
             second->next = curr;
             curr->next = nxtPair;
             prev->next = second;
@@ -46,3 +46,20 @@ public:
         return new_head;
     }
 };
+
+
+// connection banate kaise hai ki yaad rakh pae ki technique.
+// In order or reverse order of occurence in the list
+// Say:
+prev -> curr -> second -> nxtPair
+
+If u go in reverse order
+toh phle second ka connection banao
+fr curr ka banao
+fr prev ka banao
+
+else in forward order
+phle prev ka banao 
+fr curr ka banao 
+fr second ka banao.
+ 

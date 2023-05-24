@@ -25,3 +25,4 @@ long long minCost(long long arr[], long long n) {
     return cost;
 }
 
+// Yeh concept bhi bahot imp hai in heap ki, top k do elements nikale ar fr unse kuch operation kia ar dobara heap m daal dia.

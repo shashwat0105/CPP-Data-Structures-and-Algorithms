@@ -8,17 +8,17 @@ class Solution {
     int countNodes(Node *tree){
         if(!tree)return 0;
         
-        return 1 + countNodes(tree->left)+countNodes(tree->right);
+        return 1 + countNodes(tree->left) + countNodes(tree->right);
     }
     
-    bool isCBT(Node *tree,int index,int &count){
+    bool isCBT(Node *tree, int index, int &count){
         if(!tree)return 1;
         
         if(index >= count)return 0;                      // any index in a cbt cannot be greater than count
         
         else{
-            bool left = isCBT(tree->left, 2*index+1,count);
-            bool right = isCBT(tree->right, 2*index+2,count);
+            bool left = isCBT(tree->left, 2*index+1, count);
+            bool right = isCBT(tree->right, 2*index+2, count);
             return left && right;
         }
     }
@@ -26,7 +26,7 @@ class Solution {
     bool isMaxHeap(Node *tree){
         if(tree->left==NULL && tree->right==NULL) return true;     // leaf node
         
-        if(!tree->right)return tree->data >= tree->left->data;
+        if(!tree->right) return tree->data >= tree->left->data;    // CBT mein left toh hoga hi coz it gets filled from left
         
         else{
             bool left = isMaxHeap(tree->left);
@@ -48,6 +48,7 @@ class Solution {
 
 
 // LEETCODE: Check CBT
+// CRUX: any index in CBT cannot be greater than count 
 
 https://leetcode.com/problems/check-completeness-of-a-binary-tree/
 

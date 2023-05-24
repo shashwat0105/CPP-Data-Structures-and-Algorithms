@@ -56,19 +56,8 @@ public:
         
         head->next = removeElements(head->next, val);  // recursive call
         
-        if(head->val == val) return head->next;
+        if(head->val == val) return head->next;       // return head->val==val? head->next : head;  // ternary statement
         else return head;
     }
 };
-
-// OR using ternary statement
-class Solution {
-public:
-    ListNode* removeElements(ListNode* head, int val) {
-        if(head==NULL) return NULL;
-        head->next = removeElements(head->next, val);  // recursive call
-        return head->val==val? head->next : head;      // familiar way of if else
-    }
-};
-
 

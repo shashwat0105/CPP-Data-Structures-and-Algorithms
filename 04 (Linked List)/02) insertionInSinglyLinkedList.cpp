@@ -80,13 +80,13 @@ void append(struct Node** head, int new_data){
     }
 
     // 5. Else traverse till the last node
-    struct Node *last = *head;
-    while(last!=NULL){
-        last = last->next;
+    struct Node *temp = *head;
+    while(temp!=NULL){
+        temp = temp->next;
     }
 
     // 6. Change the next of last node to new_node
-    last->next = new_node;
+    temp->next = new_node;
 
     return;
 }

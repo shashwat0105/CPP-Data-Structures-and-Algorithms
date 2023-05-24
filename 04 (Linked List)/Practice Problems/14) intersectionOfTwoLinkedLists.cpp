@@ -12,8 +12,7 @@ https://youtu.be/u4FWXfgS8jw  (Striver)
 // TC = O(m*n)
 // SC = O(1)
 
-// Compare all the nodes of one list to other.
-
+// Compare all the nodes of one list to every other node of list 2.
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
     ListNode * temp1 = headA;
     ListNode * temp2 = headB;
@@ -69,7 +68,7 @@ public:
 // L1 = 6
 // L2 = 4
 
-// 2) Then Skip 2(L1-L2) places in L1 to make the starting point same ie total length now to be travered is 4
+// 2) Then Skip 2*(L1-L2) places in L1 to make the starting point same ie total length now to be travered is 4
 // 3) Start traversing together, point where they will be equal at the same time will be either intersection point or NULL ie end of the LL
 
 // Can refer all solns here
@@ -103,5 +102,4 @@ public:
         return a;                        // return either a or b, that point will be either intersection or NULL so handles both the cases automatically.
     }
 };
-
 

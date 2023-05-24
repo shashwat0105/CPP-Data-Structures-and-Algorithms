@@ -9,7 +9,7 @@ EG:
 Calculate: a^b
 1) base case : when b = 0,, every number to the power of 0 is 1
 2) Problem: a^b, subproblem: a^(b-1)  (How we calculated/reach at a^(b-1) is known as recursion leap of faith)
-   Relation: a^b = a* a^(b-1)
+   Relation: a^b = a*a^(b-1)
 3) f(a, b) = a*f(a, b-1)
 
 // Factorial using recursion; TC = O(N), SC = O(N)
@@ -76,7 +76,7 @@ bool isSorted(int arr[], int n){
 // TC and SC = O(N)
 int power(int a, int n){
     if(n==0) return 1;
-    return a*power(a,n-1);
+    return a*power(a, n-1);
 }
 
 // TC and SC = O(logn)

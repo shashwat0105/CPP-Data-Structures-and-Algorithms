@@ -2,11 +2,11 @@ https://leetcode.com/problems/merge-two-sorted-lists/
 
 Merge two lists in sorted manner.
 
-https://youtu.be/0QPpgAsd4IY
+https://youtu.be/0QPpgAsd4IY (FRAZ)
 
 // This can be done by using a third LL or modifying the existing linked list, depending on the demand of the interviewer.
 
-// Using recursion (without using third LL)
+// Recursive approach (without using third LL)
 // TC = O(m+n)
 // SC = O(m+n)
 
@@ -59,3 +59,4 @@ public:
     }
 };
 
+// Yaha  array nahi hai toh elements ko shift krne ka koi scene hai bas connections banana hai

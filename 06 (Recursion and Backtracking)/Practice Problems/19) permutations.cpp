@@ -4,7 +4,7 @@ https://leetcode.com/problems/permutations/
 
 How will the recursion tree be?
 Say [1,2,3]
-// For first position we can chose either of the three (ie 3 recursive calls as will be done in loop)
+// For first position we can chose/pick either of the three (ie 3 recursive calls as will be done in loop)
 // Say we have taken 1, then for the second position we can take either 2 or 3  (ie 2 sub recursive calls)
 // Then for the last position we can take the remaining
 
@@ -17,7 +17,7 @@ Say [1,2,3]
 
 class Solution {
 public:
-    void recurPermute(vector<int> &ip, vector<int> &op, vector<vector<int>> &ans, vector<int> &freq){
+    void recurPermute(vector<int> &ip, vector<int> &op, vector<vector<int>> &ans, vector<bool> &freq){
         if(op.size()==ip.size()){
             ans.push_back(op);
             return;

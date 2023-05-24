@@ -117,3 +117,16 @@ int main(){
     return 0;
 }
 
+Bit Manipulation ke formulas ->
+a | b = a ^ b + a & b
+a ^ (a & b) = (a | b) ^ b
+b ^ (a & b) = (a | b) ^ a
+(a & b) ^ (a | b)  = a ^ b
+Addition Properties:
+a + b = a | b + a & b
+a + b = a ^ b + 2(a & b)
+Subtraction Properties
+a - b = (a ^ (a & b)) - ((a | b) ^ a)
+a - b = ((a | b) ^ b) - ((a | b) ^ a)
+a - b = (a ^ (a & b)) - (b ^ (a & b))
+a - b = ((a | b) ^ b) = (b ^ (a & b))

@@ -40,6 +40,9 @@ public:
 LC discuss: 
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solutions/1306476/c-python-2-solutions-clean-concise-o-n/?orderBy=most_votes
 
+// Follow Up Ques(IMP):
+https://practice.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1
+
 //**************************************************************************************************************
 // Lowest common ancestor of a general tree(A general tree is basically a graph).
 // Har node ka tree k root se path likh lo, with the help of parent

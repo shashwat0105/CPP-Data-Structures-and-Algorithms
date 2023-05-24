@@ -48,7 +48,7 @@ public:
         int val = nums[nums.size()-1];  // storing the last element
         nums.pop_back();
         insert(nums, temp);             // inserting temp in the reduced vector
-        nums.push_back(val);
+        nums.push_back(val);            
         return;
     }
 };

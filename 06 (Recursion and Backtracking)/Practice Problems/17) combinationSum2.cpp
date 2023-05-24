@@ -93,3 +93,6 @@ public:
 // I'd like to give more details to help beginners save time. 
 // The revursive component tries the elements after the current one and also tries duplicate elements. So we can get correct answer for cases like [1 1] 2.
 // The iterative component checks duplicate combinations and skip it if it is. So we can get correct answer for cases like [1 1 1] 2.
+
+All 4 combination problem with soln
+https://leetcode.com/problems/combination-sum-iii/solutions/2024085/combinations-all-types-solution-meme/

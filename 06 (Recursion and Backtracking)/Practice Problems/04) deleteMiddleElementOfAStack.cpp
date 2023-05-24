@@ -71,4 +71,9 @@ s.removeElementAt((sizeOfStack-1)/2);
 
 // For future study:
 // Asked in Amazon
+// To implement a stack in which you can perform O(1) delete operation in middle of a stack. 
+// Which DS will you use? Ans: Doubly Linked List
+C++
+https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
+Java
 https://github.com/nkatre/Operations-on-Stack/blob/master/findMiddle%20and%20deleteMiddle%20in%20constant%20time%20in%20Stack

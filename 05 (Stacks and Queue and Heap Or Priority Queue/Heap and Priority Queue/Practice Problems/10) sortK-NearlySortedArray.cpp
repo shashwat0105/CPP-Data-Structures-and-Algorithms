@@ -22,3 +22,9 @@ vector <int> nearlySorted(int arr[], int n, int k){
     }
     return ans;
 }
+
+Time Complexity:
+O(k) to build the initial min-heap
+O((n-k)logk) for remaining elements.
+Thus we get O(nlogk) overall TC.
+ 

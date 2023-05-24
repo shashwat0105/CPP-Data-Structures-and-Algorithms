@@ -4,7 +4,7 @@ https://youtu.be/i05Ju7AftcM  (Striver)
 
 Can see the recursive tree from here.
 We go in column and then in every row of that column to check for a valid position
-
+tm
 For isValid
 It is sufficient to check 3 moves of the queen to be placed now out of 8
 Left
@@ -23,7 +23,7 @@ public:
             if(board[row][col] == 'Q') return false;
             row--;                                      // both row and column decrease while moving in upper diagnol direction
             col--;
-        }
+        }canv
         
         // check left 
         col = dupcol;
@@ -99,9 +99,9 @@ bool isValid(int row, int col){
 // Hence, we optimise it using hashing // ie if there was already there a queen or not
 // We hash the left check using a vector of size n
 // We hash the left lowerDiagonal using a vector of size 2n -1
-// Index value at a particular cell in upper diagonal is given by (row+col)
+// Index value at a particular cell in lower diagonal is given by (row+col)
 // We hash the left upperDiagonal using a vector of size 2n-1
-// Index value at a particular cell in upper diagonal is given by (n-1) + (row-col)
+// Index value at a particular cell in upper diagonal is given by (n-1) + (col-row)
 
 
 class Solution {
@@ -117,14 +117,14 @@ public:
             if(leftRow[row]==0 && lowerDiagonal[row + col]==0 && upperDiagonal[n-1 + col - row]==0){
                 board[row][col] = 'Q';
                 leftRow[row] = 1;
-                lowerDiagonal[row+col] = 1;
+                lowerDiagonal[row + col] = 1;
                 upperDiagonal[n-1 + col - row] = 1;
                 
                 solve(col+1, board, ans, leftRow, upperDiagonal, lowerDiagonal, n);   // recursive call
                 
                 board[row][col] = '.';                     // backtrack
                 leftRow[row] = 0;                          // backtrack
-                lowerDiagonal[row+col] = 0;                // backtrack
+                lowerDiagonal[row + col] = 0;              // backtrack
                 upperDiagonal[n-1 + col - row] = 0;        // backtrack
             }
         }
@@ -146,7 +146,6 @@ public:
     }
 };
 
-
-
-
-
+// You can also use set ds 
+// Because keeping ids as row+col, row-col would be easier to remember.
+https://github.com/MAZHARMIK/Interview_DS_Algo/blob/master/Backtracking/N-Queens.cpp

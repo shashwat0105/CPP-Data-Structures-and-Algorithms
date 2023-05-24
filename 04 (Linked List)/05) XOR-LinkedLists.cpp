@@ -7,8 +7,8 @@ Ordinary Representation:
     Node B: prev = add(A), next = add(C) // previous is address of A and next is address of C
 
 XOR List Representation: Let us call the address variable in XOR representation as npx (XOR of next and previous)
-    Node A: npx = 0 XOR add(B)      // bitwise XOR of zero and address of B
-    Node B: npx = add(A) XOR add(C) // bitwise XOR of address of A and address of C
+    Node A: npx = 0 XOR add(B)          // bitwise XOR of zero and address of B
+    Node B: npx = add(A) XOR add(C)     // bitwise XOR of address of A and address of C
 
 // How to traverse:
 XOR of add(B) and npx of C gives us the add(D). 

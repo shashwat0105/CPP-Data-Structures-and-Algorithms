@@ -1,6 +1,5 @@
 https://practice.geeksforgeeks.org/problems/merge-two-binary-max-heap0144/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
-
 class Solution{
     public:
     void heapify(vector<int> &arr, int n, int i){
@@ -19,8 +18,8 @@ class Solution{
             swap(arr[largest], arr[i]);
             heapify(arr, n, largest);
         }
-        
     }
+
     vector<int> mergeHeaps(vector<int> &a, vector<int> &b, int n, int m) {
         // your code here
         vector<int> ans;
@@ -33,7 +32,7 @@ class Solution{
         
         // heapify
         int size = ans.size();
-        for(int i = size/2 - 1; i>=0; i--){
+        for(int i = size/2 - 1; i>=0; i--){  // ie call for first half of the array
             heapify(ans, size, i);
         }
         return ans;

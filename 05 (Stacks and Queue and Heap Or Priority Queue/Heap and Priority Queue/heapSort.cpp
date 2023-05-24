@@ -26,7 +26,7 @@ class Solution
       
       if(largest!=i){
           swap(arr[i], arr[largest]);
-          heapify(arr, n, largest);
+          heapify(arr, n, largest);           // jisse swap hua hai uske liye heapify call karenge
       }
     }
 

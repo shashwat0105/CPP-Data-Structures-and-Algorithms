@@ -54,7 +54,7 @@ public:
 1             1               1
 1                             1
 
-// Also we will follow the property of the set ie it stores unique values only
+// Also we need to follow the property of the set ie it stores unique values only
 
 class MyHashSet {
 public:

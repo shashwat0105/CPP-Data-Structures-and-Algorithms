@@ -18,7 +18,7 @@ void solve(string ip, string op){
         return;
     }
     
-    string op1 = op;         // we create two output strings  (we are making a copy, ie not changing in original so I guess backtracking is not required)
+    string op1 = op;         // we create two output strings  (we are making a copy, ie not changing in original so backtracking is not required)
     string op2 = op;
     
     op2.push_back(ip[0]);    // in second output we want to include first character from the input, In first we dont want so we do nothing
@@ -55,9 +55,11 @@ void solve(string ip, string op){
 // Eg the string is aab: " ", a, b, ab, aab
 // is to be printed
 
+Note: Reason you have to use ordered map/set else unordered will give error: https://stackoverflow.com/questions/62869571/call-to-implicitly-deleted-default-constructor-of-unordered-set-vectorint
+
 map<string,int> m;
 
-void subset(string ip, string op, map<string, int> &m){
+void subset(string ip, string op, unordered_map<string, int> &m){
 	if((int)ip.size()==0){
 		m[op]++;             // only these two lines I added additionally checking whether string was present before or not.  
 		if(m[op]==1)         // If not then print. Rest is full same code as before just declare map and pass by reference.
@@ -115,4 +117,3 @@ int f()  // return type changes to int
 
     return lf + rf
 }
-

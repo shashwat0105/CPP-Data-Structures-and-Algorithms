@@ -29,3 +29,6 @@ Similar to pivot that u found in case of rotated sorted array.
 https://leetcode.com/problems/minimum-time-to-complete-trips/solutions/1802416/c-answer-on-binary-search-list-of-related-problems/
 
 https://leetcode.com/problems/minimum-time-to-complete-trips/solutions/3266855/all-binary-search-problems/
+
+Template:
+https://leetcode.com/discuss/study-guide/3444552/binary-search-on-answer-template-generic-template

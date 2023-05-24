@@ -51,7 +51,7 @@ public:
         ListNode *temp = head;
         int res = 0;
         while(temp!=NULL){
-            res*=2;
+            res *= 2;
             res += (temp->val);    // val * 2^0 = val
             temp = temp->next;
         }

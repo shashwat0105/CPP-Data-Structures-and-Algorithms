@@ -33,9 +33,35 @@ int lenOfLongSubarr(int A[],  int n, int k) {
             len = max(len, i-mp[prefixRunningSum-k]);
         }
         if(mp.find(prefixRunningSum)==mp.end()){
-            mp[prefixRunningSum] = i; // ie the first occurence is stored when it didn't existed in the map
+            mp[prefixRunningSum] = i;           // ie the first occurence is stored when it didn't existed in the map
         }
     }
     return len;
 } 
 
+// Largest subarray with zero sum
+https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
+
+https://youtu.be/xmguZ6GbatA (Striver) 
+
+Now since largest is asked, we need to store the index as well where that sum was found so that we can compute the subarray size.
+
+int maxLen(vector<int>&A, int n){   
+    unordered_map<int, int> mp;
+    int maxi = 0;
+    int sum = 0;
+    
+    for(int i=0; i<n; ++i){
+        sum+=A[i];
+        if(sum==0) maxi = i+1;
+        else{
+            if(mp.find(sum)!=mp.end()){
+                maxi = max(maxi, i-mp[sum]);
+            }
+            else{
+                mp[sum] = i;
+            }
+        }
+    }
+    return maxi;
+}

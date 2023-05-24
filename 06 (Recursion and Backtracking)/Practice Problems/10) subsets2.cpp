@@ -1,5 +1,8 @@
 https://leetcode.com/problems/subsets-ii/
 
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+
 // TC = 2^n*2^n*logn  (Due to insertion of every element in map or set) (Interviewer wont be happy with this set/map approach)
 
 class Solution {

@@ -71,7 +71,7 @@ public:
         head->next->next = head;                           // ie next of first element should point to head
         head->next = NULL;              
         return reverseHead;
-    }
+    }0
 };
 
 

@@ -26,7 +26,7 @@ public:
               if (isValid(board, i, j, c)) {
                 board[i][j] = c;
 
-                if (solve(board))
+                if (solve(board))             // koi character rakha ja skta hai toh iska mtlb yeh nahi ki wo aage chal ek valid sudoku produce kar hi dega. Isliye poora dekhna padega ki true hai ya nahi,
                   return true;                // made recursion call to find the next empty position to be filled with next possible element
                 else
                   board[i][j] = '.'; // undoing what was filled as finally a valid sudoku was not found
@@ -39,8 +39,6 @@ public:
       }
       return true; // we coudn't find an empty position, hence we return a true ie our ans 
     }
-    
-    
     
     void solveSudoku(vector<vector<char>>& board) {
         solve(board);
@@ -55,3 +53,5 @@ board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3]
 This points at top left element in a submatrix.
 +i/3 and i%3 will help in moving in the submatrix at 9 places as i increments.
 
+// Not a recursion ques, but a sudoku ques on LC
+https://leetcode.com/problems/valid-sudoku/

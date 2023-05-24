@@ -1,5 +1,5 @@
 Good video:
-https://youtu.be/cTm0AR5_O54
+https://youtu.be/cTm0AR5_O54 (FRAZ)
 
 In Doubly linked lists 
 
@@ -58,7 +58,7 @@ void printList(struct Node *node){
 
 /* Given a reference (pointer to pointer) to the head of a DLL and an int, this function inserts a new node at the end */
 void append(struct Node **head, int new_data){
-    // Allocate node
+    // Allocate node in heap
     Node *new_node = new Node;
 
     // Put in data
@@ -74,6 +74,7 @@ void append(struct Node **head, int new_data){
         return;
     }
 
+    Node *temp = head;
     // Else traverse till the last node
     while(temp->next != NULL){
         temp =  temp->next;

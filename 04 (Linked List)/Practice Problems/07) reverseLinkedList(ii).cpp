@@ -40,15 +40,15 @@ public:
         for(int i=0; i<left-1; i++) p=p->next;     // p will point one node before the position of left.
         // cout<<p->val;
         
-        ListNode *c=p->next,*n;
+        ListNode *c=p->next, *n;
         
         // or n-=m;
         //    while(n--) 
         for(int i=0; i<right-left; i++){           // code piece inside the loop is totally different from reverse linked list.
-            n=c->next;
-            c->next=n->next;                       // to cut out the node to be extracted.
-            n->next=p->next;
-            p->next=n;
+            n = c->next;
+            c->next = n->next;                     // to cut out the node to be extracted.
+            n->next = p->next;
+            p->next = n;
         }
         return dummy->next;
     }
@@ -57,4 +57,22 @@ public:
 // Video explanation of this method:
 // https://youtu.be/BE0hruM5O5U
 
+
+// Other code
+ListNode* reverseBetween(ListNode* head, int m, int n) {
+    ListNode newHead(0);
+    newHead.next = head;
+    ListNode *pre = &newHead, *cur = head, *next = NULL;
+    int i = 1;
+    while(i < n) {
+        if(i++ < m) { pre = cur; cur = cur->next; }
+        else { 
+            next = cur->next; 
+            cur->next = cur->next->next; 
+            next->next = pre->next; 
+            pre->next = next; 
+        }
+    }
+    return newHead.next;
+}
 
