@@ -1,5 +1,6 @@
 https://leetcode.com/problems/cherry-pickup-ii/
 
+HARD
 
 Fixed starting point
 Variable ending point
@@ -18,7 +19,7 @@ Wrting recursion together
 // Since fixed starting point we will write recursion from here.
 
 f(0, 0, 0, m-1) will be start position
-// Both will be in same row at a particular time. ie i1 = i2 = i
+// Both will be in same row at a particular time. ie i1 = i2 = i  // Reducing variables.
 
 // Always think when they can reach the same column (j1 = j2) it will get added once.
 
@@ -45,8 +46,11 @@ public:
         int maxi = -1e8;
         for(int dj1=-1; dj1<=1; ++dj1){
             for(int dj2 = -1; dj2<=1; ++dj2){
-                if(j1==j2) maxi = max((grid[i][j1] + solve(i+1, j1+dj1, j2+dj2, grid, dp)), maxi);
-                else maxi = max(grid[i][j1] + grid[i][j2] + solve(i+1, j1+dj1, j2+dj2, grid, dp), maxi) ;
+                int value = 0;
+                if(j1==j2) value = grid[i][j1];          // if same cell include once
+                else value = grid[i][j1] + grid[i][j2];  // else normally
+                value += solve(i+1, j1+dj1, j2+dj2, grid, dp);
+                maxi = max(maxi, value);
             }
         }
         return dp[i][j1][j2] = maxi;
@@ -88,7 +92,7 @@ public:
                     int maxi = 0;
                     for(int dj1=-1; dj1<=1; ++dj1){
                         for(int dj2 = -1; dj2<=1; ++dj2){
-                            int value = 0;                     // above memoised can also be written with the help of this variable, ek hi baar solve() type krna padega
+                            int value = 0;                     
                             if(j1==j2) value = grid[i][j1];
                             else value = grid[i][j1] + grid[i][j2];
                             if(j1+dj1>=0 && j1+dj1<m && j2+dj2>=0 && j2+dj2<m) 

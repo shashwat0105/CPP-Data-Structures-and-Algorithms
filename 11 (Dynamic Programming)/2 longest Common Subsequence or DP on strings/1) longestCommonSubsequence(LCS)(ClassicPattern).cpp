@@ -3,7 +3,7 @@ LCS Template:
 int LCS(string x, string y){
     int m = x.size();
     int n = y.size();
-    int t[1001][1001];
+    int t[m+1][n+1];
 
     for(int i=0; i<=m; ++i) t[i][0] = 0;
     for(int j=0; j<=n; ++j) t[0][j] = 0;
@@ -21,10 +21,13 @@ int LCS(string x, string y){
     return t[m][n];
 }
  
-
+*********************************************************************************************************************************
 Explanation:
 // substring != subsequence 
-// https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+
+https://leetcode.com/problems/longest-common-subsequence/
+
 // A subsequence is a sequence that appears in the same relative order, but not necessarily contiguous. But a substring needs to be continuos. 
 // Subsequence mein right-bottom corner element return hota hai.
 // Substring mein ek result(max) variable bana k chalte hai wo return hota hai.
@@ -39,24 +42,13 @@ Explanation:
 // (i) If the last string element matches shortening the string length -> n-1 & m-1  
 // (ii) If the last element does not matches then we take 2 cases in which we shorten the string one at a time ie (n-1, m) & (n, m-1)  -> then we take thier max
 
-int LCS(string x, string y, int m, int n){
-    // base condition
-    if(m==0 || n==0){
-        return 0;
-    }
-
-    // choice diagram
-    if(x[m-1] == y[n-1]){                // ie last element is common
-        return 1 + LCS(x, y, m-1, n-1);  // Instead of value when the elements matches we add 1 (qki yahi toh chahiye hai for count of LCS)
-    }
-    else
-        return max(LCS(x, y, m, n-1), LCS(x, y, m-1, n));
-}
-
-
-// Method 2:- Memoisation or TopDown Method (Only required values are filled in tha table)
+// Method 1:- Memoisation or TopDown Method (Only required values are filled in tha table)
 // Table will be made of those variables that are changing in recursive calls here m & n
 // Hence  table t[m+1][n+1] is made of index 0 to m & 0 to n
+
+// NOTE:
+// When we pass it as (string a, string b) ie by value then, in every recursive call the string value will be copied again and again in the memory stack 
+// but passing it as (string &a, string &b) ie by reference will just pass address which will point to the address of the particular value or string.
 
 int t[1001][1001];
  
@@ -87,7 +79,6 @@ int main(){
     LCS(x, y, x.length(), y.length());
     return 0;
 }
-
 
 // Method 3:- Tabulation Method or Bottom Up Method 
 // (To avoid stack-overflow error we need this method coz recursive calls n -> n-1 -> n-2 are stored in stack data structure)
@@ -125,46 +116,7 @@ int LCS(string x, string y, int m, int n){          // Approach works for LC too
     return t[m][n];
 }
 
-**************************************************
-LEETCODE
-https://leetcode.com/problems/longest-common-subsequence/
-
-// Memoised
-// NOTE:
-// When we pass it as (string a, string b) ie by value then, in every recursive call the string value will be copied again and again in the memory stack 
-// but passing it as (string &a, string &b) ie by reference will just pass address which will point to the address of the particular value or string.
-
-class Solution {
-public:
-    int LCS(string &x, string &y, int n, int m, int t[][1001]){
-        if(n==0 || m ==0){
-            return 0;
-        }
-        if(t[n][m]!= -1){
-            return t[n][m];
-        }
-        
-        if(x[n-1] == y[m-1]){
-            return t[n][m] = 1 + LCS(x, y, n-1, m-1, t);
-        }
-        else{
-            return t[n][m] = max(LCS(x, y, n-1, m, t), LCS(x, y, n, m-1, t));
-        }
-    }
-    
-    int longestCommonSubsequence(string text1, string text2) {
-        int n = text1.size();
-        int m = text2.size();
-        
-        int t[1001][1001];
-        for(int i=0; i<1001; ++i){
-            for(int j=0; j<1001; ++j){
-                t[i][j] = -1;
-            }
-        }
-        return LCS(text1, text2, n, m, t);
-    }
-};
+***********************************************************************
 
 // Here, we traversed the string from the back:
 // Start from the begining and base case here is reaching the end of any of the strings in the recursion
@@ -188,19 +140,17 @@ public:
         if(i==str1.length() || j==str2.length()) return 0;
         
         if(str1[i]==str2[j])
-            return dp[i][j]= 1+backtrack(str1,str2,i+1,j+1);
+            return dp[i][j]= 1 + backtrack(str1,str2,i+1,j+1);
         else
-            return dp[i][j]= max(backtrack(str1,str2,i+1,j),backtrack(str1,str2,i,j+1));
+            return dp[i][j]= max(backtrack(str1,str2,i+1,j), backtrack(str1,str2,i,j+1));
     }
 };
 
-// SPACE OPTIMISED SOLUTION
 
-
-// ***************************** STRIVER  ************************
+*********************************************** STRIVER  *******************************************************
 
 1) Express in terms of (index1, index2)  // A single index won't be able to express both the strings
-2) Explore possibilities on that index
+2) Explore possibilities on that index   : Match, notMatch
 3) Take the best among them.
 
 f(2, 5) means LCS of string 1 [0...2] and string 2 [0...5]
@@ -223,6 +173,30 @@ public:
         if(text1[ind1]==text2[ind2]) return dp[ind1][ind2] = 1 + solve(ind1-1, ind2-1, text1, text2, dp);
 
         return dp[ind1][ind2] = 0 + max(solve(ind1-1, ind2, text1, text2, dp), solve(ind1, ind2-1, text1, text2, dp));
+    }
+
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+
+        vector<vector<int>> dp(n, vector<int> (m, -1));
+        return solve(n-1, m-1, text1, text2, dp);
+    }
+};
+
+// We can also write the code in match, notMatch terms, and also tabulate it
+class Solution {
+public:
+    int solve(int ind1, int ind2, string &text1, string &text2, vector<vector<int>> &dp){
+        if(ind1<0 || ind2<0) return 0;
+
+        if(dp[ind1][ind2]!= -1) return dp[ind1][ind2];
+        
+        int match = 0;
+        int notMatch = 0;
+        if(text1[ind1]==text2[ind2]) match = 1 + solve(ind1-1, ind2-1, text1, text2, dp);
+        else notMatch = 0 + max(solve(ind1-1, ind2, text1, text2, dp), solve(ind1, ind2-1, text1, text2, dp));
+        return dp[ind1][ind2] = max(match, notMatch);
     }
 
     int longestCommonSubsequence(string text1, string text2) {

@@ -24,9 +24,6 @@ Knapsack Problem are of 3 types
 2. 0-1 Knapsack (Use of DP)
 3. Unbounded Knapsack (In this u can put any item any number of times too ie unbounded supply of items) In other u can put only once
 
-// Nice Article: 
-// https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/tutorial/
-
 
 First, design the backtrack function, which returns the correct answer. Pass whatever arguments you need to this function.(simple recursive function)
 Second, remove all the arguments from the function, that are either read-only or redundant (you are able to compute them from other arguments). Known as Minimizing the state space of function arguments
@@ -46,6 +43,12 @@ And third, simply cache it. (memoisation) [This step changes the TC from 2^n to 
 // Types of problems you can solve with DP
 // 1) Optimisation (min, max, shortest)
 // 2) Counting     (Count the number of ways)
+
+// Steps to write recursion(By striver):
+1. Try to represent the problem in terms of index.
+2. Do all possible stuffs on that index according to the problem statement.
+3. Sum of all the stuffs. -> Count all ways
+   Min/Max of all the stuffs. -> Find min/max
 
 // Space Optimisation in Dynamic programming:
 // Generally while making the matrix, we may just require 2 rows or 2 columns or something like that.
@@ -74,7 +77,7 @@ Using 2D vector
 vector<vector<int>>dp;
 int solve(..., )
 int main(){
-    dp.resize(n+1,vector<int>(m+1,-1));
+    dp.resize(n+1, vector<int>(m+1,-1));
     solve();
 }
 
@@ -107,8 +110,11 @@ int main(){
 // You need not to think about the dp table dimensions and focus on trying to find out what all information do I need to store so I can uniquely define a subproblem.
 
 
-// General DP Leetcode discuss links
-https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns
+// Some IMP reference DP links:
+https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns    (GEM)
     
 https://leetcode.com/problems/form-largest-integer-with-digits-that-add-up-to-target/discuss/654490/dp-is-easy-5-step-dp-thinking-process-explained
+
+Nice Article: 
+https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/tutorial/
 

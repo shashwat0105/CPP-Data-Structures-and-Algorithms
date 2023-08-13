@@ -43,3 +43,8 @@ If asked for common strings then
 Else
 - Map/Set for O(1) time & O(n) space
 - Sort input for O(nlogn) time and O(1) space
+
+
+// Overall Links:
+A GEM jise poora karna hai:
+https://leetcode.com/discuss/general-discussion/665604/Important-and-Useful-links-from-all-over-the-Leetcode

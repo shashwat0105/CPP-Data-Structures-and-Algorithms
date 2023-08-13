@@ -30,42 +30,60 @@ https://www.geeksforgeeks.org/print-shortest-common-supersequence/          (Con
 // While in LCS we used to write only the common part (ie which was equal)
 // & If LCS touches any boundary :- "ac" & phi -> LCS = empty string nothing to print more
 // But when u hit boundary in SCS :- "ac" & phi -> SCS = "ac" ie extra ac we have to print more
-
-LCS(x, y, m, n)  // calling LCS and making table then we perform further
-t[][]
-
-int i = m;
-int j = n;
-string s = "";
-
-while(i>0 && j>0){
-    if(x[i-1]==y[j-1]){      // if the string elements are equal
-        s.push_back(x[i-1]); // we push the element in string which matches here x[i-1] & y[j-1] are same so can push any
-        i--;
-        j--;
-    }
-    else{                           // if the string elements are not equal toh bhi mereko include krna hai ab 
-        if(t[i][j-1] > t[i-1][j]){  // then we compare the two values of subproblem(diagnal) and move in the direction of maximum
-            s.push_back(y[j-1]);
-            j--;  // move to the left
+       
+class Solution {
+public:
+    string shortestCommonSupersequence(string str1, string str2) {
+        // creating LCS dp table
+        int m = str1.size(), n = str2.size();
+        int dp[m+1][n+1];
+        for(int i=0; i<=m; i++){
+            dp[i][0]=0;
         }
-        else
-            s.push_back(x[i-1]);
+        for(int i=0; i<=n; i++){
+            dp[0][i]=0;
+        }
+        for(int i=1; i<=m; i++){
+            for(int j=1; j<=n; j++){
+                if(str1[i-1]==str2[j-1]){
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                }
+                else{
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+
+        // now using this table to backtrack and print SCS
+        string ans = "";
+        int i=m, j=n;   // to go from right bottom last corner
+        while(i>0&&j>0){
+            if(str1[i-1]==str2[j-1]){    // if the string elements are equal
+                ans+=str1[i-1];          // we push the element in string which matches here x[i-1] & y[j-1] are same so can push any      
+                i--;
+                j--;
+            }
+            else{                          // Jinka max leke banaya tha unka comparison hoga   // if the string elements are not equal toh bhi mereko include krna hai ab 
+                if(dp[i-1][j]<dp[i][j-1]){ // then we compare the two values of subproblem(diagnal) and move in the direction of maximum // Also need to add those elements which dont match as we need to make a supersequence.
+                    ans+=str2[j-1];
+                    j--;
+                }
+                else{
+                    ans+=str1[i-1];
+                    i--;
+                }
+            }
+        }
+        while (i > 0) {
+            ans += str1[i-1];
             i--;
+        }
+        while (j > 0) {
+            ans += str2[j-1];
+            j--;
+        };
+        reverse(ans.begin(), ans.end());
+        return ans;
+
     }
-}
-
-while(i>0){
-    s.push_back(x[i-1]);
-    i--;
-}
-
-while(j>0){
-    s.push_back(y[j-1]);
-    j--;
-}
-
-reverse(s.begin(), s.end());
-return s;
-
-
+};

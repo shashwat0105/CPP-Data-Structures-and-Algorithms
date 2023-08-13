@@ -41,6 +41,6 @@ public:
         int n = str.size();
         string x = str;
         reverse(str.begin(), str.end());
-        return n- LCS(x, str);
+        return n - LCS(x, str);
     }
 };

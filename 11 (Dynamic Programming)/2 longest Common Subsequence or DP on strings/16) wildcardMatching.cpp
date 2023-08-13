@@ -30,8 +30,8 @@ public:
     bool solve(int i, int j, string &s, string &p, vector<vector<int>> &dp){ // i = pattern, j = text
         // base case
         if(i<0 && j<0) return true;
-        if(i<0 && j>=0) return false; // pattern khatam but string bachi hui hai, no way to match
-        if(j<0 && i>=0){              // some portion of pattern is left to be matched with empty string ie all should be ***
+        if(i<0 && j>=0) return false;  // pattern khatam but string bachi hui hai, no way to match
+        if(j<0 && i>=0){               // some portion of pattern is left to be matched with empty string ie all should be ***
             for(int x = 0; x<=i; ++x){
                 if(p[x]!='*') return false;
             }
@@ -46,7 +46,7 @@ public:
         if(p[i] == '*'){
             return dp[i][j] = solve(i-1, j, s, p, dp) | solve(i, j-1, s, p, dp);
         }
-        return dp[i][j] = false;
+        return dp[i][j] = false;     // else case neither *, nor ? nor they matched ie they didn't matched so we return false.
     }
 
     bool isMatch(string s, string p) {
@@ -88,7 +88,7 @@ public:
         if(p[i-1] == '*'){
             return dp[i][j] = solve(i-1, j, s, p, dp) | solve(i, j-1, s, p, dp);
         }
-        return dp[i][j] = false;
+        return dp[i][j] = false;       
     }
 
     bool isMatch(string s, string p) {

@@ -31,7 +31,7 @@ public:
     int LCS(string x, string y){
         int m = x.size();
         int n = y.size();
-        int t[1001][1001];
+        int t[m+1][n+1];
         
         for(int i=0; i<=m; ++i) t[i][0] = 0;
         for(int j=0; j<=n; ++j) t[0][j] = 0;

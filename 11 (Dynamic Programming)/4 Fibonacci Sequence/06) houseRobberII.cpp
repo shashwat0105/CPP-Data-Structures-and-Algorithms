@@ -2,9 +2,9 @@ https://leetcode.com/problems/house-robber-ii/
 
 First n last are also adjacent
 
-Remove the last element and solve as previous
-Remove the first element and solve as previous
-Take the max, as both cannot come in our ans.
+Remove the last element and solve as previous ques
+Remove the first element and solve as previous ques
+Take the max, as both cannot come in our ans together.
 
 // CODE
 
@@ -15,7 +15,8 @@ public:
         int prev = nums[0]; // because If u are standing at i=0 then better u pick it as all values are +ve
         int prev2 = 0;      // index < 0
         for(int i=1; i<n; ++i){
-            int pick = nums[i]; if(i>1) pick += prev2;
+            int pick = nums[i]; 
+            if(i>1) pick += prev2;
             int notPick = 0 + prev;
             int curi = max(pick, notPick);
             prev2 = prev;

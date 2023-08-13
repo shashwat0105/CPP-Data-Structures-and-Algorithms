@@ -44,14 +44,14 @@ public:
     }
 };
 
-// STRIVER
+************************************ STRIVER *******************************************
 
 // You can do transactions any number of time but ever time a fee will be charged when u complete a transaction.
 
 
 // Memoised 
 // Same general code with 1 change only
-// -fee when I decide to sell or -fee when I decide to pay upfront ie buy, just pay once
+// -fee when I decide to sell OR -fee when I decide to pay upfront ie buy, "just pay once"
 
 class Solution {
 public:
@@ -65,7 +65,7 @@ public:
             return dp[ind][buy] = max(-prices[ind] + solve(ind+1, 0, prices, fee, dp), 0 + solve(ind+1, 1, prices, fee, dp));
         }
         else {
-            return dp[ind][buy] = max(prices[ind]-fee+solve(ind+1, 1, prices, fee, dp), 0 + solve(ind+1, 0, prices, fee, dp)); // change of -fee from the price obtained from selling
+            return dp[ind][buy] = max(prices[ind] - fee + solve(ind+1, 1, prices, fee, dp), 0 + solve(ind+1, 0, prices, fee, dp)); // change of -fee from the price obtained from selling
         }
     }
 

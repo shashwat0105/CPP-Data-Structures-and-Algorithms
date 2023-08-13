@@ -1,5 +1,7 @@
 https://leetcode.com/problems/next-greater-element-ii/
 
+// Basically NGE in circular array.
+
 https://youtu.be/Du881K7Jtk8 (Striver)
 
 // We can have the same array repeated again. And use modulo (for circular array handling)

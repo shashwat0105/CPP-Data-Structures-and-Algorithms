@@ -76,6 +76,7 @@ distance[x] = 0;
 q.push(x);
 while (!q.empty()) {
     int s = q.front(); q.pop();
+    visited[s]=true;
     // process node s
     for (auto u : adj[s]) {
         if (visited[u]) continue;

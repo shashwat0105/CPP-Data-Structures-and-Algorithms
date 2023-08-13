@@ -35,11 +35,11 @@ public:
 };
 
 
-// STRIVER
+**************** STRIVER *****************
 
 // COOLDOWN: CANNOT BUY RIGHT AFTER SELL
 
-// Changes: Hence when u sell, directly jump to ind+2 index
+// Changes: Hence when u sell, directly jump to ind+2 index instead of ind+1(cannot buy on next day)
 // Since you are trying to access ind+2, when n-1 is called it will be out of bound.
 // So in base case ind>=n return 0
 
@@ -55,7 +55,7 @@ public:
 
         int profit = 0;
         if(buy){ 
-            // dp[ind][buy] = max(...stuff) can also be written no issue // we can then eliminate this loop as well buy hardcoding the value of buy
+            // dp[ind][buy] = max(...stuff) can also be written no issue // we can then eliminate this loop as well by hardcoding the value of buy
             profit = max(-prices[ind] + solve(ind+1, 0, prices,dp), 0 + solve(ind+1, 1, prices, dp));  
         }
         else{

@@ -1,6 +1,6 @@
 // Depth-first search can be conveniently implemented using recursion.
 // Hence used to in applications more in compare to BFS
-// Bfs is used in very specific cases only which I will explain in future videos; rest must of the stuff done using dis can be done using bfs as well; 
+// Bfs is used in very specific cases only which I will explain in future videos; rest must of the stuff done using dfs can be done using bfs as well; 
 // so mostly you will always use dfs only until and unless any special case arrives where only bfs works..
 
 // https://youtu.be/9_ftWKch6vI (Can watch from 18:00 to revise) (LUV)
@@ -55,12 +55,12 @@ public:
 void dfs(int v){                          // takes the argument of current node
     vis[v] = 1;                           // as we reach node we mark it as visited '1'
     cout<<v<<"->";                        // printing the node for dfs order  
-    for(int &child: adj[v]){               // move in the adjacency list of ,,, using for each loop
+    for(int &child: adj[v]){              // move in the adjacency list of ,,, using for each loop
         if(vis[child]==0)                 // we check if it is visited or not
             dfs(child);                   // if it is not visited we make recursive call to that child
     }
 }
-
+ 
 // Another general code that can to be used to solve DFS variations
 // Very COOL Stuff
 // 4 positions where u can write a piece of code depending on the question

@@ -16,7 +16,6 @@ https://leetcode.com/problems/coin-change-2/            (This is coin change 2 o
 
 // Here coins[i] >= 1  (No zero case to be bothered of)
 
-
 int coinChangeI(int coin[], int Sum, int n)                     // if there is long long   // n is the size of coin array.
 {
     int t[n + 1][Sum + 1];                                      // Then do, long long int t[n+1][Sum+1];
@@ -50,12 +49,13 @@ class Solution {
        vector<long long int>dp(amount+1,0);
        dp[0]=1;
        for(int i=0;i<n;i++)
-           for(int j=coins[i];j<=amount;j++)
+           for(int j=coins[i]; j<=amount; j++)
                dp[j] += dp[j-coins[i]];
        return dp[amount];
    }
 };
 
+****************************************************************************************************
 // STRIVER:
 // Memoised solution: (Leetcode)
 
@@ -71,7 +71,7 @@ int solve(int ind, int target, vector<int> &coins, vector<vector<int>> &dp){
     if(coins[ind]<=target){
         take = solve(ind, target-coins[ind], coins, dp);
     }
-    return dp[ind][target] = take+notTake;
+    return dp[ind][target] = take + notTake;
 }
 
 int change(int amount, vector<int>& coins) {

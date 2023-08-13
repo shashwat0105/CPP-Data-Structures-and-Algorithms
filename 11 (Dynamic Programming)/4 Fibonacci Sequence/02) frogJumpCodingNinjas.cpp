@@ -1,13 +1,11 @@
 https://www.codingninjas.com/codestudio/problems/frog-jump_3621012?leftPanelTab=0
+https://practice.geeksforgeeks.org/problems/geek-jump/1 
 
-Striver
+Striver : https://youtu.be/EgG3jsGoPvQ
 
-// f(n-1): min energy required to reach (n-1) from 0.
+// f(n-1): min energy required to reach (n-1) from 0. ie convert it into 0 based indexing
 
 // Memoised code
-
-#include <bits/stdc++.h> 
-using namespace std;
 
 int rec(int n, vector<int> &heights, vector<int> &dp){
     // base case
@@ -15,16 +13,14 @@ int rec(int n, vector<int> &heights, vector<int> &dp){
     
     if(dp[n]!= -1) return dp[n];
     
-    int left = rec(n-1, heights, dp) + abs(heights[n]- heights[n-1]);
+    int left = rec(n-1, heights, dp) + abs(heights[n] - heights[n-1]);
     int right = INT_MAX;                                                    // because right will not always exist ie for n=1, we cannot get two steps back.
-    if(n>1) right = rec(n-2, heights, dp) + abs(heights[n]- heights[n-2]);
+    if(n>1) right = rec(n-2, heights, dp) + abs(heights[n] - heights[n-2]);
     
     return dp[n] = min(left, right);
 }
 
-int frogJump(int n, vector<int> &heights)
-{
-    // Write your code here.
+int frogJump(int n, vector<int> &heights){
     vector<int> dp(n+1, -1);
     return rec(n-1, heights, dp);
 }
@@ -32,12 +28,7 @@ int frogJump(int n, vector<int> &heights)
 
 // Tabulation code
 
-
-#include <bits/stdc++.h> 
-using namespace std;
-
-int frogJump(int n, vector<int> &heights)
-{
+int frogJump(int n, vector<int> &heights){
     // Write your code here.
     vector<int> dp(n, 0);
     dp[0] = 0;
@@ -54,12 +45,7 @@ int frogJump(int n, vector<int> &heights)
 
 Always there can be space optimisation when there is index-1, index-2 kind of thing.
 
-//
-#include <bits/stdc++.h> 
-using namespace std;
-
-int frogJump(int n, vector<int> &heights)
-{
+int frogJump(int n, vector<int> &heights){
     // Write your code here.
     int prev = 0;
     int prev2 = 0;

@@ -14,8 +14,8 @@ DP on strings
 // Recurence:
 // f(i-1, j-1): no of distinct subsequence of s2[0...j] in s1[0...i]
 
-s1 = babgbag
-s2 = bag
+s1 = babgbag   (i)
+s2 = bag       (j)
 
 If g==g then in s1 and s2 I have two choice ie to match this g of s1 with that of s2 or to not match it. 
 If I match them then both will move back else I donot match them then j still needs to be matched so 
@@ -27,7 +27,7 @@ If they are not matching, I will reduce the first string and keep on searching i
 
 I have taken all the possibilities
 Base case:
-In count ways, has to return either 0 or 1. When 1 and when 0?
+In count ways, it must return either 0 or 1. When 1 and when 0?
 If I have some portion of second string remaining and first gets exhausted return 0 
 If all characters of s2 match then return 1
 
@@ -43,9 +43,9 @@ private:
         if(dp[ind1][ind2]!=-1) return dp[ind1][ind2];
         
         if(s1[ind1]==s2[ind2]){
-            return dp[ind1][ind2] = solve(s1,s2,ind1-1,ind2-1,dp) + solve(s1,s2,ind1-1,ind2,dp);
+            return dp[ind1][ind2] = solve(s1, s2, ind1-1, ind2-1, dp) + solve(s1, s2, ind1-1, ind2, dp);
         }
-        return dp[ind1][ind2] = solve(s1,s2,ind1-1,ind2,dp);
+        return dp[ind1][ind2] = solve(s1, s2, ind1-1, ind2, dp);   // else case if they dont match
     }
 
 public:
@@ -100,10 +100,10 @@ public:
     int n = s.size();
     int m = t.size();
 
-    vector<vector<double>> dp(n+1,vector<double>(m+1,0));  // To avoid integer overflow 
+    vector<vector<double>> dp(n+1,vector<double>(m+1, 0));  // To avoid integer overflow 
 
     for(int i=0; i<=n; ++i) dp[i][0] = 1;
-    for(int j=1; j<=m; ++j) dp[0][j] = 0;  // start from 1 else it will overwrite 1 written by i
+    for(int j=1; j<=m; ++j) dp[0][j] = 0;  // start from j=1 else it will overwrite 1 written by i
 
     for(int i=1; i<=n; ++i){
         for(int j=1; j<=m; ++j){

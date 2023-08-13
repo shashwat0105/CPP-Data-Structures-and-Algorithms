@@ -41,7 +41,7 @@ int cutRod(int price[], int n) {
 
 int solve(int ind, int price[], int target, vector<vector<int>> &dp){
     if(ind==0){  // ie rod length = 1
-        return target*price[0];    // every target will be div by rod of size 1
+        return target*price[0];    // every target will be div by rod of size 1 // I want to make remaining target with rod length of 1
     }
     
     if(dp[ind][target]!= -1) return dp[ind][target];

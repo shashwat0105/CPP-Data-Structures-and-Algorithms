@@ -3,7 +3,7 @@ https://atcoder.jp/contests/dp/tasks/dp_b
 Follow up of previous problem.
 Allowed jumps are:
 i+1, i+2, i+3,... i+k
-
+In previous prob k = 2.
 
 // Atcoder soln
 // memoised
@@ -17,9 +17,9 @@ int solve(int ind, vector<int>& height, vector<int>& dp, int k){
     
     int mmSteps = INT_MAX;
         
-    for(int j=1;j<=k;j++){
+    for(int j=1; j<=k; j++){
         if(ind-j>=0){
-      int jump = solve(ind-j, height, dp, k)+ abs(height[ind]- height[ind-j]);
+            int jump = solve(ind-j, height, dp, k) + abs(height[ind]- height[ind-j]);
             mmSteps= min(jump, mmSteps);
         }
     }
@@ -35,7 +35,7 @@ int main() {
       cin>>height[i];
   }
   vector<int> dp(n,-1);
-  cout<<solve(n-1,height, dp ,k);
+  cout<<solve(n-1, height, dp ,k);
 }
 
 // TABULATION

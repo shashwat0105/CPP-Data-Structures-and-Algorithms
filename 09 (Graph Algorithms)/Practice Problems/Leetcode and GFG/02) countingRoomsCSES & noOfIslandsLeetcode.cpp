@@ -57,19 +57,19 @@ https://leetcode.com/problems/number-of-islands/
 
 class Solution {
 public:
-    void dfs(int i, int j, vector<vector<char>>& grid){
-  
+    void dfs(int x, int y, vector<vector<char>>& grid){
         int n = grid.size();
         int m = grid[0].size();
-        if(i<0 || j<0 || i>=n || j>=m) return;
-        if(grid[i][j]=='0') return;
-        
-        grid[i][j] = '0';                        //  I can erase all the connected '1's using DFS and make them '0' or any other number, hence eliminating the use of visited array
-        
-        dfs(i+1, j, grid);
-        dfs(i-1, j, grid);
-        dfs(i, j+1, grid);
-        dfs(i, j-1, grid);
+        vector<pair<int,int>> dir {{0,1},{1,0},{0,-1},{-1,0}};
+
+        if(x<0 || x>=n || y<0 || y>=m || grid[x][y]=='0') return;
+        grid[x][y]='0'; // mark visited kind of
+
+        for(auto &d: dir){
+            int newx = x + d.first;
+            int newy = y + d.second;
+            dfs(newx, newy, grid);
+        }
     }
 
     int numIslands(vector<vector<char>>& grid) 

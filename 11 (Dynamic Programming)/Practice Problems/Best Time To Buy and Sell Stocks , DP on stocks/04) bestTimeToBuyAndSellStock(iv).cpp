@@ -26,7 +26,7 @@ public:
 };
 
 //
-we can at most make n/2 transactions in the worst case of stock alternating between going up and down everyday . As an example : 1 4 2 6 3 8 . We will buy and sell on alternate days .
+We can at most make n/2 transactions in the worst case of stock alternating between going up and down everyday . As an example : 1 4 2 6 3 8 . We will buy and sell on alternate days .
 
 If there is any stretch where the stock is increasing continuously or decreasing continuously , then we will only need lesser number of transactions as we can skip a day in between to sell or buy .
 Ex. 1 2 3 6 4 2 8 . Here , we don't need to sell on the 2nd day and we can wait that day out . Similarly , we don't need to buy on day 5 . So these 'wait' days only further reduce the number of max transactions from k/2
@@ -37,7 +37,7 @@ why we are subtracting last transaction sell ?
 Think of it like that . Sell[i-1] is the profit we have so far after selling i-1 stocks . 
 After buying the i th stock , we are now calculating the loss we have at the end of this buying . At every step , we are minimizing the loss so far on the 'buy' step and consequently maximizing the profit so far on the 'sell' step
 
-// STRIVER
+********************** STRIVER *******************************
 
 // Same as iii problem just there instead of 2 here is 'k'
 // Using the same code
@@ -154,8 +154,6 @@ public:
         return after[0];
     }
 };
-
-
 
 
 

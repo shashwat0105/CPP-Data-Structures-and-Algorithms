@@ -2,4 +2,4 @@
 
 // for loop over a set of elements and returning no of set bits in them
 
-// Analyse more on this problem
+// n&(n-1) removes the last set bit

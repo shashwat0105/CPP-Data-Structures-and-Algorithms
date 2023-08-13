@@ -13,9 +13,7 @@ bool isPowerOfTwo(int n) {
             
             n = n&(n-1);
         }
-        if(cnt==1) return true;
-            else
-                return false;
+        return cnt==1
     }
 
 /// OR ///
@@ -23,6 +21,5 @@ bool isPowerOfTwo(int n) {
         
         if(n<=0) return false; // leetcode doesn't provided constraints on n, so we needed to write this else error.
         
-        if((n & (n-1)) ==0) return true; // coz it removes the last set bit, if there is only 1 set bit then it will be removed and become = 0
-        else                return false;
+        return (n&(n-1)==0); // coz it removes the last set bit, if there is only 1 set bit then it will be removed and become = 0
 }

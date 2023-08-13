@@ -95,6 +95,8 @@ Firstly, it modifies the tree structure by creating temporary links, which may n
 Secondly, it may not work well with certain types of binary trees, such as skewed trees, where one subtree is much larger than the other. In such cases, Morris traversal may result in an unbalanced traversal, leading to poor performance.
 Finally, Morris traversal requires careful handling of edge cases, such as handling the root node and dealing with nodes with only one child. This may add complexity to the implementation and make it harder to debug.
 
+Morris:
+https://stackoverflow.com/questions/5502916/explain-morris-inorder-tree-traversal-without-using-stacks-or-recursion
 
 // N-ary tree pre order traversal
 https://leetcode.com/problems/n-ary-tree-preorder-traversal/

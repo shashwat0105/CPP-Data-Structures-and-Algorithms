@@ -1,4 +1,6 @@
 // https://www.geeksforgeeks.org/longest-common-substring-dp-29/
+// https://leetcode.com/problems/maximum-length-of-repeated-subarray/description/
+
 // x = abcde, y = abfce -> Common substrings -> ab, c, e -> longest is ab -> length = 2 Ans
 // ie it should be continuos, this is different from LCS
 // Jaha bhi match na kare waha pe length = 0 kar dena hai ie fr se shuru se start
@@ -21,7 +23,7 @@ int LCSubStr(string x, string y, int n, int m){   // n = rows, m = column
                 result = max(result, t[i][j]); // (code variation)
             }
             else                               // when the elements does not match
-                t[i][j] = 0;                   // (code variation) no max nothing, if it is not equal then make it 0
+                t[i][j] = 0;                   // (code variation) no max nothing, if it is not equal then make it 0, as we have to start a new substring
             }
     }
 
@@ -31,10 +33,8 @@ int LCSubStr(string x, string y, int n, int m){   // n = rows, m = column
 // SPACE OPTIMISED
 // USing two vectors or a 2D array of 2*n
 
-// Yet to understand.
-
 int longestCommonSubstr (string S1, string S2, int n, int m){  // n = rows, m = column
-    vector<int>prev(m+1,0), cur(m+1, 0);   // Two rows having m elements  
+    vector<int>prev(m+1,0), curr(m+1, 0);   // Two rows having m elements  
 
     int result=0;
     for(int i=1;i<=n;i++){
@@ -50,4 +50,4 @@ int longestCommonSubstr (string S1, string S2, int n, int m){  // n = rows, m = 
 }
 
 
-// For writing recurisive soln, there will be one more variable ie total 3 states, hence it is not recommended to do so.
+// For writing recursive soln, there will be one more variable ie total 3 states, hence it is not recommended to do so.

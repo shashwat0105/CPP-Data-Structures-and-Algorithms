@@ -19,8 +19,8 @@ public:
         int n = matrix.size();
 
         // base case
-        if(j<0 || j>=n) return 1e9;     // out of bound
-        if(i==0) return matrix[i][j];   // reached destination
+        if(j<0 || j>=n) return 1e9;     // j will go out of bound // Base case for j
+        if(i==0) return matrix[i][j];   // reached destination    // Base case for i
         
         if(dp[i][j]!= -1) return dp[i][j];
         
@@ -36,11 +36,11 @@ public:
         
         vector<vector<int>> dp(n, vector<int> (n, -1));
         
-        int maxi=1e9;   // A large value coz min is asked and values can be -ve as well
-        for(int j=0; j<n; ++j){   // calling from all the columns of the last row
-            maxi = min(maxi, solve(n-1, j, matrix, dp));
+        int ans=1e9;   // A large value coz min is asked and values can be -ve as well
+        for(int j=0; j<n; ++j){   // calling from all the columns of the last row // coz this destination is variable 
+            ans = min(mini, solve(n-1, j, matrix, dp));
         }
-        return maxi;
+        return ans;
     }
 };
 
@@ -57,7 +57,7 @@ public:
         
         for(int j=0; j<n; ++j) dp[0][j] = matrix[0][j];  // base case
         
-        for(int i=1; i<n; ++i){
+        for(int i=1; i<n; ++i){            // i=0 is filled in base case
             for(int j=0; j<n; ++j){
                 int up = matrix[i][j] + dp[i-1][j];
                 int ld = matrix[i][j];

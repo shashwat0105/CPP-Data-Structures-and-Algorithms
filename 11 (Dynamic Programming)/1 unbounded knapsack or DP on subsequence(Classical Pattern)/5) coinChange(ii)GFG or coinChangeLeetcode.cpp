@@ -62,35 +62,16 @@ public:
     }
 };
 
-****************************************************
 // Aditya verma solution to these problems:
 // https://leetcode.com/problems/coin-change/discuss/1371738/C%2B%2B-Recursion-greater-DP-Memoization-greater-DP-Tabulation
 
+****************************************************
 // LUV
 https://youtu.be/PoTE56n_It8
 
 // Leetcode
-[1, 2, 5]
+[1, 2, 5], 11
 // We can use 1 coin -> 1 or 2 or 5, 2 coin -> 1 or 2 or 5, 5 coin -> 1 or 2 or 5.... and so on (Recursion tree)
-// Recursive
-class Solution {
-public:
-    int solve(int amount, vector<int>& coins){
-        if(amount==0) return 0;
-        
-        int ans = INT_MAX;                                              
-        for(int coin: coins){
-            if(amount-coin>=0){                                        // to avoid handling amount<0 base case
-                ans = min(ans + 0LL, solve(amount-coin, coins)+1LL);   // Long long is used to avoid overflow and, min compares both same data types. 
-            }
-        }
-        return ans;
-    }
-    int coinChange(vector<int>& coins, int amount) {
-        int ans = solve(amount, coins);
-        return ans == INT_MAX ? -1 : ans;  
-    }
-};
 
 // Memoised
 class Solution {
@@ -98,12 +79,13 @@ public:
     int dp[10010];
     int solve(int amount, vector<int>& coins){
         if(amount==0) return 0;
+
         if(dp[amount]!=-1) return dp[amount];
         
         int ans = INT_MAX;
         for(int coin: coins){
-            if(amount-coin>=0){   
-                ans = min(ans + 0LL, solve(amount-coin, coins)+1LL);
+            if(amount-coin>=0){                                       // to avoid handling amount<0 base case
+                ans = min(ans + 0LL, solve(amount-coin, coins)+1LL);  // Long long is used to avoid overflow and, min compares both same data types. 
             }
         }
         return dp[amount] = ans;
@@ -117,12 +99,8 @@ public:
 };
 
 
-
-
-
 // 1D DP Code: Refer discuss section
-
-
+**************************************************************************
 // Striver ka Gyan:
 1) Express in terms of  f(ind, Target)
 2) Perform all stuffs
@@ -170,7 +148,7 @@ int coinChange(vector<int>& coins, int amount) {
     int n = coins.size();
     vector<vector<int>> dp(n, vector<int>(amount+1, 0));
     
-    for(int sum=0; sum<=amount; sum++){
+    for(int sum=0; sum<=amount; sum++){                      // At index 0, sum can be anything from 0 to amount.
         if(sum%coins[0]==0) dp[0][sum] = sum/coins[0];
         else dp[0][sum] = 1e9;
     }

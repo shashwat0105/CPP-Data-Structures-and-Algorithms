@@ -16,7 +16,6 @@ using namespace std;
 
 int unboundedKnapSack(int wt[], int val[], int W, int n)
 {
-
     int t[n + 1][W + 1];
  
     // Build table K[][] in bottom up manner
@@ -51,17 +50,14 @@ int main()
     return 0;
 }
 
-// THIS UNBOUNDED KNAPSACK CAN BE DONE IN O(n) SPACE AS WELL (GFG CODE)
-
+*************************************************************************
 // STRIVER
-
 
 // Memoised: 
 
 // base case:
 // ind==0 . Think what will be the scenario?
 // You have some bag limit and unlimited supply of one item. So i will fill as much as I can of that item.
-
 
 int solve(int ind, int w, vector<int> &weight, vector<int> &profit, vector<vector<int>> &dp){
     if(ind==0){
@@ -96,7 +92,7 @@ int unboundedKnapsack(int n, int maxw, vector<int> &profit, vector<int> &weight)
         dp[0][w] = ((int)(w/weight[0]))*profit[0];   // copy paste from memo base case
     }
     
-    for(int ind=1; ind<n; ++ind){
+    for(int ind=1; ind<n; ++ind){                   // number of loops = number of states(changing parameters)
         for(int w=0; w<=maxw; ++w){                 
             int notTake = dp[ind-1][w];             // copy paste from above 6 lines
             int take = -1e9;

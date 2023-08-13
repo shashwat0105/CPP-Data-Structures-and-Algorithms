@@ -82,16 +82,17 @@ public:
         }
         return dp[n][sumF];
     }
+
     int findTargetSumWays(vector<int>& nums, int target) {   
         target = abs(target);
         int n = nums.size();
         int sum = accumulate(nums.begin(),nums.end(), 0);
-        if(target > sum || (sum+target)%2 !=0 )return 0;
+        if(target > sum || (sum+target)%2 !=0 ) return 0;
         
         int sumF = (target+sum)/2;
         vector<vector<int>> dp(n+1, vector<int>(sumF+1, 0));
         
-        int c = count(nums.begin(),nums.end(),0);                   //edge case for 0;
+        int c = count(nums.begin(), nums.end(), 0);                   //edge case for 0;
         return pow(2,c)*findS(nums, sumF, dp, n);
     }
 };
@@ -144,7 +145,7 @@ https://leetcode.com/problems/target-sum/discuss/1174595/99-faster-oror-Using-DP
 int solve(vector<int> &num, int tar){
     int n = num.size();
     vector<int> prev(tar+1, 0), cur(tar+1, 0);
-    if(num[0]==0) prev[0] = 2;
+    if(num[0]==0) prev[0] = 2;                     // handling the 0 case
     else prev[0] = 1;
 
     if(num[0]!= 0 && num[0]<=tar) prev[num[0]] = 1;

@@ -3,6 +3,9 @@
 // https://www.geeksforgeeks.org/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum/
 // Problem Statement arr[] : {1, 2, 7}, To split array into two parts such that absolute(Sum2 - Sum1) = min
 // Here Output = 4
+
+// CRUX: Here we have to utilise the last row of formed by the tabulation DP.
+
 // This problem is most similar to equal sum partition ques where Sum2 - Sum1 = 0, say S2 & S1
 // S1, S2 belongs to [0, sum of all array elements(range)] // We found the extreme values of S1 & S2 ie when subset is empty and completely fill
 // Here S1, S2 belongs to [0, 10] ie {1,2,3,4,5,6,7,8,9,10}
@@ -67,7 +70,7 @@ int findMin(int arr[], int n){
     return diff;
 }
 
-
+// STRIVER // 
 // GFG 
 https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
@@ -76,8 +79,9 @@ int minDifference(int arr[], int n)  {
     int totSum = 0;
     for(int i=0; i<n; ++i) totSum+= arr[i];
     int sum = totSum;
-    vector<vector<bool>> dp(n, vector<bool>(sum+1, 0));
     
+    // copy paste the subset sum code here
+    vector<vector<bool>> dp(n, vector<bool>(sum+1, 0));
     for(int i=0; i<n; ++i) dp[i][0] = true;
     if(arr[0]<=sum) dp[0][arr[0]] = true;
     
@@ -92,7 +96,7 @@ int minDifference(int arr[], int n)  {
     // DP table is now created : dp[n-1][col->0 to totSum]
     
     int mini = 1e9;
-    for(int s1=0; s1<=totSum/2; ++s1){
+    for(int s1=0; s1<=totSum/2; ++s1){           // we can go till half of the array we are good to go.
         if(dp[n-1][s1]){
             mini = min(mini, abs(totSum-2*s1));
         }
@@ -104,11 +108,15 @@ int minDifference(int arr[], int n)  {
 // We can optimise space as well: dp[n-1][s1] will be prev[s1]  (because last row hi toh chahiye hai    )
 
 
-//
+// Follow up:
 -ve numbers wala
+We use meet in the middle approach for this.
 
 https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
 
 https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/discuss/2721045/BEST-SOLUTION-oror-%22Tabulation%22-Failed-oror-(FULL-EXPLAINATION)-oror-C%2B%2B
 
+
 https://www.youtube.com/results?search_query=2035.+Partition+Array+Into+Two+Arrays+to+Minimize+Sum+Difference
+
+https://youtu.be/JUFHwaZjO_M  (Watch in future)

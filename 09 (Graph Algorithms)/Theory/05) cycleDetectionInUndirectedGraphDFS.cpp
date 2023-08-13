@@ -23,11 +23,13 @@ https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/
 //         if(cycleDFS(i))
 //             true;
 //     }
-// }
+// } 
 
 // dfs(node, previousnode) calls:- dfs(1,-1)-> dfs(3,1) -> dfs(4,3) return false No adjacent nodes hence no further recursion calls
 // dfs(2, -1) (2 didnt had any prev node) -> dfs(5,2) -> dfs(6,5) -> dfs(7,6) -> dfs(8, this thing 7 is previous node and 5 is already visited) 
+
 // ***** Any adjacent node other than previous node(parent node) is visited already means its a cycle *****
+
 // Matlab mai vo node pe ja raha hu jo already visited hai ar meri wo previous node bhi nahi hai, hence cycle hai!
 // Hence, We aditionally pass parent in the argument as well.
 
@@ -37,8 +39,8 @@ public:
     bool isCycleDFS(int node, int parent, vector<int>& vis, vector<int>adj[]){
         vis[node]=1;
         for(auto &v : adj[node]){
-            if(!vis[v]){                                        // It it is not visited I call DFS
-                if(isCycleDFS(v, node, vis, adj)) return true;  // You make a dfs call to this child and setting the current node as parent, & if it returns true we return true and exit // ie parent will be the node which we came from hence parent = node
+            if(!vis[v]){                                        // If it is not visited I call DFS
+                if(isCycleDFS(v, node, vis, adj)) return true;  // You make a dfs call to this child and setting the current node as parent, & if it returns true we return true and exit // parent will be the node which we came from hence parent = node
             }
             else if(v!=parent) return true;
         }

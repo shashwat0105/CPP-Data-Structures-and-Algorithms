@@ -3,7 +3,7 @@
 // NOTE: Tabulation only works for +ve array numbers as if sum is -ve in matrix -ve index is not possible.
 // Hash map could be used for -ve numbers
 
-
+// ** Aditya Verma **
 // https://www.geeksforgeeks.org/subset-sum-problem-dp-25/
 // Example arr[] = {2, 3, 7, 8, 10} & Sum = 11 // We want to find if there is any subset whose sum is given Sum (True or False)
 // We have choice whether a number will be included or not & here W = Sum 
@@ -11,7 +11,7 @@
 
 // Base condition(Initiliasation)
 // Table of t[5+1][11+1] is made 
-// The first column says Sum required is 0 and Array elements proceed as { }, {2}, {2,3},.. True it is possible to have sum of 0 using such arrays when everytime we take empty set as the required subset { }
+// The first column says Sum required is 0 and Array elements proceed as { }, {2}, {2,3},.. True it is always possible to have sum of 0 using such arrays when everytime we take empty set as the required subset { }
 // The first row says the array is empty ie { } and sum required is 0, 1, 2, ...,11, which is possible to satisfy only in sum 0, hence rest is false.
 //   0  1 2 3 4 5 6 7 8 9 10 11 12  -> j(Sum) (Columns)
 // 0 T  F F F F F F F F F  F  F  F    (zero elements ka use karke sum banana hai) ie why I will return t[n]
@@ -27,7 +27,6 @@
 
 // code
 boolean subsetSum(int arr[], int Sum, int n){
-    
     bool t[n+1][Sum+1];                                    // bool or int(while counting) depending on value to be stored
 
     // base condition
@@ -58,20 +57,20 @@ boolean subsetSum(int arr[], int Sum, int n){
 
 
 // This is a subarray not a subset.
-// https://www.geeksforgeeks.org/find-subarray-with-given-sum-in-array-of-integers/   (Deals Negative Numbers too) use of hasmap.
+// https://leetcode.com/problems/subarray-sum-equals-k/ (Deals Negative Numbers too) use of hasmap.
 
 
-// ***********************************************************
+// *********************** STRIVER ************************************
 
-// 1) Express (index, target) and write the base case
+// 1) Express (index, target) and write the base case // for subsequence problems
 // 2) Explore all possibilities.
 // 3) Return T/F
 
 // Memoised
 
 bool solve(int ind, int target, vector<int> &arr, vector<vector<int>> &dp){
-    if(target==0) return true;
-    if(ind == 0) return (target== arr[0]);
+    if(target==0) return true;                   // If at any moment target became 0
+    if(ind == 0) return (target== arr[0]);       //
     
     if(dp[ind][target]!= -1) return dp[ind][target];
     
@@ -102,10 +101,10 @@ bool subsetSumToK(int n, int k, vector<int> &arr) {
 bool isSubsetSum(vector<int>arr, int sum){
     int n = arr.size();
     vector<vector<bool>> dp(n, vector<bool>(sum+1, 0));
-    for(int i=0; i<n; ++i) dp[i][0] = true; // first base case // target of 0 is possible with any number of elements.
+    for(int i=0; i<n; ++i) dp[i][0] = true; // first base case  // target of 0 is possible with any number of elements.
     if(arr[0]<=sum) dp[0][arr[0]] = true;   // second base case // ie only one array element is to be used to make the sum and hence that cell will be true which is equal to target
                                             // Simply saying that, jo array ka first index ki value hai wo sum hona toh possible hoga hi.
-                                            // if condition because dp size is sum+1, otherwise it will go out of bound
+                                            // Important: if condition because dp size is sum+1, otherwise if arr[0] is greater it will go out of bound ie cant access
     for(int ind = 1; ind<n; ++ind){
         for(int target=1; target<=sum; ++target){    // We start from 1 when arr[i]>=1 is given, if there are 0's then we start from 0.
             bool notTake = dp[ind-1][target];
@@ -121,9 +120,8 @@ bool isSubsetSum(vector<int>arr, int sum){
 
 bool isSubsetSum(vector<int>arr, int sum){
     int n = arr.size();
-    vector<bool> prev (sum+1,0);
-    vector<bool> cur (sum+1, 0);
-    prev[0] = true; // first base case     // for anyone target sum of 0 has to be true
+    vector<bool> prev (sum+1, false), cur(sum+1, false);
+    prev[0] = cur[0] = true;        // first base case     // for anyone target sum of 0 has to be true
     if(arr[0]<=sum) prev[arr[0]] = true;                   // second base case  // some array element will be marked as true.
     
     for(int ind = 1; ind<n; ++ind){
@@ -138,6 +136,3 @@ bool isSubsetSum(vector<int>arr, int sum){
     return prev[sum];
 }
 
-// Space optimised is failinng on (TO DISCUSS)
-37 34 4 12 5 2
-17

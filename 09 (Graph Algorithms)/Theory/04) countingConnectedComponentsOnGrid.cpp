@@ -13,7 +13,7 @@ for(int i=1;i<=n;i++){                        // inside main function, running l
 
 // In Grid
 int cnt=0;
-for(int i=1;i<=N;i++){                        // we run a loop for every single cell
+for(int i=1;i<=N;i++){                        // we run the loop for every single cell
     for(int j=1;j<=M;j++){
         if(ar[i][j]==1 && vis[i][j]==false){  //ar[i][j] means the value of the cell must be 1 not 0  & the cell is not visited
             cnt++;
@@ -30,20 +30,12 @@ int N,M;                                      // We assume rows are 1 to N, colu
 int ar[1001][1001];                           // now we need to store the whole grid
 bool vis[1001][1001];
 
-bool isValid(int x, int y){
-    if(x<1 || x>N || y<1 || y>M)
-        return false;
-    
-    if(vis[x][y]==true || ar[x][y]==0)        // here some elements of the grid are 0(cant move through them) & some are 1, in dfs on grid all elements we can traverse
-        return false;
-    
-    return true;
-}
-
 int dx[] = {-1,0,1,0};                        // An array containing change in value of x while moving 
 int dy[] = {0,1,0,-1};                        // An array containing change in value of y while moving 
 
 void dfs(int x, int y){
+    if(x<1 || x>N || y<1 || y>M || vis[x][y]==true || ar[x][y]==0) return; // out of bound and invalid cases
+
     vis[x][y]=1;
 
     for(int i=0;i<4;i++){
@@ -67,8 +59,8 @@ int main(){
     for(int i=1;i<=N;i++){
         for(int j=1;j<=M;j++){
             if(ar[i][j]==1 && vis[i][j]==false){  
-            cc++;
-            dfs(i,j);
+                cc++;
+                dfs(i,j);
             }
         }
     }

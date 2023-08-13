@@ -16,11 +16,10 @@ public:
 };
 
 // Dynamic Programming
-
+ 
 // Trying all possibilities
 // ie If I can buy I will buy/not buy irrespective of profit. same for sell.
-// 1) Express everything in terms of index. f(ind, buy)
-// I have to keep a variable buy which tells me If I can buy or not.
+// 1) Express everything in terms of index. f(ind, buy) // I have to keep a variable buy which keeps track of whether I can buy or not.
 // 2) Explore possibilities on that day
 // 3) Take the max of all profits made
 // 4) Base case
@@ -34,16 +33,16 @@ class Solution {
 public:
     int solve(int ind, int buy, vector<int>& prices, vector<vector<int>> &dp){
         int n = prices.size();
-        if(ind==n) return 0;  // either u have a stock or not you cannot make profit
+        if(ind==n) return 0;  // either u have a stock or not you cannot make profit on moving out of the array
         
         if(dp[ind][buy]!= -1) return dp[ind][buy];
 
         int profit = 0;
         if(buy){
-            profit = max(-prices[ind] + solve(ind+1, 0, prices,dp), 0 + solve(ind+1, 1, prices, dp));  // decides to buy, now u cannot buy so buy becomes 0 and so on
+            profit = max(-prices[ind] + solve(ind+1, 0, prices,dp), 0 + solve(ind+1, 1, prices, dp));  // decides to buy, now u cannot buy so buy becomes 0 and so on {but, not buy}
         }
         else{
-            profit = max(prices[ind] + solve(ind+1, 1, prices, dp), 0 + solve(ind+1, 0, prices, dp));
+            profit = max(prices[ind] + solve(ind+1, 1, prices, dp), 0 + solve(ind+1, 0, prices, dp));  // {sell, not sell}
         }
         return dp[ind][buy] = profit;
 
@@ -65,7 +64,7 @@ public:
         int n = prices.size();
         vector<vector<int>> dp(n+1, vector<int>(2, 0));
         // base case (we start from back)
-        dp[n][0] = dp[n][1] = 0;  // irrespective of both the values of buy
+        dp[n][0] = dp[n][1] = 0;  // irrespective of both the values of buy  // standing out of the array u cannot make any profit.
 
         for(int ind=n-1; ind>=0; --ind){
             for(int buy = 0; buy<=1; ++buy){

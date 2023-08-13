@@ -1,9 +1,6 @@
 C++ has inbuilt function sort()
 
-Knapsack & Fractional Knapsack
-In Fractional Knapsack, we can break items for maximizing the total value of knapsack. 
-https://www.geeksforgeeks.org/fractional-knapsack-problem/
-
+Fastest method of searching is by hashing. Constant time search.
 Hashing
 In c++ inbuilt :- unordered map :- key & value 2 things
 Number -> Index -> 0 or 1 , multiple values in same index goes in form of list at that index.

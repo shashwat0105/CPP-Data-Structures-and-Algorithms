@@ -15,15 +15,15 @@ Ans: We are trying all possible ways.
 // Base case reaches(0, 0) return 1;
 //           crosses the boundary return 0;
 
-// Recursion (TLE)
+// Recursion (TLE) 
 class Solution {
 public:
-    int solve(int m, int n){
-        if(m==0 && n==0) return 1;
-        if(m<0 || n<0) return 0;   // crossed the boundary
+    int solve(int i, int j){
+        if(i==0 && j==0) return 1;
+        if(i<0 || j<0) return 0;   // crossed the boundary
         
-        int up = solve(m-1, n);
-        int left = solve(m, n-1);
+        int up = solve(i-1, j);
+        int left = solve(i, j-1);
         return up+left;
     }
     
@@ -35,17 +35,16 @@ public:
 // Memoised
 class Solution {
 public:
-    int solve(int m, int n, vector<vector<int>>& dp){
-        if(m==0 && n==0) return 1;
-        if(m<0 || n<0) return 0;
-        
-        if(dp[m][n]!= -1) return dp[m][n];
-        
-        int up = solve(m-1, n, dp);
-        int left = solve(m, n-1, dp);
-        return dp[m][n] = up+left;
+    int solve(int i, int j, vector<vector<int>> &dp){
+        if(i==0 && j==0) return 1;
+        if(i<0 || j<0) return 0;
+
+        if(dp[i][j]!= -1) return dp[i][j];
+        int left = solve(i, j-1, dp);
+        int up = solve(i-1, j, dp);
+        return dp[i][j] = left+up;
     }
-    
+
     int uniquePaths(int m, int n) {
         vector<vector<int>> dp(m, vector<int>(n, -1));
         return solve(m-1, n-1, dp);
@@ -57,19 +56,18 @@ public:
 2) Express all states in for loops
 3) Copy the recurrences and write.
 
+// Improvising
+// Think logically for the base cases.
+// The first row and column has to be 1 in DP table. So, declare [][] with all values marked 1.
+
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m, vector<int>(n, -1));
-        for(int i=0; i<m; ++i){
-            for(int j=0; j<n; ++j){
-                if(i==0 && j==0) dp[0][0] = 1;
-                else {
-                    int up = 0, left = 0;          // imp to declare else error (dealing with else base case)
-                    if(i>0) up = dp[i-1][j];
-                    if(j>0) left = dp[i][j-1];
-                    dp[i][j] = up+left;
-                }
+        vector<vector<int> > dp(m,vector<int> (n,1));
+
+        for(int i = 1;i<m; i++){
+            for(int j = 1;j<n;j++){  
+                dp[i][j] = dp[i][j-1] + dp[i-1][j];
             }
         }
         return dp[m-1][n-1];
@@ -83,21 +81,15 @@ public:
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<int> prev(n, 0);
-        for(int i=0; i<m; ++i){
-            vector<int> cur(n, 0);
-            for(int j=0; j<n; ++j){
-                if(i==0 && j==0) cur[j] = 1;       // the current row is not temp
-                else {
-                    int up = 0, left = 0;          // imp to declare else error
-                    if(i>0) up = prev[j];          // dp[i-1] ie previous
-                    if(j>0) left = cur[j-1];
-                    cur[j] = up+left;
-                }
+        vector<int> preComp(n,1);
+        for(int i = 1; i<m; i++) {
+            vector<int> newComp(n,1);       // current row
+            for(int j=1;j<n;j++) {
+                newComp[j] = newComp[j-1] + preComp[j];
             }
-            prev = cur;  // once one row is calculated I swap or shift
+            preComp = newComp;             // the current row will become previous for next iteration
         }
-        return prev[n-1];
+        return preComp[n-1];
     }
 };
 

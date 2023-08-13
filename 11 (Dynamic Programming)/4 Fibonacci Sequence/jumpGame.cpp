@@ -1,5 +1,6 @@
 https://leetcode.com/problems/jump-game/
 
+// Kadane's algo O(N) Time, O(1) space
 class Solution {
 public:
     bool canJump(vector<int>& nums) {

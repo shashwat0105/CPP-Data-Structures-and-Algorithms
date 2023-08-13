@@ -1,4 +1,5 @@
 // https://www.geeksforgeeks.org/count-of-subsets-with-sum-equal-to-x/
+// https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1
 // Problem Statement :- Given arr[] ={2, 3, 5, 6, 8, 10}, Sum = 10
 // To return count of such subsets possible with Sum = 10, If true as here {10}, {2,3,5}, {2,8} -> return = 3(>0), if false(no such subset) then return 0
 // return type of subset sum = boolean (coz true or false)
@@ -24,9 +25,9 @@ int countOfSubsetSum(int arr[], int Sum, int n){
 
     // base condition
     for(int i=0; i<=n; i++){
-        t[i][0]=1;                                       // This is 1 not 0.
+        t[i][0]=1;                                       // 0 sum is always possible
     }
-    for(int j=1; j<=Sum; j++){                           // Using 0 elements there is no sum possible 
+    for(int j=1; j<=Sum; j++){                           // Using 0 elements there is no sum possible except 0 sum
         t[0][j]=0;
     } 
     // Choice Diagram
@@ -47,19 +48,21 @@ int countOfSubsetSum(int arr[], int Sum, int n){
 
 //  ********************** Striver
 
-// // Also you need to see the subset contains zeros or not. Here in this problem YES.
+// Also you need to see the subset contains zeros or not. Here in this problem YES.
+// Another way of handling zeroes is also to sort the array in descending order. (GFG Link)
 
+// If there were only +ve inte
 
 // Memoised
 int solve(int ind, int sum, vector<int> &num, vector<vector<int>> &dp){
-    // if(sum==0) return 1;   // This cannot be the base case bcz even if the sum is 0, it can be due to {0} {0 0} etc 
+    // if(sum==0) return 1;   // This cannot be the base case bcz even if the sum is 0, it can be due to {0} {0 0} etc  // Hence I will go deep till index==0
     if(ind==0){                                // To handle 0's in memoised code.
         if(sum==0 && sum==num[0]) return 2;    // ie there are 2 solns take and not take and both are correct. Remaining sum is 0 and the only element to be used is also 0
         if(sum==0 || sum==num[0]) return 1;    // sum is say 5 and equal to only element 5 then just take it. Hence 1 case
         return 0; 
     }
 
-    if(dp[ind][sum]!= -1) return dp[ind][sum];
+    if(dp[ind][sum] != -1) return dp[ind][sum];
     
     int notTake = solve(ind-1, sum, num, dp);
     int take = 0;
@@ -81,7 +84,7 @@ int findWays(vector<int> &num, int tar){
     int n = num.size();
     vector<vector<int>> dp(n, vector<int>(tar+1, 0));  // n moves from 0 to n-1, tar moves from 1 to tar
     
-    if(num[0]==0) dp[0][0]=2;
+    if(num[0]==0) dp[0][0] = 2;
     else dp[0][0] = 1;
 
     // num[0]=0

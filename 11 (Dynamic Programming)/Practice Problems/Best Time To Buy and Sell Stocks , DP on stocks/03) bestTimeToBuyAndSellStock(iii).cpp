@@ -48,17 +48,17 @@ public:
 Here k is 2 so its fine but if k is large then there will be a TLE
 
 
-// STRIVER
+********************************************* STRIVER *****************************************************
 
 // From buy and sell 2
-// I add one more state "cap"
+// I add one more state "cap"   // cap means these many trasactions I can do
 // f(ind, buy, cap){
 //     if(buy)
 
 //     else  // sell
 // }
 
-// If I do sell then I am completing a transaction ie no of transactions left will get reduced by 1
+// If I do sell then only I am completing a transaction ie no of transactions left will get reduced by 1
 
 dp[ind][buy][cap] = [n][2][3]
 // cap can be 0 1 or 2

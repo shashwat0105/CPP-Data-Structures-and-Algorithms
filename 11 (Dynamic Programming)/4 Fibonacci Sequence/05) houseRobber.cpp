@@ -33,7 +33,8 @@ public:
         dp[0] = nums[0]; // because If u are standing at i=0 then better u pick it as all values are +ve
         
         for(int i=1; i<n; ++i){
-            int pick = nums[i]; if(i>1) pick += dp[i-2];
+            int pick = nums[i]; 
+            if(i>=2) pick += dp[i-2];
             int notPick = 0 + dp[i-1];
             dp[i] = max(pick, notPick);
         }        
@@ -55,10 +56,12 @@ public:
     int solve(int n, vector<int> &nums){
         int prev = nums[0]; // because If u are standing at i=0 then better u pick it as all values are +ve
         int prev2 = 0;      // index < 0
+        int curi = 0;
         for(int i=1; i<n; ++i){
-            int pick = nums[i]; if(i>1) pick += prev2;
+            int pick = nums[i]; 
+            if(i>=2) pick += prev2;
             int notPick = 0 + prev;
-            int curi = max(pick, notPick);
+            curi = max(pick, notPick);
             prev2 = prev;
             prev = curi;
         }        

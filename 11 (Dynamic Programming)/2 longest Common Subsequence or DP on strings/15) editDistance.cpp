@@ -27,7 +27,7 @@ Replace operation makes it tougher
 f(i-1, j-1) means: min operations to convert s1[0...i] into s2[0...j]
 
 Base case
-1) s1 gets exhausted: ie s2 has some elements left, that many elements I need to insert now to convert. ie j+1
+1) s1 gets exhausted: ie s2 has some elements left, that many elements I need to insert now to convert. ie j+1 // j is index so number of elements will be j+1
 2) s2 gets exhausted: s1 has some elements, then I need to delete all the elements.  ie i+1
 
 
@@ -170,3 +170,32 @@ public:
 
 
 // You cannot further optimise to 1 array because prev states of cur and prev both are required.
+// Haha yeh raha 1 array code:
+class Solution {
+public:
+    int minDistance(string str1, string str2) {
+        int n = str1.size();
+        int m = str2.size();
+        vector<int> prev(m + 1, 0);
+
+        for (int j = 1; j <= m; j++) {
+            prev[j] = j;
+        }
+        int first = 0;
+        for (int i = 1; i <= n; i++) {
+            first = prev[0];
+            prev[0] = i;
+            for (int j = 1; j <= m; j++) {
+                int temp = prev[j];
+                if (str1[i - 1] == str2[j - 1]) {
+                    prev[j] = first;
+                }
+                else {
+                    prev[j] = 1 + min({first, prev[j - 1], prev[j]});
+                }
+                first = temp;
+            }
+        }
+        return prev[m];
+    }
+};

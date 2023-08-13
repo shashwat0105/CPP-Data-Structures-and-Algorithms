@@ -6,7 +6,7 @@
  
 
 // Method 1 Brute Force Recursion
-// https://www.youtube.com/watch?v=kvyShbFVaY8&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=3
+// https://www.youtube.com/watch?v=kvyShbFVaY8&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=3  (Aditya Verma)
 // Time Complexity 2^n
 // We can apply recursion coz choices are there & Output is max profit(2 conditions to identify recursion)(hence return type of the knapsack fn will be int)
 // 1) Base condtion:- Think of the smallest valid input(smallest & valid)
@@ -41,7 +41,7 @@ int main()
     int wt[] = { 10, 20, 30 };
     int W = 50;
     int n = sizeof(val) / sizeof(val[0]);
-    cout << knapSack(wt, val, W, n);
+    cout << knapSack(wt, val, W, n);     // n here is size not index.
 
     return 0;
 }
@@ -187,15 +187,15 @@ int main()
 // Most Space Optimised O-1 Knapsack solution (WOW):
  int knapSack(int W, int wt[], int val[], int n) {  
     vector<int> dp(W+1,0);
-    for(int i=0;i<n;i++){
-        for(int j=W;j>=wt[i];j--){
+    for(int i=0;i<n;i++){                   // left to right
+        for(int j=W;j>=wt[i];j--){          // right to left
             dp[j]=max(dp[j], dp[j-wt[i]]+val[i]);
         }
     }
     return dp[W];
 }
 
-// **************** Striver ka gyan
+**************** STRIVER explanation ****************
 
 1) Express in terms of f(ind, W)
 2) Explore all paths pick and not pick
@@ -232,11 +232,11 @@ int knapSack(int maxW, int wt[], int val[], int n) {
     // Your code here
     vector<vector<int>> dp(n, vector<int> (maxW+1, 0));
     
-    for(int w= wt[0]; w<=maxW; ++w){  // base case for every w which is less than w
+    for(int w = wt[0]; w<=maxW; ++w){  // base case for every w which is less than W
         dp[0][w] = val[0];
     }
     
-    for(int ind=1; ind<n; ++ind){
+    for(int ind=1; ind<n; ++ind){     // ind=0 already covered in base case
         for(int w=0; w<=maxW; ++w){
             int notTake = 0 + dp[ind-1][w];
             int take = INT_MIN;

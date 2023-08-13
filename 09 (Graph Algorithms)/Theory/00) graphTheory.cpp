@@ -140,7 +140,7 @@ for(int i=0; i<=10; i++){         // for every node is called coz a graph can ha
 // Bellmanford
 // Advanced Algos and topics
 // Disjoint set union         :  Good and Simple questions bante hai iske
-// Minimum Spanning Tree      : Theory wise is important, implementation wise kam puchte hai
+// Minimum Spanning Tree      :  Theory wise is important, implementation wise kam puchte hai
 // Directed Acyclic Graph (DAG)
 // Topological Sort
 

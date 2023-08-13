@@ -46,6 +46,8 @@ int countPartitions(int n, int d, vector<int> &arr) {
     for(auto it: arr){
         totSum+=it;
     }
+
+    //Checking for edge cases
     if(totSum-d<0 || (totSum-d) % 2) return false;
     int target = (totSum-d)/2;
     vector<vector<int>> dp(n, vector<int>(target+1, -1));
@@ -79,7 +81,7 @@ int solve(vector<int> &num, int tar){
 int countPartition(int n, ind d, vector<int> &arr){
     int totSum = 0;
     for(auto &it: arr) totSum += it;
-    if(totSum - d< 0 || (totSum - d)%2) return false;
+    if(totSum - d < 0 || (totSum - d)%2) return false;
     return solve(arr, (totSum-d)/2);
 }
 

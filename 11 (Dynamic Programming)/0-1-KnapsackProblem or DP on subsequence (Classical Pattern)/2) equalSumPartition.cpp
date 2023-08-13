@@ -1,4 +1,7 @@
 // https://www.geeksforgeeks.org/partition-problem-dp-18/
+// https://leetcode.com/problems/partition-equal-subset-sum/
+
+
 // problem statement
 // arr[] : {1, 5, 11, 5} :- Is it possible to split the array in two (equal or unequal) parts such that the sum of the two subsets is equal. 
 // O/P = T/F :- True if such partition is possible else false
@@ -24,45 +27,24 @@ if(sum%n ==0){  // i.e. when sum of array is even
 
 // *****************************************************************************************
 // COMPLETE WORKING CODE
-
-class Solution{
+class Solution {
 public:
-    bool equalPartition(int N, int arr[])
-    {
-        // code here
-        int sum=0;
-        for(int i=0; i<N; i++){
-            sum+=arr[i];
-        }
-        if(sum%2 != 0) return false;
-        
-        else
-            return isSubsetSum(arr, N, sum/2);
+    bool solve(int ind, int target, vector<int> &nums, vector<vector<int>>&dp){
+        if(target==0) return true;
+        if(ind==0) return target == nums[0];
+        if(dp[ind][target]!=-1) return dp[ind][target];
+        bool notTake = solve(ind-1, target, nums, dp);
+        bool take = false;
+        if(nums[ind]<=target) take = solve(ind-1, target-nums[ind], nums, dp);
+        return dp[ind][target] = take||notTake;
     }
-    
-    bool isSubsetSum(int arr[], int N, int s){
-        // base
-        int t[N+1][s+1];
-        for(int i=0; i<=N; i++){
-            t[i][0]=1;
-        }
-        for(int j=1; j<=s; j++){
-            t[0][j]=0;
-        } 
-        
-        for(int i=1; i<=N; i++){
-            for(int j=1; j<=s; j++){
-                if(arr[i-1]<=j){
-                    t[i][j]=t[i-1][j-arr[i-1]] || t[i-1][j];
-                }
-                else
-                    t[i][j] = t[i-1][j];
-            }
-        }
-        return t[N][s];
-        
+
+    bool canPartition(vector<int>& nums) {
+        int n = nums.size();
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+        if(sum & 1) return false;  // if sum is odd
+        sum = sum/2;
+        vector<vector<int>> dp(n+1, vector<int>(sum+1, -1));
+        return solve(n-1, sum, nums, dp);
     }
 };
-
-
-// Space optimised solution:

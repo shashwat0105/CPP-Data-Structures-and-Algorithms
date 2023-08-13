@@ -1,7 +1,13 @@
+https://leetcode.com/discuss/interview-question/3695233/all-types-of-patterns-for-bits-manipulations-and-how-to-use-it  (MUST STUDY)
+
+https://github.com/MAZHARMIK/Interview_DS_Algo/tree/master/Bit_Magic
+
 http://graphics.stanford.edu/~seander/bithacks.html
 
 https://dev.to/the_unconventional_coder/bit-manipulation-hacks-3n88
 
+&  is bitwise and
+&& is logical and
 
 // Done from codencode playlist
 // Overview
@@ -66,7 +72,7 @@ else         return false;
 //   (6)^(8)^(5)
 //   (3)^(5)^(2) = 14
 // Naive is using 2 for loops in n^2 time
-// You can see that except the diagnal 4, 8, 5, every no is repeating twice hence will cancel out in XOR
+// You can see that except the diagnal 4, 8, 2, every no is repeating twice hence will cancel out in XOR
 // Hence we can do this in linear time by XOR of 2A1^2A2^2A3 ans
 
 

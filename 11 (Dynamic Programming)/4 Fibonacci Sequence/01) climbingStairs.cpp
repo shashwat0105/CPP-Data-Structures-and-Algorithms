@@ -1,5 +1,12 @@
 https://leetcode.com/problems/climbing-stairs/
 
+// Recursive(TLE):
+int climbStairs(int n) {
+    if(n<=1) return 1;
+    return climbStairs(n-1) + climbStairs(n-2); 
+}
+
+// Memoised
 class Solution {
 public:
     int rec(int n, vector<int> &dp){
@@ -14,6 +21,36 @@ public:
     }
 };
 
+// If I think using this approach 
+1. Try to represent the problem in terms of index.
+2. Do all possible stuffs on that index according to the problem statement.
+3. Sum of all the stuffs. -> Count all ways
+My code will look like:
+class Solution {
+public:
+    int solve(int idx, int n, vector<int> &dp){
+        if(idx >= n-1) return 1;
+        if(dp[idx]!=-1) return dp[idx];
+        return dp[idx] = solve(idx+1, n, dp) + solve(idx+2, n, dp);
+    }
+    int climbStairs(int n) {
+       vector<int> dp(n+2, -1);
+       return solve(0, n, dp); 
+    }
+};
+
+// Python
+// Just a word @cache is a decorator from functool module can use to memoise. 
+// We write it above the function definition
+
+class Solution:
+    @cache
+    def climbStairs(self, n: int) -> int:
+        if(n<=1):
+            return 1
+        return self.climbStairs(n-1) + self.climbStairs(n-2)
+
+// Most optimised:
 // Using matrix exponentiation
 O(logn)
 
