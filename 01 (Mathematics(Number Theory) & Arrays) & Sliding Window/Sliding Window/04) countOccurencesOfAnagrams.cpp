@@ -11,7 +11,7 @@ Pattern in the string will be in continuos manner.
 size of window k = size of pattern.
 
 ans ++; instead of pushing in vector in below code.
-
+ 
 
 https://leetcode.com/problems/find-all-anagrams-in-a-string/description/
 

@@ -1,5 +1,7 @@
 https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
 
+Good 
+
 Incorrect intuition: No of times I can reach destination with the shortest path.
 Because a path reaching can be composed of two different past paths.
 If I get to a node with same cost again, then it is one more path, so I dont insert into PQ, I just increase its ways counter.

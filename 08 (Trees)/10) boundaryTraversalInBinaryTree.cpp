@@ -18,7 +18,8 @@ Steps:
 // Until you reach a leaf node.
 
 // For leaf nodes:
-// To print the leaf nodes, we can do a simple preorder traversal, and check if the current node is a leaf node or not. If it is a leaf node just print it.
+// To print the leaf nodes, we can do a simple preorder traversal, and check if the current node is a leaf node or not. 
+// If it is a leaf node just print it.
 // We can do any traversal just left to right print hona chahiye. Here we go first left and then right(ie dono jana hai)
 
 

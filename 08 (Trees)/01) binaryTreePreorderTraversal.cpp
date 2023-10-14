@@ -100,4 +100,5 @@ https://stackoverflow.com/questions/5502916/explain-morris-inorder-tree-traversa
 
 // N-ary tree pre order traversal
 https://leetcode.com/problems/n-ary-tree-preorder-traversal/
-
+Approach:
+You need to iterate through the child array for above.

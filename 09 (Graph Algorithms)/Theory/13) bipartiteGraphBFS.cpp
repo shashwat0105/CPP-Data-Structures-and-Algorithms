@@ -47,7 +47,7 @@ bool checkBipartiteBFS(int curr, vector<int>adj[], vector<int> &color, int currC
 
         for(int &v : adj[u]){                   // traverse for its adjacent node
             if(color[v] == -1){                 // not been colored yet  
-                color[v] = 1-color[u];          // coloring with opposite color to the adjacent node, 1-1=0, 1-1=0 // Alternate: color[v] = !color[u]
+                color[v] = 1-color[u];          // coloring with opposite color to the adjacent node, 1-1=0, 1-0=1 // Alternate: color[v] = !color[u]
                 q.push(v);                      // once it is colored I push it in my queue data structure
             }
             else if(color[v] == color[u]){      // already been colored and if the adjacent node has same color as I have, hence it is not bipartite

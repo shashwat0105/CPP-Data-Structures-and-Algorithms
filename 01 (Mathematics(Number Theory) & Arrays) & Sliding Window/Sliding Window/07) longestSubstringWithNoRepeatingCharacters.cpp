@@ -22,10 +22,10 @@ int lengthOfLongestSubstring(string s) {
 (1)  window_size = j-i+1
 (2)  unique_size = mp.size() , this tells no. of unique character in given string s every time
 */            
-        //this case never reached
-        if(mp.size() > j-i+1){
-            j++;//in order to maximize find more unique character
-            }
+        
+        if(mp.size() > j-i+1){    // this case is never possible tho
+            j++;                  //in order to maximize find more unique character
+        }
         
         else if(mp.size() == j-i+1){
             //candidate of answer
@@ -47,7 +47,6 @@ int lengthOfLongestSubstring(string s) {
             }
             j++;
         }
-        
     }
     return max_size;
 }

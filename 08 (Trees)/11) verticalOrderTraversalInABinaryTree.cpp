@@ -14,7 +14,7 @@ https://youtu.be/q_a6lpbKJdw
 // On moving left: vertical changes by -1, and level by +1
 // On moving right: vertical changes by +1 and level by +1
 
-// After popping we put it into vertical -> level -> multset value
+// After popping we put it into vertical -> level -> multiset value
 
 // Queue(node, vertical, level)
 

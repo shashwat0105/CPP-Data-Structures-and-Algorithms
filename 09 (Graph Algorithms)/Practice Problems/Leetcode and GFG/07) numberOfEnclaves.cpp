@@ -8,8 +8,7 @@ public:
     void dfs(int i, int j, vector<vector<int>>& grid, vector<pair<int,int>> &directions){
         int n = grid.size();                        
         int m = grid[0].size();
-        if(i<0 || j<0 || i>=n || j>=m) return;
-        if(grid[i][j]==0) return;
+        if(i<0 || j<0 || i>=n || j>=m || grid[i][j]==0) return;
         
         grid[i][j] = 0;
         
@@ -49,7 +48,7 @@ BFS 1: (Same as above just traversing using BFS instead of DFS)
 class Solution {
 public:
     void bfs(int i, int j, vector<vector<int>>& grid){
-        queue<pair<int, int>> q;
+        queue <pair<int, int>> q;
         vector<pair<int,int>> directions {{0,1},{1,0},{0,-1},{-1,0}};
 
         int n = grid.size();                        
@@ -106,7 +105,7 @@ class Solution {
 public:
     
     int numEnclaves(vector<vector<int>>& grid) {
-       queue<pair<int,int>> q; 
+        queue<pair<int,int>> q; 
         int n = grid.size(); 
         int m = grid[0].size();
         vector<vector<int>>vis(n ,vector<int>(m,0)); 

@@ -76,7 +76,7 @@ public:
                 }
             }
             
-            ans=max(ans,i-j+1);
+            ans=max(ans,i-j+1);  // i aage hai j peeche hai
             
         }
         return n-ans; 

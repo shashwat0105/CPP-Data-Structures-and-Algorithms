@@ -27,14 +27,14 @@ Method 2: Comparing after complete traversal.
 // New code of inorder:
 
 void inorder(TreeNode *root, vector<int>& v){
-        if(root){
-            inorder(root->left, v);
-            v.push_back(root->val);
-            inorder(root->right, v);
-        }
-        else{
-            v.push_back(100000);
-        }
+    if(root){
+        inorder(root->left, v);
+        v.push_back(root->val);
+        inorder(root->right, v);
+    }
+    else{
+        v.push_back(100000);
+    }
 }
 
 // So in this ques, dono ka in ar pre order vector nikal k compare kar lo solve ho jaega ques

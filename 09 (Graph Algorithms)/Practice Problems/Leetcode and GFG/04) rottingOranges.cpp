@@ -1,5 +1,7 @@
 https://leetcode.com/problems/rotting-oranges/
 
+Good 
+
 TC = O(N*N)*4
 SC = O(N*N)
 

@@ -111,10 +111,13 @@ public:
         area++;
         grid[i][j] = 0;
         
-        dfs(grid, i+1, j, n, m, area);
-        dfs(grid, i-1, j, n, m, area);
-        dfs(grid, i, j+1, n, m, area);
-        dfs(grid, i, j-1, n, m, area);
+        vector<pair<int,int>> dir {{0,1},{1,0},{0,-1},{-1,0}};
+
+        for(auto &d: dir){
+            int newx = i + d.first;
+            int newy = j + d.second;
+            dfs(grid, newx, newy, n, m, area);
+        }
     }
     
     int maxAreaOfIsland(vector<vector<int>>& grid) {

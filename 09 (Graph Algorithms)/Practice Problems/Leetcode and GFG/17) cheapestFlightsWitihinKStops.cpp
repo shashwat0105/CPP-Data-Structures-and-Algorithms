@@ -38,7 +38,7 @@ public:
             for(auto &iter: adj[node]){
                 int adjNode = iter.first;
                 int cost = iter.second;
-                if(d+cost <dist[adjNode] && stops <= k){  
+                if(d+cost < dist[adjNode] && stops <= k){  
                     dist[adjNode] = d+cost;
                     q.push({stops+1, {adjNode, d+cost}});
                 }
@@ -102,3 +102,4 @@ public:
         return distance[dst]==1e9 ? -1 : distance[dst];
     }
 };
+

@@ -28,7 +28,7 @@
 class Solution{
     public:
     vector<int> topoSort(int N, vector<int> adj[]) {
-	   queue<int>q;                       // define queue
+	    queue<int>q;                       // define queue
         vector<int> indegree(N, 0);       // indegree array of size N and all values as 0
         for(int u=0; u<N; u++){           // graph has 0 based indexing so we run a loop from 0 to N
             for(auto &v : adj[u]){        // for every adjacent node

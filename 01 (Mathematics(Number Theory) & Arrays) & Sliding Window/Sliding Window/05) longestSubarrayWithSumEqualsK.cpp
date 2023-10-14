@@ -21,11 +21,11 @@ x and x+k are the counterparts we will search for.
 
 //
 int lenOfLongSubarr(int A[],  int n, int k) { 
-    // Complete the function
     int len = 0;
     int prefixRunningSum = 0;
     unordered_map<int, int> mp;
     mp[0] = -1;   // done this coz if u get  a prefix sum of k, then mp[k-k] will be mp[0] and i-(-1) = i+1 will the the len.  
+    
     for(int i=0; i<n; ++i){
         prefixRunningSum+=A[i];
         // if(prefixRunningSum==k) len = i+1;
@@ -36,6 +36,7 @@ int lenOfLongSubarr(int A[],  int n, int k) {
             mp[prefixRunningSum] = i;           // ie the first occurence is stored when it didn't existed in the map
         }
     }
+    
     return len;
 } 
 

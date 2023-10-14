@@ -51,24 +51,22 @@ public:
 // Baaki code toh simple hai
 
 // Ek ar similar code (more concise and readable)
+
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
-        int counter = 0;
-        height(root, counter);
-        
-        return !(count==-1);
+        int flag = false;  // false means it is balanced
+        height(root, flag);
+        return !flag;
     }
-    
-    int height(TreeNode *root, int &counter){
+
+    int height(TreeNode *root, int &flag){
         if(root==NULL) return 0;
-        
-        int lH = height(root->left, counter);
-        int rH = height(root->right, counter);
-        
-        if(abs(lH-rH)>1) counter=1;               // Instead of returning ek variable ki value change kar di
-        
-        return 1+max(lH, rH);
+
+        int lH = height(root->left, flag);
+        int rH = height(root->right, flag);
+
+        if(abs(lH-rH)>1) flag = true; // ie it is unbalanced // Instead of returning ek variable ki value change kar di
+        return max(lH, rH) + 1;
     }
 };
-

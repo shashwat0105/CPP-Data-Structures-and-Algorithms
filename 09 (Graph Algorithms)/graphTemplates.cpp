@@ -30,7 +30,7 @@ Directed
 We use 2 arrays: Visited array and inRecursion Array(ie the node is in current recursion call stack).
 
 // Kahns algo: (Topo sort using BFS) // Only possible for DAG
-We insert the nodes with indegree 0 in our queue first.
+We calculate indegree of all the nodes and insert the nodes with indegree 0 in our queue first.
 
 
 DSU Template:

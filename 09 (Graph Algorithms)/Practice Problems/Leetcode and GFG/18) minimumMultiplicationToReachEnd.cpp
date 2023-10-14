@@ -3,7 +3,7 @@ https://practice.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end
 https://youtu.be/_BvEJ3VIDWw (Striver)
 
 Kind of ki jo keh raha kar do problem
-
+ 
 We used to go in adjacent nodes, here we multiply to get adjacent nodes.
 
 CODE:
@@ -22,8 +22,7 @@ int minimumMultiplications(vector<int>& arr, int start, int end) {
         if(node==end) return steps;       // early return
         for (auto &it : arr){
             int num = (it * node) % mod;
-
-            if (steps + 1 < dist[num]){
+ 
                 dist[num] = steps + 1;
 
                 // if (num == end)

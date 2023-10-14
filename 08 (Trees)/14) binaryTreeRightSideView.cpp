@@ -59,7 +59,7 @@ public:
 
         while (!todo.empty()) {
             int n = todo.size();
-            for (int i = 0; i < n; i++) {
+            while (n--) {
                 TreeNode* node = todo.front();
                 todo.pop();
                 if (i == n - 1) {

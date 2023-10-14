@@ -6,7 +6,7 @@
 
 https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1?
 
-Step1 : Sort all the edges according to weight.
+Step1 :  Sort all the edges according to weight.
 Step2 :  Add the edges in less to more weigh. Make a connection using DSU. Whether a new (u, v) edge is required or not, can be found by DSU easily.
 
 // Uses disjoint set data structure 

@@ -6,8 +6,8 @@ Since the cost is same, we can take just a queue instead of pq. // first the lev
 
 https://practice.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1?
 
-When not given cell to cell cost is taken 1.
-You can move in 4-directions, path consist of 1;s
+When not given cell to cell cost, it is taken as 1.
+You can move in 4-directions, path consist of 1's
 
 CODE:
 int shortestPath(vector<vector<int>> &grid, pair<int, int> source, pair<int, int> destination) {

@@ -7,7 +7,7 @@ We use DFS for this as we want to just traverse in the nodes.
 
 class Solution {
 public:
-    void dfs(int i,int j,int n,int m,vector<vector<char>>& board,vector<vector<int>>&vis, vector<pair<int,int>> &directions){
+    void dfs(int i, int j, int n, int m, vector<vector<char>>& board, vector<vector<int>>&vis, vector<pair<int,int>> &directions){
          if(i<0 || j<0 || i>=n || j>=m || vis[i][j]==1 || board[i][j]=='X'){
              return;
          }
@@ -24,7 +24,7 @@ public:
         //convert all those zeroes to x which are not a part of boundary region
 
         int n=board.size(),m=board[0].size();
-        vector<vector<int>>vis(n+1,vector<int>(m+1,0));   // syntax to make 2D vis vector initilise with 0
+        vector<vector<int>> vis(n+1,vector<int>(m+1,0));    // syntax to make 2D vis vector initilise with 0
         vector<pair<int,int>> directions {{0,1},{1,0},{0,-1},{-1,0}};
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){

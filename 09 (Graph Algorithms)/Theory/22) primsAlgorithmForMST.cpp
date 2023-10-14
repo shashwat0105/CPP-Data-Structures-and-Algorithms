@@ -12,12 +12,12 @@ Required data structures
 
 Datatypes of our data structures
 Visited array => int
-Mst list =>  (weight,node name, node parent)  // If u want to print MST
+Mst list =>  (weight, node name, node parent)  // If u want to print MST
 
 Steps
 1. Mark the visited array as 0 for all the nodes
 2. Start with 0th node and push
-(0,0,-1)
+(0, 0, -1)
 here -1 means 0 is the genesis node
 Mark 0 as visited
 3. Push all the neighbours of 0 in pq Do not mark them visited
@@ -35,12 +35,12 @@ int spanningTree(int V, vector<vector<int>> adj[]){
     vector<int> vis(V, 0);
     pq.push({0, 0});
     int sum = 0;
+
     while(!pq.empty()){
-        auto it = pq.top();
+        int node = pq.top().second;
+        int wt = pq.top().first;
         pq.pop();
-        int node = it.second;
-        int wt = it.first;
-        
+       
         if(vis[node]==1) continue;
         // add it to MST only then I mark it as visited, sbse choti edge weight wale ko hi nikal k visited mark. BRIENS
         vis[node]=1;
@@ -92,3 +92,7 @@ int spanningTree(int V, vector<vector<int>> adj[]){
 
     return sum;
 }
+
+
+// Leetcode problem
+https://leetcode.com/problems/min-cost-to-connect-all-points/

@@ -1,5 +1,7 @@
 https://leetcode.com/problems/find-eventual-safe-states/
 
+Good ques 
+
 // My failed first attempt, I didn't checked nodes pointing to safe nodes will also become safe.
 
 Ques based on detect a cycle in a directed graph.

@@ -45,5 +45,5 @@ Yes, by kind of bi-directional BFS. (Kind of parallel processing)
 ie We may also start from the endWord simultaneously. Once we meet the same word, we are done.
 Code here:
 https://leetcode.com/problems/word-ladder/solutions/40707/c-bfs/
-Also in above code instead of a pair in queue, you can use a count variable by introducing a for loop of q.size() that used to keep track of levels. Code in in above.
+Also in above code instead of a pair in queue, you can use a count variable by introducing a for loop of q.size() that used to keep track of levels. Code is in above.
 

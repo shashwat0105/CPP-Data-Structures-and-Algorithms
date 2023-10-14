@@ -10,7 +10,7 @@
 class Solution{
 public:
     bool isCyclic(int N, vector<int> adj[]){  // function name is changed obviously
-       queue<int>q;
+        queue<int>q;
         vector<int> indegree(N, 0);
         // Step 1: Find indegree
         for(int i = 0; i < N; i++){

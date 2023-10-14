@@ -54,7 +54,7 @@ class Solution {
     
   public:
      vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
-=        // Step 1 :- Convert the given adj list into this form 
+        // Step 1 :- Convert the given adj list into this form 
         unordered_map<int, vector<pair<int, int>>> adj;
         for (auto &edge: edges) {
           int u = edge[0];
@@ -75,7 +75,7 @@ class Solution {
         // Step 3:- Relax all the edges one by one from the stack
 
         vector <int> dist(N, 1e9);
-        dist[0] = 0;    // dist[source] = 0; // We mark the distance of source node first to be 0.
+        dist[0] = 0;           // dist[source] = 0; // We mark the distance of source node first to be 0.
     
         while (!st.empty()) {  // Iterating on the stack created by TOPOsort
           int node = st.top();

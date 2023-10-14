@@ -21,7 +21,7 @@ while(j<n){
     calculation on j
     if( <k) j++
     if( ==k){
-        1) find some ans from that calculation
+        1) find some ans from that calculation adn remove calc of i
         2) slide the window i++, j++
     }
 }
@@ -51,8 +51,12 @@ while(j<size){
    }
 }
 
+Study Guide LC
+https://leetcode.com/discuss/study-guide/3722472/sliding-window-technique-a-comprehensive-guide  (MUST)
+https://leetcode.com/discuss/study-guide/1773891/Sliding-Window-Technique-and-Question-Bank
+
+
 // Some template links to go through during revising.
 https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem/
 https://leetcode.com/problems/minimum-window-substring/solutions/26808/here-is-a-10-line-template-that-can-solve-most-substring-problems/
-https://leetcode.com/discuss/study-guide/1773891/Sliding-Window-Technique-and-Question-Bank
 https://leetcode.com/tag/sliding-window/discuss/?currentPage=1&orderBy=most_votes&query=

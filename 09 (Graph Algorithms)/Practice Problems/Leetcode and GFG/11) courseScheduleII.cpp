@@ -72,13 +72,13 @@ public:
                 topoDfsCycle(v, adj, vis, inRecursion, st);
             }
             else if(inRecursion[v]){ // it is already visited and also in current recursion
-                hasCycle = true; // mark that there is cycle
-                return;  // No need to further make calls
+                hasCycle = true;     // mark that there is cycle
+                return;              // No need to further make calls
             }
         }
 
         inRecursion[u]=false; // unmark  // cycle bhi check kr rhe
-        st.push(u);  // fr mujhe daalo stack mein // topological sort bhi sath m nikal rhe
+        st.push(u);           // fr mujhe daalo stack mein // topological sort bhi sath m nikal rhe
     }
 
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {

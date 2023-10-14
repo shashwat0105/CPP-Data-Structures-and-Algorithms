@@ -31,9 +31,10 @@ long maximumSumSubarray(int k, vector<int> &arr , int n){
     return maxi;
 }
 
+// You can take out that j++ and remove that if condition as well.
 
 // CODE 2
-
+// calculate first window then others.
 long maximumSumSubarray(int k, vector<int> &arr , int n){
     long maxi=0;
 

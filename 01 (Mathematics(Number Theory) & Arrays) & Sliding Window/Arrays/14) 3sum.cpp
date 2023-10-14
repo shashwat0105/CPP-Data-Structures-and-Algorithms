@@ -16,32 +16,37 @@ https://youtu.be/onLoX6Nhvmg
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> res;
+        int n = nums.size();
+        vector<vector<int>> ans;
+
         sort(nums.begin(), nums.end());
-        int n=nums.size();
-        
-        for(int i=0; i<n-2; ++i){
-            
-		    if (nums[i] > 0) break;  // all numbers from now on will be greater than 0, no point in continuing (for this ques)
-            if(i==0 || (i>0 && nums[i]!=nums[i-1])){   // to avoid repetition in 1st number
-                int a = nums[i];
-                int newTarget = 0-a;
-                int s = i+1;
-                int e = n-1;
-                
-                while(s<e){ 
-                    if(nums[s]+nums[e]==newTarget){
-                        res.push_back({nums[i], nums[s], nums[e]});  // Inserting a vector inside a vector
-                        while(s<e && nums[s]==nums[s+1]) s++;        // to avoid repetition in 2nd number
-                        while(s<e && nums[e]==nums[e-1]) e--;        // to avoid repetition in 3rd number (the code will work without this loop as well)
-                        s++;
-                        e--;
-                    }
-                    else if(nums[s]+nums[e]>newTarget) e--;
-                    else s++;
+
+        for(int i=0; i<n; ++i){  // fixed pointer
+            if(i!=0 && nums[i]==nums[i-1]) continue;   // for handling duplicate in first element.
+
+            int s = i+1;  // 2 variable pointers
+            int e = n-1;
+
+            while(s<e){
+                int sum = nums[i] + nums[s] + nums[e];
+
+                if(sum<0){
+                    s++;
+                }
+                else if(sum>0){
+                    e--;
+                }
+                else{
+                    vector<int> temp = {nums[i], nums[s], nums[e]};
+                    ans.push_back(temp);
+                    // skip duplicates
+                    while(s<e && nums[s]==nums[s+1]) s++;  // in second variable
+                    while(s<e && nums[e]==nums[e-1]) e--;  // in third variable
+                    s++;
+                    e--;
                 }
             }
         }
-        return res;
+        return ans;
     }
 };

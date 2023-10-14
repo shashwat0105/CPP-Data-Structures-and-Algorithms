@@ -60,7 +60,7 @@ int depth[N];
 // Tree mein dfs parent pass karke lagana so that we dont visit that again
 void  dfs(int v, int par=-1){
     for(int child: g[v]){
-        if(child == par)continue;
+        if(child == par) continue;
         depth[child] = depth[v]+1;  // coz depth neeche jaate jaate calculate hoti hai 
         dfs(child, v);
     }
@@ -97,6 +97,7 @@ int main(){
     cout<<max_depth<<endl;
 }
 
-// solve this ques later
+// Implementation ques
 https://leetcode.com/problems/minimum-height-trees/description/
-
+Method 1: Find path of the diameter, then middle node(s) will be the centroid.
+Method 2: Using degree, all the nodes having degree = 1, are processed first, and so on.

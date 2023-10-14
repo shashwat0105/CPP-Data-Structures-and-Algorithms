@@ -39,11 +39,12 @@ vector<long long> printFirstNegativeInteger(long long int arr[], long long int n
             }
             else{
                 res.push_back(dq.front());  // ans from calculation
-                // slide the window
+                
                 if(arr[i]<0){ 
                     dq.pop_front();  // that number is not in our window now hence cannot be in our list
                 }
             }
+            // slide the window
             i++;
             j++;
         }

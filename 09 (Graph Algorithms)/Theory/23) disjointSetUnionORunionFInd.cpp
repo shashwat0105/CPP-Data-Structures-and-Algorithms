@@ -54,7 +54,7 @@ int findUParent(int node){
     if(node = parent[node]){    // ie single node exist
         return node;
     }   
-//  return findParent(parent[node]);                  //without path compressed  // ie parent ka parent ka parent find krna hai jab tak base condition na hit ho jae ie root node reached
+//  return findParent(parent[node]);                   //without path compressed  // ie parent ka parent ka parent find krna hai jab tak base condition na hit ho jae ie root node reached
     return parent[node] = findUParent(parent[node]);   // with path compressed : IMPROVES TIME as we have updated the parent of all the nodes directly to be the root node.
 }
 

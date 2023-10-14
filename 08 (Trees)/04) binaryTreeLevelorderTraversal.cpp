@@ -14,6 +14,7 @@ public:
         if(root==NULL) return ans;                         // if the tree given to us is empty
         queue<TreeNode*> q;                                // queue will store nodes of the tree, so we make it of that type
         q.push(root);
+        
         while(!q.empty()){                                 // first I will have one element in queue, then no of elements in next layer, and so on  (Ek depth k saare elements ko queue m dalega fr dusre depth k saare elements ko dalega)
             int size = q.size();
             vector<int> level;
@@ -38,5 +39,29 @@ if(root->left)  q.push(root->left);
 // In n-ary tree
 https://leetcode.com/problems/n-ary-tree-level-order-traversal/
 
-// Diagonal Traversal  (Not done yet by me)
+// Diagonal Traversal 
 https://www.geeksforgeeks.org/diagonal-traversal-of-binary-tree/
+
+Saare left waalo ko queue m pehle daalo if they exist simultaneously moving in the right direction
+void solve(Node *root, vector<int> &ans){
+    if(root==NULL) return;
+    
+    queue<Node *> q;
+    q.push(root);
+    
+    while(!q.empty()){
+        Node *temp = q.front();
+        q.pop();
+        while(temp){
+            ans.push_back(temp->data);
+            if(temp->left) q.push(temp->left);
+            temp = temp->right;
+        }
+    }
+}
+
+vector<int> diagonal(Node *root){
+   vector<int> ans;
+   solve(root, ans);
+   return ans;
+}

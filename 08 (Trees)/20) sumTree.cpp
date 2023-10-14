@@ -11,7 +11,7 @@ class Solution
         if(root==NULL) return 0;                                       // sum ko 0 return krna hai
         if(root->left==NULL && root->right==NULL) return root->data;   // they are leaf nodes
         
-        if(f==0) return 0;                              // dobara stack space recursion ki nahi lagegi agar f 0 ho jae beech mein
+        if(flag==0) return 0;                              // dobara stack space recursion ki nahi lagegi agar flag 0 ho jae beech mein
         int leftSum = calculateSum(root->left, flag);
         int rightSum = calculateSum(root->right, flag);
         

@@ -1,6 +1,6 @@
 https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
 
-https://www.youtube.com/watch?v=EFg3u_E6eHU   (Dijakstra Working Animation)
+https://www.youtube.com/watch?v=EFg3u_E6eHU   (Dijkstra Working Animation)
 
         2                5
 1-----------------2-------------5
@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=EFg3u_E6eHU   (Dijakstra Working Animation)
 Task: Given a source node find shortest distance between source and every other node
 
 // Dijakstra is similar to BFS only. 
-// We will use a priority queue that will store (ditance, node)
+// We will use a priority queue that will store (distance, node)
 // Priority queue should be a min heap, ie the guy with the lower distance will be on top of the priority queue.
 // I want to relax further distance with current distances so it will be beneficial to relax using lower distances so I use a PQ.
 
@@ -84,7 +84,7 @@ Using Set
 // Another imp facility that a set/priorityqueue provides over queue is that, if the destination node reaches on the top, we can early return from there itself.
 // Coz that is a minimum value, yeh value ar kam nahi ho skti with the help of other larger values in the queue. See problem 16.
 
-Code using set DS.
+// Code using set DS.
 
 vector <int> dijkstra(int V, vector<vector<int>> adj[], int src){
     // Code here
@@ -95,7 +95,7 @@ vector <int> dijkstra(int V, vector<vector<int>> adj[], int src){
     dist[src] = 0;
     st.insert({0, src});  // {distance, node that is reached from source}
     
-        while(!st.empty()){
+    while(!st.empty()){
         auto it = *(st.begin());
         int d = it.first;
         int node = it.second;
@@ -132,7 +132,7 @@ I dont need value, I need path.
 I will try to remember where I am coming from.
 This can be done by using an extra parent array.
 
-So, while traversing I will the parent of a node ie where I came from.
+So, while traversing I will store the parent of a node ie where I came from.
 Now traverse from destination go to its parent go to its parent till you reach source (here 1)
 
 CODE:
@@ -155,8 +155,8 @@ CODE:
     for(int i=1; i<=n; ++i){
         par[i]=i;               // Initially mark the parents as indices
     }
-    dist[1] = 0;               // mark the distance of the source
-    pq.push({0, 1});           // push the source node in the pq {distance, node}
+    dist[1] = 0;                // mark the distance of the source
+    pq.push({0, 1});            // push the source node in the pq {distance, node}
     while(!pq.empty()){
         int node = pq.top().second;
         int d = pq.top().first;
@@ -172,7 +172,7 @@ CODE:
             }
         }
     }
-    if(dist[n]==1e9) return {-1}; // not able to reach
+    if(dist[n]==1e9) return {-1}; // not able to reach the destination
     vector<int> ans;
     int node = n;
     while(par[node]!=node){
