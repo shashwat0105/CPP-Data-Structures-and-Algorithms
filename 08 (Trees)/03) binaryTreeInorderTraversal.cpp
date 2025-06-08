@@ -56,6 +56,7 @@ public:
 
 // Morris Traversal
 https://youtu.be/80Zug6D1_r4 (Striver)
+https://youtu.be/Wq3ibaP4dJY?si=3gdN6OddggVPYVtA (MIK)
 // Time= O(N)
 // SC = O(1)
 
@@ -64,6 +65,39 @@ https://youtu.be/80Zug6D1_r4 (Striver)
 // Observation:
 // From the last node of any subtree you go back to the root.
 
+
+// MIK
+class Solution {
+public:
+    // Morris
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode *curr = root;
+        while(curr){
+            if(curr->left==NULL){
+                ans.push_back(curr->val);
+                curr = curr->right;
+            }
+            else{
+                TreeNode *leftChild = curr->left; // iske rightmost jana hai
+
+                while(leftChild->right!=NULL && leftChild->right!=curr){
+                    leftChild = leftChild->right;
+                }
+                // make the threaded link
+                leftChild->right = curr;
+                // remove the existing left link (IMP)
+                TreeNode *temp = curr;
+                curr = curr->left;
+                temp->left = NULL;
+            }
+        }
+        return ans;
+    }
+};
+
+
+// Striver
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {   // MORRIS
