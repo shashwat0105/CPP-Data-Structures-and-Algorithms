@@ -68,6 +68,11 @@ while(j<size){
    }
 }
 
+A very useful rule for interviews:
+Fixed window: usually j - i + 1 == k
+Longest valid window: expand j, shrink while invalid, then max(ans, j-i+1)
+Smallest valid window: expand until valid, then shrink while valid and update minimum.
+
 Study Guide LC
 https://leetcode.com/discuss/study-guide/3722472/sliding-window-technique-a-comprehensive-guide  (MUST)
 https://leetcode.com/discuss/study-guide/1773891/Sliding-Window-Technique-and-Question-Bank
