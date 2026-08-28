@@ -16,6 +16,7 @@ Fixed
 5) Max of min for every window size
 
 // // Template of fixed window problems:
+// while loop
 j and i are done separately
 while(j<n){
     calculation on j
@@ -23,6 +24,22 @@ while(j<n){
     if( ==k){
         1) find some ans from that calculation adn remove calc of i
         2) slide the window i++, j++
+    }
+}
+
+// for loop
+int i = 0;
+for (int j = 0; j < n; j++) {
+    // include nums[j]
+
+    if (j - i + 1 < k)
+        continue;
+
+    if (j - i + 1 == k) {
+        // calculate answer
+
+        // remove nums[i]
+        i++;
     }
 }
 
